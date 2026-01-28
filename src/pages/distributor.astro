@@ -1,0 +1,339 @@
+---
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Distributor - Renuva</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			:root {
+				--very-dark-brown: #3e2723;
+				--dark-brown: #5c4033;
+				--medium-brown: #704214;
+				--brown: #8b6f47;
+				--light-brown: #a0826d;
+				--tan: #d4a574;
+				--white: #ffffff;
+				--soft-ivory: #f7f4f0;
+				--soft-shadow: rgba(62, 39, 35, 0.12);
+			}
+
+			body {
+				font-family: "Inter", sans-serif;
+				color: var(--dark-brown);
+				background: radial-gradient(circle at top, #fbf8f4 0%, #f1ebe4 55%, #ece4db 100%);
+				position: relative;
+			}
+
+			body::before {
+				content: "";
+				position: fixed;
+				inset: 0;
+				background: url("/assets/images/livingroom.png") center/cover no-repeat;
+				opacity: 0.12;
+				z-index: -1;
+			}
+
+			header {
+				background-color: var(--white);
+				padding: 1.5rem 0;
+				border-bottom: 5px solid var(--brown);
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			}
+
+			.header-content {
+				max-width: 1200px;
+				margin: 0 auto;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0 2rem;
+				gap: 1.5rem;
+			}
+
+			.logo {
+				height: 60px;
+			}
+
+			.logo img {
+				height: 100%;
+				width: auto;
+			}
+
+			nav a {
+				margin-left: 2rem;
+				text-decoration: none;
+				color: var(--dark-brown);
+				font-family: "Inter", sans-serif;
+				font-weight: 500;
+				font-size: 1.05rem;
+				letter-spacing: 0.02em;
+				text-transform: none;
+				transition: color 0.3s;
+			}
+
+			nav a:hover {
+				color: var(--tan);
+			}
+
+			.hero {
+				padding: 5rem 2rem 2rem;
+				text-align: center;
+			}
+
+			.hero h1 {
+				font-family: "Inter", sans-serif;
+				font-size: 3.5rem;
+				font-weight: 600;
+				letter-spacing: 0.01em;
+				text-transform: none;
+				color: var(--very-dark-brown);
+				margin-bottom: 0.8rem;
+			}
+
+			.hero p {
+				max-width: 640px;
+				margin: 0 auto;
+				line-height: 1.7;
+				font-size: 1.1rem;
+				color: var(--dark-brown);
+			}
+
+			.distributor-wrap {
+				max-width: 980px;
+				margin: 2.5rem auto 5rem;
+				padding: 0 2rem;
+			}
+
+			.distributor-card {
+				background: var(--white);
+				border-radius: 20px;
+				padding: 2.8rem;
+				box-shadow: 0 18px 45px var(--soft-shadow);
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) 240px;
+				gap: 2.5rem;
+				align-items: center;
+			}
+
+			.card-text h2 {
+				font-family: "Inter", sans-serif;
+				font-size: 2.5rem;
+				font-weight: 600;
+				letter-spacing: 0.01em;
+				text-transform: none;
+				color: var(--very-dark-brown);
+				margin-bottom: 1rem;
+			}
+
+			.card-text p {
+				line-height: 1.8;
+				margin-bottom: 1.2rem;
+			}
+
+			.badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				padding: 0.35rem 0.9rem;
+				border-radius: 999px;
+				background: rgba(139, 111, 71, 0.12);
+				color: var(--brown);
+				font-family: "Inter", sans-serif;
+				font-weight: 600;
+				font-size: 0.9rem;
+				letter-spacing: 0.02em;
+				text-transform: none;
+				margin-bottom: 1rem;
+			}
+
+			.cta-row {
+				display: flex;
+				gap: 1rem;
+				flex-wrap: wrap;
+			}
+
+			.link-button {
+				display: inline-block;
+				background: var(--brown);
+				color: var(--white);
+				padding: 0.85rem 2rem;
+				border-radius: 999px;
+				text-decoration: none;
+				font-family: "Inter", sans-serif;
+				font-weight: 600;
+				letter-spacing: 0.02em;
+				text-transform: none;
+				transition: transform 0.3s, box-shadow 0.3s;
+			}
+
+			.link-button:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+			}
+
+			.secondary-link {
+				color: var(--dark-brown);
+				text-decoration: none;
+				font-weight: 600;
+				padding: 0.85rem 1.2rem;
+			}
+
+			.partner-box {
+				background: var(--soft-ivory);
+				border-radius: 16px;
+				padding: 1.5rem 1.25rem;
+				text-align: center;
+				border: 1px solid rgba(139, 111, 71, 0.18);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				min-height: 96px;
+			}
+
+			.partner-box span {
+				display: block;
+				font-family: "Inter", sans-serif;
+				font-size: 0.85rem;
+				letter-spacing: 0.03em;
+				text-transform: none;
+				color: var(--light-brown);
+				margin-bottom: 0.6rem;
+			}
+
+			.partner-box strong {
+				font-size: 1.1rem;
+				color: var(--very-dark-brown);
+				white-space: nowrap;
+				text-align: center;
+			}
+
+			footer {
+				background: linear-gradient(135deg, var(--light-brown) 0%, var(--brown) 100%);
+				color: var(--white);
+				text-align: center;
+				padding: 2rem;
+				margin-top: 2rem;
+			}
+
+			footer p {
+				margin: 0.5rem 0;
+			}
+
+			.footer-links {
+				margin-top: 1rem;
+			}
+
+			.footer-links a {
+				color: var(--white);
+				text-decoration: none;
+				margin: 0 1rem;
+				transition: color 0.3s;
+			}
+
+			.footer-links a:hover {
+				color: var(--white);
+			}
+
+			@media (max-width: 900px) {
+				.distributor-card {
+					grid-template-columns: 1fr;
+					text-align: center;
+				}
+
+				.cta-row {
+					justify-content: center;
+				}
+			}
+
+			@media (max-width: 768px) {
+				.header-content {
+					flex-direction: column;
+					gap: 1rem;
+				}
+
+				nav a {
+					margin-left: 1rem;
+				}
+
+				.hero h1 {
+					font-size: 2.2rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="header-content">
+				<a href="/" style="text-decoration: none;">
+					<div class="logo">
+						<img src="/assets/images/Renuva.png" alt="Renuva">
+					</div>
+				</a>
+				<nav>
+					<a href="/about">About Us</a>
+					<a href="/distributor">Distributor</a>
+					<a href="/contact">Contact Us</a>
+				</nav>
+			</div>
+		</header>
+
+		<section class="hero">
+			<h1>Our Distributor</h1>
+			<p>
+				Renuva products are exclusively distributed through our partner, SurfaceWraps. We are
+				not accepting new distributor applications at this time.
+			</p>
+		</section>
+
+		<section class="distributor-wrap">
+			<div class="distributor-card">
+				<div class="card-text">
+					<div class="badge">Exclusive Partner</div>
+					<h2>SurfaceWraps</h2>
+					<p>
+						SurfaceWraps delivers Renuva materials to installers and showrooms with reliable
+						availability, consistent support, and a focus on high-end kitchen transformations.
+					</p>
+					<div class="cta-row">
+						<a class="link-button" href="https://surfacewraps.com" target="_blank" rel="noopener">
+							Visit surfacewraps.com
+						</a>
+						<a class="secondary-link" href="/contact">Contact Renuva</a>
+					</div>
+				</div>
+				<div class="partner-box">
+					<span>Distributor</span>
+					<strong>surfacewraps.com</strong>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+			<p>&copy; 2026 Renuva Kitchen Wrapping. All rights reserved.</p>
+			<p>Transform your kitchen, renew your space.</p>
+			<div class="footer-links">
+				<a href="/contact">Contact Us</a>
+				<a href="/about">About</a>
+				<a href="/">Home</a>
+			</div>
+		</footer>
+	</body>
+</html>

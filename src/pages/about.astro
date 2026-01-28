@@ -1,0 +1,413 @@
+---
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<title>About Us - Renuva</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			:root {
+				--deep-brown: #3e2723;
+				--dark-brown: #5c4033;
+				--mid-brown: #7a5a3d;
+				--brown: #8B6F47;
+				--sand: #d4a574;
+				--cream: #f6efe8;
+				--white: #ffffff;
+				--ink: #1e1b18;
+			}
+
+			body {
+				font-family: "Inter", sans-serif;
+				color: var(--ink);
+				background-color: var(--white);
+			}
+
+			header {
+				background-color: var(--white);
+				padding: 1.5rem 0;
+				border-bottom: 4px solid var(--sand);
+				box-shadow: 0 2px 10px rgba(30, 27, 24, 0.08);
+			}
+
+			.header-content {
+				max-width: 1200px;
+				margin: 0 auto;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0 2rem;
+				gap: 1.5rem;
+			}
+
+			.logo {
+				height: 60px;
+			}
+
+			.logo img {
+				height: 100%;
+				width: auto;
+			}
+
+			nav a {
+				margin-left: 2rem;
+				text-decoration: none;
+				color: var(--dark-brown);
+				font-family: "Inter", sans-serif;
+				font-weight: 500;
+				font-size: 1.05rem;
+				letter-spacing: 0.02em;
+				text-transform: none;
+				transition: color 0.3s;
+			}
+
+			nav a:hover {
+				color: var(--sand);
+			}
+
+			.hero {
+				position: relative;
+				color: var(--white);
+				padding: 7rem 2rem;
+				text-align: center;
+				overflow: hidden;
+			}
+
+			.hero::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background: url("/assets/images/Screenshot%202026-01-23%20170344.png") center/cover
+					no-repeat;
+				z-index: 0;
+			}
+
+			.hero-content {
+				position: relative;
+				z-index: 1;
+				max-width: 900px;
+				margin: 0 auto;
+				background: rgba(255, 255, 255, 0.7);
+				border: 1px solid rgba(255, 255, 255, 0.35);
+				backdrop-filter: blur(6px);
+				padding: 2.5rem 3rem;
+				border-radius: 18px;
+				color: #1e1b18;
+			}
+
+			.hero h1 {
+				font-family: "Inter", sans-serif;
+				font-size: 3rem;
+				font-weight: 600;
+				letter-spacing: 0.01em;
+				text-transform: none;
+				margin-bottom: 1rem;
+			}
+
+			.hero p {
+				font-size: 1.2rem;
+				line-height: 1.7;
+				max-width: 720px;
+				margin: 0 auto;
+			}
+
+			.section {
+				max-width: 1200px;
+				margin: 4.5rem auto;
+				padding: 0 2rem;
+			}
+
+			.section-muted {
+				background-color: #f3f3f3;
+				padding: 4.5rem 0;
+				margin: 4.5rem 0;
+			}
+
+			.section-muted .section {
+				margin: 0 auto;
+			}
+
+			.section-header {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 2rem;
+				margin-bottom: 2.5rem;
+			}
+
+			.section-header h2 {
+				font-family: "Inter", sans-serif;
+				font-size: 2.8rem;
+				font-weight: 600;
+				letter-spacing: 0.01em;
+				text-transform: none;
+				color: var(--deep-brown);
+			}
+
+			.section-header p {
+				max-width: 520px;
+				color: var(--dark-brown);
+				line-height: 1.7;
+			}
+
+			.story-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+				gap: 2rem;
+				align-items: center;
+			}
+
+			.story-text h2 {
+				font-family: "Inter", sans-serif;
+				font-size: 3.2rem;
+				font-weight: 600;
+				color: var(--deep-brown);
+				margin-bottom: 1rem;
+				letter-spacing: 0.01em;
+				text-transform: none;
+			}
+
+			.story-text h3 {
+				font-family: "Inter", sans-serif;
+				font-size: 2rem;
+				font-weight: 600;
+				letter-spacing: 0.01em;
+				color: var(--deep-brown);
+				margin-bottom: 1rem;
+			}
+
+			.story-text p {
+				margin-bottom: 0;
+				line-height: 2.05;
+				color: var(--dark-brown);
+				font-size: 1.12rem;
+			}
+
+			.story-image {
+				display: flex;
+				justify-content: flex-end;
+				padding-left: 6rem;
+			}
+
+			.story-image img,
+			.feature-image img {
+				width: 100%;
+				margin-left: auto;
+				max-width: 1200px;
+				aspect-ratio: 1 / 1;
+				object-fit: cover;
+				border-radius: 16px;
+				box-shadow: 0 10px 25px rgba(30, 27, 24, 0.15);
+			}
+
+			.feature-row {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 2.5rem;
+				align-items: center;
+				margin-top: 3rem;
+			}
+
+			.feature-text h3 {
+				font-family: "Inter", sans-serif;
+				font-size: 2rem;
+				font-weight: 600;
+				letter-spacing: 0.01em;
+				color: var(--deep-brown);
+				margin-bottom: 0.8rem;
+			}
+
+			.feature-text p {
+				color: var(--dark-brown);
+				line-height: 1.7;
+			}
+
+			.sustain-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+				gap: 2rem;
+			}
+
+			.sustain-card {
+				border-radius: 18px;
+				overflow: hidden;
+				border: 1px solid #eadfd5;
+				background-color: var(--white);
+				box-shadow: 0 10px 25px rgba(30, 27, 24, 0.08);
+			}
+
+			.sustain-card img {
+				width: 100%;
+				height: 240px;
+				object-fit: cover;
+			}
+
+			.sustain-card-content {
+				padding: 1.5rem;
+			}
+
+			.sustain-card-content h3 {
+				font-family: "Inter", sans-serif;
+				font-weight: 600;
+				letter-spacing: 0.01em;
+				margin-bottom: 0.7rem;
+				color: var(--deep-brown);
+			}
+
+			footer {
+				background-color: #8b6f47;
+				color: var(--white);
+				text-align: center;
+				padding: 2rem;
+				margin-top: 4rem;
+			}
+
+			.footer-links {
+				margin-top: 1rem;
+			}
+
+			.footer-links a {
+				color: var(--white);
+				text-decoration: none;
+				margin: 0 1rem;
+				transition: color 0.3s;
+			}
+
+			.footer-links a:hover {
+				color: var(--white);
+			}
+
+			@media (max-width: 860px) {
+				.header-content {
+					flex-direction: column;
+				}
+
+				nav a {
+					margin-left: 1rem;
+				}
+
+				.hero {
+					text-align: center;
+				}
+
+				.section-header {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+			}
+
+			@media (max-width: 600px) {
+				.hero h1 {
+					font-size: 2.4rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="header-content">
+				<a href="/" style="text-decoration: none;">
+					<div class="logo">
+						<img src="/assets/images/Renuva.png" alt="Renuva">
+					</div>
+				</a>
+				<nav>
+					<a href="/about">About Us</a>
+					<a href="/distributor">Distributor</a>
+					<a href="/contact">Contact Us</a>
+				</nav>
+			</div>
+		</header>
+
+		<section class="hero">
+			<div class="hero-content">
+				<h1>About Us</h1>
+				<p>
+					Renuva wraps give kitchens a premium new look without the downtime of a full remodel.
+					We combine craftsmanship, durable materials, and clean installation so homeowners can
+					refresh their space fast.
+				</p>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="story-grid">
+				<div class="story-text">
+					<h2>"Our Story"</h2>
+					<p>
+						Renuva makes premium kitchen transformations attainable, bringing refined finishes
+						and durable wraps to everyday homes without the time or cost of full remodels. We
+						focus on clean lines, careful detailing, and materials that feel elevated the moment
+						you walk in, so your space looks custom without the long construction timeline. Our
+						team works quickly, keeps disruption low, and delivers a finished look that feels
+						bespoke and built to last.
+					</p>
+				</div>
+				<div class="story-image">
+					<img
+						src="/assets/images/Wrapping%20mats.png"
+						alt="Wrapping mats used for surface transformations"
+					/>
+				</div>
+			</div>
+		</section>
+
+		<section class="section-muted">
+			<div class="section">
+				<div class="section-header">
+					<h2>Sustainability at the core</h2>
+				</div>
+				<div class="sustain-grid">
+				<div class="sustain-card">
+					<img src="/assets/images/Beigetheme.png" alt="Beige themed wrap finish" />
+					<div class="sustain-card-content">
+						<h3>Eco-minded materials</h3>
+						<p>Designed to minimize waste and extend the life of existing surfaces.</p>
+					</div>
+				</div>
+				<div class="sustain-card">
+					<img src="/assets/images/Browntheme.png" alt="Brown themed wrap finish" />
+					<div class="sustain-card-content">
+						<h3>Home-friendly installation</h3>
+						<p>Clean, quiet installs that fit around your daily routine.</p>
+					</div>
+				</div>
+				<div class="sustain-card">
+					<img src="/assets/images/Greytheme.png" alt="Grey themed wrap finish" />
+					<div class="sustain-card-content">
+						<h3>Built for longevity</h3>
+						<p>Durable finishes that keep homes looking fresh for years.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+			<p>&copy; 2026 Renuva Kitchen Wrapping. All rights reserved.</p>
+			<p>Transform your kitchen, renew your space.</p>
+			<div class="footer-links">
+				<a href="/contact">Contact Us</a>
+				<a href="/about">About</a>
+				<a href="/">Home</a>
+			</div>
+		</footer>
+	</body>
+</html>
