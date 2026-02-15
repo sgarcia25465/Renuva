@@ -9,9 +9,12 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
 		<title>Contact Us - Renuva</title>
 		<style>
 			* {
@@ -21,228 +24,667 @@
 			}
 
 			:root {
-				--very-dark-brown: #3E2723;
-				--dark-brown: #5C4033;
-				--medium-brown: #704214;
-				--brown: #8B6F47;
-				--light-brown: #A0826D;
-				--tan: #D4A574;
-				--very-light-brown: #E8D7C3;
+				--very-dark-brown: #262D26;
+				--dark-brown: #5E635D;
+				--medium-brown: #8D7C6E;
+				--brown: #8D7C6E;
+				--light-brown: #ADB69F;
+				--tan: #D7C1B8;
+				--cream: #F5F4EF;
 				--white: #FFFFFF;
 			}
 
 			body {
-				font-family: 'Inter', sans-serif;
-				color: var(--dark-brown);
+				font-family: "Inter", sans-serif;
+				color: var(--very-dark-brown);
+				background-color: var(--white);
 			}
 
+			/* ───────── Header ───────── */
 			header {
-				background-color: var(--white);
-				padding: 1.5rem 0;
-				border-bottom: 5px solid var(--brown);
-				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+				position: sticky;
+				top: 0;
+				left: 0;
+				width: 100%;
+				z-index: 1000;
+				background:
+					linear-gradient(rgba(245, 244, 239, 0.96), rgba(245, 244, 239, 0.96)),
+					url('/assets/images/pattern-design.png') 0 0/620px repeat;
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				padding: 1.35rem 0;
+				border-bottom: none;
+				box-shadow: none;
 			}
 
 			.header-content {
-				max-width: 1200px;
-				margin: 0 auto;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				padding: 0 2rem;
+				padding: 0 2rem 0 clamp(2.2rem, 8vw, 8rem);
 			}
 
 			.logo {
-				height: 60px;
+				height: 68px;
+				width: 230px;
+				overflow: visible;
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
 			}
 
 			.logo img {
 				height: 100%;
 				width: auto;
+				display: block;
+				transform: scale(2.15);
+				transform-origin: left center;
+			}
+
+			nav {
+				display: flex;
+				align-items: center;
+				gap: 0.25rem;
 			}
 
 			nav a {
-				margin-left: 2rem;
 				text-decoration: none;
 				color: var(--dark-brown);
-				font-family: 'Inter', sans-serif;
+				font-family: "Playfair Display", serif;
 				font-weight: 500;
 				font-size: 1.05rem;
 				letter-spacing: 0.02em;
-				text-transform: none;
-				transition: color 0.3s;
+				padding: 0.5rem 1.2rem;
+				border-radius: 8px;
+				transition: color 0.3s, background 0.3s;
 			}
 
 			nav a:hover {
-				color: var(--tan);
-			}
-
-			.contact-section {
-				max-width: 1200px;
-				margin: 5rem auto;
-				padding: 0 2rem;
-			}
-
-			.contact-container {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 4rem;
-				align-items: center;
-			}
-
-			.contact-image {
-				width: 100%;
-				height: 650px;
-				object-fit: cover;
-				border-radius: 20px;
-				box-shadow: 0 15px 40px rgba(139, 111, 71, 0.2);
-			}
-
-			.contact-info {
-				padding: 2rem;
-			}
-
-			.contact-info h2 {
-				font-family: 'Inter', sans-serif;
-				font-size: 3rem;
-				font-weight: 600;
-				letter-spacing: 0.01em;
-				text-transform: none;
 				color: var(--brown);
-				margin-bottom: 1rem;
+				background: rgba(141, 124, 110, 0.07);
 			}
 
-			.contact-info p {
-				font-size: 1.1rem;
-				color: var(--dark-brown);
-				line-height: 1.8;
-				margin-bottom: 2.5rem;
-			}
-
-			.email-box {
-				background: linear-gradient(135deg, var(--very-light-brown) 0%, #F5EEE6 100%);
-				padding: 1.5rem;
-				border-radius: 15px;
-				margin-bottom: 2.5rem;
-				border: 2px solid var(--tan);
-				transition: all 0.3s;
-			}
-
-			.email-box:hover {
-				transform: translateY(-5px);
-				box-shadow: 0 10px 30px rgba(139, 111, 71, 0.15);
-			}
-
-			.email-label {
-				font-family: 'Inter', sans-serif;
-				font-size: 0.9rem;
-				text-transform: none;
-				letter-spacing: 0.03em;
-				color: var(--brown);
-				font-weight: 600;
-				margin-bottom: 0.5rem;
-			}
-
-			.email-link {
-				font-size: 1.8rem;
-				color: var(--brown);
-				text-decoration: none;
-				font-weight: 600;
-				transition: color 0.3s;
-				display: block;
-			}
-
-			.email-link:hover {
-				color: var(--tan);
-			}
-
-			.social-section {
-				margin-top: 3rem;
-			}
-
-			.social-section h3 {
-				font-family: 'Inter', sans-serif;
-				font-size: 1.8rem;
-				font-weight: 600;
-				letter-spacing: 0.01em;
-				text-transform: none;
-				color: var(--brown);
-				margin-bottom: 1.5rem;
-			}
-
-			.social-links {
-				display: flex;
-				gap: 1.5rem;
-				flex-wrap: wrap;
-			}
-
-			.social-link {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				padding: 0.8rem 1.8rem;
-				background: linear-gradient(135deg, var(--tan) 0%, var(--brown) 100%);
+			nav .nav-cta {
+				background: var(--brown);
 				color: var(--white);
-				text-decoration: none;
+				padding: 0.5rem 1.4rem;
 				border-radius: 50px;
 				font-family: 'Inter', sans-serif;
 				font-weight: 600;
-				letter-spacing: 0.02em;
-				text-transform: none;
-				transition: all 0.3s;
-				box-shadow: 0 4px 15px rgba(139, 111, 71, 0.2);
+				font-size: 0.78rem;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				transition: background 0.3s, transform 0.25s;
 			}
 
-			.social-link:hover {
-				transform: translateY(-3px);
-				box-shadow: 0 8px 25px rgba(139, 111, 71, 0.3);
+			nav .nav-cta:hover {
+				background: var(--very-dark-brown);
+				transform: translateY(-1px);
 			}
 
-			footer {
-				background: linear-gradient(135deg, var(--light-brown) 0%, var(--brown) 100%);
-				color: var(--white);
+			/* ───────── Hero ───────── */
+			.hero {
+				background:
+					linear-gradient(rgba(245, 244, 239, 0.96), rgba(245, 244, 239, 0.96)),
+					url('/assets/images/pattern-design.png') 0 0/620px repeat;
+				padding: 5.5rem 2rem 5rem;
 				text-align: center;
-				padding: 2rem;
-				margin-top: 5rem;
+				position: relative;
+				overflow: hidden;
 			}
 
-			footer p {
-				margin: 0.5rem 0;
+			.hero::after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				height: 1px;
+				background: linear-gradient(90deg, transparent, var(--tan), transparent);
 			}
 
-			.footer-links {
-				margin-top: 1rem;
+			.hero-content {
+				max-width: 680px;
+				margin: 0 auto;
 			}
 
-			.footer-links a {
-				color: var(--white);
+			.hero-eyebrow {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.78rem;
+				font-weight: 600;
+				letter-spacing: 0.22em;
+				text-transform: uppercase;
+				color: var(--light-brown);
+				display: block;
+				margin-bottom: 1.2rem;
+				opacity: 0;
+				animation: fadeUp 0.8s ease forwards;
+				animation-delay: 0.2s;
+			}
+
+			.hero-title {
+				font-family: 'Playfair Display', serif;
+				font-size: clamp(3rem, 7vw, 4.8rem);
+				font-weight: 600;
+				line-height: 1.08;
+				color: var(--very-dark-brown);
+				margin-bottom: 1.5rem;
+				opacity: 0;
+				transform: translateY(30px);
+				animation: titleReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+				animation-delay: 0.4s;
+			}
+
+			.title-accent {
+				color: var(--brown);
+				font-style: italic;
+			}
+
+			.hero-description {
+				font-family: 'Inter', sans-serif;
+				font-size: 1.08rem;
+				font-weight: 300;
+				line-height: 1.75;
+				color: var(--dark-brown);
+				max-width: 500px;
+				margin: 0 auto 2rem;
+				opacity: 0;
+				animation: fadeUp 0.8s ease forwards;
+				animation-delay: 0.7s;
+			}
+
+			.hero-divider {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 1rem;
+				opacity: 0;
+				animation: fadeUp 0.8s ease forwards;
+				animation-delay: 0.9s;
+			}
+
+			.hero-divider-line {
+				width: 40px;
+				height: 1px;
+				background: var(--tan);
+			}
+
+			.hero-divider-diamond {
+				width: 7px;
+				height: 7px;
+				background: var(--tan);
+				transform: rotate(45deg);
+			}
+
+			@keyframes titleReveal {
+				0% { opacity: 0; transform: translateY(30px); }
+				100% { opacity: 1; transform: translateY(0); }
+			}
+
+			@keyframes fadeUp {
+				0% { opacity: 0; transform: translateY(16px); }
+				100% { opacity: 1; transform: translateY(0); }
+			}
+
+			/* ───────── Scroll Reveal ───────── */
+			.scroll-reveal {
+				opacity: 0;
+				transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+				will-change: opacity, transform;
+			}
+
+			.scroll-reveal[data-direction="left"] {
+				transform: translateX(-40px);
+			}
+
+			.scroll-reveal[data-direction="right"] {
+				transform: translateX(40px);
+			}
+
+			.scroll-reveal[data-direction="up"] {
+				transform: translateY(40px);
+			}
+
+			.scroll-reveal.revealed {
+				opacity: 1;
+				transform: translate(0, 0);
+			}
+
+			/* ───────── Contact Main ───────── */
+			.contact-main {
+				padding: 6rem 2rem;
+				background: var(--white);
+				overflow: hidden;
+			}
+
+			.contact-grid {
+				max-width: 1100px;
+				margin: 0 auto;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 5rem;
+				align-items: center;
+			}
+
+			.contact-info {
+				position: relative;
+			}
+
+			.section-eyebrow {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.78rem;
+				font-weight: 600;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				color: var(--light-brown);
+				display: block;
+				margin-bottom: 1rem;
+			}
+
+			.accent-line {
+				width: 50px;
+				height: 2px;
+				background: var(--brown);
+				margin-bottom: 1.2rem;
+				transition: width 0.6s ease;
+			}
+
+			.scroll-reveal.revealed .accent-line {
+				width: 80px;
+			}
+
+			.contact-heading {
+				font-family: 'Playfair Display', serif;
+				font-size: clamp(2.2rem, 4vw, 3rem);
+				font-weight: 600;
+				color: var(--very-dark-brown);
+				margin-bottom: 1rem;
+				line-height: 1.15;
+			}
+
+			.contact-description {
+				font-family: 'Inter', sans-serif;
+				font-size: 1.05rem;
+				font-weight: 300;
+				line-height: 1.85;
+				color: var(--dark-brown);
+				margin-bottom: 2.5rem;
+			}
+
+			/* Contact cards */
+			.contact-cards {
+				display: flex;
+				flex-direction: column;
+				gap: 1.2rem;
+			}
+
+			.contact-card {
+				display: flex;
+				align-items: flex-start;
+				gap: 1.2rem;
+				padding: 1.5rem;
+				border-radius: 14px;
+				background: var(--cream);
+				border: 1px solid rgba(215, 193, 184, 0.3);
+				transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+							box-shadow 0.4s ease;
+			}
+
+			.contact-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 12px 30px rgba(38, 45, 38, 0.08);
+			}
+
+			.card-icon {
+				width: 48px;
+				height: 48px;
+				border-radius: 12px;
+				background: var(--white);
+				border: 1px solid rgba(215, 193, 184, 0.4);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-shrink: 0;
+			}
+
+			.card-icon svg {
+				width: 22px;
+				height: 22px;
+				color: var(--brown);
+			}
+
+			.card-details h3 {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.78rem;
+				font-weight: 600;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: var(--light-brown);
+				margin-bottom: 0.4rem;
+			}
+
+			.card-details a,
+			.card-details p {
+				font-family: 'Inter', sans-serif;
+				font-size: 1.1rem;
+				font-weight: 500;
+				color: var(--very-dark-brown);
 				text-decoration: none;
-				margin: 0 1rem;
+				line-height: 1.5;
 				transition: color 0.3s;
 			}
 
-			.footer-links a:hover {
-				color: var(--very-light-brown);
+			.card-details a:hover {
+				color: var(--brown);
+			}
+
+			/* Social links */
+			.social-row {
+				display: flex;
+				gap: 0.8rem;
+				margin-top: 2rem;
+			}
+
+			.social-btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.6rem;
+				padding: 0.7rem 1.4rem;
+				border-radius: 50px;
+				background: var(--very-dark-brown);
+				color: var(--white);
+				text-decoration: none;
+				font-family: 'Inter', sans-serif;
+				font-weight: 500;
+				font-size: 0.85rem;
+				letter-spacing: 0.02em;
+				transition: background 0.3s, transform 0.25s, box-shadow 0.3s;
+			}
+
+			.social-btn:hover {
+				background: var(--brown);
+				transform: translateY(-2px);
+				box-shadow: 0 6px 18px rgba(38, 45, 38, 0.15);
+			}
+
+			.social-btn svg {
+				width: 16px;
+				height: 16px;
+			}
+
+			/* Image side */
+			.contact-image-wrapper {
+				position: relative;
+			}
+
+			.contact-image-frame {
+				border-radius: 18px;
+				overflow: hidden;
+				box-shadow: 0 14px 40px rgba(38, 45, 38, 0.12);
+			}
+
+			.contact-img {
+				width: 100%;
+				aspect-ratio: 3 / 4;
+				object-fit: cover;
+				display: block;
+				transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+			}
+
+			.contact-img:hover {
+				transform: scale(1.03);
+			}
+
+			.contact-image-accent {
+				position: absolute;
+				top: -15px;
+				right: -15px;
+				width: 100%;
+				height: 100%;
+				border: 2px solid var(--tan);
+				border-radius: 18px;
+				z-index: -1;
+				opacity: 0.5;
+			}
+
+			/* ───────── CTA Banner ───────── */
+			.cta-banner {
+				position: relative;
+				min-height: 350px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: hidden;
+			}
+
+			.cta-banner-bg {
+				position: absolute;
+				inset: -80px;
+				z-index: 0;
+			}
+
+			.cta-banner-img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				will-change: transform;
+			}
+
+			.cta-banner-overlay {
+				position: absolute;
+				inset: 0;
+				background: rgba(38, 45, 38, 0.7);
+				z-index: 1;
+			}
+
+			.cta-banner-content {
+				position: relative;
+				z-index: 2;
+				text-align: center;
+				padding: 3rem 2rem;
+				max-width: 650px;
+			}
+
+			.cta-banner-content h2 {
+				font-family: 'Playfair Display', serif;
+				font-size: clamp(1.8rem, 4vw, 2.6rem);
+				font-weight: 600;
+				color: var(--white);
+				margin-bottom: 1rem;
+				line-height: 1.2;
+			}
+
+			.cta-banner-content p {
+				font-family: 'Inter', sans-serif;
+				font-size: 1.05rem;
+				font-weight: 300;
+				color: rgba(255, 255, 255, 0.75);
+				line-height: 1.7;
+				margin-bottom: 2rem;
+			}
+
+			.btn-light {
+				display: inline-block;
+				background: var(--white);
+				color: var(--very-dark-brown);
+				padding: 0.85rem 2.2rem;
+				border-radius: 50px;
+				text-decoration: none;
+				font-family: 'Inter', sans-serif;
+				font-weight: 600;
+				font-size: 0.85rem;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				transition: background 0.3s, transform 0.25s, box-shadow 0.3s;
+			}
+
+			.btn-light:hover {
+				background: var(--tan);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+			}
+
+			/* ───────── Footer ───────── */
+			footer {
+				background:
+					linear-gradient(rgba(38, 45, 38, 0.94), rgba(38, 45, 38, 0.94)),
+					url('/assets/images/pattern-design.png') center/560px repeat;
+				color: var(--white);
+				padding: 3rem 2rem 2rem;
+				position: relative;
+				overflow: hidden;
+			}
+
+			footer::before {
+				content: '';
+				position: absolute;
+				top: -120px;
+				right: -120px;
+				width: 280px;
+				height: 280px;
+				background: radial-gradient(circle, rgba(215, 193, 184, 0.2), transparent 70%);
+				pointer-events: none;
+			}
+
+			.footer-shell {
+				max-width: 1100px;
+				margin: 0 auto;
+				position: relative;
+				z-index: 1;
+			}
+
+			.footer-top {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				gap: 0.8rem;
+				padding-bottom: 1.2rem;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+			}
+
+			.footer-brand {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 1rem;
+				flex-wrap: wrap;
+			}
+
+			.footer-logo {
+				height: 44px;
+				width: auto;
+				display: block;
+			}
+
+			.footer-tagline {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.9rem;
+				font-weight: 300;
+				color: rgba(255, 255, 255, 0.78);
+			}
+
+			.footer-bottom {
+				margin-top: 1rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 0.9rem;
+				text-align: center;
+			}
+
+			.footer-nav {
+				display: flex;
+				gap: 1.2rem;
+				flex-wrap: wrap;
+			}
+
+			.footer-nav a {
+				color: rgba(255, 255, 255, 0.75);
+				text-decoration: none;
+				font-family: 'Inter', sans-serif;
+				font-size: 0.84rem;
+				font-weight: 400;
+				transition: color 0.3s;
+			}
+
+			.footer-nav a:hover { color: var(--white); }
+
+			.footer-copy {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.78rem;
+				color: rgba(255, 255, 255, 0.45);
 			}
 
 			@media (max-width: 768px) {
+				.footer-top {
+					grid-template-columns: 1fr;
+					text-align: center;
+				}
+
+				.footer-brand {
+					justify-content: center;
+				}
+
+				.footer-bottom {
+					justify-content: center;
+					text-align: center;
+				}
+			}
+
+			/* ───────── Responsive ───────── */
+			@media (max-width: 1024px) {
+				.contact-grid {
+					gap: 3.5rem;
+				}
+				.contact-image-accent { display: none; }
+			}
+
+			@media (max-width: 768px) {
+				header { padding: 0.75rem 0; }
 				.header-content {
 					flex-direction: column;
-					gap: 1rem;
+					gap: 0.7rem;
+					padding: 0 1.5rem;
 				}
-
-				nav a {
-					margin-left: 1rem;
+				.logo {
+					height: 68px;
+					width: 230px;
+					overflow: visible;
+					display: flex;
+					align-items: center;
 				}
+				nav a { font-size: 0.92rem; padding: 0.4rem 0.9rem; }
 
-				.contact-container {
+				.hero { padding: 4rem 1.5rem 3.5rem; }
+				.hero-title { font-size: clamp(2.4rem, 9vw, 3.2rem); }
+				.hero-description { font-size: 1rem; }
+
+				.contact-main { padding: 4rem 1.5rem; }
+				.contact-grid {
 					grid-template-columns: 1fr;
-					gap: 2rem;
+					gap: 3rem;
 				}
+				.contact-image-wrapper { order: -1; }
+				.contact-img { aspect-ratio: 3/2; }
+				.contact-image-accent { display: none; }
+				.contact-heading { font-size: 2.2rem; }
 
-				.email-link {
-					font-size: 1.3rem;
-				}
+				.social-row { flex-wrap: wrap; }
+
+				.cta-banner { min-height: 280px; }
+				.cta-banner-content h2 { font-size: 1.6rem; }
+			}
+
+			@media (max-width: 480px) {
+				.hero { padding: 3.5rem 1.5rem 3rem; }
+				.hero-eyebrow { font-size: 0.72rem; }
+				.hero-title { font-size: 2.2rem; }
+				.contact-heading { font-size: 1.9rem; }
+				.cta-banner-content h2 { font-size: 1.4rem; }
+				.social-row { flex-direction: column; }
+				.social-btn { justify-content: center; }
 			}
 		</style>
 	</head>
@@ -252,57 +694,172 @@
 			<div class="header-content">
 				<a href="/" style="text-decoration: none;">
 					<div class="logo">
-						<img src="/assets/images/Renuva.png" alt="Renuva">
+						<img src="/assets/images/LOGO_Colorful_Colorful_Colorful_Colorful_A.png" alt="Renuva">
 					</div>
 				</a>
 				<nav>
 					<a href="/about">About Us</a>
 					<a href="/distributor">Distributor</a>
-					<a href="/contact">Contact Us</a>
+					<a href="/contact" class="nav-cta">Contact Us</a>
 				</nav>
 			</div>
 		</header>
 
-		<!-- Spacer -->
-		<div style="height: 3rem;"></div>
-
-		<!-- Contact Section -->
-		<section class="contact-section">
-			<div class="contact-container">
-				<div>
-					<img src="/assets/images/ContactusPic.png" alt="Modern kitchen transformation" class="contact-image">
+		<!-- Hero -->
+		<section class="hero">
+			<div class="hero-content">
+				<span class="hero-eyebrow">Contact Us</span>
+				<h1 class="hero-title">Get In <span class="title-accent">Touch</span></h1>
+				<p class="hero-description">
+					Have questions about our architectural vinyl solutions? We'd love to hear from you.
+				</p>
+				<div class="hero-divider">
+					<span class="hero-divider-line"></span>
+					<span class="hero-divider-diamond"></span>
+					<span class="hero-divider-line"></span>
 				</div>
+			</div>
+		</section>
 
-				<div class="contact-info">
-					<h2>Let's Connect</h2>
-					<p>Have questions about our kitchen wrapping solutions? Want to schedule a consultation? We're here to help bring your vision to life.</p>
+		<!-- Contact Content -->
+		<section class="contact-main">
+			<div class="contact-grid">
+				<div class="contact-info scroll-reveal" data-direction="left">
+					<span class="section-eyebrow">Reach Out</span>
+					<div class="accent-line"></div>
+					<h2 class="contact-heading">Let's Start a<br>Conversation</h2>
+					<p class="contact-description">
+						Whether you're looking for more information about RENUVA's premium architectural vinyl
+						or want to explore how we can help transform your space, our team is ready to connect.
+					</p>
 
-					<div class="email-box">
-						<div class="email-label">Email Us</div>
-						<a href="mailto:hello@renuva.com" class="email-link">hello@renuva.com</a>
-					</div>
+					<div class="contact-cards">
+						<div class="contact-card">
+							<div class="card-icon">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+								</svg>
+							</div>
+							<div class="card-details">
+								<h3>Email</h3>
+								<a href="mailto:hello@renuva.com">hello@renuva.com</a>
+							</div>
+						</div>
 
-					<div class="social-section">
-						<h3>Follow Us</h3>
-						<div class="social-links">
-							<a href="#" class="social-link">Facebook</a>
-							<a href="#" class="social-link">Instagram</a>
+						<div class="contact-card">
+							<div class="card-icon">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+								</svg>
+							</div>
+							<div class="card-details">
+								<h3>Response Time</h3>
+								<p>We typically respond within 24 hours</p>
+							</div>
 						</div>
 					</div>
+
+					<div class="social-row">
+						<a href="#" class="social-btn">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+							</svg>
+							Facebook
+						</a>
+						<a href="#" class="social-btn">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+							</svg>
+							Instagram
+						</a>
+					</div>
 				</div>
+
+				<div class="contact-image-wrapper scroll-reveal" data-direction="right">
+					<div class="contact-image-frame">
+						<img src="/assets/images/ContactusPic.png"
+							 alt="Modern architectural surface renewal"
+							 class="contact-img" />
+					</div>
+					<div class="contact-image-accent"></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA Banner -->
+		<section class="cta-banner">
+			<div class="cta-banner-bg">
+				<img src="/assets/images/Screenshot%202026-01-23%20170344.png"
+					 alt="Beautiful surface transformation"
+					 class="cta-banner-img" />
+			</div>
+			<div class="cta-banner-overlay"></div>
+			<div class="cta-banner-content scroll-reveal" data-direction="up">
+				<h2>Ready to Transform Your Space?</h2>
+				<p>Discover how RENUVA's premium architectural vinyl can renew your surfaces beautifully and effortlessly.</p>
+				<a href="/about" class="btn-light">Learn About Us</a>
 			</div>
 		</section>
 
 		<!-- Footer -->
 		<footer>
-			<p>&copy; 2026 Renuva Kitchen Wrapping. All rights reserved.</p>
-			<p>Transform your kitchen, renew your space.</p>
-			<div class="footer-links">
-				<a href="/contact">Contact Us</a>
-				<a href="/about">About</a>
-				<a href="/">Home</a>
+			<div class="footer-shell">
+				<div class="footer-top">
+					<div class="footer-brand">
+						<img class="footer-logo" src="/assets/images/LOGO_Colorful_Colorful_Colorful_White.png" alt="Renuva logo" />
+						<p class="footer-tagline">Transform existing surfaces. Renew beautifully.</p>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<nav class="footer-nav">
+						<a href="/">Home</a>
+						<a href="/about">About Us</a>
+						<a href="/distributor">Distributor</a>
+						<a href="/contact">Contact</a>
+					</nav>
+					<p class="footer-copy">&copy; 2026 Renuva Architectural Surfaces. All rights reserved.</p>
+				</div>
 			</div>
 		</footer>
 
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+				// ── 1. Scroll-triggered reveal animations ──
+				const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+
+				if (prefersReducedMotion) {
+					scrollRevealElements.forEach(el => el.classList.add('revealed'));
+				} else {
+					const revealObserver = new IntersectionObserver((entries) => {
+						entries.forEach(entry => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('revealed');
+								revealObserver.unobserve(entry.target);
+							}
+						});
+					}, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+					scrollRevealElements.forEach(el => revealObserver.observe(el));
+				}
+
+				// ── 2. Parallax scrolling (CTA banner only) ──
+				if (!prefersReducedMotion) {
+					const bannerImg = document.querySelector('.cta-banner-img');
+
+					if (bannerImg) {
+						function handleParallax() {
+							const bannerSection = bannerImg.closest('.cta-banner');
+							const rect = bannerSection.getBoundingClientRect();
+							const offset = rect.top * -0.25;
+							bannerImg.style.transform = `translate3d(0, ${offset}px, 0)`;
+						}
+
+						window.addEventListener('scroll', handleParallax, { passive: true });
+					}
+				}
+			});
+		</script>
 	</body>
 </html>

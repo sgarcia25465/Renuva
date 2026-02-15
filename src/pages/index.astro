@@ -12,7 +12,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-		<title>Renuva - Kitchen Wrapping Solutions</title>
+		<title>Renuva - Architectural Surface Renewal</title>
 		<style>
 			* {
 				margin: 0;
@@ -21,14 +21,19 @@
 			}
 
 			:root {
-			--very-dark-brown: #3E2723;
-			--dark-brown: #5C4033;
-			--medium-brown: #704214;
-			--brown: #8B6F47;
-			--light-brown: #A0826D;
-			--tan: #D4A574;
-			--very-light-brown: #E8D7C3;
-			--white: #FFFFFF;
+				--very-dark-brown: #262D26;
+				--dark-brown: #5E635D;
+				--medium-brown: #8D7C6E;
+				--brown: #8D7C6E;
+				--light-brown: #ADB69F;
+				--tan: #D7C1B8;
+				--very-light-brown: #F5F4EF;
+				--light-gray: #F5F4EF;
+				--white: #FFFFFF;
+			}
+
+			html {
+				scroll-behavior: smooth;
 			}
 
 			html, body {
@@ -36,440 +41,1168 @@
 			}
 
 			body {
-			font-family: 'Inter', sans-serif;
+				font-family: 'Playfair Display', serif;
 				color: var(--dark-brown);
+				background: var(--white);
+				padding-top: 126px;
 			}
 
 			header {
-				background-color: var(--white);
-				padding: 1.5rem 0;
-			border-bottom: 5px solid var(--brown);
-				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+				position: fixed !important;
+				top: 0;
+				left: 0;
+				width: 100%;
+				z-index: 1000;
+				background:
+					linear-gradient(rgba(250, 249, 246, 0.96), rgba(250, 249, 246, 0.96)),
+					url('/assets/images/pattern-design.png') center/620px repeat;
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				padding: 1.35rem 0;
+				border-bottom: none;
+				box-shadow: none;
 			}
 
 			.header-content {
-				max-width: 1200px;
-				margin: 0 auto;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				padding: 0 2rem;
+				padding: 0 2rem 0 clamp(2.2rem, 8vw, 8rem);
 			}
 
 			.logo {
-				height: 60px;
+				height: 68px;
+				width: 230px;
+				overflow: visible;
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
 			}
 
 			.logo img {
 				height: 100%;
 				width: auto;
+				display: block;
+				transform: scale(2.15);
+				transform-origin: left center;
+			}
+
+			nav {
+				display: flex;
+				align-items: center;
+				gap: 0.25rem;
 			}
 
 			nav a {
-				margin-left: 2rem;
 				text-decoration: none;
 				color: var(--dark-brown);
-				font-family: 'Inter', sans-serif;
+				font-family: 'Playfair Display', serif;
 				font-weight: 500;
 				font-size: 1.05rem;
 				letter-spacing: 0.02em;
-				text-transform: none;
-				transition: color 0.3s;
+				padding: 0.5rem 1.2rem;
+				border-radius: 8px;
+				transition: color 0.3s, background 0.3s;
 			}
 
 			nav a:hover {
-				color: var(--tan);
+				color: var(--brown);
+				background: rgba(141, 124, 110, 0.07);
 			}
 
-			.hero {
-				background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/image.png') center/cover no-repeat;
+			nav .nav-cta {
+				background: var(--brown);
 				color: var(--white);
-  				text-align: center;
-
-  				min-height: 105vh;        /* keeps the picture tall */
-  				padding: 10rem 2rem;      /* small top padding so text is near top */
-
-  				display: flex;
-  				align-items: flex-start; /* stick content to top */
-			}
-
-			.hero-content {
-				max-width: 800px;
-				margin: 0 auto;
-				padding-top: 0;
-			}
-
-			.hero h1 {
-				font-family: 'Inter', sans-serif;
-				font-size: 4rem;
-				font-weight: 600;
-				letter-spacing: 0.01em;
-				text-transform: none;
-				margin-bottom: 1rem;
-				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-			}
-
-			.hero p {
-				font-size: 1.3rem;
-				margin-bottom: 2rem;
-			}
-
-			.cta-button {
-				display: inline-block;
-				background-color: var(--white);
-				color: var(--brown);
-				padding: 1rem 2.5rem;
 				border-radius: 50px;
-				text-decoration: none;
-				font-family: 'Inter', sans-serif;
+				padding: 0.6rem 1.5rem;
 				font-weight: 600;
-				letter-spacing: 0.02em;
-				text-transform: none;
-				transition: all 0.3s;
-				font-size: 0.95rem;
+				font-size: 0.93rem;
+				margin-left: 0.5rem;
+				transition: background 0.3s, transform 0.3s;
 			}
 
-			.cta-button:hover {
-				background-color: var(--light-gray);
-				transform: translateY(-2px);
-				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+			nav .nav-cta:hover {
+				background: var(--very-dark-brown);
+				color: var(--white);
+				transform: translateY(-1px);
 			}
 
-			.categories {
-				max-width: 1200px;
-				margin: 4rem auto;
-				padding: 0 2rem;
-				text-align: center;
+			/* Hero kept exactly as requested */
+			.hero {
+				background:
+					linear-gradient(rgba(250, 249, 246, 0.96), rgba(250, 249, 246, 0.96)),
+					url('/assets/images/pattern-design.png') center/620px repeat;
+				padding: 2.1rem 0 2.8rem 0;
+				margin-top: 92px;
 			}
 
-			.categories h2 {
-				font-family: 'Inter', sans-serif;
-				font-size: 3rem;
-				font-weight: 600;
-				letter-spacing: 0.01em;
-				text-transform: none;
-				color: var(--brown);
-				margin-bottom: 3rem;
-			}
-
-			.categories-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-				gap: 2rem;
-			}
-
-			.category-card {
-				background-color: var(--very-light-brown);
-				padding: 3rem 2rem;
-				border-radius: 15px;
-				border: 2px solid var(--light-brown);
-				transition: all 0.3s;
-				text-align: center;
-			}
-
-			.category-card:hover {
-				transform: translateY(-10px);
-				box-shadow: 0 15px 40px rgba(139, 111, 71, 0.15);
-			}
-
-			.category-image {
+			.hero-shell {
 				width: 100%;
-				height: 200px;
-				object-fit: cover;
-				border-radius: 10px;
-				margin-bottom: 1.5rem;
-			}
-
-			.category-card h3 {
-				color: var(--brown);
-				margin-bottom: 1rem;
-				font-size: 1.5rem;
-			}
-
-			.category-card p {
-				color: var(--dark-brown);
-				line-height: 1.8;
-				margin-bottom: 1.5rem;
-			}
-
-			.category-link {
-				color: var(--tan);
-				text-decoration: none;
-				font-weight: 600;
-				transition: color 0.3s;
-			}
-
-			.category-link:hover {
-				color: var(--brown);
-			}
-
-			.gallery-section {
-				max-width: 1400px;
-				margin: 6rem auto;
-				padding: 0 2rem;
-			}
-
-			.gallery-header {
-				text-align: center;
-				margin-bottom: 3rem;
-			}
-
-			.gallery-header h2 {
-				font-family: 'Inter', sans-serif;
-				font-size: 3.5rem;
-				font-weight: 600;
-				letter-spacing: 0.01em;
-				text-transform: none;
-				color: var(--brown);
-				margin-bottom: 0.5rem;
-			}
-
-			.gallery-header p {
-				font-size: 1.2rem;
-				color: var(--dark-brown);
-			}
-
-			.gallery-grid {
+				margin: 0;
 				display: grid;
-				grid-template-columns: repeat(3, 1fr);
+				grid-template-columns: minmax(420px, 700px) minmax(0, 1fr);
 				gap: 2rem;
-			}
-
-			.gallery-item {
-				position: relative;
-				border-radius: 20px;
-				overflow: hidden;
-				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-				transition: all 0.4s ease;
-				aspect-ratio: 4 / 3;
-			}
-
-			.gallery-item:hover {
-				transform: translateY(-10px);
-				box-shadow: 0 20px 50px rgba(139, 111, 71, 0.3);
-			}
-
-			.gallery-item img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				transition: transform 0.4s ease;
-			}
-
-			.gallery-item:hover img {
-				transform: scale(1.05);
-			}
-
-			@media (max-width: 1024px) {
-				.gallery-grid {
-					grid-template-columns: repeat(2, 1fr);
-				}
-			}
-
-			@media (max-width: 768px) {
-				.gallery-grid {
-					grid-template-columns: 1fr;
-				}
-			}
-
-			.about-section {
-				background: linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)),
-							url('/assets/images/livingroom.png') center/cover no-repeat;
-				padding: 4rem 2rem;
-			}
-
-			.about-content {
-				max-width: 1000px;
-				margin: 0 auto;
-				padding: 4rem 2rem;
-				background: linear-gradient(135deg, #fbf7f2 0%, #f4ede3 100%);
-				border-radius: 15px;
-				border: 2px solid var(--light-brown);
-				text-align: center;
-				display: flex;
-				flex-direction: column;
 				align-items: center;
 			}
 
-			.about-section h2 {
+			.hero-content {
+				max-width: 620px;
+				text-align: left;
+				padding-left: clamp(2.2rem, 8vw, 8rem);
+			}
+
+			.hero-eyebrow {
 				font-family: 'Inter', sans-serif;
-				font-size: 2.8rem;
-				font-weight: 600;
-				letter-spacing: 0.01em;
-				text-transform: none;
+				font-size: 0.8rem;
+				font-weight: 500;
+				letter-spacing: 0.22em;
+				text-transform: uppercase;
+				color: var(--light-brown);
+				margin-bottom: 1rem;
+				display: block;
+			}
+
+			.hero h1 {
+				font-family: 'Playfair Display', serif;
+				font-size: clamp(2.75rem, 6vw, 4.35rem);
+				font-weight: 500;
+				line-height: 1.05;
+				margin-bottom: 1.15rem;
 				color: var(--brown);
-				margin-bottom: 1.5rem;
 			}
 
-			.about-section p {
+			.hero p {
+				font-family: 'Inter', sans-serif;
+				font-size: 1.07rem;
+				font-weight: 300;
+				line-height: 1.66;
 				color: var(--dark-brown);
-				line-height: 1.8;
-				margin-bottom: 2rem;
-				font-size: 1.1rem;
+				margin: 0 0 2rem;
+				max-width: 560px;
 			}
 
-			.cta-button-about {
+			.hero-buttons {
+				display: flex;
+				gap: 1rem;
+				justify-content: flex-start;
+				flex-wrap: wrap;
+			}
+
+			.btn-primary {
 				display: inline-block;
-				background-color: var(--brown);
+				background: var(--brown);
 				color: var(--white);
-				padding: 1rem 2.5rem;
+				padding: 0.62rem 1.35rem;
 				border-radius: 50px;
 				text-decoration: none;
 				font-family: 'Inter', sans-serif;
 				font-weight: 600;
-				letter-spacing: 0.02em;
-				text-transform: none;
-				transition: all 0.3s;
-				font-size: 0.95rem;
+				font-size: 0.82rem;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				transition: background 0.3s, transform 0.25s, box-shadow 0.3s;
 			}
 
-			.cta-button-about:hover {
-				background-color: var(--dark-brown);
+			.btn-primary:hover {
+				background: var(--very-dark-brown);
 				transform: translateY(-2px);
-				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+				box-shadow: 0 8px 18px rgba(38, 45, 38, 0.2);
 			}
 
-			footer {
-			background: linear-gradient(135deg, var(--light-brown) 0%, var(--brown) 100%);
-			color: var(--white);
+			.hero-media {
+				position: relative;
+				border-radius: 54px 0 0 54px;
+				overflow: hidden;
+				min-height: 520px;
+				isolation: isolate;
+				box-shadow: 0 14px 36px rgba(38, 45, 38, 0.16);
+				margin-right: -2rem;
+			}
+
+			.hero-slide {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				opacity: 0;
+				animation: heroCrossfade 18s infinite ease-in-out;
+			}
+
+			.hero-slide:nth-child(1) { animation-delay: 0s; }
+			.hero-slide:nth-child(2) { animation-delay: 6s; }
+			.hero-slide:nth-child(3) { animation-delay: 12s; }
+
+			@keyframes heroCrossfade {
+				0%, 28% { opacity: 1; }
+				38%, 95% { opacity: 0; }
+				100% { opacity: 1; }
+			}
+
+			/* New homepage sections */
+			main {
+				background:
+					radial-gradient(circle at 10% 10%, rgba(215, 193, 184, 0.22), transparent 35%),
+					radial-gradient(circle at 90% 20%, rgba(173, 182, 159, 0.25), transparent 40%);
+			}
+
+			.section-wrap {
+				padding: 5rem 2rem;
+			}
+
+			.section-shell {
+				max-width: 1140px;
+				margin: 0 auto;
+			}
+
+			.kicker {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.77rem;
+				font-weight: 600;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				color: var(--light-brown);
+				display: block;
+				margin-bottom: 0.8rem;
+			}
+
+			.section-headline {
+				font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+				font-weight: 600;
+				line-height: 1.14;
+				color: var(--brown) !important;
+				margin-bottom: 0.9rem;
+			}
+
+			.section-copy {
+				font-family: 'Inter', sans-serif;
+				font-size: 1rem;
+				font-weight: 300;
+				line-height: 1.75;
+				color: var(--dark-brown);
+			}
+
+			.story-grid {
+				display: grid;
+				grid-template-columns: 1.05fr 0.95fr;
+				gap: 2rem;
+				align-items: center;
+			}
+
+			.story-cards {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 0.9rem;
+				margin-top: 1.6rem;
+			}
+
+			.story-card {
+				padding: 1rem;
+				border-radius: 14px;
+				background: rgba(255, 255, 255, 0.85);
+				border: 1px solid rgba(173, 182, 159, 0.35);
+				box-shadow: 0 8px 24px rgba(38, 45, 38, 0.07);
+			}
+
+			.story-card h3 {
+				font-size: 1.15rem;
+				font-weight: 600;
+				color: var(--very-dark-brown);
+				margin-bottom: 0.4rem;
+			}
+
+			.story-card p {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.9rem;
+				font-weight: 300;
+				line-height: 1.6;
+				color: var(--dark-brown);
+			}
+
+			.story-media {
+				position: relative;
+				border-radius: 20px;
+				overflow: hidden;
+				box-shadow: 0 20px 46px rgba(38, 45, 38, 0.15);
+				max-width: 430px;
+				justify-self: center;
+				background: var(--white);
+			}
+
+			.story-media img {
+				width: 100%;
+				height: 100%;
+				display: block;
+				object-fit: contain;
+				aspect-ratio: 3/5;
+				transition: transform 0.7s ease;
+			}
+
+			.story-media:hover img {
+				transform: scale(1.04);
+			}
+
+			.stats-bar {
+				padding: 1.4rem 2rem 0.2rem;
+				margin-top: 0.6rem;
+			}
+
+			.stats-grid {
+				max-width: 900px;
+				margin: 0 auto;
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 1.5rem;
 				text-align: center;
-				padding: 2rem;
-				margin-top: 2rem;
 			}
 
-			footer p {
-				margin: 0.5rem 0;
+			.stat-number {
+				font-family: 'Playfair Display', serif;
+				font-size: 2.2rem;
+				font-weight: 700;
+				color: var(--brown);
+				line-height: 1;
+				margin-bottom: 0.35rem;
 			}
 
-			.footer-links {
+			.stat-label {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.78rem;
+				font-weight: 500;
+				color: var(--dark-brown);
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+			}
+
+			.vinyl-showcase {
+				background:
+					linear-gradient(rgba(245, 244, 239, 0.96), rgba(245, 244, 239, 0.96)),
+					url('/assets/images/pattern-design.png') center/560px repeat;
+			}
+
+			.vinyl-grid {
+				display: grid;
+				grid-template-columns: 1.05fr 0.95fr;
+				gap: 1rem;
+				margin-top: 1.8rem;
+			}
+
+			.vinyl-stack {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 1rem;
+			}
+
+			.vinyl-card {
+				border-radius: 16px;
+				background: var(--white);
+				border: 1px solid rgba(173, 182, 159, 0.35);
+				box-shadow: 0 12px 30px rgba(38, 45, 38, 0.08);
+				overflow: hidden;
+				transition: transform 0.35s ease, box-shadow 0.35s ease;
+			}
+
+			.vinyl-card:hover {
+				transform: translateY(-6px);
+				box-shadow: 0 16px 36px rgba(38, 45, 38, 0.12);
+			}
+
+			.vinyl-card img {
+				width: 100%;
+				height: 180px;
+				display: block;
+				object-fit: cover;
+			}
+
+			.vinyl-body {
+				padding: 1rem;
+			}
+
+			.vinyl-step {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.72rem;
+				font-weight: 600;
+				letter-spacing: 0.15em;
+				text-transform: uppercase;
+				color: var(--light-brown);
+				display: block;
+				margin-bottom: 0.35rem;
+			}
+
+			.vinyl-card h3 {
+				font-size: 1.42rem;
+				font-weight: 600;
+				color: var(--very-dark-brown);
+				margin-bottom: 0.35rem;
+			}
+
+			.vinyl-card p {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.88rem;
+				line-height: 1.62;
+				color: var(--dark-brown);
+			}
+
+			.vinyl-detail {
+				border-radius: 16px;
+				background: rgba(255, 255, 255, 0.88);
+				border: 1px solid rgba(173, 182, 159, 0.35);
+				padding: 1.25rem;
+				box-shadow: 0 12px 30px rgba(38, 45, 38, 0.08);
+			}
+
+			.vinyl-detail h3 {
+				font-size: 1.8rem;
+				color: var(--very-dark-brown);
+				margin-bottom: 0.55rem;
+			}
+
+			.vinyl-detail p {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.92rem;
+				line-height: 1.66;
+				color: var(--dark-brown);
+			}
+
+			.vinyl-chip-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.6rem;
 				margin-top: 1rem;
 			}
 
-			.footer-links a {
+			.vinyl-chip {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.74rem;
+				font-weight: 600;
+				letter-spacing: 0.07em;
+				text-transform: uppercase;
+				border-radius: 999px;
+				padding: 0.45rem 0.75rem;
+				background: rgba(141, 124, 110, 0.12);
+				color: var(--brown);
+				border: 1px solid rgba(141, 124, 110, 0.24);
+			}
+
+			.split-cta {
+				margin-top: 1.2rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 1rem;
+				padding: 1.1rem;
+				border-radius: 14px;
+				background: rgba(255, 255, 255, 0.88);
+				border: 1px solid rgba(173, 182, 159, 0.35);
+			}
+
+			.split-cta p {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.92rem;
+				line-height: 1.6;
+				color: var(--dark-brown);
+			}
+
+			.split-cta a {
+				flex-shrink: 0;
+			}
+
+			.apps-grid {
+				display: grid;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				gap: 1rem;
+				margin-top: 1.6rem;
+			}
+
+			.app-card {
+				border-radius: 16px;
+				overflow: hidden;
+				background: var(--white);
+				border: 1px solid rgba(173, 182, 159, 0.32);
+				box-shadow: 0 8px 24px rgba(38, 45, 38, 0.08);
+				transition: transform 0.35s ease, box-shadow 0.35s ease;
+			}
+
+			.app-card:hover {
+				transform: translateY(-6px);
+				box-shadow: 0 14px 30px rgba(38, 45, 38, 0.14);
+			}
+
+			.app-card img {
+				width: 100%;
+				height: 180px;
+				display: block;
+				object-fit: cover;
+			}
+
+			.app-body {
+				padding: 1rem;
+			}
+
+			.app-body h3 {
+				font-size: 1.3rem;
+				margin-bottom: 0.35rem;
+				color: var(--very-dark-brown);
+			}
+
+			.app-body p {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.88rem;
+				font-weight: 300;
+				line-height: 1.6;
+				color: var(--dark-brown);
+			}
+
+			.process {
+				background: var(--very-light-brown);
+			}
+
+			.process-grid {
+				display: grid;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				gap: 1rem;
+				margin-top: 1.5rem;
+			}
+
+			.process-card {
+				padding: 1.1rem;
+				border-radius: 14px;
+				background: var(--white);
+				border: 1px solid rgba(173, 182, 159, 0.3);
+			}
+
+			.process-num {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 34px;
+				height: 34px;
+				border-radius: 50%;
+				background: var(--brown);
 				color: var(--white);
+				font-family: 'Inter', sans-serif;
+				font-size: 0.85rem;
+				font-weight: 700;
+				margin-bottom: 0.6rem;
+			}
+
+			.process-card h3 {
+				font-size: 1.25rem;
+				margin-bottom: 0.4rem;
+				color: var(--very-dark-brown);
+			}
+
+			.process-card p {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.88rem;
+				line-height: 1.58;
+				color: var(--dark-brown);
+			}
+
+			.final-cta {
+				position: relative;
+				min-height: 350px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				overflow: hidden;
+			}
+
+			.final-cta-media {
+				position: absolute;
+				inset: -80px;
+				z-index: 0;
+			}
+
+			.final-cta-media img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				will-change: transform;
+			}
+
+			.final-cta::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background: rgba(38, 45, 38, 0.72);
+				z-index: 1;
+			}
+
+			.final-cta-content {
+				position: relative;
+				z-index: 2;
+				max-width: 720px;
+				padding: 2rem;
+			}
+
+			.final-cta-content h2 {
+				font-size: clamp(2rem, 4vw, 3rem);
+				color: var(--white);
+				margin-bottom: 0.8rem;
+			}
+
+			.final-cta-content p {
+				font-family: 'Inter', sans-serif;
+				font-size: 1.02rem;
+				line-height: 1.72;
+				color: rgba(255, 255, 255, 0.85);
+				margin-bottom: 1.4rem;
+			}
+
+			.btn-light {
+				display: inline-block;
+				background: var(--white);
+				color: var(--very-dark-brown);
+				padding: 0.82rem 2.1rem;
+				border-radius: 999px;
 				text-decoration: none;
-				margin: 0 1rem;
+				font-family: 'Inter', sans-serif;
+				font-size: 0.82rem;
+				font-weight: 600;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				transition: background 0.3s ease, transform 0.3s ease;
+			}
+
+			.btn-light:hover {
+				background: var(--tan);
+				transform: translateY(-2px);
+			}
+
+			footer {
+				background:
+					linear-gradient(rgba(38, 45, 38, 0.94), rgba(38, 45, 38, 0.94)),
+					url('/assets/images/pattern-design.png') center/560px repeat;
+				color: var(--white);
+				padding: 3rem 2rem 2rem;
+				position: relative;
+				overflow: hidden;
+			}
+
+			footer::before {
+				content: "";
+				position: absolute;
+				top: -120px;
+				right: -120px;
+				width: 280px;
+				height: 280px;
+				background: radial-gradient(circle, rgba(215, 193, 184, 0.2), transparent 70%);
+				pointer-events: none;
+			}
+
+			.footer-shell {
+				max-width: 1100px;
+				margin: 0 auto;
+				position: relative;
+				z-index: 1;
+			}
+
+			.footer-top {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				gap: 0.8rem;
+				padding-bottom: 1.2rem;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+			}
+
+			.footer-brand {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 1rem;
+				flex-wrap: wrap;
+			}
+
+			.footer-logo {
+				height: 44px;
+				width: auto;
+				display: block;
+			}
+
+			footer .footer-tagline {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.9rem;
+				font-weight: 300;
+				color: rgba(255, 255, 255, 0.78);
+			}
+
+			.footer-bottom {
+				margin-top: 1rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 0.9rem;
+				text-align: center;
+			}
+
+			.footer-nav {
+				display: flex;
+				gap: 1.2rem;
+				flex-wrap: wrap;
+			}
+
+			.footer-nav a {
+				color: rgba(255, 255, 255, 0.75);
+				text-decoration: none;
+				font-family: 'Inter', sans-serif;
+				font-size: 0.84rem;
+				font-weight: 400;
 				transition: color 0.3s;
 			}
 
-			.footer-links a:hover {
+			.footer-nav a:hover {
 				color: var(--white);
 			}
 
+			footer .footer-copy {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.78rem;
+				color: rgba(255, 255, 255, 0.45);
+			}
+
 			@media (max-width: 768px) {
-				.header-content {
-					flex-direction: column;
-					gap: 1rem;
+				.footer-top {
+					grid-template-columns: 1fr;
+					text-align: center;
 				}
 
-				nav a {
-					margin-left: 1rem;
+				.footer-brand {
+					justify-content: center;
 				}
 
-				.hero {
-					min-height: 70vh;
-					padding: 4rem 1.5rem;
+				.footer-bottom {
+					justify-content: center;
+					text-align: center;
+				}
+			}
+
+			.reveal {
+				opacity: 0;
+				transform: translateY(24px);
+				transition: opacity 0.75s ease, transform 0.75s ease;
+			}
+
+			.reveal.in-view {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			@media (max-width: 1100px) {
+				.apps-grid {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
 				}
 
-				.hero h1 {
-					font-size: 2rem;
+				.process-grid {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
 				}
+			}
 
-				.hero p {
-					font-size: 1rem;
-				}
-
-				.categories h2 {
-					font-size: 2rem;
-				}
-
-				.categories-grid {
+			@media (max-width: 900px) {
+				.story-grid,
+				.vinyl-grid {
 					grid-template-columns: 1fr;
 				}
 
-				.gallery-header h2 {
-					font-size: 2rem;
+				.vinyl-stack {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			@media (max-width: 768px) {
+				body { padding-top: 156px; }
+
+				header { padding: 0.75rem 0; }
+
+				.header-content {
+					flex-direction: column;
+					gap: 0.7rem;
 				}
 
-				.gallery-section {
-					padding: 0 1.5rem;
-					margin: 3rem auto;
+				nav a { font-size: 0.92rem; padding: 0.4rem 0.9rem; }
+
+				.logo {
+					height: 68px;
+					width: 230px;
+					overflow: visible;
+					display: flex;
+					align-items: center;
 				}
 
-				.about-section h2 {
-					font-size: 2rem;
+				.hero { padding: 1.25rem 1.25rem 2rem; margin-top: 98px; }
+				.hero-shell {
+					grid-template-columns: 1fr;
+					gap: 1.2rem;
+				}
+				.hero-content {
+					max-width: 100%;
+					padding-left: 0;
+				}
+				.hero h1 { font-size: 2.45rem; }
+				.hero p { font-size: 1rem; max-width: 100%; }
+				.hero-buttons { justify-content: flex-start; }
+				.hero-media { border-radius: 28px; margin-right: 0; }
+				.hero-media { min-height: 320px; }
+
+				.section-wrap {
+					padding: 4rem 1.4rem;
 				}
 
-				.about-content {
-					padding: 2rem 1.5rem;
+				.story-cards,
+				.apps-grid,
+				.process-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.stats-grid {
+					grid-template-columns: repeat(2, 1fr);
+				}
+
+				.split-cta {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+			}
+
+			@media (max-width: 480px) {
+				.hero h1 { font-size: 2rem; }
+				.hero-eyebrow { font-size: 0.72rem; }
+				.section-headline { font-size: 1.85rem; }
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				* {
+					animation: none !important;
+					transition: none !important;
 				}
 			}
 		</style>
 	</head>
 	<body>
-		<!-- Header -->
 		<header>
 			<div class="header-content">
 				<a href="/" style="text-decoration: none;">
 					<div class="logo">
-						<img src="/assets/images/Renuva.png" alt="Renuva">
+						<img src="/assets/images/LOGO_Colorful_Colorful_Colorful_Colorful_A.png" alt="Renuva">
 					</div>
 				</a>
 				<nav>
 					<a href="/about">About Us</a>
 					<a href="/distributor">Distributor</a>
-					<a href="/contact">Contact Us</a>
+					<a href="/contact" class="nav-cta">Contact Us</a>
 				</nav>
 			</div>
 		</header>
 
-		<!-- Hero Section -->
 		<section class="hero">
-			<div class="hero-content">
-				<h1>A smarter way to renew.</h1>
-				<p>Renuva offers the ultimate solution to transform your kitchen. Our premium wrapping solutions bring new life to cabinets, countertops, and surfaces with stunning designs and durable finishes.</p>
-				<a href="/contact" class="cta-button">Start Your Kitchen Transformation</a>
+			<div class="hero-shell">
+				<div class="hero-content">
+					<span class="hero-eyebrow">Premium Architectural Vinyl</span>
+					<h1>A smarter way to renew.</h1>
+					<p>Luxurious architectural vinyl for effortless surface renewal, crafted to create calm, refined spaces without the disruption of traditional renovation.</p>
+					<div class="hero-buttons">
+						<a href="/contact" class="btn-primary">Contact Us</a>
+					</div>
+				</div>
+				<div class="hero-media">
+					<img class="hero-slide" src="/assets/images/MainHero1.png" alt="Renuva architectural vinyl finish">
+					<img class="hero-slide" src="/assets/images/MainHero2.png" alt="Renuva architectural vinyl finish">
+					<img class="hero-slide" src="/assets/images/Beigetheme.png" alt="Renuva architectural vinyl finish">
+				</div>
+			</div>
+			<div class="stats-bar">
+				<div class="stats-grid">
+					<div>
+						<div class="stat-number" data-count="500" data-suffix="+">0+</div>
+						<div class="stat-label">Spaces Renewed</div>
+					</div>
+					<div>
+						<div class="stat-number" data-count="50" data-suffix="+">0+</div>
+						<div class="stat-label">Design Options</div>
+					</div>
+					<div>
+						<div class="stat-number">10yr</div>
+						<div class="stat-label">Material Warranty</div>
+					</div>
+					<div>
+						<div class="stat-number">5&#9733;</div>
+						<div class="stat-label">Customer Rated</div>
+					</div>
+				</div>
 			</div>
 		</section>
 
-		<!-- Gallery Section -->
-		<section class="gallery-section">
-			<div class="gallery-header">
-				<h2>Our Transformations</h2>
-				<p>Bringing new life to kitchens with precision and style</p>
-			</div>
-			<div class="gallery-grid">
-				<div class="gallery-item">
-					<img src="/assets/images/Screenshot 2026-01-23 170344.png" alt="Modern kitchen transformation">
+		<main>
+			<section class="section-wrap">
+				<div class="section-shell story-grid">
+					<div class="reveal">
+						<span class="kicker">Why Renuva</span>
+						<h2 class="section-headline">Built for high-impact transformation with low disruption.</h2>
+						<p class="section-copy">
+							Renuva helps teams renew existing spaces without full demolition. Our architectural film system is designed for premium visual outcomes, faster timelines, and cleaner project execution.
+						</p>
+						<div class="story-cards">
+							<article class="story-card reveal" style="transition-delay: 70ms;">
+								<h3>Faster Turnarounds</h3>
+								<p>Renew key surfaces in days, not weeks, while reducing project interruption.</p>
+							</article>
+							<article class="story-card reveal" style="transition-delay: 120ms;">
+								<h3>Refined Finishes</h3>
+								<p>Curated textures and tones built for calm, elevated architectural spaces.</p>
+							</article>
+							<article class="story-card reveal" style="transition-delay: 170ms;">
+								<h3>Lower Waste</h3>
+								<p>Wrap over existing substrates to avoid unnecessary tear-out and disposal.</p>
+							</article>
+							<article class="story-card reveal" style="transition-delay: 220ms;">
+								<h3>System Consistency</h3>
+								<p>Structured standards from product through installation for dependable outcomes.</p>
+							</article>
+						</div>
+					</div>
+					<div class="story-media reveal" style="transition-delay: 100ms;">
+						<img src="/assets/images/verticalwords.png" alt="Renuva branded vertical wordmark">
+					</div>
 				</div>
-				<div class="gallery-item">
-					<img src="/assets/images/Screenshot 2026-01-23 170529.png" alt="Cabinet wrapping detail">
-				</div>
-				<div class="gallery-item">
-					<img src="/assets/images/watterfall-kitchen-island-2500x1632-1-1536x1003.jpg" alt="Luxury waterfall island">
-				</div>
-			</div>
-		</section>
+			</section>
 
-		<!-- Product Section -->
-		<section class="about-section">
-			<div class="about-content">
-				<h2>Our Product</h2>
-				<p>Premium wrapping materials designed for durability and style. Our high-quality wraps transform your kitchen surfaces with stunning finishes that last for years.</p>
-				<img src="/assets/images/Wrapping mats.png" alt="Premium wrapping materials" style="width: 100%; max-width: 600px; border-radius: 15px; margin: 2rem 0; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);">
-				<a href="/about" class="cta-button-about">Learn More About Us</a>
-			</div>
-		</section>
+			<section class="section-wrap vinyl-showcase">
+				<div class="section-shell">
+					<div class="reveal">
+						<span class="kicker">Vinyl Collections</span>
+						<h2 class="section-headline">A wide variety of premium vinyl finishes.</h2>
+						<p class="section-copy">
+							From warm wood grains to stone-inspired textures and modern solids, Renuva offers a curated range of architectural films to match different design directions and project goals.
+						</p>
+					</div>
+					<div class="vinyl-grid">
+						<div class="vinyl-stack">
+							<article class="vinyl-card reveal" style="transition-delay: 80ms;">
+								<img src="/assets/images/wood.png" alt="Renuva wood grain vinyl finish">
+								<div class="vinyl-body">
+									<h3>Wood Grain</h3>
+									<p>Natural-inspired tones for warm, residential and hospitality aesthetics.</p>
+								</div>
+							</article>
+							<article class="vinyl-card reveal" style="transition-delay: 140ms;">
+								<img src="/assets/images/stone.png" alt="Renuva stone and mineral vinyl finish">
+								<div class="vinyl-body">
+									<h3>Stone + Mineral</h3>
+									<p>Soft mineral visuals that create clean, modern, and elegant surfaces.</p>
+								</div>
+							</article>
+							<article class="vinyl-card reveal" style="transition-delay: 200ms;">
+								<img src="/assets/images/dark.png" alt="Renuva dark solid and textile vinyl finish">
+								<div class="vinyl-body">
+									<h3>Solid + Textile</h3>
+									<p>Contemporary greys and subtle textures for commercial and office projects.</p>
+								</div>
+							</article>
+							<article class="vinyl-card reveal" style="transition-delay: 260ms;">
+								<img src="/assets/images/metallic.png" alt="Renuva metallic and brushed vinyl finish">
+								<div class="vinyl-body">
+									<h3>Metallic + Brushed</h3>
+									<p>A common wrap category for modern accents, fixtures, and premium statement surfaces.</p>
+								</div>
+							</article>
+						</div>
+						<div class="vinyl-detail reveal" style="transition-delay: 230ms;">
+							<h3>50+ design options available</h3>
+							<p>
+								Choose from tonal neutrals, deep woods, soft concrete looks, and specialty textures developed for high-touch architectural surfaces.
+							</p>
+							<div class="vinyl-chip-row">
+								<span class="vinyl-chip">Matte</span>
+								<span class="vinyl-chip">Wood Grain</span>
+								<span class="vinyl-chip">Stone Look</span>
+								<span class="vinyl-chip">Textured</span>
+								<span class="vinyl-chip">Warm Neutrals</span>
+								<span class="vinyl-chip">Contemporary Greys</span>
+							</div>
+							<div class="split-cta" style="margin-top: 1rem;">
+								<p>Need guidance selecting finishes for your project? Our team can help narrow options by style, use case, and timeline.</p>
+								<a href="/contact" class="btn-primary">Explore Options</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-		<!-- Footer -->
+			<section class="section-wrap">
+				<div class="section-shell">
+					<div class="reveal">
+						<span class="kicker">Where It Works</span>
+						<h2 class="section-headline">Use cases designed for high-visibility spaces.</h2>
+					</div>
+					<div class="apps-grid">
+						<article class="app-card reveal" style="transition-delay: 60ms;">
+							<img src="/assets/images/livingroom.png" alt="Residential living room surface renewal">
+							<div class="app-body">
+								<h3>Residential</h3>
+								<p>Kitchen cabinetry, vanities, and built-ins refreshed without full replacement.</p>
+							</div>
+						</article>
+						<article class="app-card reveal" style="transition-delay: 110ms;">
+							<img src="/assets/images/Screenshot 2026-01-23 170344.png" alt="Bathroom renewal with architectural film">
+							<div class="app-body">
+								<h3>Hospitality</h3>
+								<p>Upgrade guest-facing areas with elegant finishes and minimal downtime.</p>
+							</div>
+						</article>
+						<article class="app-card reveal" style="transition-delay: 160ms;">
+							<img src="/assets/images/ProductLook.png" alt="Retail and commercial finish detail">
+							<div class="app-body">
+								<h3>Retail + Office</h3>
+								<p>Modernize counters, walls, and fixtures while operations continue.</p>
+							</div>
+						</article>
+						<article class="app-card reveal" style="transition-delay: 210ms;">
+							<img src="/assets/images/Wrapping mats.png" alt="Renuva wrapping material samples">
+							<div class="app-body">
+								<h3>Custom Projects</h3>
+								<p>Match material direction to your project goals, timing, and aesthetic requirements.</p>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="section-wrap process">
+				<div class="section-shell">
+					<div class="reveal">
+						<span class="kicker">Project Workflow</span>
+						<h2 class="section-headline">From concept to completion in four structured steps.</h2>
+					</div>
+					<div class="process-grid">
+						<article class="process-card reveal" style="transition-delay: 60ms;">
+							<span class="process-num">1</span>
+							<h3>Consult</h3>
+							<p>Define scope, surfaces, timeline, and finish direction for your space.</p>
+						</article>
+						<article class="process-card reveal" style="transition-delay: 110ms;">
+							<span class="process-num">2</span>
+							<h3>Specify</h3>
+							<p>Select approved materials and align distribution flow through SurfaceWraps.</p>
+						</article>
+						<article class="process-card reveal" style="transition-delay: 160ms;">
+							<span class="process-num">3</span>
+							<h3>Apply</h3>
+							<p>Precision installation over existing surfaces with minimal interruption.</p>
+						</article>
+						<article class="process-card reveal" style="transition-delay: 210ms;">
+							<span class="process-num">4</span>
+							<h3>Reveal</h3>
+							<p>Deliver a refined final result with a premium look and practical durability.</p>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="final-cta">
+				<div class="final-cta-media">
+					<img src="/assets/images/watterfall-kitchen-island-2500x1632-1-1536x1003.jpg" alt="Renuva transformed kitchen surface">
+				</div>
+				<div class="final-cta-content reveal">
+					<h2>Ready to renew your next space?</h2>
+					<p>Tell us your project goals and we will point you to the right path, from product strategy to distribution and execution.</p>
+					<a href="/contact" class="btn-light">Start Conversation</a>
+				</div>
+			</section>
+		</main>
+
 		<footer>
-			<p>&copy; 2026 Renuva Kitchen Wrapping. All rights reserved.</p>
-			<p>Transform your kitchen, renew your space.</p>
-			<div class="footer-links">
-				<a href="mailto:hello@renuva.com">Contact Us</a>
-				<a href="#features">About</a>
-				<a href="#products">Products</a>
+			<div class="footer-shell">
+				<div class="footer-top">
+					<div class="footer-brand">
+						<img class="footer-logo" src="/assets/images/LOGO_Colorful_Colorful_Colorful_White.png" alt="Renuva logo" />
+						<p class="footer-tagline">Transform existing surfaces. Renew beautifully.</p>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<nav class="footer-nav">
+						<a href="/">Home</a>
+						<a href="/about">About Us</a>
+						<a href="/distributor">Distributor</a>
+						<a href="/contact">Contact</a>
+					</nav>
+					<p class="footer-copy">&copy; 2026 Renuva Architectural Surfaces. All rights reserved.</p>
+				</div>
 			</div>
 		</footer>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				const revealEls = document.querySelectorAll('.reveal');
+
+				if (prefersReducedMotion) {
+					revealEls.forEach((el) => el.classList.add('in-view'));
+					return;
+				}
+
+				const revealObserver = new IntersectionObserver((entries, observer) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('in-view');
+							observer.unobserve(entry.target);
+						}
+					});
+				}, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+
+				revealEls.forEach((el) => revealObserver.observe(el));
+
+				const counters = document.querySelectorAll('.stat-number[data-count]');
+				let countersStarted = false;
+				const animateCounters = () => {
+					counters.forEach((el) => {
+						const target = parseInt(el.dataset.count, 10);
+						const suffix = el.dataset.suffix || '';
+						const duration = 1600;
+						const start = performance.now();
+
+						const tick = (now) => {
+							const elapsed = now - start;
+							const progress = Math.min(elapsed / duration, 1);
+							const eased = 1 - Math.pow(1 - progress, 3);
+							const current = Math.round(eased * target);
+							el.textContent = current + suffix;
+							if (progress < 1) requestAnimationFrame(tick);
+						};
+
+						requestAnimationFrame(tick);
+					});
+				};
+
+				const statsBar = document.querySelector('.stats-bar');
+				if (statsBar) {
+					const statsObserver = new IntersectionObserver((entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting && !countersStarted) {
+								countersStarted = true;
+								animateCounters();
+							}
+						});
+					}, { threshold: 0.3 });
+
+					statsObserver.observe(statsBar);
+				}
+
+				const parallaxImg = document.querySelector('.final-cta-media img');
+				if (parallaxImg) {
+					const onScroll = () => {
+						const parent = parallaxImg.closest('.final-cta');
+						const rect = parent.getBoundingClientRect();
+						const offset = rect.top * -0.18;
+						parallaxImg.style.transform = `translate3d(0, ${offset}px, 0)`;
+					};
+					window.addEventListener('scroll', onScroll, { passive: true });
+				}
+			});
+		</script>
 	</body>
 </html>

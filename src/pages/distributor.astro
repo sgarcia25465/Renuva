@@ -12,7 +12,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
 		<title>Distributor - Renuva</title>
@@ -24,257 +24,669 @@
 			}
 
 			:root {
-				--very-dark-brown: #3e2723;
-				--dark-brown: #5c4033;
-				--medium-brown: #704214;
-				--brown: #8b6f47;
-				--light-brown: #a0826d;
-				--tan: #d4a574;
-				--white: #ffffff;
-				--soft-ivory: #f7f4f0;
-				--soft-shadow: rgba(62, 39, 35, 0.12);
+				--very-dark-brown: #262D26;
+				--dark-brown: #5E635D;
+				--medium-brown: #8D7C6E;
+				--light-brown: #ADB69F;
+				--tan: #D7C1B8;
+				--cream: #F5F4EF;
+				--white: #FFFFFF;
+				--ink: var(--dark-brown);
+				--pine: var(--medium-brown);
+				--moss: var(--light-brown);
+				--sand: var(--tan);
+				--fog: var(--cream);
+				--paper: var(--white);
+				--line: rgba(94, 99, 93, 0.2);
+				--glow: rgba(215, 193, 184, 0.45);
+			}
+
+			html {
+				scroll-behavior: smooth;
 			}
 
 			body {
-				font-family: "Inter", sans-serif;
-				color: var(--dark-brown);
-				background: radial-gradient(circle at top, #fbf8f4 0%, #f1ebe4 55%, #ece4db 100%);
-				position: relative;
+				font-family: "Manrope", sans-serif;
+				color: var(--pine);
+				background:
+					radial-gradient(circle at 12% 12%, rgba(220, 200, 186, 0.48), transparent 42%),
+					radial-gradient(circle at 88% 20%, rgba(173, 182, 159, 0.34), transparent 46%),
+					linear-gradient(180deg, #fdfbf7 0%, #f4eee6 55%, #f7f3ed 100%);
+				min-height: 100vh;
 			}
 
 			body::before {
 				content: "";
 				position: fixed;
 				inset: 0;
-				background: url("/assets/images/livingroom.png") center/cover no-repeat;
-				opacity: 0.12;
 				z-index: -1;
+				background: url("/assets/images/pattern-design.png") center/560px repeat;
+				opacity: 0.08;
+				pointer-events: none;
 			}
 
 			header {
-				background-color: var(--white);
-				padding: 1.5rem 0;
-				border-bottom: 5px solid var(--brown);
-				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+				position: sticky;
+				top: 0;
+				left: 0;
+				width: 100%;
+				z-index: 1000;
+				background: rgba(253, 250, 245, 0.9);
+				backdrop-filter: blur(12px);
+				-webkit-backdrop-filter: blur(12px);
+				padding: 1.1rem 0;
+				border-bottom: 1px solid rgba(99, 114, 97, 0.12);
 			}
 
 			.header-content {
-				max-width: 1200px;
-				margin: 0 auto;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				padding: 0 2rem;
-				gap: 1.5rem;
+				padding: 0 2rem 0 clamp(2.2rem, 8vw, 8rem);
+				gap: 1rem;
 			}
 
 			.logo {
-				height: 60px;
+				height: 68px;
+				width: 230px;
+				overflow: visible;
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
 			}
 
 			.logo img {
 				height: 100%;
 				width: auto;
+				display: block;
+				transform: scale(2.1);
+				transform-origin: left center;
+			}
+
+			nav {
+				display: flex;
+				align-items: center;
+				gap: 0.25rem;
 			}
 
 			nav a {
-				margin-left: 2rem;
 				text-decoration: none;
-				color: var(--dark-brown);
-				font-family: "Inter", sans-serif;
-				font-weight: 500;
-				font-size: 1.05rem;
+				color: var(--pine);
+				font-family: "Cormorant Garamond", serif;
+				font-weight: 600;
+				font-size: 1.1rem;
 				letter-spacing: 0.02em;
-				text-transform: none;
-				transition: color 0.3s;
+				padding: 0.5rem 1.2rem;
+				border-radius: 999px;
+				transition: color 0.3s ease, background 0.3s ease, transform 0.3s ease;
 			}
 
 			nav a:hover {
-				color: var(--tan);
+				color: var(--ink);
+				background: rgba(99, 114, 97, 0.1);
+				transform: translateY(-1px);
+			}
+
+			main {
+				padding: 3.5rem 2rem 1rem;
+			}
+
+			.page-shell {
+				max-width: 1120px;
+				margin: 0 auto;
 			}
 
 			.hero {
-				padding: 5rem 2rem 2rem;
-				text-align: center;
+				position: relative;
+				border: 1px solid var(--line);
+				border-radius: 30px;
+				padding: clamp(2rem, 4vw, 3.4rem);
+				background: linear-gradient(155deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 242, 237, 0.95) 100%);
+				overflow: hidden;
+				box-shadow: 0 26px 56px rgba(32, 39, 31, 0.13);
 			}
 
-			.hero h1 {
-				font-family: "Inter", sans-serif;
-				font-size: 3.5rem;
+			.hero::before {
+				content: "";
+				position: absolute;
+				top: -120px;
+				right: -90px;
+				width: 300px;
+				height: 300px;
+				background: radial-gradient(circle, var(--glow) 0%, rgba(220, 200, 186, 0) 70%);
+				z-index: 0;
+				animation: pulseGlow 6s ease-in-out infinite;
+			}
+
+			.hero-grid {
+				position: relative;
+				z-index: 1;
+				display: grid;
+				grid-template-columns: 1.1fr 0.9fr;
+				gap: 1.8rem;
+				align-items: center;
+			}
+
+			.eyebrow {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.45rem;
+				font-size: 0.77rem;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.16em;
+				color: var(--moss);
+				margin-bottom: 1.1rem;
+			}
+
+			.eyebrow::before {
+				content: "";
+				display: block;
+				width: 22px;
+				height: 1px;
+				background: var(--moss);
+			}
+
+			h1,
+			h2,
+			h3 {
+				font-family: "Cormorant Garamond", serif;
 				font-weight: 600;
-				letter-spacing: 0.01em;
-				text-transform: none;
-				color: var(--very-dark-brown);
-				margin-bottom: 0.8rem;
+				line-height: 1.06;
+				color: var(--ink);
 			}
 
-			.hero p {
-				max-width: 640px;
-				margin: 0 auto;
-				line-height: 1.7;
-				font-size: 1.1rem;
+			h1 {
+				color: var(--medium-brown);
+			}
+
+			h1 {
+				font-size: clamp(2.6rem, 5.8vw, 4.5rem);
+				margin-bottom: 1rem;
+			}
+
+			.hero-copy p {
+				font-size: 1.04rem;
+				line-height: 1.78;
+				max-width: 620px;
 				color: var(--dark-brown);
 			}
 
-			.distributor-wrap {
-				max-width: 980px;
-				margin: 2.5rem auto 5rem;
-				padding: 0 2rem;
+			.hero-copy p + p {
+				margin-top: 0.9rem;
 			}
 
-			.distributor-card {
-				background: var(--white);
-				border-radius: 20px;
-				padding: 2.8rem;
-				box-shadow: 0 18px 45px var(--soft-shadow);
-				display: grid;
-				grid-template-columns: minmax(0, 1fr) 240px;
-				gap: 2.5rem;
-				align-items: center;
-			}
-
-			.card-text h2 {
-				font-family: "Inter", sans-serif;
-				font-size: 2.5rem;
-				font-weight: 600;
-				letter-spacing: 0.01em;
-				text-transform: none;
-				color: var(--very-dark-brown);
-				margin-bottom: 1rem;
-			}
-
-			.card-text p {
-				line-height: 1.8;
-				margin-bottom: 1.2rem;
-			}
-
-			.badge {
+			.relationship-pill {
 				display: inline-flex;
 				align-items: center;
-				gap: 0.5rem;
-				padding: 0.35rem 0.9rem;
+				gap: 0.6rem;
+				margin-top: 1.35rem;
+				padding: 0.5rem 0.95rem;
+				border: 1px solid rgba(99, 114, 97, 0.2);
 				border-radius: 999px;
-				background: rgba(139, 111, 71, 0.12);
-				color: var(--brown);
-				font-family: "Inter", sans-serif;
-				font-weight: 600;
-				font-size: 0.9rem;
-				letter-spacing: 0.02em;
-				text-transform: none;
-				margin-bottom: 1rem;
+				background: rgba(255, 255, 255, 0.78);
+				font-size: 0.83rem;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: var(--pine);
 			}
 
-			.cta-row {
+			.relationship-pill strong {
+				font-weight: 700;
+				color: var(--dark-brown);
+			}
+
+			.partner-visual {
+				display: grid;
+				gap: 0.9rem;
+			}
+
+			.brand-card {
+				padding: 1.1rem;
+				border-radius: 18px;
+				background: var(--paper);
+				border: 1px solid var(--line);
+				box-shadow: 0 12px 26px rgba(32, 39, 31, 0.1);
+				transition: transform 0.35s ease, box-shadow 0.35s ease;
+			}
+
+			.brand-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 18px 30px rgba(32, 39, 31, 0.16);
+			}
+
+			.brand-card span {
+				display: block;
+				font-size: 0.73rem;
+				font-weight: 700;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: var(--moss);
+				margin-bottom: 0.32rem;
+			}
+
+			.brand-card h3 {
+				font-size: 2rem;
+				margin-bottom: 0.45rem;
+			}
+
+			.brand-card p {
+				font-size: 0.95rem;
+				line-height: 1.6;
+				color: var(--dark-brown);
+			}
+
+			.connector {
+				position: relative;
+				height: 52px;
+				margin: 0.05rem 0;
+			}
+
+			.connector::before {
+				content: "";
+				position: absolute;
+				left: 50%;
+				top: 4px;
+				transform: translateX(-50%);
+				width: 2px;
+				height: 44px;
+				background: linear-gradient(180deg, rgba(99, 114, 97, 0.25), rgba(99, 114, 97, 0.85));
+			}
+
+			.connector::after {
+				content: "";
+				position: absolute;
+				left: 50%;
+				top: 14px;
+				transform: translateX(-50%);
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background: var(--pine);
+				box-shadow: 0 0 0 0 rgba(51, 64, 51, 0.35);
+				animation: flowDot 2.4s ease-in-out infinite;
+			}
+
+			.section {
+				margin-top: 2rem;
+			}
+
+			.section-head {
+				text-align: center;
+				margin-bottom: 1.3rem;
+			}
+
+			.section-head h2 {
+				font-size: clamp(2.05rem, 3.7vw, 3rem);
+				margin-bottom: 0.5rem;
+			}
+
+			.section-head p {
+				max-width: 660px;
+				margin: 0 auto;
+				line-height: 1.72;
+				font-size: 1rem;
+			}
+
+			.flow-grid {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 1rem;
+			}
+
+			.flow-card {
+				position: relative;
+				background: rgba(255, 255, 255, 0.9);
+				border: 1px solid var(--line);
+				border-radius: 18px;
+				padding: 1.2rem;
+				box-shadow: 0 14px 28px rgba(32, 39, 31, 0.08);
+				min-height: 205px;
+				transition: transform 0.35s ease, border-color 0.35s ease;
+			}
+
+			.flow-card:hover {
+				transform: translateY(-5px);
+				border-color: rgba(51, 64, 51, 0.38);
+			}
+
+			.flow-step {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 31px;
+				height: 31px;
+				border-radius: 50%;
+				background: #314034;
+				color: #fff;
+				font-size: 0.8rem;
+				font-weight: 700;
+				margin-bottom: 0.65rem;
+			}
+
+			.flow-card h3 {
+				font-size: 1.7rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.flow-card p {
+				font-size: 0.94rem;
+				line-height: 1.66;
+				color: var(--dark-brown);
+			}
+
+			.flow-arrow {
+				position: absolute;
+				right: -22px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 38px;
+				height: 38px;
+				border-radius: 50%;
+				background: rgba(255, 255, 255, 0.95);
+				border: 1px solid rgba(51, 64, 51, 0.2);
+				display: grid;
+				place-items: center;
+				font-size: 1.1rem;
+				color: var(--pine);
+				animation: nudge 1.8s ease-in-out infinite;
+			}
+
+			.flow-card:last-child .flow-arrow {
+				display: none;
+			}
+
+			.cta-strip {
+				margin-top: 1.2rem;
+				padding: 1.25rem;
+				border-radius: 18px;
+				border: 1px solid var(--line);
+				background: linear-gradient(120deg, rgba(255, 255, 255, 0.92), rgba(237, 229, 219, 0.88));
 				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 0.9rem;
+				flex-wrap: wrap;
+			}
+
+			.cta-strip p {
+				font-size: 0.95rem;
+				line-height: 1.6;
+				max-width: 620px;
+			}
+
+			.cta-actions {
+				display: flex;
+				gap: 0.6rem;
+				flex-wrap: wrap;
+			}
+
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				text-decoration: none;
+				padding: 0.73rem 1.12rem;
+				border-radius: 999px;
+				font-size: 0.79rem;
+				font-weight: 700;
+				letter-spacing: 0.09em;
+				text-transform: uppercase;
+				transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+			}
+
+			.btn.primary {
+				background: var(--pine);
+				color: #fff;
+			}
+
+			.btn.secondary {
+				background: rgba(255, 255, 255, 0.94);
+				color: var(--pine);
+				border: 1px solid rgba(51, 64, 51, 0.24);
+			}
+
+			.btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 16px rgba(32, 39, 31, 0.16);
+			}
+
+			.faq-grid {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 1rem;
+			}
+
+			.faq-card {
+				padding: 1.25rem;
+				border-radius: 16px;
+				border: 1px solid var(--line);
+				background: rgba(255, 255, 255, 0.88);
+				box-shadow: 0 10px 24px rgba(32, 39, 31, 0.06);
+			}
+
+			.faq-card h3 {
+				font-size: 1.55rem;
+				margin-bottom: 0.45rem;
+			}
+
+			.faq-card p {
+				font-size: 0.94rem;
+				line-height: 1.66;
+				color: var(--dark-brown);
+			}
+
+			.reveal {
+				opacity: 0;
+				transform: translateY(18px);
+				transition: opacity 0.7s ease, transform 0.7s ease;
+			}
+
+			.reveal.in-view {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			footer {
+				background:
+					linear-gradient(rgba(38, 45, 38, 0.94), rgba(38, 45, 38, 0.94)),
+					url('/assets/images/pattern-design.png') center/560px repeat;
+				color: var(--white);
+				padding: 3rem 2rem 2rem;
+				position: relative;
+				overflow: hidden;
+			}
+
+			footer::before {
+				content: '';
+				position: absolute;
+				top: -120px;
+				right: -120px;
+				width: 280px;
+				height: 280px;
+				background: radial-gradient(circle, rgba(215, 193, 184, 0.2), transparent 70%);
+				pointer-events: none;
+			}
+
+			.footer-shell {
+				max-width: 1100px;
+				margin: 0 auto;
+				position: relative;
+				z-index: 1;
+			}
+
+			.footer-top {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				gap: 0.8rem;
+				padding-bottom: 1.2rem;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+			}
+
+			.footer-brand {
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				gap: 1rem;
 				flex-wrap: wrap;
 			}
 
-			.link-button {
-				display: inline-block;
-				background: var(--brown);
-				color: var(--white);
-				padding: 0.85rem 2rem;
-				border-radius: 999px;
-				text-decoration: none;
-				font-family: "Inter", sans-serif;
-				font-weight: 600;
-				letter-spacing: 0.02em;
-				text-transform: none;
-				transition: transform 0.3s, box-shadow 0.3s;
-			}
-
-			.link-button:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-			}
-
-			.secondary-link {
-				color: var(--dark-brown);
-				text-decoration: none;
-				font-weight: 600;
-				padding: 0.85rem 1.2rem;
-			}
-
-			.partner-box {
-				background: var(--soft-ivory);
-				border-radius: 16px;
-				padding: 1.5rem 1.25rem;
-				text-align: center;
-				border: 1px solid rgba(139, 111, 71, 0.18);
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				min-height: 96px;
-			}
-
-			.partner-box span {
+			.footer-logo {
+				height: 44px;
+				width: auto;
 				display: block;
-				font-family: "Inter", sans-serif;
-				font-size: 0.85rem;
-				letter-spacing: 0.03em;
-				text-transform: none;
-				color: var(--light-brown);
-				margin-bottom: 0.6rem;
 			}
 
-			.partner-box strong {
-				font-size: 1.1rem;
-				color: var(--very-dark-brown);
-				white-space: nowrap;
-				text-align: center;
+			.footer-tagline {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.9rem;
+				font-weight: 300;
+				color: rgba(255, 255, 255, 0.78);
 			}
 
-			footer {
-				background: linear-gradient(135deg, var(--light-brown) 0%, var(--brown) 100%);
-				color: var(--white);
-				text-align: center;
-				padding: 2rem;
-				margin-top: 2rem;
-			}
-
-			footer p {
-				margin: 0.5rem 0;
-			}
-
-			.footer-links {
+			.footer-bottom {
 				margin-top: 1rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 0.9rem;
+				text-align: center;
 			}
 
-			.footer-links a {
-				color: var(--white);
+			.footer-nav {
+				display: flex;
+				gap: 1.2rem;
+				flex-wrap: wrap;
+			}
+
+			.footer-nav a {
+				color: rgba(255, 255, 255, 0.75);
 				text-decoration: none;
-				margin: 0 1rem;
-				transition: color 0.3s;
+				font-family: 'Inter', sans-serif;
+				font-size: 0.84rem;
+				transition: color 0.3s ease;
 			}
 
-			.footer-links a:hover {
-				color: var(--white);
+			.footer-nav a:hover {
+				color: #fff;
 			}
 
-			@media (max-width: 900px) {
-				.distributor-card {
+			.footer-copy {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.78rem;
+				color: rgba(255, 255, 255, 0.48);
+			}
+
+			@media (max-width: 768px) {
+				.footer-top {
 					grid-template-columns: 1fr;
 					text-align: center;
 				}
 
-				.cta-row {
+				.footer-brand {
 					justify-content: center;
+				}
+
+				.footer-bottom {
+					justify-content: center;
+					text-align: center;
+				}
+			}
+
+			@keyframes flowDot {
+				0% {
+					transform: translate(-50%, 0);
+					opacity: 0.7;
+				}
+				50% {
+					transform: translate(-50%, 18px);
+					opacity: 1;
+				}
+				100% {
+					transform: translate(-50%, 0);
+					opacity: 0.7;
+				}
+			}
+
+			@keyframes nudge {
+				0%,
+				100% {
+					transform: translateY(-50%) translateX(0);
+				}
+				50% {
+					transform: translateY(-50%) translateX(3px);
+				}
+			}
+
+			@keyframes pulseGlow {
+				0%,
+				100% {
+					opacity: 0.55;
+				}
+				50% {
+					opacity: 1;
+				}
+			}
+
+			@media (max-width: 960px) {
+				.hero-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.flow-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.flow-arrow {
+					display: none;
+				}
+
+				.faq-grid {
+					grid-template-columns: 1fr;
 				}
 			}
 
 			@media (max-width: 768px) {
+				header {
+					padding: 0.75rem 0;
+				}
+
 				.header-content {
 					flex-direction: column;
-					gap: 1rem;
+					gap: 0.7rem;
+					padding: 0 1.2rem;
 				}
 
 				nav a {
-					margin-left: 1rem;
+					font-size: 0.98rem;
+					padding: 0.38rem 0.85rem;
 				}
 
-				.hero h1 {
-					font-size: 2.2rem;
+				main {
+					padding: 2.1rem 1rem 1rem;
+				}
+
+				.hero {
+					border-radius: 22px;
+				}
+
+				h1 {
+					font-size: 2.3rem;
+				}
+
+				.brand-card h3 {
+					font-size: 1.75rem;
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				* {
+					animation: none !important;
+					transition: none !important;
 				}
 			}
 		</style>
@@ -284,7 +696,7 @@
 			<div class="header-content">
 				<a href="/" style="text-decoration: none;">
 					<div class="logo">
-						<img src="/assets/images/Renuva.png" alt="Renuva">
+						<img src="/assets/images/LOGO_Colorful_Colorful_Colorful_Colorful_A.png" alt="Renuva" />
 					</div>
 				</a>
 				<nav>
@@ -295,45 +707,126 @@
 			</div>
 		</header>
 
-		<section class="hero">
-			<h1>Our Distributor</h1>
-			<p>
-				Renuva products are exclusively distributed through our partner, SurfaceWraps. We are
-				not accepting new distributor applications at this time.
-			</p>
-		</section>
+		<main>
+			<div class="page-shell">
+				<section class="hero reveal">
+					<div class="hero-grid">
+						<div class="hero-copy">
+							<span class="eyebrow">Distribution Model</span>
+							<h1>One Brand. One Exclusive Distributor.</h1>
+							<p>
+								Renuva develops and supplies the architectural film system. SurfaceWraps is the only authorized
+								distributor handling product access, order routing, and regional supply.
+							</p>
+							<p>
+								This structure keeps quality, pricing, and project support aligned across every market.
+							</p>
+							<div class="relationship-pill">Official Distributor: <strong>surfacewrap.com</strong></div>
+						</div>
 
-		<section class="distributor-wrap">
-			<div class="distributor-card">
-				<div class="card-text">
-					<div class="badge">Exclusive Partner</div>
-					<h2>SurfaceWraps</h2>
-					<p>
-						SurfaceWraps delivers Renuva materials to installers and showrooms with reliable
-						availability, consistent support, and a focus on high-end kitchen transformations.
-					</p>
-					<div class="cta-row">
-						<a class="link-button" href="https://surfacewraps.com" target="_blank" rel="noopener">
-							Visit surfacewraps.com
-						</a>
-						<a class="secondary-link" href="/contact">Contact Renuva</a>
+						<div class="partner-visual">
+							<article class="brand-card reveal" style="transition-delay: 80ms;">
+								<span>Brand + Product Ownership</span>
+								<h3>Renuva</h3>
+								<p>Material design, system standards, and long-term product direction.</p>
+							</article>
+							<div class="connector" aria-hidden="true"></div>
+							<article class="brand-card reveal" style="transition-delay: 130ms;">
+								<span>Exclusive Distribution</span>
+								<h3>surfacewrap.com</h3>
+								<p>Inventory flow, order fulfillment, and distributor-side account support.</p>
+							</article>
+						</div>
 					</div>
-				</div>
-				<div class="partner-box">
-					<span>Distributor</span>
-					<strong>surfacewraps.com</strong>
-				</div>
+				</section>
+
+				<section class="section">
+					<div class="section-head reveal">
+						<span class="eyebrow">How It Works</span>
+						<h2>Clear Hand-Off From Product To Project</h2>
+						<p>
+							Use this flow to know exactly who to contact at each stage. It removes overlap and keeps projects
+							moving quickly.
+						</p>
+					</div>
+					<div class="flow-grid">
+						<article class="flow-card reveal" style="transition-delay: 70ms;">
+							<span class="flow-step">1</span>
+							<h3>Renuva</h3>
+							<p>Defines the film collection, finish standards, and approved system guidance.</p>
+							<div class="flow-arrow" aria-hidden="true">&#8594;</div>
+						</article>
+						<article class="flow-card reveal" style="transition-delay: 130ms;">
+							<span class="flow-step">2</span>
+							<h3>SurfaceWrap</h3>
+							<p>Manages ordering, allocation, and access for installers, showrooms, and partners.</p>
+							<div class="flow-arrow" aria-hidden="true">&#8594;</div>
+						</article>
+						<article class="flow-card reveal" style="transition-delay: 190ms;">
+							<span class="flow-step">3</span>
+							<h3>Your Project Team</h3>
+							<p>Receives approved products and applies them on-site under the Renuva system.</p>
+						</article>
+					</div>
+					<div class="cta-strip reveal" style="transition-delay: 220ms;">
+						<p>
+							Need pricing, product availability, or account setup? Start with SurfaceWrap. Need brand-level or
+							partnership questions? Contact Renuva directly.
+						</p>
+						<div class="cta-actions">
+							<a class="btn primary" href="https://surfacewrap.com" target="_blank" rel="noopener">Go To SurfaceWrap</a>
+							<a class="btn secondary" href="/contact">Contact Renuva</a>
+						</div>
+					</div>
+				</section>
+
 			</div>
-		</section>
+		</main>
 
 		<footer>
-			<p>&copy; 2026 Renuva Kitchen Wrapping. All rights reserved.</p>
-			<p>Transform your kitchen, renew your space.</p>
-			<div class="footer-links">
-				<a href="/contact">Contact Us</a>
-				<a href="/about">About</a>
-				<a href="/">Home</a>
+			<div class="footer-shell">
+				<div class="footer-top">
+					<div class="footer-brand">
+						<img class="footer-logo" src="/assets/images/LOGO_Colorful_Colorful_Colorful_White.png" alt="Renuva logo" />
+						<p class="footer-tagline">Transform existing surfaces. Renew beautifully.</p>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<nav class="footer-nav">
+						<a href="/">Home</a>
+						<a href="/about">About Us</a>
+						<a href="/distributor">Distributor</a>
+						<a href="/contact">Contact</a>
+					</nav>
+					<p class="footer-copy">&copy; 2026 Renuva Architectural Surfaces. All rights reserved.</p>
+				</div>
 			</div>
 		</footer>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				const targets = document.querySelectorAll('.reveal');
+
+				if (prefersReducedMotion) {
+					targets.forEach((el) => el.classList.add('in-view'));
+					return;
+				}
+
+				const revealObserver = new IntersectionObserver(
+					(entries, observer) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('in-view');
+								observer.unobserve(entry.target);
+							}
+						});
+					},
+					{ threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+				);
+
+				targets.forEach((el) => revealObserver.observe(el));
+			});
+		</script>
 	</body>
 </html>

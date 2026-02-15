@@ -12,7 +12,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
 		<title>About Us - Renuva</title>
@@ -24,390 +24,1067 @@
 			}
 
 			:root {
-				--deep-brown: #3e2723;
-				--dark-brown: #5c4033;
-				--mid-brown: #7a5a3d;
-				--brown: #8B6F47;
-				--sand: #d4a574;
-				--cream: #f6efe8;
-				--white: #ffffff;
-				--ink: #1e1b18;
+				--very-dark-brown: #262D26;
+				--dark-brown: #5E635D;
+				--medium-brown: #8D7C6E;
+				--brown: #8D7C6E;
+				--light-brown: #ADB69F;
+				--tan: #D7C1B8;
+				--cream: #F5F4EF;
+				--white: #FFFFFF;
 			}
 
 			body {
 				font-family: "Inter", sans-serif;
-				color: var(--ink);
+				color: var(--very-dark-brown);
 				background-color: var(--white);
 			}
 
+			/* ───────── Header ───────── */
 			header {
-				background-color: var(--white);
-				padding: 1.5rem 0;
-				border-bottom: 4px solid var(--sand);
-				box-shadow: 0 2px 10px rgba(30, 27, 24, 0.08);
+				position: sticky;
+				top: 0;
+				left: 0;
+				width: 100%;
+				z-index: 1000;
+				background:
+					linear-gradient(rgba(250, 249, 246, 0.96), rgba(250, 249, 246, 0.96)),
+					url('/assets/images/pattern-design.png') center/620px repeat;
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				padding: 1.35rem 0;
+				border-bottom: none;
+				box-shadow: none;
 			}
 
 			.header-content {
-				max-width: 1200px;
-				margin: 0 auto;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				padding: 0 2rem;
-				gap: 1.5rem;
+				padding: 0 2rem 0 clamp(2.2rem, 8vw, 8rem);
 			}
 
 			.logo {
-				height: 60px;
+				height: 68px;
+				width: 230px;
+				overflow: visible;
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
 			}
 
 			.logo img {
 				height: 100%;
 				width: auto;
+				display: block;
+				transform: scale(2.15);
+				transform-origin: left center;
+			}
+
+			nav {
+				display: flex;
+				align-items: center;
+				gap: 0.25rem;
 			}
 
 			nav a {
-				margin-left: 2rem;
 				text-decoration: none;
 				color: var(--dark-brown);
-				font-family: "Inter", sans-serif;
+				font-family: "Playfair Display", serif;
 				font-weight: 500;
 				font-size: 1.05rem;
 				letter-spacing: 0.02em;
-				text-transform: none;
-				transition: color 0.3s;
+				padding: 0.5rem 1.2rem;
+				border-radius: 8px;
+				transition: color 0.3s, background 0.3s;
 			}
 
 			nav a:hover {
-				color: var(--sand);
+				color: var(--brown);
+				background: rgba(141, 124, 110, 0.07);
 			}
 
+			nav .nav-cta {
+				background: var(--brown);
+				color: var(--white);
+				padding: 0.5rem 1.4rem;
+				border-radius: 50px;
+				font-family: 'Inter', sans-serif;
+				font-weight: 600;
+				font-size: 0.78rem;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				transition: background 0.3s, transform 0.25s;
+			}
+
+			nav .nav-cta:hover {
+				background: var(--very-dark-brown);
+				transform: translateY(-1px);
+			}
+
+			/* ───────── Hero ───────── */
 			.hero {
 				position: relative;
-				color: var(--white);
-				padding: 7rem 2rem;
-				text-align: center;
+				min-height: 85vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				overflow: hidden;
+				text-align: center;
 			}
 
-			.hero::before {
-				content: "";
+			.hero-bg {
+				position: absolute;
+				inset: -50px;
+				z-index: 0;
+			}
+
+			.hero-parallax-img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				will-change: transform;
+			}
+
+			.hero-overlay {
 				position: absolute;
 				inset: 0;
-				background: url("/assets/images/Screenshot%202026-01-23%20170344.png") center/cover
-					no-repeat;
-				z-index: 0;
+				background: linear-gradient(
+					180deg,
+					rgba(38, 45, 38, 0.7) 0%,
+					rgba(38, 45, 38, 0.4) 40%,
+					rgba(38, 45, 38, 0.55) 100%
+				);
+				z-index: 1;
 			}
 
 			.hero-content {
 				position: relative;
-				z-index: 1;
-				max-width: 900px;
-				margin: 0 auto;
-				background: rgba(255, 255, 255, 0.7);
-				border: 1px solid rgba(255, 255, 255, 0.35);
-				backdrop-filter: blur(6px);
-				padding: 2.5rem 3rem;
-				border-radius: 18px;
-				color: #1e1b18;
+				z-index: 2;
+				max-width: 800px;
+				padding: 2rem;
+				color: var(--white);
 			}
 
-			.hero h1 {
-				font-family: "Inter", sans-serif;
-				font-size: 3rem;
+			.hero-eyebrow {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.8rem;
 				font-weight: 600;
-				letter-spacing: 0.01em;
-				text-transform: none;
-				margin-bottom: 1rem;
+				letter-spacing: 0.22em;
+				text-transform: uppercase;
+				color: var(--tan);
+				display: block;
+				margin-bottom: 1.2rem;
+				opacity: 0;
+				animation: fadeUp 0.8s ease forwards;
+				animation-delay: 0.3s;
 			}
 
-			.hero p {
-				font-size: 1.2rem;
-				line-height: 1.7;
-				max-width: 720px;
-				margin: 0 auto;
-			}
-
-			.section {
-				max-width: 1200px;
-				margin: 4.5rem auto;
-				padding: 0 2rem;
-			}
-
-			.section-muted {
-				background-color: #f3f3f3;
-				padding: 4.5rem 0;
-				margin: 4.5rem 0;
-			}
-
-			.section-muted .section {
-				margin: 0 auto;
-			}
-
-			.section-header {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				gap: 2rem;
-				margin-bottom: 2.5rem;
-			}
-
-			.section-header h2 {
-				font-family: "Inter", sans-serif;
-				font-size: 2.8rem;
+			.hero-title {
+				font-family: 'Playfair Display', serif;
 				font-weight: 600;
-				letter-spacing: 0.01em;
-				text-transform: none;
-				color: var(--deep-brown);
+				line-height: 1.1;
+				margin-bottom: 1.5rem;
 			}
 
-			.section-header p {
-				max-width: 520px;
-				color: var(--dark-brown);
-				line-height: 1.7;
+			.title-line {
+				display: block;
+				font-size: clamp(3rem, 8vw, 5.5rem);
+				opacity: 0;
+				transform: translateY(40px);
+				animation: titleReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 			}
 
-			.story-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-				gap: 2rem;
-				align-items: center;
+			.title-line:nth-child(1) { animation-delay: 0.5s; }
+			.title-line:nth-child(2) { animation-delay: 0.7s; }
+
+			.title-accent {
+				color: var(--tan);
+				font-style: italic;
 			}
 
-			.story-text h2 {
-				font-family: "Inter", sans-serif;
-				font-size: 3.2rem;
-				font-weight: 600;
-				color: var(--deep-brown);
-				margin-bottom: 1rem;
-				letter-spacing: 0.01em;
-				text-transform: none;
-			}
-
-			.story-text h3 {
-				font-family: "Inter", sans-serif;
-				font-size: 2rem;
-				font-weight: 600;
-				letter-spacing: 0.01em;
-				color: var(--deep-brown);
-				margin-bottom: 1rem;
-			}
-
-			.story-text p {
-				margin-bottom: 0;
-				line-height: 2.05;
-				color: var(--dark-brown);
+			.hero-description {
+				font-family: 'Inter', sans-serif;
 				font-size: 1.12rem;
+				font-weight: 300;
+				line-height: 1.75;
+				color: rgba(255, 255, 255, 0.85);
+				max-width: 600px;
+				margin: 0 auto 2.5rem;
+				opacity: 0;
+				animation: fadeUp 0.8s ease forwards;
+				animation-delay: 1s;
 			}
 
-			.story-image {
+			.hero-scroll-indicator {
+				opacity: 0;
+				animation: fadeUp 0.8s ease forwards;
+				animation-delay: 1.4s;
 				display: flex;
-				justify-content: flex-end;
-				padding-left: 6rem;
-			}
-
-			.story-image img,
-			.feature-image img {
-				width: 100%;
-				margin-left: auto;
-				max-width: 1200px;
-				aspect-ratio: 1 / 1;
-				object-fit: cover;
-				border-radius: 16px;
-				box-shadow: 0 10px 25px rgba(30, 27, 24, 0.15);
-			}
-
-			.feature-row {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-				gap: 2.5rem;
+				flex-direction: column;
 				align-items: center;
-				margin-top: 3rem;
+				gap: 0.5rem;
 			}
 
-			.feature-text h3 {
-				font-family: "Inter", sans-serif;
-				font-size: 2rem;
+			.hero-scroll-indicator span {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.75rem;
+				letter-spacing: 0.15em;
+				text-transform: uppercase;
+				color: rgba(255, 255, 255, 0.5);
+			}
+
+			.scroll-arrow {
+				width: 20px;
+				height: 20px;
+				border-right: 1.5px solid rgba(255,255,255,0.5);
+				border-bottom: 1.5px solid rgba(255,255,255,0.5);
+				transform: rotate(45deg);
+				animation: bounceArrow 2s ease-in-out infinite;
+			}
+
+			@keyframes titleReveal {
+				0% { opacity: 0; transform: translateY(40px); }
+				100% { opacity: 1; transform: translateY(0); }
+			}
+
+			@keyframes fadeUp {
+				0% { opacity: 0; transform: translateY(20px); }
+				100% { opacity: 1; transform: translateY(0); }
+			}
+
+			@keyframes bounceArrow {
+				0%, 100% { transform: rotate(45deg) translateY(0); }
+				50% { transform: rotate(45deg) translateY(6px); }
+			}
+
+			/* ───────── Scroll Reveal ───────── */
+			.scroll-reveal {
+				opacity: 0;
+				transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+				will-change: opacity, transform;
+			}
+
+			.scroll-reveal[data-direction="left"] {
+				transform: translateX(-40px);
+			}
+
+			.scroll-reveal[data-direction="right"] {
+				transform: translateX(40px);
+			}
+
+			.scroll-reveal[data-direction="up"] {
+				transform: translateY(40px);
+			}
+
+			.scroll-reveal.revealed {
+				opacity: 1;
+				transform: translate(0, 0);
+			}
+
+			/* ───────── Our Story ───────── */
+			.story-section {
+				padding: 6rem 2rem;
+				background: var(--white);
+				overflow: hidden;
+			}
+
+			.story-container {
+				max-width: 1100px;
+				margin: 0 auto;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 4rem;
+				align-items: center;
+			}
+
+			.section-eyebrow {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.78rem;
 				font-weight: 600;
-				letter-spacing: 0.01em;
-				color: var(--deep-brown);
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				color: var(--light-brown);
+				display: block;
+				margin-bottom: 1rem;
+			}
+
+			.accent-line {
+				width: 50px;
+				height: 2px;
+				background: var(--brown);
+				margin-bottom: 1.2rem;
+				transition: width 0.6s ease;
+			}
+
+			.scroll-reveal.revealed .accent-line {
+				width: 80px;
+			}
+
+			.section-title {
+				font-family: 'Playfair Display', serif;
+				font-size: clamp(2.2rem, 4vw, 3rem);
+				font-weight: 600;
+				color: var(--very-dark-brown);
+				margin-bottom: 1.2rem;
+				line-height: 1.15;
+			}
+
+			.story-paragraph {
+				font-family: 'Inter', sans-serif;
+				font-size: 1.05rem;
+				font-weight: 300;
+				line-height: 1.85;
+				color: var(--dark-brown);
+			}
+
+			.story-image-wrapper {
+				position: relative;
+			}
+
+			.story-image-frame {
+				border-radius: 18px;
+				overflow: hidden;
+				box-shadow: 0 14px 40px rgba(38, 45, 38, 0.12);
+			}
+
+			.story-img {
+				width: 100%;
+				aspect-ratio: 4 / 5;
+				object-fit: cover;
+				display: block;
+				transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+			}
+
+			.story-img:hover {
+				transform: scale(1.04);
+			}
+
+			.story-image-accent {
+				position: absolute;
+				top: -15px;
+				right: -15px;
+				width: 100%;
+				height: 100%;
+				border: 2px solid var(--tan);
+				border-radius: 18px;
+				z-index: -1;
+				opacity: 0.5;
+			}
+
+			/* ───────── Values / Mission & Vision ───────── */
+			.values-section {
+				background:
+					linear-gradient(rgba(245, 244, 239, 0.96), rgba(245, 244, 239, 0.96)),
+					url('/assets/images/pattern-design.png') center/620px repeat;
+				padding: 6rem 2rem;
+			}
+
+			.values-container {
+				max-width: 1100px;
+				margin: 0 auto;
+			}
+
+			.values-header {
+				text-align: center;
+				margin-bottom: 4.5rem;
+			}
+
+			.values-header .section-eyebrow {
 				margin-bottom: 0.8rem;
 			}
 
-			.feature-text p {
+			.section-subtitle {
+				font-family: 'Inter', sans-serif;
+				font-size: 1.05rem;
+				font-weight: 300;
 				color: var(--dark-brown);
-				line-height: 1.7;
+				margin-top: 0.8rem;
+				line-height: 1.6;
 			}
 
-			.sustain-grid {
+			/* Alternating editorial rows */
+			.value-row {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-				gap: 2rem;
+				grid-template-columns: 1fr 1fr;
+				gap: 3.5rem;
+				align-items: center;
+				margin-bottom: 5rem;
+				position: relative;
 			}
 
-			.sustain-card {
+			.value-row:last-child {
+				margin-bottom: 0;
+			}
+
+			.value-row.reversed .value-row-image {
+				order: 2;
+			}
+			.value-row.reversed .value-row-text {
+				order: 1;
+			}
+
+			.value-row-image {
+				position: relative;
 				border-radius: 18px;
 				overflow: hidden;
-				border: 1px solid #eadfd5;
-				background-color: var(--white);
-				box-shadow: 0 10px 25px rgba(30, 27, 24, 0.08);
+				box-shadow: 0 14px 40px rgba(38, 45, 38, 0.1);
 			}
 
-			.sustain-card img {
+			.value-row-image img {
 				width: 100%;
-				height: 240px;
+				aspect-ratio: 4 / 3;
 				object-fit: cover;
+				display: block;
+				transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 			}
 
-			.sustain-card-content {
-				padding: 1.5rem;
+			.value-row-image:hover img {
+				transform: scale(1.04);
 			}
 
-			.sustain-card-content h3 {
-				font-family: "Inter", sans-serif;
+			.value-row-text {
+				position: relative;
+				padding: 1rem 0;
+			}
+
+			.value-number {
+				font-family: 'Playfair Display', serif;
+				font-size: clamp(6rem, 10vw, 9rem);
+				font-weight: 700;
+				color: var(--tan);
+				opacity: 0.18;
+				line-height: 1;
+				position: absolute;
+				top: -2rem;
+				left: -0.5rem;
+				pointer-events: none;
+				user-select: none;
+			}
+
+			.value-row.reversed .value-number {
+				left: auto;
+				right: -0.5rem;
+			}
+
+			.value-row-text h3 {
+				font-family: 'Playfair Display', serif;
+				font-size: clamp(1.6rem, 3vw, 2.2rem);
 				font-weight: 600;
-				letter-spacing: 0.01em;
-				margin-bottom: 0.7rem;
-				color: var(--deep-brown);
+				color: var(--very-dark-brown);
+				margin-bottom: 1rem;
+				position: relative;
 			}
 
-			footer {
-				background-color: #8b6f47;
-				color: var(--white);
+			.value-row-text h3::after {
+				content: '';
+				display: block;
+				width: 50px;
+				height: 2px;
+				background: var(--brown);
+				margin-top: 0.8rem;
+				transition: width 0.6s ease;
+			}
+
+			.scroll-reveal.revealed .value-row-text h3::after {
+				width: 80px;
+			}
+
+			.value-row-text p {
+				font-family: 'Inter', sans-serif;
+				font-size: 1.05rem;
+				font-weight: 300;
+				color: var(--dark-brown);
+				line-height: 1.85;
+				position: relative;
+			}
+
+			/* ───────── Parallax Divider ───────── */
+			.parallax-divider {
+				position: relative;
+				min-height: 400px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: hidden;
+			}
+
+			.parallax-divider-bg {
+				position: absolute;
+				inset: -80px;
+				z-index: 0;
+			}
+
+			.parallax-divider-img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				will-change: transform;
+			}
+
+			.parallax-divider-overlay {
+				position: absolute;
+				inset: 0;
+				background: rgba(38, 45, 38, 0.65);
+				z-index: 1;
+			}
+
+			.parallax-divider-content {
+				position: relative;
+				z-index: 2;
 				text-align: center;
-				padding: 2rem;
-				margin-top: 4rem;
+				padding: 3rem 2rem;
 			}
 
-			.footer-links {
-				margin-top: 1rem;
+			.quote-mark {
+				font-family: 'Playfair Display', serif;
+				font-size: 4rem;
+				color: var(--tan);
+				line-height: 1;
+				margin-bottom: 0.5rem;
 			}
 
-			.footer-links a {
+			blockquote {
+				font-family: 'Playfair Display', serif;
+				font-size: clamp(1.8rem, 4vw, 2.8rem);
+				font-weight: 500;
+				font-style: italic;
 				color: var(--white);
+				max-width: 700px;
+				margin: 0 auto 1rem;
+				line-height: 1.3;
+			}
+
+			.quote-attribution {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.85rem;
+				font-weight: 400;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: rgba(255, 255, 255, 0.6);
+			}
+
+			/* ───────── Philosophy ───────── */
+			.philosophy-section {
+				background:
+					linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)),
+					url('/assets/images/pattern-design.png') center/560px repeat;
+				padding: 6rem 2rem;
+			}
+
+			.philosophy-container {
+				max-width: 800px;
+				margin: 0 auto;
+				text-align: center;
+			}
+
+			.philosophy-title {
+				font-family: 'Playfair Display', serif;
+				font-size: clamp(2rem, 4vw, 2.8rem);
+				font-weight: 600;
+				color: var(--very-dark-brown);
+				margin-bottom: 1.5rem;
+				line-height: 1.2;
+			}
+
+			.animated-underline {
+				position: relative;
+				display: inline-block;
+			}
+
+			.animated-underline::after {
+				content: '';
+				position: absolute;
+				bottom: -4px;
+				left: 0;
+				width: 0;
+				height: 2px;
+				background: var(--brown);
+				transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+			}
+
+			.scroll-reveal.revealed .animated-underline::after {
+				width: 100%;
+			}
+
+			.philosophy-divider {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 2rem;
+			}
+
+			.divider-diamond {
+				width: 8px;
+				height: 8px;
+				background: var(--tan);
+				transform: rotate(45deg);
+				display: block;
+			}
+
+			.philosophy-columns {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 3rem;
+				text-align: left;
+				margin-bottom: 2.5rem;
+				position: relative;
+			}
+
+			.philosophy-columns::before {
+				content: '';
+				position: absolute;
+				left: 50%;
+				top: 10%;
+				bottom: 10%;
+				width: 1px;
+				background: linear-gradient(
+					to bottom,
+					transparent,
+					var(--tan),
+					transparent
+				);
+			}
+
+			.philosophy-columns p {
+				font-family: 'Inter', sans-serif;
+				font-size: 1.05rem;
+				font-weight: 300;
+				line-height: 1.85;
+				color: var(--dark-brown);
+			}
+
+			.btn-primary {
+				display: inline-block;
+				background: var(--brown);
+				color: var(--white);
+				padding: 0.8rem 2rem;
+				border-radius: 50px;
 				text-decoration: none;
-				margin: 0 1rem;
+				font-family: 'Inter', sans-serif;
+				font-weight: 600;
+				font-size: 0.85rem;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				transition: background 0.3s, transform 0.25s, box-shadow 0.3s;
+			}
+
+			.btn-primary:hover {
+				background: var(--very-dark-brown);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 18px rgba(38, 45, 38, 0.2);
+			}
+
+			/* ───────── Footer ───────── */
+			footer {
+				background:
+					linear-gradient(rgba(38, 45, 38, 0.94), rgba(38, 45, 38, 0.94)),
+					url('/assets/images/pattern-design.png') center/560px repeat;
+				color: var(--white);
+				padding: 3rem 2rem 2rem;
+				position: relative;
+				overflow: hidden;
+			}
+
+			footer::before {
+				content: '';
+				position: absolute;
+				top: -120px;
+				right: -120px;
+				width: 280px;
+				height: 280px;
+				background: radial-gradient(circle, rgba(215, 193, 184, 0.2), transparent 70%);
+				pointer-events: none;
+			}
+
+			.footer-shell {
+				max-width: 1100px;
+				margin: 0 auto;
+				position: relative;
+				z-index: 1;
+			}
+
+			.footer-top {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				gap: 0.8rem;
+				padding-bottom: 1.2rem;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+			}
+
+			.footer-brand {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 1rem;
+				flex-wrap: wrap;
+			}
+
+			.footer-logo {
+				height: 44px;
+				width: auto;
+				display: block;
+			}
+
+			.footer-tagline {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.9rem;
+				font-weight: 300;
+				color: rgba(255, 255, 255, 0.78);
+			}
+
+			.footer-bottom {
+				margin-top: 1rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 0.9rem;
+				text-align: center;
+			}
+
+			.footer-nav {
+				display: flex;
+				gap: 1.2rem;
+				flex-wrap: wrap;
+			}
+
+			.footer-nav a {
+				color: rgba(255, 255, 255, 0.75);
+				text-decoration: none;
+				font-family: 'Inter', sans-serif;
+				font-size: 0.84rem;
+				font-weight: 400;
 				transition: color 0.3s;
 			}
 
-			.footer-links a:hover {
-				color: var(--white);
+			.footer-nav a:hover { color: var(--white); }
+
+			.footer-copy {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.78rem;
+				color: rgba(255, 255, 255, 0.45);
 			}
 
-			@media (max-width: 860px) {
-				.header-content {
-					flex-direction: column;
-				}
-
-				nav a {
-					margin-left: 1rem;
-				}
-
-				.hero {
+			@media (max-width: 768px) {
+				.footer-top {
+					grid-template-columns: 1fr;
 					text-align: center;
 				}
 
-				.section-header {
-					flex-direction: column;
-					align-items: flex-start;
+				.footer-brand {
+					justify-content: center;
+				}
+
+				.footer-bottom {
+					justify-content: center;
+					text-align: center;
 				}
 			}
 
-			@media (max-width: 600px) {
-				.hero h1 {
-					font-size: 2.4rem;
+			/* ───────── Responsive ───────── */
+			@media (max-width: 1024px) {
+				.story-container {
+					grid-template-columns: 1fr;
+					gap: 2.5rem;
 				}
+				.story-image-accent { display: none; }
+				.story-img { aspect-ratio: 3/2; }
+				.value-row {
+					gap: 2.5rem;
+				}
+				.value-row { margin-bottom: 4rem; }
+				.value-number { font-size: 6rem; }
+			}
+
+			@media (max-width: 768px) {
+				header { padding: 0.75rem 0; }
+				.header-content {
+					flex-direction: column;
+					gap: 0.7rem;
+					padding: 0 1.5rem;
+				}
+				.logo {
+					height: 68px;
+					width: 230px;
+					overflow: visible;
+					display: flex;
+					align-items: center;
+				}
+				nav a { font-size: 0.92rem; padding: 0.4rem 0.9rem; }
+
+				.hero { min-height: 60vh; }
+				.title-line { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+				.hero-description { font-size: 1rem; }
+				.hero-scroll-indicator { display: none; }
+
+				.story-section { padding: 4rem 1.5rem; }
+				.story-container { grid-template-columns: 1fr; gap: 2rem; }
+				.story-image-accent { display: none; }
+				.section-title { font-size: 2.2rem; }
+
+				.values-section { padding: 4rem 1.5rem; }
+				.value-row {
+					grid-template-columns: 1fr;
+					gap: 2rem;
+					margin-bottom: 3.5rem;
+				}
+				.value-row.reversed .value-row-image { order: 0; }
+				.value-row.reversed .value-row-text { order: 0; }
+				.value-row-image img { aspect-ratio: 3/2; }
+				.value-number { font-size: 5rem; top: -1.2rem; }
+				.value-row.reversed .value-number { left: -0.5rem; right: auto; }
+
+				.parallax-divider { min-height: 300px; }
+				blockquote { font-size: 1.5rem; }
+
+				.philosophy-section { padding: 4rem 1.5rem; }
+				.philosophy-columns {
+					grid-template-columns: 1fr;
+					gap: 1.5rem;
+					text-align: center;
+				}
+				.philosophy-columns::before { display: none; }
+			}
+
+			@media (max-width: 480px) {
+				.hero { min-height: 55vh; }
+				.hero-eyebrow { font-size: 0.72rem; }
+				.title-line { font-size: 2.2rem; }
+				.section-title { font-size: 1.9rem; }
+				.philosophy-title { font-size: 1.8rem; }
+				blockquote { font-size: 1.3rem; }
 			}
 		</style>
 	</head>
 	<body>
+		<!-- Header -->
 		<header>
 			<div class="header-content">
 				<a href="/" style="text-decoration: none;">
 					<div class="logo">
-						<img src="/assets/images/Renuva.png" alt="Renuva">
+						<img src="/assets/images/LOGO_Colorful_Colorful_Colorful_Colorful_A.png" alt="Renuva">
 					</div>
 				</a>
 				<nav>
 					<a href="/about">About Us</a>
 					<a href="/distributor">Distributor</a>
-					<a href="/contact">Contact Us</a>
+					<a href="/contact" class="nav-cta">Contact Us</a>
 				</nav>
 			</div>
 		</header>
 
+		<!-- Hero -->
 		<section class="hero">
+			<div class="hero-bg">
+				<img src="/assets/images/watterfall-kitchen-island-2500x1632-1-1536x1003.jpg"
+					 alt="Premium architectural surface" class="hero-parallax-img" />
+			</div>
+			<div class="hero-overlay"></div>
 			<div class="hero-content">
-				<h1>About Us</h1>
-				<p>
-					Renuva wraps give kitchens a premium new look without the downtime of a full remodel.
-					We combine craftsmanship, durable materials, and clean installation so homeowners can
-					refresh their space fast.
+				<span class="hero-eyebrow">Our Story</span>
+				<h1 class="hero-title">
+					<span class="title-line">About</span>
+					<span class="title-line title-accent">RENUVA</span>
+				</h1>
+				<p class="hero-description">
+					RENUVA was created with the belief that renewal should feel effortless,
+					thoughtful, and beautifully refined. By transforming existing surfaces with
+					premium architectural vinyl, we offer a smarter alternative to traditional renovation:
+					one that minimizes disruption while maximizing design impact.
 				</p>
+				<div class="hero-scroll-indicator">
+					<span>Scroll to explore</span>
+					<div class="scroll-arrow"></div>
+				</div>
 			</div>
 		</section>
 
-		<section class="section">
-			<div class="story-grid">
-				<div class="story-text">
-					<h2>"Our Story"</h2>
-					<p>
-						Renuva makes premium kitchen transformations attainable, bringing refined finishes
-						and durable wraps to everyday homes without the time or cost of full remodels. We
-						focus on clean lines, careful detailing, and materials that feel elevated the moment
-						you walk in, so your space looks custom without the long construction timeline. Our
-						team works quickly, keeps disruption low, and delivers a finished look that feels
-						bespoke and built to last.
+		<!-- Our Story -->
+		<section class="story-section">
+			<div class="story-container">
+				<div class="story-text scroll-reveal" data-direction="left">
+					<span class="section-eyebrow">Our Story</span>
+					<div class="accent-line"></div>
+					<h2 class="section-title">Intelligent<br>Renewal</h2>
+					<p class="story-paragraph">
+						RENUVA is a premium architectural vinyl brand dedicated to transforming
+						spaces through intelligent renewal. Our high-quality films are designed to
+						be applied directly over existing surfaces, offering a refined alternative
+						to traditional renovations, reducing downtime, eliminating unnecessary
+						build-outs, and delivering beautiful results with ease.
 					</p>
 				</div>
-				<div class="story-image">
-					<img
-						src="/assets/images/Wrapping%20mats.png"
-						alt="Wrapping mats used for surface transformations"
-					/>
+				<div class="story-image-wrapper scroll-reveal" data-direction="right">
+					<div class="story-image-frame">
+						<img src="/assets/images/Wrapping%20mats.png"
+							 alt="Architectural vinyl material samples"
+							 class="story-img" />
+					</div>
+					<div class="story-image-accent"></div>
 				</div>
 			</div>
 		</section>
 
-		<section class="section-muted">
-			<div class="section">
-				<div class="section-header">
-					<h2>Sustainability at the core</h2>
+		<!-- Mission & Vision -->
+		<section class="values-section">
+			<div class="values-container">
+				<div class="values-header scroll-reveal" data-direction="up">
+					<span class="section-eyebrow">What We Stand For</span>
+					<h2 class="section-title">Mission & Vision</h2>
+					<p class="section-subtitle">The principles that guide every surface we transform</p>
 				</div>
-				<div class="sustain-grid">
-				<div class="sustain-card">
-					<img src="/assets/images/Beigetheme.png" alt="Beige themed wrap finish" />
-					<div class="sustain-card-content">
-						<h3>Eco-minded materials</h3>
-						<p>Designed to minimize waste and extend the life of existing surfaces.</p>
+
+				<!-- Row 1: Image left, text right -->
+				<div class="value-row scroll-reveal" data-direction="up">
+					<div class="value-row-image">
+						<img src="/assets/images/Beigetheme.png" alt="Beige themed wrap finish" />
+					</div>
+					<div class="value-row-text">
+						<span class="value-number">01</span>
+						<h3>Our Mission</h3>
+						<p>At RENUVA, our mission is to redefine the way spaces are renewed by offering a smarter, more refined alternative to traditional renovation. Through premium architectural vinyl solutions, we aim to transform existing surfaces with minimal disruption while maintaining the highest standards of quality and design.</p>
 					</div>
 				</div>
-				<div class="sustain-card">
-					<img src="/assets/images/Browntheme.png" alt="Brown themed wrap finish" />
-					<div class="sustain-card-content">
-						<h3>Home-friendly installation</h3>
-						<p>Clean, quiet installs that fit around your daily routine.</p>
+
+				<!-- Row 2: Text left, image right -->
+				<div class="value-row reversed scroll-reveal" data-direction="up" style="transition-delay: 150ms;">
+					<div class="value-row-image">
+						<img src="/assets/images/Browntheme.png" alt="Brown themed wrap finish" />
+					</div>
+					<div class="value-row-text">
+						<span class="value-number">02</span>
+						<h3>Our Vision</h3>
+						<p>RENUVA envisions a future where renewal is intentional, sustainable, and beautifully uncomplicated. We strive to become a trusted name in architectural surfaces by redefining transformation as a calm, efficient, and design-driven process that enhances spaces without unnecessary disruption.</p>
 					</div>
 				</div>
-				<div class="sustain-card">
-					<img src="/assets/images/Greytheme.png" alt="Grey themed wrap finish" />
-					<div class="sustain-card-content">
-						<h3>Built for longevity</h3>
-						<p>Durable finishes that keep homes looking fresh for years.</p>
-						</div>
+
+				<!-- Row 3: Image left, text right -->
+				<div class="value-row scroll-reveal" data-direction="up" style="transition-delay: 300ms;">
+					<div class="value-row-image">
+						<img src="/assets/images/Greytheme.png" alt="Grey themed wrap finish" />
+					</div>
+					<div class="value-row-text">
+						<span class="value-number">03</span>
+						<h3>What Guides Us</h3>
+						<p>We are committed to creating products that balance innovation with elegance, delivering renewal that feels effortless, thoughtful, and enduring. Every solution we offer is designed to elevate spaces while respecting time, materials, and the people who experience them.</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
+		<!-- Parallax Quote Divider -->
+		<section class="parallax-divider">
+			<div class="parallax-divider-bg">
+				<img src="/assets/images/Screenshot%202026-01-23%20170344.png"
+					 alt="Beautiful bathroom transformation"
+					 class="parallax-divider-img" />
+			</div>
+			<div class="parallax-divider-overlay"></div>
+			<div class="parallax-divider-content scroll-reveal" data-direction="up">
+				<div class="quote-mark">&ldquo;</div>
+				<blockquote>
+					A smarter way to renew.
+				</blockquote>
+				<span class="quote-attribution">&mdash; The RENUVA Philosophy</span>
+			</div>
+		</section>
+
+		<!-- Philosophy -->
+		<section class="philosophy-section">
+			<div class="philosophy-container scroll-reveal" data-direction="up">
+				<span class="section-eyebrow">Our Philosophy</span>
+				<h2 class="philosophy-title">
+					Welcome To
+					<span class="animated-underline">RENUVA</span>
+				</h2>
+				<div class="philosophy-divider">
+					<span class="divider-diamond"></span>
+				</div>
+				<div class="philosophy-columns">
+					<p>
+						Our vision is to lead with quality, innovation, and thoughtful aesthetics,
+						inspiring a new standard of renewal that values longevity, softness, and
+						intelligent design.
+					</p>
+					<p>
+						Through RENUVA, we aim to shape environments that feel modern, refined,
+						and quietly luxurious.
+					</p>
+				</div>
+				<a href="/contact" class="btn-primary">Get In Touch</a>
+			</div>
+		</section>
+
+		<!-- Footer -->
 		<footer>
-			<p>&copy; 2026 Renuva Kitchen Wrapping. All rights reserved.</p>
-			<p>Transform your kitchen, renew your space.</p>
-			<div class="footer-links">
-				<a href="/contact">Contact Us</a>
-				<a href="/about">About</a>
-				<a href="/">Home</a>
+			<div class="footer-shell">
+				<div class="footer-top">
+					<div class="footer-brand">
+						<img class="footer-logo" src="/assets/images/LOGO_Colorful_Colorful_Colorful_White.png" alt="Renuva logo" />
+						<p class="footer-tagline">Transform existing surfaces. Renew beautifully.</p>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<nav class="footer-nav">
+						<a href="/">Home</a>
+						<a href="/about">About Us</a>
+						<a href="/distributor">Distributor</a>
+						<a href="/contact">Contact</a>
+					</nav>
+					<p class="footer-copy">&copy; 2026 Renuva Architectural Surfaces. All rights reserved.</p>
+				</div>
 			</div>
 		</footer>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+				// ── 1. Scroll-triggered reveal animations ──
+				const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+
+				if (prefersReducedMotion) {
+					scrollRevealElements.forEach(el => el.classList.add('revealed'));
+				} else {
+					const revealObserver = new IntersectionObserver((entries) => {
+						entries.forEach(entry => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('revealed');
+								revealObserver.unobserve(entry.target);
+							}
+						});
+					}, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+					scrollRevealElements.forEach(el => revealObserver.observe(el));
+				}
+
+				// ── 2. Parallax scrolling ──
+				if (!prefersReducedMotion) {
+					const heroImg = document.querySelector('.hero-parallax-img');
+					const dividerImg = document.querySelector('.parallax-divider-img');
+
+					function handleParallax() {
+						const scrollY = window.pageYOffset;
+
+						if (heroImg) {
+							const rate = scrollY * 0.35;
+							heroImg.style.transform = `translate3d(0, ${rate}px, 0)`;
+						}
+
+						if (dividerImg) {
+							const dividerSection = dividerImg.closest('.parallax-divider');
+							const rect = dividerSection.getBoundingClientRect();
+							const offset = rect.top * -0.25;
+							dividerImg.style.transform = `translate3d(0, ${offset}px, 0)`;
+						}
+					}
+
+					window.addEventListener('scroll', handleParallax, { passive: true });
+				}
+			});
+		</script>
 	</body>
 </html>
