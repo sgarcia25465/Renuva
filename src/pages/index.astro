@@ -815,9 +815,12 @@
 			}
 
 			@media (max-width: 768px) {
-				body { padding-top: 380px !important; }
+				body { padding-top: 0 !important; }
 
-				header { padding: 0.75rem 0; }
+				header {
+					position: sticky !important;
+					padding: 0.75rem 0;
+				}
 
 				.header-content {
 					flex-direction: column;
@@ -866,7 +869,7 @@
 					align-items: center;
 				}
 
-				.hero { padding: 2.8rem 1.25rem 2rem; margin-top: 0 !important; }
+				.hero { padding: 1.2rem 1.25rem 2rem; margin-top: 0 !important; }
 				.hero-shell {
 					grid-template-columns: 1fr;
 					gap: 1rem;
