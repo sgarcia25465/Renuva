@@ -53,9 +53,7 @@
 				left: 0;
 				width: 100%;
 				z-index: 1000;
-				background:
-					linear-gradient(rgba(250, 249, 246, 0.96), rgba(250, 249, 246, 0.96)),
-					url('/assets/images/pattern-design.png') center/620px repeat;
+				background: rgba(250, 249, 246, 0.96);
 				backdrop-filter: blur(10px);
 				-webkit-backdrop-filter: blur(10px);
 				padding: 1.35rem 0;
@@ -285,16 +283,16 @@
 
 			.story-grid {
 				display: grid;
-				grid-template-columns: 1.05fr 0.95fr;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
 				gap: 2rem;
-				align-items: center;
+				align-items: start;
 			}
 
 			.story-cards {
 				display: grid;
 				grid-template-columns: repeat(2, minmax(0, 1fr));
 				gap: 0.9rem;
-				margin-top: 1.6rem;
+				margin-top: 0;
 			}
 
 			.story-card {
@@ -318,29 +316,6 @@
 				font-weight: 300;
 				line-height: 1.6;
 				color: var(--dark-brown);
-			}
-
-			.story-media {
-				position: relative;
-				border-radius: 20px;
-				overflow: hidden;
-				box-shadow: 0 20px 46px rgba(38, 45, 38, 0.15);
-				max-width: 430px;
-				justify-self: center;
-				background: var(--white);
-			}
-
-			.story-media img {
-				width: 100%;
-				height: 100%;
-				display: block;
-				object-fit: contain;
-				aspect-ratio: 3/5;
-				transition: transform 0.7s ease;
-			}
-
-			.story-media:hover img {
-				transform: scale(1.04);
 			}
 
 			.stats-bar {
@@ -381,17 +356,12 @@
 					url('/assets/images/pattern-design.png') center/560px repeat;
 			}
 
-			.vinyl-grid {
-				display: grid;
-				grid-template-columns: 1.05fr 0.95fr;
-				gap: 1rem;
-				margin-top: 1.8rem;
-			}
-
 			.vinyl-stack {
 				display: grid;
 				grid-template-columns: repeat(2, minmax(0, 1fr));
 				gap: 1rem;
+				max-width: 980px;
+				margin: 1.8rem auto 0;
 			}
 
 			.vinyl-card {
@@ -444,70 +414,6 @@
 				color: var(--dark-brown);
 			}
 
-			.vinyl-detail {
-				border-radius: 16px;
-				background: rgba(255, 255, 255, 0.88);
-				border: 1px solid rgba(173, 182, 159, 0.35);
-				padding: 1.25rem;
-				box-shadow: 0 12px 30px rgba(38, 45, 38, 0.08);
-			}
-
-			.vinyl-detail h3 {
-				font-size: 1.8rem;
-				color: var(--very-dark-brown);
-				margin-bottom: 0.55rem;
-			}
-
-			.vinyl-detail p {
-				font-family: 'Inter', sans-serif;
-				font-size: 0.92rem;
-				line-height: 1.66;
-				color: var(--dark-brown);
-			}
-
-			.vinyl-chip-row {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 0.6rem;
-				margin-top: 1rem;
-			}
-
-			.vinyl-chip {
-				font-family: 'Inter', sans-serif;
-				font-size: 0.74rem;
-				font-weight: 600;
-				letter-spacing: 0.07em;
-				text-transform: uppercase;
-				border-radius: 999px;
-				padding: 0.45rem 0.75rem;
-				background: rgba(141, 124, 110, 0.12);
-				color: var(--brown);
-				border: 1px solid rgba(141, 124, 110, 0.24);
-			}
-
-			.split-cta {
-				margin-top: 1.2rem;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				gap: 1rem;
-				padding: 1.1rem;
-				border-radius: 14px;
-				background: rgba(255, 255, 255, 0.88);
-				border: 1px solid rgba(173, 182, 159, 0.35);
-			}
-
-			.split-cta p {
-				font-family: 'Inter', sans-serif;
-				font-size: 0.92rem;
-				line-height: 1.6;
-				color: var(--dark-brown);
-			}
-
-			.split-cta a {
-				flex-shrink: 0;
-			}
-
 			.apps-grid {
 				display: grid;
 				grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -551,52 +457,6 @@
 				font-size: 0.88rem;
 				font-weight: 300;
 				line-height: 1.6;
-				color: var(--dark-brown);
-			}
-
-			.process {
-				background: var(--very-light-brown);
-			}
-
-			.process-grid {
-				display: grid;
-				grid-template-columns: repeat(4, minmax(0, 1fr));
-				gap: 1rem;
-				margin-top: 1.5rem;
-			}
-
-			.process-card {
-				padding: 1.1rem;
-				border-radius: 14px;
-				background: var(--white);
-				border: 1px solid rgba(173, 182, 159, 0.3);
-			}
-
-			.process-num {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				width: 34px;
-				height: 34px;
-				border-radius: 50%;
-				background: var(--brown);
-				color: var(--white);
-				font-family: 'Inter', sans-serif;
-				font-size: 0.85rem;
-				font-weight: 700;
-				margin-bottom: 0.6rem;
-			}
-
-			.process-card h3 {
-				font-size: 1.25rem;
-				margin-bottom: 0.4rem;
-				color: var(--very-dark-brown);
-			}
-
-			.process-card p {
-				font-family: 'Inter', sans-serif;
-				font-size: 0.88rem;
-				line-height: 1.58;
 				color: var(--dark-brown);
 			}
 
@@ -673,9 +533,7 @@
 			}
 
 			footer {
-				background:
-					linear-gradient(rgba(38, 45, 38, 0.94), rgba(38, 45, 38, 0.94)),
-					url('/assets/images/pattern-design.png') center/560px repeat;
+				background: linear-gradient(rgba(38, 45, 38, 0.94), rgba(38, 45, 38, 0.94));
 				color: var(--white);
 				padding: 3rem 2rem 2rem;
 				position: relative;
@@ -797,15 +655,10 @@
 				.apps-grid {
 					grid-template-columns: repeat(2, minmax(0, 1fr));
 				}
-
-				.process-grid {
-					grid-template-columns: repeat(2, minmax(0, 1fr));
-				}
 			}
 
 			@media (max-width: 900px) {
-				.story-grid,
-				.vinyl-grid {
+				.story-grid {
 					grid-template-columns: 1fr;
 				}
 
@@ -903,8 +756,7 @@
 				}
 
 				.story-cards,
-				.apps-grid,
-				.process-grid {
+				.apps-grid {
 					grid-template-columns: 1fr;
 				}
 
@@ -912,10 +764,6 @@
 					grid-template-columns: repeat(2, 1fr);
 				}
 
-				.split-cta {
-					flex-direction: column;
-					align-items: flex-start;
-				}
 			}
 
 			@media (max-width: 480px) {
@@ -955,7 +803,7 @@
 					<h1>A smarter way to renew.</h1>
 					<p>Luxurious architectural vinyl for effortless surface renewal, crafted to create calm, refined spaces without the disruption of traditional renovation.</p>
 					<div class="hero-buttons">
-						<a href="/contact" class="btn-primary">Contact Us</a>
+						<a href="/distributor" class="btn-primary">Distributor</a>
 					</div>
 				</div>
 				<div class="hero-media">
@@ -995,27 +843,24 @@
 						<p class="section-copy">
 							Renuva helps teams renew existing spaces without full demolition. Our architectural film system is designed for premium visual outcomes, faster timelines, and cleaner project execution.
 						</p>
-						<div class="story-cards">
-							<article class="story-card reveal" style="transition-delay: 70ms;">
-								<h3>Faster Turnarounds</h3>
-								<p>Renew key surfaces in days, not weeks, while reducing project interruption.</p>
-							</article>
-							<article class="story-card reveal" style="transition-delay: 120ms;">
-								<h3>Refined Finishes</h3>
-								<p>Curated textures and tones built for calm, elevated architectural spaces.</p>
-							</article>
-							<article class="story-card reveal" style="transition-delay: 170ms;">
-								<h3>Lower Waste</h3>
-								<p>Wrap over existing substrates to avoid unnecessary tear-out and disposal.</p>
-							</article>
-							<article class="story-card reveal" style="transition-delay: 220ms;">
-								<h3>System Consistency</h3>
-								<p>Structured standards from product through installation for dependable outcomes.</p>
-							</article>
-						</div>
 					</div>
-					<div class="story-media reveal" style="transition-delay: 100ms;">
-						<img src="/assets/images/verticalwords.png" alt="Renuva branded vertical wordmark">
+					<div class="story-cards">
+						<article class="story-card reveal" style="transition-delay: 70ms;">
+							<h3>Faster Turnarounds</h3>
+							<p>Renew key surfaces in days, not weeks, while reducing project interruption.</p>
+						</article>
+						<article class="story-card reveal" style="transition-delay: 120ms;">
+							<h3>Refined Finishes</h3>
+							<p>Curated textures and tones built for calm, elevated architectural spaces.</p>
+						</article>
+						<article class="story-card reveal" style="transition-delay: 170ms;">
+							<h3>Lower Waste</h3>
+							<p>Wrap over existing substrates to avoid unnecessary tear-out and disposal.</p>
+						</article>
+						<article class="story-card reveal" style="transition-delay: 220ms;">
+							<h3>System Consistency</h3>
+							<p>Structured standards from product through installation for dependable outcomes.</p>
+						</article>
 					</div>
 				</div>
 			</section>
@@ -1029,55 +874,35 @@
 							From warm wood grains to stone-inspired textures and modern solids, Renuva offers a curated range of architectural films to match different design directions and project goals.
 						</p>
 					</div>
-					<div class="vinyl-grid">
-						<div class="vinyl-stack">
-							<article class="vinyl-card reveal" style="transition-delay: 80ms;">
-								<img src="/assets/images/wood.png" alt="Renuva wood grain vinyl finish">
-								<div class="vinyl-body">
-									<h3>Wood Grain</h3>
-									<p>Natural-inspired tones for warm, residential and hospitality aesthetics.</p>
-								</div>
-							</article>
-							<article class="vinyl-card reveal" style="transition-delay: 140ms;">
-								<img src="/assets/images/stone.png" alt="Renuva stone and mineral vinyl finish">
-								<div class="vinyl-body">
-									<h3>Stone + Mineral</h3>
-									<p>Soft mineral visuals that create clean, modern, and elegant surfaces.</p>
-								</div>
-							</article>
-							<article class="vinyl-card reveal" style="transition-delay: 200ms;">
-								<img src="/assets/images/dark.png" alt="Renuva dark solid and textile vinyl finish">
-								<div class="vinyl-body">
-									<h3>Solid + Textile</h3>
-									<p>Contemporary greys and subtle textures for commercial and office projects.</p>
-								</div>
-							</article>
-							<article class="vinyl-card reveal" style="transition-delay: 260ms;">
-								<img src="/assets/images/metallic.png" alt="Renuva metallic and brushed vinyl finish">
-								<div class="vinyl-body">
-									<h3>Metallic + Brushed</h3>
-									<p>A common wrap category for modern accents, fixtures, and premium statement surfaces.</p>
-								</div>
-							</article>
-						</div>
-						<div class="vinyl-detail reveal" style="transition-delay: 230ms;">
-							<h3>50+ design options available</h3>
-							<p>
-								Choose from tonal neutrals, deep woods, soft concrete looks, and specialty textures developed for high-touch architectural surfaces.
-							</p>
-							<div class="vinyl-chip-row">
-								<span class="vinyl-chip">Matte</span>
-								<span class="vinyl-chip">Wood Grain</span>
-								<span class="vinyl-chip">Stone Look</span>
-								<span class="vinyl-chip">Textured</span>
-								<span class="vinyl-chip">Warm Neutrals</span>
-								<span class="vinyl-chip">Contemporary Greys</span>
+					<div class="vinyl-stack">
+						<article class="vinyl-card reveal" style="transition-delay: 80ms;">
+							<img src="/assets/images/wood.png" alt="Renuva wood grain vinyl finish">
+							<div class="vinyl-body">
+								<h3>Wood Grain</h3>
+								<p>Natural-inspired tones for warm, residential and hospitality aesthetics.</p>
 							</div>
-							<div class="split-cta" style="margin-top: 1rem;">
-								<p>Need guidance selecting finishes for your project? Our team can help narrow options by style, use case, and timeline.</p>
-								<a href="/contact" class="btn-primary">Explore Options</a>
+						</article>
+						<article class="vinyl-card reveal" style="transition-delay: 140ms;">
+							<img src="/assets/images/stone.png" alt="Renuva stone and mineral vinyl finish">
+							<div class="vinyl-body">
+								<h3>Stone + Mineral</h3>
+								<p>Soft mineral visuals that create clean, modern, and elegant surfaces.</p>
 							</div>
-						</div>
+						</article>
+						<article class="vinyl-card reveal" style="transition-delay: 200ms;">
+							<img src="/assets/images/dark.png" alt="Renuva dark solid and textile vinyl finish">
+							<div class="vinyl-body">
+								<h3>Solid + Textile</h3>
+								<p>Contemporary greys and subtle textures for commercial and office projects.</p>
+							</div>
+						</article>
+						<article class="vinyl-card reveal" style="transition-delay: 260ms;">
+							<img src="/assets/images/metallic.png" alt="Renuva metallic and brushed vinyl finish">
+							<div class="vinyl-body">
+								<h3>Metallic + Brushed</h3>
+								<p>A common wrap category for modern accents, fixtures, and premium statement surfaces.</p>
+							</div>
+						</article>
 					</div>
 				</div>
 			</section>
@@ -1116,37 +941,6 @@
 								<h3>Custom Projects</h3>
 								<p>Match material direction to your project goals, timing, and aesthetic requirements.</p>
 							</div>
-						</article>
-					</div>
-				</div>
-			</section>
-
-			<section class="section-wrap process">
-				<div class="section-shell">
-					<div class="reveal">
-						<span class="kicker">Project Workflow</span>
-						<h2 class="section-headline">From concept to completion in four structured steps.</h2>
-					</div>
-					<div class="process-grid">
-						<article class="process-card reveal" style="transition-delay: 60ms;">
-							<span class="process-num">1</span>
-							<h3>Consult</h3>
-							<p>Define scope, surfaces, timeline, and finish direction for your space.</p>
-						</article>
-						<article class="process-card reveal" style="transition-delay: 110ms;">
-							<span class="process-num">2</span>
-							<h3>Specify</h3>
-							<p>Select approved materials and align distribution flow through SurfaceWraps.</p>
-						</article>
-						<article class="process-card reveal" style="transition-delay: 160ms;">
-							<span class="process-num">3</span>
-							<h3>Apply</h3>
-							<p>Precision installation over existing surfaces with minimal interruption.</p>
-						</article>
-						<article class="process-card reveal" style="transition-delay: 210ms;">
-							<span class="process-num">4</span>
-							<h3>Reveal</h3>
-							<p>Deliver a refined final result with a premium look and practical durability.</p>
 						</article>
 					</div>
 				</div>
