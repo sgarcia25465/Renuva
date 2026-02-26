@@ -137,7 +137,7 @@
 
 			.hero-bg {
 				position: absolute;
-				inset: -50px;
+				inset: 0;
 				z-index: 0;
 			}
 
@@ -145,7 +145,6 @@
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
-				will-change: transform;
 			}
 
 			.hero-overlay {
@@ -905,7 +904,7 @@
 		<!-- Hero -->
 		<section class="hero">
 			<div class="hero-bg">
-				<img src="/assets/images/skyabout.webp"
+				<img src="/assets/images/building4.jpg"
 					 alt="Premium architectural surface" class="hero-parallax-img" />
 			</div>
 			<div class="hero-overlay"></div>
@@ -1088,19 +1087,11 @@
 					scrollRevealElements.forEach(el => revealObserver.observe(el));
 				}
 
-				// ── 2. Parallax scrolling ──
+				// ── 2. Parallax scrolling (divider only) ──
 				if (!prefersReducedMotion) {
-					const heroImg = document.querySelector('.hero-parallax-img');
 					const dividerImg = document.querySelector('.parallax-divider-img');
 
 					function handleParallax() {
-						const scrollY = window.pageYOffset;
-
-						if (heroImg) {
-							const rate = scrollY * 0.35;
-							heroImg.style.transform = `translate3d(0, ${rate}px, 0)`;
-						}
-
 						if (dividerImg) {
 							const dividerSection = dividerImg.closest('.parallax-divider');
 							const rect = dividerSection.getBoundingClientRect();
