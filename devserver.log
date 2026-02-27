@@ -1,0 +1,51 @@
+
+> renuva@0.0.1 dev
+> astro dev --host 0.0.0.0
+
+[2m17:06:29[22m [34m[types][39m Generated [2m3ms[22m
+[2m17:06:29[22m [34m[content][39m Syncing content
+[2m17:06:29[22m [34m[content][39m Synced content
+[2m17:06:29[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+
+[42m[1m astro [22m[49m [32mv5.16.14[39m [2mready in[22m 557 [2mms[22m
+
+[2m┃[22m Local    [36mhttp://localhost:4321/[39m
+[2m┃[22m Network  [36mhttp://10.5.0.2:4321/[39m
+           [36mhttp://100.70.61.168:4321/[39m
+
+[2m17:06:29[22m [32mwatching for file changes...[39m
+[2m17:06:47[22m [34m[200][39m /gallery/ [2m60ms[22m
+[2m17:07:01[22m [34m[200][39m / [2m52ms[22m
+[2m17:07:03[22m [34m[200][39m /gallery [2m21ms[22m
+[2m17:07:09[22m [34m[200][39m /gallery [2m7ms[22m
+[2m17:07:16[22m [34m[200][39m / [2m17ms[22m
+[2m17:07:22[22m [34m[200][39m /gallery [2m9ms[22m
+[2m17:09:10[22m [34m[200][39m /gallery [2m12ms[22m
+[2m17:10:58[22m [34m[watch][39m /src/pages/gallery.astro?astro&type=style&index=0&lang.css
+[2m17:10:59[22m [34m[200][39m /gallery [2m6ms[22m
+[2m17:11:24[22m [34m[200][39m /gallery [2m14ms[22m
+[2m17:11:27[22m [34m[200][39m /gallery [2m8ms[22m
+[2m17:11:31[22m [34m[200][39m / [2m11ms[22m
+[2m17:11:33[22m [34m[200][39m /gallery [2m11ms[22m
+[2m17:13:12[22m [34m[watch][39m /src/pages/gallery.astro?astro&type=style&index=0&lang.css
+[2m17:13:12[22m [34m[watch][39m src/pages/gallery.astro
+[2m17:13:31[22m [34m[200][39m / [2m6ms[22m
+[2m17:13:33[22m [34m[200][39m /gallery [2m21ms[22m
+[2m17:14:34[22m [34m[watch][39m /src/pages/gallery.astro?astro&type=style&index=0&lang.css
+[2m17:14:35[22m [34m[200][39m /gallery [2m16ms[22m
+[2m17:15:02[22m [34m[200][39m /gallery [2m9ms[22m
+[2m17:15:03[22m [34m[200][39m / [2m7ms[22m
+[2m17:15:05[22m [34m[200][39m /gallery [2m11ms[22m
+[2m17:15:07[22m [34m[200][39m /gallery [2m10ms[22m
+[2m17:15:08[22m [34m[200][39m /gallery [2m11ms[22m
+[2m17:15:09[22m [34m[200][39m /gallery [2m10ms[22m
+[2m17:15:09[22m [34m[200][39m /gallery [2m11ms[22m
+[2m17:15:13[22m [34m[200][39m / [2m10ms[22m
+[2m17:15:14[22m [34m[200][39m /gallery [2m15ms[22m
+[2m17:35:35[22m [34m[watch][39m /src/pages/gallery.astro?astro&type=style&index=0&lang.css
+[2m17:35:36[22m [34m[200][39m /gallery [2m4ms[22m
+[2m17:36:25[22m [34m[200][39m /about [2m551ms[22m
+[2m17:36:25[22m [34m[200][39m /distributor [2m79ms[22m
+[2m18:02:06[22m [34m[200][39m /distributor [2m9ms[22m
+
+C:\Users\garci\Desktop\WebDevBusiness\Renuva - Danny\Renuva>
