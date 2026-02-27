@@ -1,5 +1,18 @@
 ---
-
+import { Image } from 'astro:assets';
+import mainHero1 from '../assets/images/MainHero1.png';
+import mainHero2 from '../assets/images/MainHero2.png';
+import beigetheme from '../assets/images/Beigetheme.png';
+import wood from '../assets/images/wood.png';
+import stone from '../assets/images/stone.png';
+import dark from '../assets/images/dark.png';
+import metallic from '../assets/images/metallic.png';
+import livingroom from '../assets/images/livingroom.png';
+import screenshot from '../assets/images/Screenshot 2026-01-23 170344.png';
+import productLook from '../assets/images/ProductLook.png';
+import wrappingMats from '../assets/images/Wrapping mats.png';
+import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.png';
+import renuvamain from '../assets/images/RENUVAMAIN.png';
 ---
 
 <html lang="en">
@@ -11,7 +24,8 @@
 		<meta name="generator" content={Astro.generator} />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="preload" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
 		<title>Renuva - Architectural Surface Renewal</title>
 		<style>
 			* {
@@ -785,7 +799,7 @@
 			<div class="header-content">
 				<a href="/" style="text-decoration: none;">
 					<div class="logo">
-						<img src="/assets/images/RENUVAMAIN.png" alt="Renuva">
+						<Image src={renuvamain} alt="Renuva" width={550} loading="eager" />
 					</div>
 				</a>
 				<nav>
@@ -808,9 +822,9 @@
 					</div>
 				</div>
 				<div class="hero-media">
-					<img class="hero-slide" src="/assets/images/MainHero1.png" alt="Renuva architectural vinyl finish">
-					<img class="hero-slide" src="/assets/images/MainHero2.png" alt="Renuva architectural vinyl finish">
-					<img class="hero-slide" src="/assets/images/Beigetheme.png" alt="Renuva architectural vinyl finish">
+					<Image class="hero-slide" src={mainHero1} alt="Renuva architectural vinyl finish" width={1280} loading="eager" fetchpriority="high" />
+					<Image class="hero-slide" src={mainHero2} alt="Renuva architectural vinyl finish" width={1280} loading="eager" />
+					<Image class="hero-slide" src={beigetheme} alt="Renuva architectural vinyl finish" width={1280} loading="eager" />
 				</div>
 			</div>
 			<div class="stats-bar">
@@ -877,28 +891,28 @@
 					</div>
 					<div class="vinyl-stack">
 						<article class="vinyl-card reveal" style="transition-delay: 80ms;">
-							<img src="/assets/images/wood.png" alt="Renuva wood grain vinyl finish">
+							<Image src={wood} alt="Renuva wood grain vinyl finish" width={700} loading="lazy" />
 							<div class="vinyl-body">
 								<h3>Wood Grain</h3>
 								<p>Natural-inspired tones for warm, residential and hospitality aesthetics.</p>
 							</div>
 						</article>
 						<article class="vinyl-card reveal" style="transition-delay: 140ms;">
-							<img src="/assets/images/stone.png" alt="Renuva stone and mineral vinyl finish">
+							<Image src={stone} alt="Renuva stone and mineral vinyl finish" width={700} loading="lazy" />
 							<div class="vinyl-body">
 								<h3>Stone + Mineral</h3>
 								<p>Soft mineral visuals that create clean, modern, and elegant surfaces.</p>
 							</div>
 						</article>
 						<article class="vinyl-card reveal" style="transition-delay: 200ms;">
-							<img src="/assets/images/dark.png" alt="Renuva dark solid and textile vinyl finish">
+							<Image src={dark} alt="Renuva dark solid and textile vinyl finish" width={700} loading="lazy" />
 							<div class="vinyl-body">
 								<h3>Solid + Textile</h3>
 								<p>Contemporary greys and subtle textures for commercial and office projects.</p>
 							</div>
 						</article>
 						<article class="vinyl-card reveal" style="transition-delay: 260ms;">
-							<img src="/assets/images/metallic.png" alt="Renuva metallic and brushed vinyl finish">
+							<Image src={metallic} alt="Renuva metallic and brushed vinyl finish" width={700} loading="lazy" />
 							<div class="vinyl-body">
 								<h3>Metallic + Brushed</h3>
 								<p>A common wrap category for modern accents, fixtures, and premium statement surfaces.</p>
@@ -916,28 +930,28 @@
 					</div>
 					<div class="apps-grid">
 						<article class="app-card reveal" style="transition-delay: 60ms;">
-							<img src="/assets/images/livingroom.png" alt="Residential living room surface renewal">
+							<Image src={livingroom} alt="Residential living room surface renewal" width={650} loading="lazy" />
 							<div class="app-body">
 								<h3>Residential</h3>
 								<p>Kitchen cabinetry, vanities, and built-ins refreshed without full replacement.</p>
 							</div>
 						</article>
 						<article class="app-card reveal" style="transition-delay: 110ms;">
-							<img src="/assets/images/Screenshot 2026-01-23 170344.png" alt="Bathroom renewal with architectural film">
+							<Image src={screenshot} alt="Bathroom renewal with architectural film" width={650} loading="lazy" />
 							<div class="app-body">
 								<h3>Hospitality</h3>
 								<p>Upgrade guest-facing areas with elegant finishes and minimal downtime.</p>
 							</div>
 						</article>
 						<article class="app-card reveal" style="transition-delay: 160ms;">
-							<img src="/assets/images/ProductLook.png" alt="Retail and commercial finish detail">
+							<Image src={productLook} alt="Retail and commercial finish detail" width={650} loading="lazy" />
 							<div class="app-body">
 								<h3>Retail + Office</h3>
 								<p>Modernize counters, walls, and fixtures while operations continue.</p>
 							</div>
 						</article>
 						<article class="app-card reveal" style="transition-delay: 210ms;">
-							<img src="/assets/images/Wrapping mats.png" alt="Renuva wrapping material samples">
+							<Image src={wrappingMats} alt="Renuva wrapping material samples" width={650} loading="lazy" />
 							<div class="app-body">
 								<h3>Custom Projects</h3>
 								<p>Match material direction to your project goals, timing, and aesthetic requirements.</p>
@@ -953,7 +967,7 @@
 			<div class="footer-shell">
 				<div class="footer-top">
 					<div class="footer-brand">
-						<img class="footer-logo" src="/assets/images/LOGO_Colorful_Colorful_Colorful_White.png" alt="Renuva logo" />
+						<Image class="footer-logo" src={footerLogo} alt="Renuva logo" width={300} loading="lazy" />
 						<p class="footer-tagline">Transform existing surfaces. Renew beautifully.</p>
 					</div>
 				</div>
