@@ -1,8 +1,9 @@
 ---
 import { Image } from 'astro:assets';
-import mainHero1 from '../assets/images/MainHero1.png';
-import mainHero2 from '../assets/images/MainHero2.png';
-import mainHero4 from '../assets/images/MainHero4.png';
+import renuva1 from '../assets/images/renuva1.jpg';
+import renuva2 from '../assets/images/renuva2.webp';
+import renuva3 from '../assets/images/renuva3.jpg';
+import renuva4 from '../assets/images/renuva4.jpeg';
 import wood from '../assets/images/wood.png';
 import stone from '../assets/images/stone.png';
 import dark from '../assets/images/dark.png';
@@ -171,7 +172,7 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				width: 100%;
 				margin: 0;
 				display: grid;
-				grid-template-columns: minmax(420px, 700px) minmax(0, 1fr);
+				grid-template-columns: minmax(0, 1fr) clamp(440px, 45vw, 640px);
 				gap: 2rem;
 				align-items: center;
 			}
@@ -179,7 +180,8 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 			.hero-content {
 				max-width: 620px;
 				text-align: left;
-				padding-left: clamp(2.2rem, 8vw, 8rem);
+				justify-self: center;
+				padding: 0 1.5rem 0 clamp(1.5rem, 3vw, 3rem);
 			}
 
 			.hero-eyebrow {
@@ -256,7 +258,7 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				position: relative;
 				border-radius: 54px 0 0 54px;
 				overflow: hidden;
-				min-height: 520px;
+				min-height: 600px;
 				isolation: isolate;
 				box-shadow: 0 24px 60px rgba(38, 45, 38, 0.14);
 				margin-right: -2rem;
@@ -270,16 +272,17 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				object-fit: cover;
 				display: block;
 				opacity: 0;
-				animation: heroCrossfade 18s infinite ease-in-out;
+				animation: heroCrossfade 20s infinite ease-in-out;
 			}
 
 			.hero-slide:nth-child(1) { animation-delay: 0s; }
-			.hero-slide:nth-child(2) { animation-delay: 6s; }
-			.hero-slide:nth-child(3) { animation-delay: 12s; }
+			.hero-slide:nth-child(2) { animation-delay: 5s; }
+			.hero-slide:nth-child(3) { animation-delay: 10s; }
+			.hero-slide:nth-child(4) { animation-delay: 15s; }
 
 			@keyframes heroCrossfade {
-				0%, 28% { opacity: 1; }
-				38%, 95% { opacity: 0; }
+				0%, 21% { opacity: 1; }
+				29%, 93% { opacity: 0; }
 				100% { opacity: 1; }
 			}
 
@@ -944,8 +947,7 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				}
 				.hero-content {
 					max-width: 100%;
-					padding-left: 0;
-					padding-top: 0.2rem;
+					padding: 0.2rem 0 0;
 					text-align: center;
 					display: flex;
 					flex-direction: column;
@@ -1044,30 +1046,40 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				<div class="hero-media">
 					<Image
 						class="hero-slide"
-						src={mainHero1}
+						src={renuva1}
 						alt="Renuva architectural vinyl finish"
-						widths={[480, 640, 768, 1033]}
-						sizes="(max-width: 768px) 94vw, (max-width: 1200px) 56vw, 52vw"
+						widths={[480, 640]}
+						sizes="(max-width: 768px) 94vw, 45vw"
 						quality={90}
 						loading="eager"
 						fetchpriority="high"
 					/>
 					<Image
 						class="hero-slide"
-						src={mainHero2}
+						src={renuva2}
 						alt="Renuva architectural vinyl finish"
-						widths={[480, 640, 768, 952]}
-						sizes="(max-width: 768px) 94vw, (max-width: 1200px) 56vw, 52vw"
+						widths={[480, 768, 1080, 1440]}
+						sizes="(max-width: 768px) 94vw, 45vw"
 						quality={90}
 						loading="lazy"
 						fetchpriority="low"
 					/>
 					<Image
 						class="hero-slide"
-						src={mainHero4}
+						src={renuva3}
 						alt="Renuva architectural vinyl finish"
-						widths={[480, 640, 768, 1093]}
-						sizes="(max-width: 768px) 94vw, (max-width: 1200px) 56vw, 52vw"
+						widths={[480, 768, 1080, 1500]}
+						sizes="(max-width: 768px) 94vw, 45vw"
+						quality={90}
+						loading="lazy"
+						fetchpriority="low"
+					/>
+					<Image
+						class="hero-slide"
+						src={renuva4}
+						alt="Renuva architectural vinyl finish"
+						widths={[480, 625]}
+						sizes="(max-width: 768px) 94vw, 45vw"
 						quality={90}
 						loading="lazy"
 						fetchpriority="low"
