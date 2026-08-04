@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import mainHero1 from '../assets/images/MainHero1.png';
 import mainHero2 from '../assets/images/MainHero2.png';
-import beigetheme from '../assets/images/Beigetheme.png';
+import mainHero4 from '../assets/images/MainHero4.png';
 import wood from '../assets/images/wood.png';
 import stone from '../assets/images/stone.png';
 import dark from '../assets/images/dark.png';
@@ -59,6 +59,9 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				color: var(--dark-brown);
 				background: var(--white);
 				padding-top: 126px;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				text-rendering: optimizeLegibility;
 			}
 
 			header {
@@ -71,7 +74,7 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				backdrop-filter: blur(10px);
 				-webkit-backdrop-filter: blur(10px);
 				padding: 1.35rem 0;
-				border-bottom: none;
+				border-bottom: 1px solid rgba(141, 124, 110, 0.14);
 				box-shadow: none;
 			}
 
@@ -113,13 +116,29 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				font-size: 1.05rem;
 				letter-spacing: 0.02em;
 				padding: 0.5rem 1.2rem;
-				border-radius: 8px;
-				transition: color 0.3s, background 0.3s;
+				position: relative;
+				transition: color 0.3s;
+			}
+
+			nav a:not(.nav-cta)::after {
+				content: "";
+				position: absolute;
+				left: 1.2rem;
+				right: 1.2rem;
+				bottom: 0.2rem;
+				height: 1px;
+				background: var(--brown);
+				transform: scaleX(0);
+				transform-origin: left center;
+				transition: transform 0.35s ease;
+			}
+
+			nav a:not(.nav-cta):hover::after {
+				transform: scaleX(1);
 			}
 
 			nav a:hover {
-				color: var(--brown);
-				background: rgba(141, 124, 110, 0.07);
+				color: var(--very-dark-brown);
 			}
 
 			nav .nav-cta {
@@ -165,13 +184,23 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 
 			.hero-eyebrow {
 				font-family: 'Inter', sans-serif;
-				font-size: 0.8rem;
+				font-size: 0.78rem;
 				font-weight: 500;
-				letter-spacing: 0.22em;
+				letter-spacing: 0.24em;
 				text-transform: uppercase;
-				color: var(--light-brown);
-				margin-bottom: 1rem;
-				display: block;
+				color: var(--medium-brown);
+				margin-bottom: 1.1rem;
+				display: inline-flex;
+				align-items: center;
+				gap: 0.75rem;
+			}
+
+			.hero-eyebrow::before {
+				content: "";
+				width: 2rem;
+				height: 1px;
+				background: var(--medium-brown);
+				opacity: 0.55;
 			}
 
 			.hero h1 {
@@ -179,8 +208,10 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				font-size: clamp(2.75rem, 6vw, 4.35rem);
 				font-weight: 500;
 				line-height: 1.05;
+				letter-spacing: -0.015em;
 				margin-bottom: 1.15rem;
-				color: var(--brown);
+				color: var(--very-dark-brown);
+				text-wrap: balance;
 			}
 
 			.hero p {
@@ -204,13 +235,13 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				display: inline-block;
 				background: var(--brown);
 				color: var(--white);
-				padding: 0.62rem 1.35rem;
+				padding: 0.78rem 1.9rem;
 				border-radius: 50px;
 				text-decoration: none;
 				font-family: 'Inter', sans-serif;
-				font-weight: 600;
-				font-size: 0.82rem;
-				letter-spacing: 0.04em;
+				font-weight: 500;
+				font-size: 0.8rem;
+				letter-spacing: 0.09em;
 				text-transform: uppercase;
 				transition: background 0.3s, transform 0.25s, box-shadow 0.3s;
 			}
@@ -227,7 +258,7 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				overflow: hidden;
 				min-height: 520px;
 				isolation: isolate;
-				box-shadow: 0 14px 36px rgba(38, 45, 38, 0.16);
+				box-shadow: 0 24px 60px rgba(38, 45, 38, 0.14);
 				margin-right: -2rem;
 			}
 
@@ -270,21 +301,33 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 
 			.kicker {
 				font-family: 'Inter', sans-serif;
-				font-size: 0.77rem;
-				font-weight: 600;
-				letter-spacing: 0.2em;
+				font-size: 0.76rem;
+				font-weight: 500;
+				letter-spacing: 0.24em;
 				text-transform: uppercase;
-				color: var(--light-brown);
-				display: block;
+				color: var(--medium-brown);
+				display: inline-flex;
+				align-items: center;
+				gap: 0.75rem;
 				margin-bottom: 0.8rem;
+			}
+
+			.kicker::before {
+				content: "";
+				width: 2rem;
+				height: 1px;
+				background: var(--medium-brown);
+				opacity: 0.55;
 			}
 
 			.section-headline {
 				font-size: clamp(2.1rem, 4.2vw, 3.2rem);
-				font-weight: 600;
+				font-weight: 500;
 				line-height: 1.14;
-				color: var(--brown) !important;
+				letter-spacing: -0.01em;
+				color: var(--very-dark-brown) !important;
 				margin-bottom: 0.9rem;
+				text-wrap: balance;
 			}
 
 			.section-copy {
@@ -344,6 +387,10 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				grid-template-columns: repeat(4, 1fr);
 				gap: 1.5rem;
 				text-align: center;
+			}
+
+			.stats-grid > div + div {
+				border-left: 1px solid rgba(141, 124, 110, 0.22);
 			}
 
 			.stat-number {
@@ -449,23 +496,18 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				perspective: 2400px;
 			}
 
-			@keyframes vinyl-flip {
-				0% { transform: rotateY(0); }
-				100% { transform: rotateY(360deg); }
-			}
-
 			.vinyl-card {
 				border-radius: 20px;
 				background: var(--very-dark-brown);
 				overflow: hidden;
 				position: relative;
-				box-shadow: 0 16px 40px rgba(38, 45, 38, 0.22);
-				transition: box-shadow 0.4s ease;
+				box-shadow: 0 16px 40px rgba(38, 45, 38, 0.18);
+				transition: box-shadow 0.5s ease, transform 0.5s ease;
 			}
 
 			.vinyl-card:hover {
-				animation: vinyl-flip 1.4s ease-in-out;
-				box-shadow: 0 24px 52px rgba(38, 45, 38, 0.30);
+				transform: translateY(-4px);
+				box-shadow: 0 26px 56px rgba(38, 45, 38, 0.26);
 			}
 
 			.vinyl-card img {
@@ -473,12 +515,13 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				height: 310px;
 				display: block;
 				object-fit: cover;
-				opacity: 0.82;
-				transition: opacity 0.4s ease;
+				opacity: 0.88;
+				transition: opacity 0.6s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 			}
 
 			.vinyl-card:hover img {
-				opacity: 0.72;
+				opacity: 0.8;
+				transform: scale(1.045);
 			}
 
 			.vinyl-body {
@@ -951,6 +994,10 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 					grid-template-columns: repeat(2, 1fr);
 				}
 
+				.stats-grid > div + div {
+					border-left: none;
+				}
+
 			}
 
 			@media (max-width: 480px) {
@@ -999,8 +1046,9 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 						class="hero-slide"
 						src={mainHero1}
 						alt="Renuva architectural vinyl finish"
-						widths={[480, 640, 768, 960, 1200]}
+						widths={[480, 640, 768, 1033]}
 						sizes="(max-width: 768px) 94vw, (max-width: 1200px) 56vw, 52vw"
+						quality={90}
 						loading="eager"
 						fetchpriority="high"
 					/>
@@ -1008,17 +1056,19 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 						class="hero-slide"
 						src={mainHero2}
 						alt="Renuva architectural vinyl finish"
-						widths={[480, 640, 768, 960, 1200]}
+						widths={[480, 640, 768, 952]}
 						sizes="(max-width: 768px) 94vw, (max-width: 1200px) 56vw, 52vw"
+						quality={90}
 						loading="lazy"
 						fetchpriority="low"
 					/>
 					<Image
 						class="hero-slide"
-						src={beigetheme}
+						src={mainHero4}
 						alt="Renuva architectural vinyl finish"
-						widths={[480, 640, 768, 960, 1200]}
+						widths={[480, 640, 768, 1093]}
 						sizes="(max-width: 768px) 94vw, (max-width: 1200px) 56vw, 52vw"
+						quality={90}
 						loading="lazy"
 						fetchpriority="low"
 					/>
