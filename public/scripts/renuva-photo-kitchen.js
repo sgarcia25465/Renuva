@@ -56,14 +56,25 @@ window.RenuvaPhotoKitchen = (function () {
   }
 
   function create(canvas) {
-    // render at device-pixel resolution so the canvas stays sharp on retina displays
-    const S = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.round(W * S);
-    canvas.height = Math.round(H * S);
     const ctx = canvas.getContext('2d');
-    ctx.scale(S, S);
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
+
+    // Match the backing store to the canvas's on-screen device-pixel size so the
+    // 1600px source art goes through a single near-1:1 resample instead of an
+    // upscale-then-downscale round trip. Re-fit whenever the layout resizes.
+    let fitScale = 0;
+    function fit() {
+      const cssW = canvas.clientWidth || canvas.getBoundingClientRect().width || W;
+      const dpr = Math.min(window.devicePixelRatio || 1, 3);
+      const scale = Math.max(cssW * dpr / W, 0.5);
+      if (Math.abs(scale - fitScale) < 0.01) return false;
+      fitScale = scale;
+      canvas.width = Math.round(W * scale);
+      canvas.height = Math.round(H * scale);
+      ctx.setTransform(scale, 0, 0, scale, 0, 0);
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      return true;
+    }
 
     const n = PIECES.length;
     const L = Math.min(0.2, 2.2 / n);
@@ -101,6 +112,11 @@ window.RenuvaPhotoKitchen = (function () {
         ctx.fillRect(ex - 1.5, ey, 3, eh);
       }
     }
+
+    fit();
+    window.addEventListener('resize', function () {
+      if (fit()) { dirty = true; render(); }
+    });
 
     Promise.all([load(LINES), load(PHOTO)]).then(([li, ph]) => {
       lines = li; photo = ph;
