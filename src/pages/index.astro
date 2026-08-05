@@ -165,11 +165,12 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			.compare-col {
 				display: flex;
 				flex-direction: column;
+				align-items: center;
 				gap: 22px;
 				min-width: 0;
 			}
 			.compare-stack {
-				width: 100%;
+				width: min(100%, 680px);
 				aspect-ratio: 1024 / 683;
 				display: flex;
 				flex-direction: column;
@@ -270,24 +271,15 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			}
 			.info-title .caret.done { animation: none; opacity: 0; }
 
-			.info-sub {
-				margin-top: 22px;
-				color: var(--muted);
-				font-size: clamp(15px, 1.25vw, 18px);
-				letter-spacing: 0.01em;
-			}
-
 			.cat-list {
 				margin-top: 40px;
 				list-style: none;
-				border-top: 1px solid rgba(75,69,64,0.16);
 			}
 			.cat-list li {
 				display: flex;
 				align-items: baseline;
 				gap: 18px;
 				padding: 17px 2px;
-				border-bottom: 1px solid rgba(75,69,64,0.16);
 				overflow: hidden;
 			}
 			.cat-list .cat-idx {
@@ -307,7 +299,6 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			/* staggered reveal */
 			.reveal-up { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.2,0.7,0.2,1), transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
 			.info-block.reveal .reveal-up { opacity: 1; transform: none; }
-			.info-block.reveal .info-sub { transition-delay: 0.05s; }
 			.info-block.reveal .cat-list li:nth-child(1) .cat-line { transition-delay: 0.18s; }
 			.info-block.reveal .cat-list li:nth-child(2) .cat-line { transition-delay: 0.30s; }
 			.info-block.reveal .cat-list li:nth-child(3) .cat-line { transition-delay: 0.42s; }
@@ -1047,7 +1038,6 @@ replace.</span></h1>
 				<aside class="info-block" id="infoBlock">
 					<h2 class="info-title"><span class="typer2"><span class="typer-ghost" aria-hidden="true">Beauty at
 Every Surface</span><span class="typer-live"><span class="typed"></span><span class="caret" aria-hidden="true"></span></span></span></h2>
-					<p class="info-sub reveal-up">One seamless finish. No demolition.</p>
 					<ul class="cat-list">
 						<li><span class="cat-line"><span class="cat-idx">01</span><span class="cat-name">Wood Finishes</span></span></li>
 						<li><span class="cat-line"><span class="cat-idx">02</span><span class="cat-name">Stone &amp; Marble</span></span></li>
