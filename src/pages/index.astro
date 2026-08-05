@@ -152,6 +152,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			/* ============ SECTION 2 PANEL ============ */
 			.panel {
 				position: relative;
+				z-index: 2; /* opaque layer above the finish-library cards */
 				background: var(--paper);
 			}
 			.resurface {
@@ -310,16 +311,23 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 
 			/* ============ SECTION: SWATCH BOOK FAN DECK ============ */
 			.fandeck {
+				position: relative;
+				z-index: 2; /* opaque layer above the finish-library cards */
 				min-height: 100vh;
 				background: var(--paper);
 				display: flex;
-				flex-direction: column;
 				align-items: center;
 				justify-content: center;
-				padding: clamp(48px, 7vh, 90px) 16px clamp(32px, 5vh, 64px);
+				gap: clamp(12px, 2.5vw, 40px);
+				padding: clamp(32px, 5vh, 64px) clamp(16px, 3vw, 48px);
 				overflow: hidden;
 			}
-			.fd-head { text-align: center; }
+			.fd-head {
+				flex: 1;
+				min-width: 0;
+				text-align: center;
+				order: 2; /* wording on the right, deck on the left */
+			}
 			.fd-title {
 				font-family: 'Cormorant', serif;
 				font-weight: 500;
@@ -328,11 +336,17 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				color: var(--taupe);
 			}
 			.deck {
-				--dk: min(114vmin, 98vw, 1300px);
+				--dk: min(100vmin, 72vw, 1200px);
+				flex: none;
 				position: relative;
 				width: var(--dk);
 				height: var(--dk);
-				margin-top: calc(clamp(4px, 1.2vh, 16px) - var(--dk) * 0.015);
+			}
+
+			@media (max-width: 1000px) {
+				.fandeck { flex-direction: column; }
+				.fd-head { flex: none; order: 0; } /* stacked: title back on top */
+				.deck { margin-top: calc(clamp(4px, 1.2vh, 16px) - var(--dk) * 0.015); }
 			}
 
 			/* one physical swatch strip */
@@ -640,16 +654,20 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			/* ============ SECTION: FINISH LIBRARY — diagonal card stack (light) ============ */
 			.finishes {
 				position: relative;
+				z-index: 1; /* keep the whole card layer beneath the neighbouring sections */
 				background: var(--paper);
 				color: var(--ink);
 				margin-top: 25vh;
 				margin-bottom: 22vh;
 			}
 
+			/* no overflow clipping: cards and their shadows run past the section
+			   edges and off the screen corners — the sections above and below sit
+			   on a higher layer with opaque paper backgrounds, so nothing ever
+			   gets sliced or veiled inside the stage */
 			.fin-stage {
 				position: relative;
 				height: 100vh;
-				overflow: hidden;
 				background: var(--paper);
 			}
 
