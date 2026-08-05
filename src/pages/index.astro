@@ -1,19 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import renuva7 from '../assets/images/renuva7.png';
-import renuva2 from '../assets/images/renuva2.webp';
-import renuva3 from '../assets/images/renuva3.jpg';
-import renuva8 from '../assets/images/renuva8.png';
-import wood from '../assets/images/wood.png';
-import stone from '../assets/images/stone.png';
-import dark from '../assets/images/dark.png';
-import metallic from '../assets/images/metallic.png';
-import livingroom from '../assets/images/livingroom.png';
-import screenshot from '../assets/images/Screenshot 2026-01-23 170344.png';
-import productLook from '../assets/images/ProductLook.png';
-import wrappingMats from '../assets/images/Wrapping mats.png';
-import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.png';
 import renuvamain from '../assets/images/RENUVAMAIN.png';
+import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.png';
 ---
 
 <html lang="en">
@@ -21,709 +9,519 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/png" href="/newfavicon.png?v=3" />
 		<link rel="shortcut icon" href="/newfavicon.png?v=3" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="preload" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
-		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
-		<title>Renuva - Architectural Surface Renewal</title>
-		<style>
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-			}
-
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Marcellus&family=Italiana&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<title>Renuva — Renew. Don't replace.</title>
+		<style is:global>
 			:root {
-				--very-dark-brown: #262D26;
-				--dark-brown: #5E635D;
-				--medium-brown: #8D7C6E;
-				--brown: #8D7C6E;
-				--light-brown: #ADB69F;
-				--tan: #D7C1B8;
-				--very-light-brown: #F5F4EF;
-				--light-gray: #F5F4EF;
-				--white: #FFFFFF;
+				--paper: #F5F2EC;
+				--taupe: #8C7766;
+				--taupe-deep: #7A6657;
+				--ink: #4B4540;
+				--muted: #756E64;
+				--card: #FDFCFA;
+				--headline-font: 'Marcellus', serif;
+				--headline-weight: 400;
+				--headline-tracking: 0.005em;
 			}
-
-			html {
-				scroll-behavior: smooth;
-			}
-
-			html, body {
-				overflow-x: hidden;
-			}
-
+			* { margin: 0; padding: 0; box-sizing: border-box; }
+			html, body { overflow-x: clip; }
 			body {
-				font-family: 'Playfair Display', serif;
-				color: var(--dark-brown);
-				background: var(--white);
-				padding-top: 126px;
-				-webkit-font-smoothing: antialiased;
-				-moz-osx-font-smoothing: grayscale;
-				text-rendering: optimizeLegibility;
+				background: var(--paper);
+				font-family: 'Hanken Grotesk', sans-serif;
+				color: var(--ink);
 			}
 
-			header {
-				position: fixed !important;
-				top: 0;
+			/* ============ HERO ============ */
+			.hero {
+				min-height: 100vh;
+				background: var(--paper);
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.nav {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 36px clamp(24px, 5vw, 80px);
+			}
+			.logo { display: block; }
+			.logo img { height: 48px; width: auto; display: block; }
+			.nav-right { display: flex; align-items: center; gap: 40px; }
+			.nav-links { display: flex; gap: 40px; }
+			.nav-links a {
+				font-family: 'Instrument Serif', serif;
+				font-size: 21px;
+				color: #5E574E;
+				text-decoration: none;
+			}
+			.nav-links a:hover { color: var(--taupe); }
+			.contact-btn {
+				font-size: 15px;
+				font-weight: 600;
+				color: #fff;
+				background: var(--taupe);
+				text-decoration: none;
+				padding: 14px 28px;
+				border-radius: 8px;
+				transition: background 0.2s ease;
+			}
+			.contact-btn:hover { background: var(--taupe-deep); }
+
+			.hero-grid {
+				flex: 1;
+				display: flex;
+				align-items: center;
+				gap: clamp(16px, 3vw, 56px);
+				padding-left: clamp(24px, 6vw, 96px);
+				min-height: 0;
+			}
+			.hero-copy {
+				flex: 0 0 min(500px, 40%);
+				text-align: center;
+			}
+			.eyebrow {
+				font-size: 13px;
+				font-weight: 600;
+				letter-spacing: 0.28em;
+				text-transform: uppercase;
+				color: #A2937F;
+			}
+			.hero-copy h1 {
+				margin-top: 22px;
+				font-family: var(--headline-font);
+				font-weight: var(--headline-weight);
+				color: var(--taupe);
+				font-size: clamp(46px, 4.7vw, 84px);
+				line-height: 1.1;
+				letter-spacing: var(--headline-tracking);
+				text-wrap: pretty;
+			}
+			.cta-btn {
+				display: inline-block;
+				margin-top: 36px;
+				font-size: 13px;
+				font-weight: 700;
+				letter-spacing: 0.18em;
+				color: #fff;
+				background: var(--taupe);
+				text-decoration: none;
+				padding: 17px 34px;
+				border-radius: 8px;
+				transition: background 0.2s ease, transform 0.2s ease;
+			}
+			.cta-btn:hover { background: var(--taupe-deep); transform: translateY(-1px); }
+
+			.hero-copy > * { animation: riseIn 1s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; }
+			.hero-copy h1 { animation: none; }
+			.hero-copy .cta-btn { animation-delay: 2.5s; }
+			@keyframes riseIn { from { opacity: 0; transform: translateY(24px); } }
+			@media (prefers-reduced-motion: reduce) { .hero-copy > * { animation: none; } }
+
+			/* Typewriter headline — characters reveal in their final (centered) positions */
+			.typer { display: inline-block; visibility: hidden; }
+			.typer .ch { visibility: hidden; }
+			.typer .ch.on, .typer .caret { visibility: visible; }
+			.caret {
+				display: inline-block;
+				width: 0.045em;
+				height: 0.74em;
+				background: currentColor;
+				margin-left: 0.06em;
+				vertical-align: -0.02em;
+				animation: caretBlink 0.9s steps(1, end) infinite;
+			}
+			.caret.done { animation: none; opacity: 0; }
+			@keyframes caretBlink { 50% { opacity: 0; } }
+			@media (prefers-reduced-motion: reduce) { .caret { display: none; } }
+
+			.hero-art {
+				flex: 1;
+				min-width: 0;
+				align-self: flex-end;
+				margin-right: -3vw;
+				padding-bottom: 4vh;
+			}
+			.hero-art canvas { width: 100%; height: auto; max-height: 82vh; display: block; margin-left: auto; }
+
+			/* ============ SECTION 2 PANEL ============ */
+			.panel {
+				position: relative;
+				background: var(--paper);
+			}
+			.resurface {
+				min-height: 100vh;
+				display: grid;
+				grid-template-columns: minmax(260px, 340px) 1fr;
+				gap: clamp(24px, 4vw, 64px);
+				align-items: center;
+				padding: clamp(48px, 8vh, 96px) clamp(24px, 5vw, 84px);
+			}
+			.compare-col {
+				display: flex;
+				flex-direction: column;
+				gap: 22px;
+				min-width: 0;
+			}
+			.compare-stack {
+				width: 100%;
+				aspect-ratio: 1024 / 683;
+				display: flex;
+				flex-direction: column;
+				border-radius: 14px;
+				overflow: hidden;
+				box-shadow: 0 24px 70px rgba(75,69,64,0.14);
+			}
+			.cmp {
+				position: relative;
+				width: 100%;
+				height: 50%;
+				overflow: hidden;
+				touch-action: none;
+				cursor: ew-resize;
+				background: var(--paper);
+				user-select: none;
+			}
+			.cmp + .cmp { border-top: 1px solid rgba(75,69,64,0.18); }
+			.cmp img {
+				position: absolute;
 				left: 0;
 				width: 100%;
-				z-index: 1000;
-				background: rgba(250, 249, 246, 0.96);
-				backdrop-filter: blur(10px);
-				-webkit-backdrop-filter: blur(10px);
-				padding: 1.35rem 0;
-				border-bottom: 1px solid rgba(141, 124, 110, 0.14);
-				box-shadow: none;
-			}
-
-			.header-content {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				padding: 0 2rem 0 clamp(2.2rem, 8vw, 8rem);
-			}
-
-			.logo {
-				height: 68px;
-				width: 230px;
-				overflow: visible;
-				display: flex;
-				align-items: center;
-				justify-content: flex-start;
-			}
-
-			.logo img {
-				height: 100%;
-				width: auto;
+				height: auto;
 				display: block;
-				transform: scale(0.70);
-				transform-origin: left center;
+				pointer-events: none;
+				-webkit-user-drag: none;
 			}
-
-			nav {
-				display: flex;
-				align-items: center;
-				gap: 0.25rem;
+			.cmp.top img { top: 0; }
+			.cmp.bot img { top: -100%; }
+			.cmp-photo { position: absolute; inset: 0; }
+			.cmp-handle {
+				position: absolute;
+				top: 0; bottom: 0;
+				left: 50%;
+				width: 0;
+				z-index: 2;
 			}
-
-			nav a {
-				text-decoration: none;
-				color: var(--dark-brown);
-				font-family: 'Playfair Display', serif;
-				font-weight: 500;
-				font-size: 1.05rem;
-				letter-spacing: 0.02em;
-				padding: 0.5rem 1.2rem;
-				position: relative;
-				transition: color 0.3s;
-			}
-
-			nav a:not(.nav-cta)::after {
+			.cmp-handle::before {
 				content: "";
 				position: absolute;
-				left: 1.2rem;
-				right: 1.2rem;
-				bottom: 0.2rem;
-				height: 1px;
-				background: var(--brown);
-				transform: scaleX(0);
-				transform-origin: left center;
-				transition: transform 0.35s ease;
+				top: 0; bottom: 0;
+				left: -1px;
+				width: 2px;
+				background: #fff;
+				box-shadow: 0 0 0 1px rgba(75,69,64,0.22);
 			}
-
-			nav a:not(.nav-cta):hover::after {
-				transform: scaleX(1);
-			}
-
-			nav a:hover {
-				color: var(--very-dark-brown);
-			}
-
-			nav .nav-cta {
-				background: var(--brown);
-				color: var(--white);
-				border-radius: 50px;
-				padding: 0.6rem 1.5rem;
-				font-weight: 600;
-				font-size: 0.93rem;
-				margin-left: 0.5rem;
-				transition: background 0.3s, transform 0.3s;
-			}
-
-			nav .nav-cta:hover {
-				background: var(--very-dark-brown);
-				color: var(--white);
-				transform: translateY(-1px);
-			}
-
-			/* Hero kept exactly as requested */
-			.hero {
-				background:
-					linear-gradient(180deg, rgba(250, 249, 246, 0.96) 0%, rgba(250, 249, 246, 0.96) 55%, #f8f8f6 100%),
-					url('/assets/images/pattern-design.png') center/620px repeat;
-				padding: 2.1rem 0 2.8rem 0;
-				margin-top: 92px;
-			}
-
-			.hero-shell {
-				width: 100%;
-				margin: 0;
-				display: grid;
-				grid-template-columns: minmax(0, 1fr) clamp(480px, 54vw, 780px);
-				gap: 2rem;
-				align-items: center;
-			}
-
-			.hero-content {
-				max-width: 620px;
-				text-align: center;
-				justify-self: center;
-				padding: 0 1.5rem 0 clamp(1.5rem, 3vw, 3rem);
-			}
-
-			.hero-eyebrow {
-				font-family: 'Inter', sans-serif;
-				font-size: 0.78rem;
-				font-weight: 500;
-				letter-spacing: 0.24em;
-				text-transform: uppercase;
-				color: var(--medium-brown);
-				margin-bottom: 1.1rem;
-				display: block;
-			}
-
-			.hero h1 {
-				font-family: 'Playfair Display', serif;
-				font-size: clamp(2.75rem, 6vw, 4.35rem);
-				font-weight: 500;
-				line-height: 1.05;
-				letter-spacing: -0.015em;
-				margin-bottom: 1.15rem;
-				color: var(--brown);
-				text-wrap: balance;
-			}
-
-			.hero p {
-				font-family: 'Inter', sans-serif;
-				font-size: 1.07rem;
-				font-weight: 300;
-				line-height: 1.66;
-				color: var(--dark-brown);
-				margin: 0 auto 2rem;
-				max-width: 560px;
-			}
-
-			.hero-buttons {
+			.cmp-grip {
+				position: absolute;
+				top: 50%; left: 0;
+				transform: translate(-50%, -50%);
+				width: 44px; height: 44px;
+				border-radius: 50%;
+				background: var(--taupe);
+				color: #fff;
 				display: flex;
-				gap: 1rem;
+				align-items: center;
 				justify-content: center;
-				flex-wrap: wrap;
+				gap: 3px;
+				font-size: 15px;
+				line-height: 1;
+				box-shadow: 0 6px 18px rgba(75,69,64,0.35);
 			}
-
-			.btn-primary {
-				display: inline-block;
-				background: var(--brown);
-				color: var(--white);
-				padding: 0.78rem 1.9rem;
-				border-radius: 50px;
-				text-decoration: none;
-				font-family: 'Inter', sans-serif;
-				font-weight: 500;
-				font-size: 0.8rem;
-				letter-spacing: 0.09em;
+			.cmp-tag {
+				position: absolute;
+				top: 12px;
+				font-size: 11px;
+				font-weight: 700;
+				letter-spacing: 0.16em;
 				text-transform: uppercase;
-				transition: background 0.3s, transform 0.25s, box-shadow 0.3s;
+				padding: 6px 12px;
+				border-radius: 6px;
+				z-index: 1;
+				pointer-events: none;
+			}
+			.cmp-tag.l { left: 12px; background: rgba(253,252,250,0.85); color: #756E64; }
+			.cmp-tag.r { right: 12px; background: rgba(75,69,64,0.65); color: #fff; }
+
+			/* sleek typographic info block (no card) */
+			.info-block { align-self: center; max-width: 460px; }
+			.info-title {
+				font-family: 'Cormorant', serif;
+				font-weight: 500;
+				color: var(--taupe);
+				font-size: clamp(46px, 4.6vw, 78px);
+				line-height: 1.0;
+				letter-spacing: -0.01em;
+			}
+			.info-title .typer2 { position: relative; display: inline-block; white-space: pre-line; }
+			.info-title .typer-ghost { visibility: hidden; }
+			.info-title .typer-live { position: absolute; inset: 0; }
+			.info-title .caret {
+				display: inline-block;
+				width: 0.045em; height: 0.78em;
+				background: currentColor;
+				margin-left: 0.04em;
+				vertical-align: -0.04em;
+				animation: caretBlink 0.9s steps(1, end) infinite;
+			}
+			.info-title .caret.done { animation: none; opacity: 0; }
+
+			.info-sub {
+				margin-top: 22px;
+				color: var(--muted);
+				font-size: clamp(15px, 1.25vw, 18px);
+				letter-spacing: 0.01em;
 			}
 
-			.btn-primary:hover {
-				background: var(--very-dark-brown);
-				transform: translateY(-2px);
-				box-shadow: 0 8px 18px rgba(38, 45, 38, 0.2);
+			.cat-list {
+				margin-top: 40px;
+				list-style: none;
+				border-top: 1px solid rgba(75,69,64,0.16);
 			}
-
-			.hero-media {
-				position: relative;
-				border-radius: 54px 0 0 54px;
+			.cat-list li {
+				display: flex;
+				align-items: baseline;
+				gap: 18px;
+				padding: 17px 2px;
+				border-bottom: 1px solid rgba(75,69,64,0.16);
 				overflow: hidden;
-				min-height: 520px;
-				isolation: isolate;
-				box-shadow: 0 24px 60px rgba(38, 45, 38, 0.14);
-				margin-right: -2rem;
+			}
+			.cat-list .cat-idx {
+				font-size: 12px;
+				font-weight: 700;
+				letter-spacing: 0.16em;
+				color: #B7AC9B;
+				min-width: 26px;
+			}
+			.cat-list .cat-name {
+				font-size: clamp(16px, 1.5vw, 20px);
+				font-weight: 600;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				color: var(--ink);
+			}
+			/* staggered reveal */
+			.reveal-up { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.2,0.7,0.2,1), transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
+			.info-block.reveal .reveal-up { opacity: 1; transform: none; }
+			.info-block.reveal .info-sub { transition-delay: 0.05s; }
+			.info-block.reveal .cat-list li:nth-child(1) .cat-line { transition-delay: 0.18s; }
+			.info-block.reveal .cat-list li:nth-child(2) .cat-line { transition-delay: 0.30s; }
+			.info-block.reveal .cat-list li:nth-child(3) .cat-line { transition-delay: 0.42s; }
+			.cat-line { display: flex; align-items: baseline; gap: 18px; width: 100%; transform: translateY(110%); transition: transform 0.7s cubic-bezier(0.2,0.8,0.2,1); }
+			.info-block.reveal .cat-line { transform: none; }
+			@media (prefers-reduced-motion: reduce) {
+				.reveal-up, .cat-line { transition: none; opacity: 1; transform: none; }
 			}
 
-			.hero-slide {
+			/* ============ SECTION: FINISH LIBRARY — diagonal card stack (light) ============ */
+			.finishes {
+				position: relative;
+				background: var(--paper);
+				color: var(--ink);
+				margin-top: 25vh;
+			}
+
+			.fin-stage {
+				position: sticky;
+				top: 0;
+				height: 100vh;
+				overflow: hidden;
+				background: var(--paper);
+			}
+
+			/* heading — anchored top-LEFT */
+			.fin-head {
+				position: absolute;
+				top: clamp(40px, 7vh, 86px);
+				left: clamp(28px, 5vw, 84px);
+				z-index: 3000;
+				pointer-events: none;
+				max-width: 60vw;
+				transition: opacity 0.35s ease;
+			}
+			.fin-eyebrow {
+				font-size: clamp(28px, 3vw, 46px);
+				font-family: 'Cormorant', serif;
+				font-weight: 500;
+				letter-spacing: 0.005em;
+				color: var(--taupe);
+				line-height: 1.05;
+			}
+			.fin-sub {
+				margin-top: 10px;
+				font-size: 13px;
+				font-weight: 500;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: #A2937F;
+			}
+
+			.fin-hint {
+				position: absolute;
+				bottom: 34px;
+				left: 50%;
+				transform: translateX(-50%);
+				font-size: 12px;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				color: #B3A795;
+				z-index: 3000;
+				pointer-events: none;
+				white-space: nowrap;
+				transition: opacity 0.4s ease;
+			}
+
+			/* opaque backdrop revealed when a finish is opened */
+			.fin-backdrop {
 				position: absolute;
 				inset: 0;
+				background: #EFEAE1;
+				opacity: 0;
+				pointer-events: none;
+				transition: opacity 0.5s ease;
+				z-index: 1500;
+			}
+
+			.fin-cards {
+				position: absolute;
+				inset: 0;
+				perspective: 1700px;
+				perspective-origin: 50% 50%;
+				z-index: 1600;
+			}
+
+			.fcard {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: min(27vw, 400px);
+				aspect-ratio: 4 / 5;
+				border-radius: 7px;
+				overflow: hidden;
+				background: #E8E2D8;
+				cursor: pointer;
+				box-shadow: 0 30px 80px rgba(75, 69, 64, 0.30);
+				will-change: transform, opacity;
+			}
+			.fcard img {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
 				display: block;
-				opacity: 0;
-				animation: heroCrossfade 20s infinite ease-in-out;
+				-webkit-user-drag: none;
+				user-select: none;
 			}
-
-			.hero-slide:nth-child(1) { animation-delay: 0s; }
-			.hero-slide:nth-child(2) { animation-delay: 5s; }
-			.hero-slide:nth-child(3) { animation-delay: 10s; }
-			.hero-slide:nth-child(4) { animation-delay: 15s; }
-
-			@keyframes heroCrossfade {
-				0%, 18% { opacity: 1; }
-				31%, 89% { opacity: 0; }
-				100% { opacity: 1; }
-			}
-
-			/* New homepage sections */
-			main {
-				background:
-					radial-gradient(circle at 10% 10%, rgba(215, 193, 184, 0.22), transparent 35%),
-					radial-gradient(circle at 90% 20%, rgba(173, 182, 159, 0.25), transparent 40%);
-			}
-
-			.section-wrap {
-				padding: 5rem 2rem;
-			}
-
-			.section-shell {
-				max-width: 1140px;
-				margin: 0 auto;
-			}
-
-			.kicker {
-				font-family: 'Inter', sans-serif;
-				font-size: 0.76rem;
-				font-weight: 500;
-				letter-spacing: 0.24em;
-				text-transform: uppercase;
-				color: var(--medium-brown);
-				display: inline-flex;
-				align-items: center;
-				gap: 0.75rem;
-				margin-bottom: 0.8rem;
-			}
-
-			.kicker::before {
-				content: "";
-				width: 2rem;
-				height: 1px;
-				background: var(--medium-brown);
-				opacity: 0.55;
-			}
-
-			.section-headline {
-				font-size: clamp(2.1rem, 4.2vw, 3.2rem);
-				font-weight: 500;
-				line-height: 1.14;
-				letter-spacing: -0.01em;
-				color: var(--very-dark-brown) !important;
-				margin-bottom: 0.9rem;
-				text-wrap: balance;
-			}
-
-			.section-copy {
-				font-family: 'Inter', sans-serif;
-				font-size: 1rem;
-				font-weight: 300;
-				line-height: 1.75;
-				color: var(--dark-brown);
-			}
-
-			.story-grid {
-				display: grid;
-				grid-template-columns: repeat(2, minmax(0, 1fr));
-				gap: 2rem;
-				align-items: start;
-			}
-
-			.story-cards {
-				display: grid;
-				grid-template-columns: repeat(2, minmax(0, 1fr));
-				gap: 0.9rem;
-				margin-top: 0;
-			}
-
-			.story-card {
-				padding: 1rem;
-				border-radius: 14px;
-				background: rgba(255, 255, 255, 0.85);
-				border: 1px solid rgba(173, 182, 159, 0.35);
-				box-shadow: 0 8px 24px rgba(38, 45, 38, 0.07);
-			}
-
-			.story-card h3 {
-				font-size: 1.15rem;
-				font-weight: 600;
-				color: var(--very-dark-brown);
-				margin-bottom: 0.4rem;
-			}
-
-			.story-card p {
-				font-family: 'Inter', sans-serif;
-				font-size: 0.9rem;
-				font-weight: 300;
-				line-height: 1.6;
-				color: var(--dark-brown);
-			}
-
-			.stats-bar {
-				padding: 1.4rem 2rem 0.2rem;
-				margin-top: 4.5rem;
-			}
-
-			.stats-grid {
-				max-width: 900px;
-				margin: 0 auto;
-				display: grid;
-				grid-template-columns: repeat(4, 1fr);
-				gap: 1.5rem;
-				text-align: center;
-			}
-
-			.stats-grid > div + div {
-				border-left: 1px solid rgba(141, 124, 110, 0.22);
-			}
-
-			.stat-number {
-				font-family: 'Playfair Display', serif;
-				font-size: 2.2rem;
+			.fcard-label {
+				position: absolute;
+				left: 14px;
+				bottom: 14px;
+				font-size: 11px;
 				font-weight: 700;
-				color: var(--brown);
-				line-height: 1;
-				margin-bottom: 0.35rem;
-			}
-
-			.stat-label {
-				font-family: 'Inter', sans-serif;
-				font-size: 0.78rem;
-				font-weight: 500;
-				color: var(--dark-brown);
+				letter-spacing: 0.16em;
 				text-transform: uppercase;
-				letter-spacing: 0.1em;
-			}
-
-			.vinyl-showcase {
-				background:
-					linear-gradient(180deg, #f5f5f3 0%, rgba(245, 244, 239, 0.96) 20%, rgba(245, 244, 239, 0.96) 80%, #f5f4ef 100%),
-					url('/assets/images/pattern-design.png') center/560px repeat;
-			}
-
-			.why-renuva {
-				padding: 6.4rem 2rem 6.1rem;
-				background:
-					radial-gradient(circle at 39% 52%, rgba(141, 124, 110, 0.14), transparent 42%),
-					linear-gradient(180deg, #f8f8f6 0%, #f5f5f3 100%);
-			}
-
-			.why-renuva .section-shell {
-				max-width: 1280px;
-			}
-
-			.why-renuva .story-grid {
-				grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-				gap: clamp(0.55rem, 1.2vw, 1rem);
-				align-items: start;
-			}
-
-			.why-renuva .story-grid > .reveal:first-child {
-				margin-left: clamp(2.2rem, 3.8vw, 3.8rem);
-				margin-top: -0.7rem;
-			}
-
-			.why-renuva .kicker {
-				letter-spacing: 0.24em;
-				margin-bottom: 1.2rem;
-			}
-
-			.why-renuva .section-headline {
-				max-width: 9.6ch;
-				font-size: clamp(2.4rem, 4.25vw, 4.1rem);
-				line-height: 1.03;
-				margin-bottom: 0.75rem;
-			}
-
-			.why-renuva .section-copy {
-				max-width: 72ch;
-				font-size: 1.03rem;
-				line-height: 1.58;
-			}
-
-			.why-renuva .story-cards {
-				gap: 1.25rem;
-				max-width: 560px;
-				justify-self: start;
-				margin-left: 2rem;
-			}
-
-			.why-renuva .story-card {
-				aspect-ratio: 1.16 / 0.9;
-				min-height: 0;
-				padding: 1.6rem 1.9rem;
-				border-radius: 14px;
-				background: rgba(251, 251, 250, 0.96);
-				border: 1px solid rgba(141, 124, 110, 0.18);
-				box-shadow: 0 12px 28px rgba(60, 58, 54, 0.08);
-			}
-
-			.why-renuva .story-card h3 {
-				font-size: clamp(1.02rem, 1.5vw, 1.42rem);
-				line-height: 1.15;
-				margin-bottom: 0.7rem;
+				color: #5E574E;
+				background: rgba(253, 252, 250, 0.88);
+				backdrop-filter: blur(6px);
+				padding: 7px 12px;
+				border-radius: 6px;
+				pointer-events: none;
 				white-space: nowrap;
 			}
 
-			.why-renuva .story-card p {
-				font-size: clamp(0.82rem, 1.02vw, 1rem);
-				line-height: 1.65;
-				max-width: 20ch;
-			}
+			/* open / focus states */
+			.fin-stage.open .fcard,
+			.fin-stage.closing .fcard { transition: transform 0.8s cubic-bezier(0.22, 0.8, 0.2, 1), opacity 0.5s ease; }
+			.fcard.focus { box-shadow: 0 50px 130px rgba(75, 69, 64, 0.42); }
 
-			.vinyl-stack {
-				display: grid;
-				grid-template-columns: repeat(2, minmax(0, 1fr));
-				gap: 1.5rem;
-				max-width: 980px;
-				margin: 2rem auto 0;
-				perspective: 2400px;
-			}
-
-			.vinyl-card {
-				border-radius: 20px;
-				background: var(--very-dark-brown);
-				overflow: hidden;
-				position: relative;
-				box-shadow: 0 16px 40px rgba(38, 45, 38, 0.18);
-				transition: box-shadow 0.5s ease, transform 0.5s ease;
-			}
-
-			.vinyl-card:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 26px 56px rgba(38, 45, 38, 0.26);
-			}
-
-			.vinyl-card img {
-				width: 100%;
-				height: 310px;
-				display: block;
-				object-fit: cover;
-				opacity: 0.88;
-				transition: opacity 0.6s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-			}
-
-			.vinyl-card:hover img {
-				opacity: 0.8;
-				transform: scale(1.045);
-			}
-
-			.vinyl-body {
+			/* detail panel */
+			.fin-detail {
 				position: absolute;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				padding: 2.2rem 1.6rem 1.6rem;
-				background: linear-gradient(to top, rgba(38, 45, 38, 0.95) 0%, rgba(38, 45, 38, 0.5) 55%, transparent 100%);
+				top: 50%;
+				right: clamp(28px, 7vw, 130px);
+				width: min(34vw, 400px);
+				transform: translateY(-46%);
+				opacity: 0;
+				pointer-events: none;
+				transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+				z-index: 2700;
 			}
-
-			.vinyl-step {
-				font-family: 'Inter', sans-serif;
-				font-size: 0.7rem;
-				font-weight: 600;
-				letter-spacing: 0.18em;
-				text-transform: uppercase;
-				color: rgba(215, 193, 184, 0.7);
-				display: block;
-				margin-bottom: 0.45rem;
+			.fin-stage.open .fin-detail {
+				opacity: 1;
+				transform: translateY(-50%);
+				transition-delay: 0.35s;
+				pointer-events: auto;
 			}
-
-			.vinyl-card h3 {
-				font-size: 1.5rem;
-				font-weight: 600;
-				color: var(--white);
-				margin-bottom: 0.4rem;
-			}
-
-			.vinyl-card p {
-				font-family: 'Inter', sans-serif;
-				font-size: 0.87rem;
-				line-height: 1.62;
-				color: rgba(255, 255, 255, 0.75);
-			}
-
-			.where-it-works {
-				background: var(--very-light-brown);
-			}
-
-			.apps-grid {
-				display: flex;
-				flex-direction: column;
-				gap: 0;
-				margin-top: 3.5rem;
-				counter-reset: app-counter;
-				border-top: 1px solid rgba(141, 124, 110, 0.18);
-			}
-
-			.app-card {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				gap: 0;
-				padding: 4.5rem 0;
-				border-bottom: 1px solid rgba(141, 124, 110, 0.18);
-				background: transparent;
-				border-radius: 0;
-				overflow: visible;
-				box-shadow: none;
-				transition: background 0.3s ease;
-				counter-increment: app-counter;
-				position: relative;
-			}
-
-			.app-card:nth-child(2n) {
-				flex-direction: row-reverse;
-			}
-
-			.app-card:hover {
-				background: rgba(215, 193, 184, 0.1);
-				transform: none;
-				box-shadow: none;
-			}
-
-			.app-card img {
-				width: 50%;
-				height: 340px;
-				object-fit: cover;
-				border-radius: 16px;
-				flex-shrink: 0;
-				display: block;
-				transition: transform 0.55s ease, box-shadow 0.45s ease;
-				box-shadow: 0 10px 32px rgba(38, 45, 38, 0.13);
-			}
-
-			.app-card:hover img {
-				transform: scale(1.02);
-				box-shadow: 0 18px 48px rgba(38, 45, 38, 0.20);
-			}
-
-			.app-body {
-				flex: 1;
-				padding: 0 4.5rem;
-			}
-
-			.app-body::before {
-				content: "0" counter(app-counter);
-				display: block;
-				font-family: 'Playfair Display', serif;
-				font-size: 3.5rem;
+			.fin-detail .fd-series {
+				font-size: 12px;
 				font-weight: 700;
-				color: rgba(141, 124, 110, 0.22);
-				line-height: 1;
-				margin-bottom: 1rem;
-			}
-
-			.app-body h3 {
-				font-size: clamp(1.6rem, 2.5vw, 2.1rem);
-				font-weight: 600;
-				color: var(--very-dark-brown);
-				margin-bottom: 0.75rem;
-				line-height: 1.15;
-				transition: color 0.3s ease;
-			}
-
-			.app-card:hover .app-body h3 {
-				color: var(--brown);
-			}
-
-			.app-body p {
-				font-family: 'Inter', sans-serif;
-				font-size: 1rem;
-				font-weight: 300;
-				line-height: 1.78;
-				color: var(--dark-brown);
-				max-width: 38ch;
-			}
-
-			.final-cta {
-				position: relative;
-				min-height: 350px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				text-align: center;
-				overflow: hidden;
-			}
-
-			.final-cta-media {
-				position: absolute;
-				inset: -80px;
-				z-index: 0;
-			}
-
-			.final-cta-media img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				will-change: transform;
-			}
-
-			.final-cta::before {
-				content: "";
-				position: absolute;
-				inset: 0;
-				background: rgba(38, 45, 38, 0.72);
-				z-index: 1;
-			}
-
-			.final-cta-content {
-				position: relative;
-				z-index: 2;
-				max-width: 720px;
-				padding: 2rem;
-			}
-
-			.final-cta-content h2 {
-				font-size: clamp(2rem, 4vw, 3rem);
-				color: var(--white);
-				margin-bottom: 0.8rem;
-			}
-
-			.final-cta-content p {
-				font-family: 'Inter', sans-serif;
-				font-size: 1.02rem;
-				line-height: 1.72;
-				color: rgba(255, 255, 255, 0.85);
-				margin-bottom: 1.4rem;
-			}
-
-			.btn-light {
-				display: inline-block;
-				background: var(--white);
-				color: var(--very-dark-brown);
-				padding: 0.82rem 2.1rem;
-				border-radius: 999px;
-				text-decoration: none;
-				font-family: 'Inter', sans-serif;
-				font-size: 0.82rem;
-				font-weight: 600;
-				letter-spacing: 0.06em;
+				letter-spacing: 0.2em;
 				text-transform: uppercase;
-				transition: background 0.3s ease, transform 0.3s ease;
+				color: #A2937F;
 			}
-
-			.btn-light:hover {
-				background: var(--tan);
-				transform: translateY(-2px);
+			.fin-detail h3 {
+				margin-top: 10px;
+				font-family: 'Cormorant', serif;
+				font-weight: 500;
+				font-size: clamp(40px, 3.6vw, 58px);
+				line-height: 1.02;
+				color: var(--taupe);
 			}
+			.fin-detail .fd-desc {
+				margin-top: 16px;
+				font-size: 15px;
+				line-height: 1.6;
+				color: var(--muted);
+				text-wrap: pretty;
+			}
+			.fin-detail .fd-specs {
+				margin-top: 24px;
+				border-top: 1px solid rgba(75, 69, 64, 0.16);
+			}
+			.fin-detail .fd-specs > div {
+				display: flex;
+				justify-content: space-between;
+				gap: 18px;
+				padding: 11px 0;
+				border-bottom: 1px solid rgba(75, 69, 64, 0.16);
+				font-size: 14px;
+			}
+			.fin-detail .fd-specs dt { color: #998F82; }
+			.fin-detail .fd-specs dd { font-weight: 600; color: var(--ink); text-align: right; white-space: nowrap; }
 
+			/* close button */
+			.fin-close {
+				position: absolute;
+				top: 32px;
+				right: 36px;
+				width: 46px;
+				height: 46px;
+				border-radius: 50%;
+				border: 1px solid rgba(75, 69, 64, 0.22);
+				background: rgba(253, 252, 250, 0.9);
+				color: #5E574E;
+				font-size: 20px;
+				line-height: 1;
+				cursor: pointer;
+				opacity: 0;
+				pointer-events: none;
+				transition: opacity 0.3s ease, background 0.3s ease;
+				z-index: 3000;
+			}
+			.fin-stage.open .fin-close { opacity: 1; pointer-events: auto; }
+			.fin-close:hover { background: #fff; }
+
+			/* ============ FOOTER ============ */
 			footer {
-				background: linear-gradient(rgba(38, 45, 38, 0.94), rgba(38, 45, 38, 0.94));
-				color: var(--white);
+				background: #3E3833;
+				color: #fff;
 				padding: 3rem 2rem 2rem;
 				position: relative;
 				overflow: hidden;
 			}
-
 			footer::before {
 				content: "";
 				position: absolute;
@@ -731,17 +529,15 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				right: -120px;
 				width: 280px;
 				height: 280px;
-				background: radial-gradient(circle, rgba(215, 193, 184, 0.2), transparent 70%);
+				background: radial-gradient(circle, rgba(215, 193, 184, 0.16), transparent 70%);
 				pointer-events: none;
 			}
-
 			.footer-shell {
 				max-width: 1100px;
 				margin: 0 auto;
 				position: relative;
 				z-index: 1;
 			}
-
 			.footer-top {
 				display: flex;
 				justify-content: center;
@@ -751,7 +547,6 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				padding-bottom: 1.2rem;
 				border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 			}
-
 			.footer-brand {
 				display: flex;
 				align-items: center;
@@ -759,20 +554,16 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				gap: 1rem;
 				flex-wrap: wrap;
 			}
-
 			.footer-logo {
 				height: 44px;
 				width: auto;
 				display: block;
 			}
-
 			footer .footer-tagline {
-				font-family: 'Inter', sans-serif;
 				font-size: 0.9rem;
-				font-weight: 300;
+				font-weight: 400;
 				color: rgba(255, 255, 255, 0.78);
 			}
-
 			.footer-bottom {
 				margin-top: 1rem;
 				display: flex;
@@ -782,434 +573,140 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 				gap: 0.9rem;
 				text-align: center;
 			}
-
 			.footer-nav {
 				display: flex;
 				gap: 1.2rem;
 				flex-wrap: wrap;
 			}
-
 			.footer-nav a {
 				color: rgba(255, 255, 255, 0.75);
 				text-decoration: none;
-				font-family: 'Inter', sans-serif;
 				font-size: 0.84rem;
 				font-weight: 400;
 				transition: color 0.3s;
 			}
-
-			.footer-nav a:hover {
-				color: var(--white);
-			}
-
+			.footer-nav a:hover { color: #fff; }
 			footer .footer-copy {
-				font-family: 'Inter', sans-serif;
 				font-size: 0.78rem;
 				color: rgba(255, 255, 255, 0.45);
 			}
 
-			@media (max-width: 768px) {
-				.footer-top {
-					grid-template-columns: 1fr;
-					text-align: center;
-				}
-
-				.footer-brand {
-					justify-content: center;
-				}
-
-				.footer-bottom {
-					justify-content: center;
-					text-align: center;
-				}
-			}
-
-			.reveal {
-				opacity: 0;
-				transform: translateY(24px);
-				transition: opacity 0.75s ease, transform 0.75s ease;
-			}
-
-			.reveal.in-view {
-				opacity: 1;
-				transform: translateY(0);
-			}
-
 			@media (max-width: 1100px) {
-				.vinyl-stack {
-					gap: 1rem;
+				.nav-links { display: none; }
+				.hero-grid { flex-direction: column; align-items: stretch; padding: 0; }
+				.hero-copy {
+					flex: none;
+					margin: 20px auto 0;
+					max-width: 560px;
+					padding: 0 clamp(20px, 6vw, 48px);
 				}
-			}
-
-			@media (max-width: 900px) {
-				.story-grid {
-					grid-template-columns: 1fr;
-				}
-
-				.why-renuva .story-grid {
-					grid-template-columns: 1fr;
-				}
-
-				.why-renuva .section-headline,
-				.why-renuva .section-copy {
-					max-width: 100%;
-				}
-
-				.why-renuva .story-cards {
-					max-width: 100%;
-					justify-self: stretch;
-					margin-left: 0;
-				}
-
-				.why-renuva .story-grid > .reveal:first-child {
-					margin-left: 0;
-					margin-top: 0;
-				}
-
-				.why-renuva .story-card {
-					aspect-ratio: auto;
-				}
-
-				.vinyl-stack {
-					grid-template-columns: 1fr;
-				}
-			}
-
-			@media (max-width: 768px) {
-				body { padding-top: 0 !important; }
-
-				header {
-					position: sticky !important;
-					padding: 0.75rem 0;
-				}
-
-				.header-content {
-					flex-direction: column;
-					gap: 0.7rem;
-					align-items: center;
-				}
-
-				.logo {
-					justify-content: center;
-					margin: 0 auto;
-				}
-
-				.logo img {
-					transform-origin: center center;
-					transform: scale(0.70);
-				}
-
-				nav {
+				.hero-art {
+					flex: none;
+					align-self: center;
+					margin: 18px 0 0;
+					padding: 0 12px 12px;
 					width: 100%;
-					justify-content: center;
-					flex-wrap: nowrap;
-					overflow-x: auto;
-					-webkit-overflow-scrolling: touch;
-					scrollbar-width: none;
+					max-width: 780px;
 				}
-
-				nav::-webkit-scrollbar { display: none; }
-
-				nav a {
-					white-space: nowrap;
-					font-size: 0.8rem;
-					padding: 0.32rem 0.56rem;
+				.hero-art canvas { max-height: 44vh; margin: 0 auto; }
+				.resurface { grid-template-columns: 1fr; padding: 48px clamp(16px, 5vw, 32px); }
+				.fcard { width: min(56vw, 360px); }
+				.fin-head { max-width: 80vw; }
+				.fin-detail {
+					right: 50%;
+					transform: translate(50%, 0);
+					top: auto;
+					bottom: 22px;
+					width: min(88vw, 420px);
+					background: rgba(253, 252, 250, 0.95);
+					border: 1px solid rgba(75, 69, 64, 0.1);
+					border-radius: 14px;
+					padding: 18px 22px 20px;
 				}
-
-				nav .nav-cta {
-					margin-left: 0;
-					padding: 0.42rem 0.78rem;
-					font-size: 0.68rem;
-				}
-
-				.logo {
-					height: 68px;
-					width: 230px;
-					overflow: visible;
-					display: flex;
-					align-items: center;
-				}
-
-				.hero { padding: 1.2rem 1.25rem 2rem; margin-top: 0 !important; }
-				.hero-shell {
-					grid-template-columns: 1fr;
-					gap: 1rem;
-				}
-				.hero-content {
-					max-width: 100%;
-					padding: 0.2rem 0 0;
-					text-align: center;
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-				}
-				.hero-eyebrow { margin-bottom: 0.55rem; }
-				.hero h1 {
-					font-size: clamp(1.95rem, 8.2vw, 2.35rem);
-					line-height: 1.08;
-					margin: 0 auto 0.7rem;
-					max-width: 13ch;
-				}
-				.hero p { font-size: 1rem; max-width: 34ch; margin: 0 auto 1.6rem; }
-				.hero-buttons {
-					justify-content: center;
-					width: 100%;
-				}
-				.hero-media { border-radius: 28px; margin-right: 0; }
-				.hero-media { min-height: 320px; }
-
-				.section-wrap {
-					padding: 4rem 1.4rem;
-				}
-
-				.story-cards {
-					grid-template-columns: 1fr;
-				}
-
-				.app-card,
-				.app-card:nth-child(2n) {
-					flex-direction: column;
-					padding: 3rem 0;
-				}
-
-				.app-card img {
-					width: 100%;
-					height: 220px;
-					border-radius: 12px;
-				}
-
-				.app-body {
-					padding: 2rem 0 0;
-				}
-
-				.stats-grid {
-					grid-template-columns: repeat(2, 1fr);
-				}
-
-				.stats-grid > div + div {
-					border-left: none;
-				}
-
-			}
-
-			@media (max-width: 480px) {
-				.hero h1 { font-size: 2rem; }
-				.hero-eyebrow { font-size: 0.72rem; }
-				.section-headline { font-size: 1.85rem; }
-			}
-
-			@media (prefers-reduced-motion: reduce) {
-				* {
-					animation: none !important;
-					transition: none !important;
-				}
+				.fin-stage.open .fin-detail { transform: translate(50%, 0); }
+				.fin-detail h3 { font-size: 32px; }
+				.fin-detail .fd-desc { display: none; }
 			}
 		</style>
 	</head>
 	<body>
-		<header>
-			<div class="header-content">
-				<a href="/" style="text-decoration: none;">
-					<div class="logo">
-						<Image src={renuvamain} alt="Renuva" width={550} loading="eager" />
-					</div>
+
+		<!-- ============ HERO ============ -->
+		<header class="hero">
+			<nav class="nav">
+				<a class="logo" href="/" aria-label="Renuva">
+					<Image src={renuvamain} alt="Renuva" width={550} loading="eager" />
 				</a>
-				<nav>
-					<a href="/about">About Us</a>
-					<a href="/distributor">Distributor</a>
-					<a href="/gallery">Gallery</a>
-					<a href="/contact" class="nav-cta">Contact Us</a>
-				</nav>
+				<div class="nav-right">
+					<div class="nav-links">
+						<a href="/about">About Us</a>
+						<a href="/distributor">Distributor</a>
+						<a href="/gallery">Gallery</a>
+					</div>
+					<a class="contact-btn" href="/contact">Contact Us</a>
+				</div>
+			</nav>
+
+			<div class="hero-grid" style="font-weight: 500">
+				<div class="hero-copy">
+					<p class="eyebrow">Premium Architectural Vinyl</p>
+					<h1 aria-label="Renew. Don't replace."><span class="typer" id="heroTyper" aria-hidden="true">Renew.
+Don't replace.</span></h1>
+					<a class="cta-btn" href="/distributor">DISTRIBUTOR INFO</a>
+				</div>
+
+				<div class="hero-art" aria-hidden="true">
+					<canvas id="heroKitchen"></canvas>
+				</div>
 			</div>
 		</header>
 
-		<section class="hero">
-			<div class="hero-shell">
-				<div class="hero-content">
-					<span class="hero-eyebrow">Premium Architectural Vinyl</span>
-					<h1>A smarter way to renew.</h1>
-					<p>Luxurious architectural vinyl for effortless surface renewal, crafted to create calm, refined spaces without the disruption of traditional renovation.</p>
-					<div class="hero-buttons">
-						<a href="/distributor" class="btn-primary">Distributor Info</a>
-					</div>
+		<!-- ============ SECTION: FINISH LIBRARY ============ -->
+		<section class="finishes" id="finishes">
+			<div class="fin-stage" id="finStage">
+				<div class="fin-head">
+					<p class="fin-eyebrow">The Finish Library</p>
+					<p class="fin-sub">Ten architectural films. One surface at a time.</p>
 				</div>
-				<div class="hero-media">
-					<Image
-						class="hero-slide"
-						src={renuva7}
-						alt="Renuva architectural vinyl finish"
-						widths={[480, 768, 1080, 1536]}
-						sizes="(max-width: 768px) 94vw, 45vw"
-						quality={90}
-						loading="eager"
-						fetchpriority="high"
-					/>
-					<Image
-						class="hero-slide"
-						src={renuva2}
-						alt="Renuva architectural vinyl finish"
-						widths={[480, 768, 1080, 1440]}
-						sizes="(max-width: 768px) 94vw, 45vw"
-						quality={90}
-						loading="lazy"
-						fetchpriority="low"
-					/>
-					<Image
-						class="hero-slide"
-						src={renuva3}
-						alt="Renuva architectural vinyl finish"
-						widths={[480, 768, 1080, 1500]}
-						sizes="(max-width: 768px) 94vw, 45vw"
-						quality={90}
-						loading="lazy"
-						fetchpriority="low"
-					/>
-					<Image
-						class="hero-slide"
-						src={renuva8}
-						alt="Renuva architectural vinyl finish"
-						widths={[480, 768, 1080, 1536]}
-						sizes="(max-width: 768px) 94vw, 45vw"
-						quality={90}
-						loading="lazy"
-						fetchpriority="low"
-					/>
-				</div>
-			</div>
-			<div class="stats-bar">
-				<div class="stats-grid">
-					<div>
-						<div class="stat-number" data-count="500" data-suffix="+">0+</div>
-						<div class="stat-label">Spaces Renewed</div>
-					</div>
-					<div>
-						<div class="stat-number" data-count="50" data-suffix="+">0+</div>
-						<div class="stat-label">Design Options</div>
-					</div>
-					<div>
-						<div class="stat-number">5yr</div>
-						<div class="stat-label">Material Warranty</div>
-					</div>
-					<div>
-						<div class="stat-number">5&#9733;</div>
-						<div class="stat-label">Customer Rated</div>
-					</div>
-				</div>
+				<div class="fin-backdrop" id="finBackdrop"></div>
+				<div class="fin-cards" id="finCards"></div>
+				<p class="fin-hint" id="finHint">Scroll to explore · Click a finish</p>
+				<div class="fin-detail" id="finDetail"></div>
+				<button class="fin-close" id="finClose" aria-label="Close finish detail">×</button>
 			</div>
 		</section>
 
-		<main>
-			<section class="section-wrap why-renuva">
-				<div class="section-shell story-grid">
-					<div class="reveal">
-						<span class="kicker">Why Renuva</span>
-						<h2 class="section-headline">Built for high-impact transformation with low disruption.</h2>
-						<p class="section-copy">
-							Renuva helps teams renew existing spaces without full demolition. Our architectural film system is designed for premium visual outcomes, faster timelines, and cleaner project execution.
-						</p>
-					</div>
-					<div class="story-cards">
-						<article class="story-card reveal" style="transition-delay: 70ms;">
-							<h3>Faster Turnarounds</h3>
-							<p>Renew key surfaces in days, not weeks, while reducing project interruption.</p>
-						</article>
-						<article class="story-card reveal" style="transition-delay: 120ms;">
-							<h3>Refined Finishes</h3>
-							<p>Curated textures and tones built for calm, elevated architectural spaces.</p>
-						</article>
-						<article class="story-card reveal" style="transition-delay: 170ms;">
-							<h3>Lower Waste</h3>
-							<p>Wrap over existing substrates to avoid unnecessary tear-out and disposal.</p>
-						</article>
-						<article class="story-card reveal" style="transition-delay: 220ms;">
-							<h3>System Consistency</h3>
-							<p>Structured standards from product through installation for dependable outcomes.</p>
-						</article>
+		<!-- ============ SECTION: BEAUTY AT EVERY SURFACE ============ -->
+		<main class="panel">
+			<section class="resurface">
+				<aside class="info-block" id="infoBlock">
+					<h2 class="info-title"><span class="typer2"><span class="typer-ghost" aria-hidden="true">Beauty at
+Every Surface</span><span class="typer-live"><span class="typed"></span><span class="caret" aria-hidden="true"></span></span></span></h2>
+					<p class="info-sub reveal-up">One seamless finish. No demolition.</p>
+					<ul class="cat-list">
+						<li><span class="cat-line"><span class="cat-idx">01</span><span class="cat-name">Wood Finishes</span></span></li>
+						<li><span class="cat-line"><span class="cat-idx">02</span><span class="cat-name">Stone &amp; Marble</span></span></li>
+						<li><span class="cat-line"><span class="cat-idx">03</span><span class="cat-name">Metal &amp; Texture</span></span></li>
+					</ul>
+				</aside>
+
+				<div class="compare-col">
+					<div class="compare-stack">
+						<div class="cmp top" aria-label="Drag to compare drawing and finished kitchen — upper half">
+							<img src="/assets/landing/kitchen2-lines.png" alt="" draggable="false" />
+							<div class="cmp-photo"><img src="/assets/landing/kitchen2-photo.png" alt="" draggable="false" /></div>
+							<span class="cmp-tag l">Drawing</span>
+							<span class="cmp-tag r">Renuva</span>
+							<div class="cmp-handle"><span class="cmp-grip">‹ ›</span></div>
+						</div>
+						<div class="cmp bot" aria-label="Drag to compare drawing and finished kitchen — lower half">
+							<img src="/assets/landing/kitchen2-lines.png" alt="" draggable="false" />
+							<div class="cmp-photo"><img src="/assets/landing/kitchen2-photo.png" alt="" draggable="false" /></div>
+							<div class="cmp-handle"><span class="cmp-grip">‹ ›</span></div>
+						</div>
 					</div>
 				</div>
 			</section>
-
-			<section class="section-wrap vinyl-showcase">
-				<div class="section-shell">
-					<div class="reveal">
-						<span class="kicker">Vinyl Collections</span>
-						<h2 class="section-headline">A wide variety of premium vinyl finishes.</h2>
-						<p class="section-copy">
-							From warm wood grains to stone-inspired textures and modern solids, Renuva offers a curated range of architectural films to match different design directions and project goals.
-						</p>
-					</div>
-					<div class="vinyl-stack">
-						<article class="vinyl-card reveal" style="transition-delay: 80ms;">
-							<Image src={wood} alt="Renuva wood grain vinyl finish" width={700} loading="lazy" />
-							<div class="vinyl-body">
-								<h3>Wood Grain</h3>
-								<p>Natural-inspired tones for warm, residential and hospitality aesthetics.</p>
-							</div>
-						</article>
-						<article class="vinyl-card reveal" style="transition-delay: 140ms;">
-							<Image src={stone} alt="Renuva stone and mineral vinyl finish" width={700} loading="lazy" />
-							<div class="vinyl-body">
-								<h3>Stone + Mineral</h3>
-								<p>Soft mineral visuals that create clean, modern, and elegant surfaces.</p>
-							</div>
-						</article>
-						<article class="vinyl-card reveal" style="transition-delay: 200ms;">
-							<Image src={dark} alt="Renuva dark solid and textile vinyl finish" width={700} loading="lazy" />
-							<div class="vinyl-body">
-								<h3>Solid + Textile</h3>
-								<p>Contemporary greys and subtle textures for commercial and office projects.</p>
-							</div>
-						</article>
-						<article class="vinyl-card reveal" style="transition-delay: 260ms;">
-							<Image src={metallic} alt="Renuva metallic and brushed vinyl finish" width={700} loading="lazy" />
-							<div class="vinyl-body">
-								<h3>Metallic + Brushed</h3>
-								<p>A common wrap category for modern accents, fixtures, and premium statement surfaces.</p>
-							</div>
-						</article>
-					</div>
-				</div>
-			</section>
-
-			<section class="section-wrap where-it-works">
-				<div class="section-shell">
-					<div class="reveal">
-						<span class="kicker">Where It Works</span>
-						<h2 class="section-headline">Use cases designed for high-visibility spaces.</h2>
-					</div>
-					<div class="apps-grid">
-						<article class="app-card reveal" style="transition-delay: 60ms;">
-							<Image src={livingroom} alt="Residential living room surface renewal" width={650} loading="lazy" />
-							<div class="app-body">
-								<h3>Residential</h3>
-								<p>Kitchen cabinetry, vanities, and built-ins refreshed without full replacement.</p>
-							</div>
-						</article>
-						<article class="app-card reveal" style="transition-delay: 110ms;">
-							<Image src={screenshot} alt="Bathroom renewal with architectural film" width={650} loading="lazy" />
-							<div class="app-body">
-								<h3>Hospitality</h3>
-								<p>Upgrade guest-facing areas with elegant finishes and minimal downtime.</p>
-							</div>
-						</article>
-						<article class="app-card reveal" style="transition-delay: 160ms;">
-							<Image src={productLook} alt="Retail and commercial finish detail" width={650} loading="lazy" />
-							<div class="app-body">
-								<h3>Retail + Office</h3>
-								<p>Modernize counters, walls, and fixtures while operations continue.</p>
-							</div>
-						</article>
-						<article class="app-card reveal" style="transition-delay: 210ms;">
-							<Image src={wrappingMats} alt="Renuva wrapping material samples" width={650} loading="lazy" />
-							<div class="app-body">
-								<h3>Custom Projects</h3>
-								<p>Match material direction to your project goals, timing, and aesthetic requirements.</p>
-							</div>
-						</article>
-					</div>
-				</div>
-			</section>
-
 		</main>
 
 		<footer>
@@ -1233,82 +730,136 @@ import renuvamain from '../assets/images/RENUVAMAIN.png';
 			</div>
 		</footer>
 
-		<script>
-			document.addEventListener('DOMContentLoaded', () => {
-				const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-				const revealEls = document.querySelectorAll('.reveal');
-
-				if (prefersReducedMotion) {
-					revealEls.forEach((el) => el.classList.add('in-view'));
+		<script is:inline>
+			/* Hero typewriter — each character is revealed in its final position so the
+			   centered headline never shifts while typing. */
+			(function () {
+				const typer = document.getElementById('heroTyper');
+				if (!typer) return;
+				const full = typer.textContent.replace(/\n\s*/g, '\n').trim();
+				const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				typer.textContent = '';
+				const caret = document.createElement('span');
+				caret.className = 'caret';
+				caret.setAttribute('aria-hidden', 'true');
+				const chars = [];
+				for (const ch of full) {
+					if (ch === '\n') { typer.appendChild(document.createElement('br')); continue; }
+					const s = document.createElement('span');
+					s.className = 'ch';
+					s.textContent = ch;
+					typer.appendChild(s);
+					chars.push(s);
+				}
+				typer.appendChild(caret);
+				if (reduce) {
+					chars.forEach(function (c) { c.classList.add('on'); });
+					caret.classList.add('done');
 					return;
 				}
+				if (chars.length) typer.insertBefore(caret, chars[0]);
+				let i = 0;
+				function step() {
+					if (i >= chars.length) {
+						setTimeout(function () { caret.classList.add('done'); }, 1400);
+						return;
+					}
+					const c = chars[i];
+					c.classList.add('on');
+					if (c.nextSibling) typer.insertBefore(caret, c.nextSibling);
+					else typer.appendChild(caret);
+					const t = c.textContent;
+					i++;
+					let d = 31 + Math.random() * 27;
+					if (t === '.' || t === ',') d = 210;
+					else if (t === ' ') d = 60;
+					setTimeout(step, d);
+				}
+				setTimeout(step, 175);
+			})();
+		</script>
 
-				const revealObserver = new IntersectionObserver((entries, observer) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add('in-view');
-							observer.unobserve(entry.target);
-						}
-					});
-				}, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+		<script is:inline src="/scripts/renuva-photo-kitchen.js"></script>
+		<script is:inline src="/scripts/renuva-finishes.js"></script>
+		<script is:inline>
+			(function () {
+				const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-				revealEls.forEach((el) => revealObserver.observe(el));
+				/* ---- hero: continuous smooth wrap loop ---- */
+				const hero = RenuvaPhotoKitchen.create(document.getElementById('heroKitchen'));
+				const heroCycle = 11.52; // seconds
 
-				const counters = document.querySelectorAll('.stat-number[data-count]');
-				let countersStarted = false;
-				const animateCounters = () => {
-					counters.forEach((el) => {
-						const target = parseInt(el.dataset.count, 10);
-						const suffix = el.dataset.suffix || '';
-						const duration = 1600;
-						const start = performance.now();
-
-						const tick = (now) => {
-							const elapsed = now - start;
-							const progress = Math.min(elapsed / duration, 1);
-							const eased = 1 - Math.pow(1 - progress, 3);
-							const current = Math.round(eased * target);
-							el.textContent = current + suffix;
-							if (progress < 1) requestAnimationFrame(tick);
-						};
-
-						requestAnimationFrame(tick);
-					});
-				};
-
-				const statsBar = document.querySelector('.stats-bar');
-				if (statsBar) {
-					const statsObserver = new IntersectionObserver((entries) => {
-						entries.forEach((entry) => {
-							if (entry.isIntersecting && !countersStarted) {
-								countersStarted = true;
-								animateCounters();
-							}
-						});
-					}, { threshold: 0.3 });
-
-					statsObserver.observe(statsBar);
+				function heroProgress(timeSec) {
+					const t = (timeSec % heroCycle) / heroCycle;
+					return 0.5 - 0.5 * Math.cos(2 * Math.PI * t); // sinusoidal: always in motion
 				}
 
-				const parallaxImg = document.querySelector('.final-cta-media img');
-				if (parallaxImg) {
-					const onScroll = () => {
-						const parent = parallaxImg.closest('.final-cta');
-						const rect = parent.getBoundingClientRect();
-						const offset = rect.top * -0.18;
-						parallaxImg.style.transform = `translate3d(0, ${offset}px, 0)`;
-					};
-					window.addEventListener('scroll', onScroll, { passive: true });
+				const start = performance.now();
+				function frame(now) {
+					if (window.scrollY < window.innerHeight * 1.05) {
+						hero.setProgress(reduced ? 1 : heroProgress((now - start) / 1000));
+					}
+					requestAnimationFrame(frame);
 				}
-			});
+				requestAnimationFrame(frame);
+
+				/* ---- section: dual before/after sliders (top + bottom halves) ---- */
+				document.querySelectorAll('.cmp').forEach(function (el) {
+					const photo = el.querySelector('.cmp-photo');
+					const handle = el.querySelector('.cmp-handle');
+					let dragging = false;
+					function set(p) {
+						p = Math.max(0.03, Math.min(0.97, p));
+						photo.style.clipPath = 'inset(0 0 0 ' + (p * 100).toFixed(2) + '%)'; // drawing left, photo right
+						handle.style.left = (p * 100).toFixed(2) + '%';
+					}
+					set(0.5); // start centered
+					function move(clientX) {
+						const r = el.getBoundingClientRect();
+						set((clientX - r.left) / r.width);
+					}
+					el.addEventListener('pointerdown', function (e) {
+						dragging = true;
+						el.setPointerCapture(e.pointerId);
+						move(e.clientX);
+						e.preventDefault();
+					});
+					el.addEventListener('pointermove', function (e) { if (dragging) move(e.clientX); });
+					el.addEventListener('pointerup', function () { dragging = false; });
+					el.addEventListener('pointercancel', function () { dragging = false; });
+				});
+
+				/* ---- section: entrance reveal + typed headline ---- */
+				const infoBlock = document.getElementById('infoBlock');
+
+				function typeTitle() {
+					const h2 = infoBlock.querySelector('.info-title');
+					const typed = h2.querySelector('.typed');
+					const caret = h2.querySelector('.caret');
+					const full = h2.querySelector('.typer-ghost').textContent.replace(/\n\s*/g, '\n');
+					if (reduced) { typed.textContent = full; if (caret) caret.classList.add('done'); return; }
+					let i = 0;
+					(function step() {
+						typed.textContent = full.slice(0, i);
+						if (i >= full.length) { setTimeout(function () { if (caret) caret.classList.add('done'); }, 1200); return; }
+						const ch = full[i]; i++;
+						let d = 34 + Math.random() * 30;
+						if (ch === '.' || ch === ',') d = 230;
+						else if (ch === ' ' || ch === '\n') d = 70;
+						setTimeout(step, d);
+					})();
+				}
+
+				const io = new IntersectionObserver(function (entries) {
+					entries.forEach(function (en) {
+						if (!en.isIntersecting) return;
+						infoBlock.classList.add('reveal');
+						setTimeout(typeTitle, 220);
+						io.unobserve(infoBlock);
+					});
+				}, { threshold: 0.35 });
+				io.observe(infoBlock);
+			})();
 		</script>
 	</body>
 </html>
-
-
-
-
-
-
-
-
