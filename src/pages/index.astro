@@ -325,7 +325,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				flex-direction: column;
 				align-items: center;
 				justify-content: center;
-				padding: clamp(56px, 9vh, 110px) 16px clamp(40px, 6vh, 80px);
+				padding: clamp(48px, 7vh, 90px) 16px clamp(32px, 5vh, 64px);
 				overflow: hidden;
 			}
 			.fd-head { text-align: center; }
@@ -336,21 +336,12 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				line-height: 1.05;
 				color: var(--taupe);
 			}
-			.fd-sub {
-				margin-top: 12px;
-				font-size: 13px;
-				font-weight: 500;
-				letter-spacing: 0.14em;
-				text-transform: uppercase;
-				color: #A2937F;
-			}
-
 			.deck {
-				--dk: min(88vmin, 900px);
+				--dk: min(104vmin, 92vw, 1180px);
 				position: relative;
 				width: var(--dk);
 				height: var(--dk);
-				margin-top: clamp(8px, 2vh, 24px);
+				margin-top: clamp(4px, 1.2vh, 16px);
 			}
 
 			/* one physical swatch strip */
@@ -495,11 +486,11 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			.fdm-card {
 				position: relative;
 				display: grid;
-				grid-template-columns: minmax(0, 1.06fr) minmax(0, 1fr);
-				width: min(1060px, 96vw);
-				max-height: 88vh;
+				grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+				width: min(1240px, 96vw);
+				height: min(720px, 88vh);
 				background: var(--card);
-				border-radius: 20px;
+				border-radius: 22px;
 				overflow: hidden;
 				box-shadow: 0 40px 120px rgba(30, 26, 22, 0.45);
 				transform: translateY(14px) scale(0.97);
@@ -520,62 +511,69 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				display: block;
 			}
 			.fdm-info {
-				padding: clamp(26px, 3.4vw, 46px);
+				padding: clamp(30px, 4vw, 58px);
 				display: flex;
 				flex-direction: column;
+				justify-content: center;
 				min-height: 0;
 				overflow-y: auto;
 			}
-			.fdm-series {
-				font-size: 12px;
-				font-weight: 700;
-				letter-spacing: 0.2em;
+			.fdm-meta {
+				display: flex;
+				align-items: baseline;
+				gap: 14px;
+				font-size: 11.5px;
+				font-weight: 600;
+				letter-spacing: 0.24em;
 				text-transform: uppercase;
-				color: #A2937F;
 			}
+			.fdm-series { color: #A2937F; }
+			.fdm-meta::before {
+				content: "";
+				order: 1;
+				width: 26px;
+				height: 1px;
+				background: rgba(75, 69, 64, 0.28);
+				align-self: center;
+			}
+			.fdm-code { order: 2; color: #756E64; }
 			.fdm-name {
-				margin-top: 10px;
+				margin-top: 16px;
 				font-family: 'Cormorant', serif;
 				font-weight: 500;
-				font-size: clamp(32px, 3.4vw, 50px);
-				line-height: 1.03;
+				font-size: clamp(38px, 4.2vw, 64px);
+				line-height: 1.0;
+				letter-spacing: -0.01em;
 				color: var(--taupe);
 			}
-			.fdm-code {
-				margin-top: 10px;
-				align-self: flex-start;
-				font-size: 12px;
-				font-weight: 700;
-				letter-spacing: 0.14em;
-				color: #756E64;
-				background: #EFEAE0;
-				padding: 6px 12px;
-				border-radius: 6px;
-			}
 			.fdm-desc {
-				margin-top: 18px;
-				font-size: 15px;
-				line-height: 1.65;
+				margin-top: 22px;
+				max-width: 42ch;
+				font-size: 16px;
+				font-weight: 400;
+				line-height: 1.7;
 				color: var(--muted);
 				text-wrap: pretty;
 			}
 			.fdm-specs {
-				margin-top: 22px;
-				border-top: 1px solid rgba(75, 69, 64, 0.14);
-			}
-			.fdm-specs > div {
+				margin-top: clamp(22px, 3.5vh, 36px);
+				padding-top: 22px;
+				border-top: 1px solid rgba(75, 69, 64, 0.13);
 				display: flex;
-				justify-content: space-between;
-				gap: 18px;
-				padding: 10px 0;
-				border-bottom: 1px solid rgba(75, 69, 64, 0.14);
-				font-size: 14px;
+				gap: clamp(24px, 3vw, 44px);
 			}
-			.fdm-specs dt { color: #998F82; }
-			.fdm-specs dd { font-weight: 600; color: var(--ink); }
+			.fdm-specs > div { display: flex; flex-direction: column; gap: 7px; }
+			.fdm-specs .fs-l {
+				font-size: 10.5px;
+				font-weight: 600;
+				letter-spacing: 0.18em;
+				text-transform: uppercase;
+				color: #A99E8D;
+			}
+			.fdm-specs .fs-v { font-size: 14.5px; font-weight: 550; color: var(--ink); }
 			.fdm-foot {
-				margin-top: auto;
-				padding-top: 26px;
+				margin-top: clamp(28px, 5vh, 46px);
+				padding-top: 0;
 				display: flex;
 				align-items: center;
 				gap: 14px;
@@ -985,7 +983,6 @@ replace.</span></h1>
 		<section class="fandeck" id="fandeck" aria-label="Renuva swatch book — all 27 finishes">
 			<div class="fd-head">
 				<h2 class="fd-title">The Swatch Book</h2>
-				<p class="fd-sub">All 27 finishes &middot; Click any swatch for full view</p>
 			</div>
 			<div class="deck" id="deckFan" role="list">
 				<div class="deck-cover" aria-hidden="true">
@@ -1003,15 +1000,14 @@ replace.</span></h1>
 			<div class="fdm-card">
 				<div class="fdm-img"><img src="" alt="" /></div>
 				<div class="fdm-info">
-					<p class="fdm-series"></p>
+					<p class="fdm-meta"><span class="fdm-series"></span><span class="fdm-code"></span></p>
 					<h3 class="fdm-name"></h3>
-					<p class="fdm-code"></p>
 					<p class="fdm-desc"></p>
-					<dl class="fdm-specs">
-						<div><dt>Width</dt><dd>48 in (122 cm)</dd></div>
-						<div><dt>Backing</dt><dd>Water-based adhesive</dd></div>
-						<div><dt>Availability</dt><dd>Stocked in the US &middot; Ships 1&ndash;3 days</dd></div>
-					</dl>
+					<div class="fdm-specs">
+						<div><span class="fs-l">Width</span><span class="fs-v">48 in / 122 cm</span></div>
+						<div><span class="fs-l">Backing</span><span class="fs-v">Water-based adhesive</span></div>
+						<div><span class="fs-l">Shipping</span><span class="fs-v">US stock &middot; 1&ndash;3 days</span></div>
+					</div>
 					<div class="fdm-foot">
 						<a class="fdm-link" href="" target="_blank" rel="noopener">VIEW ON SURFACESUPPLY</a>
 						<div class="fdm-nav">

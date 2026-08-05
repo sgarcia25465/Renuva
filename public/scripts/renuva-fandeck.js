@@ -7,7 +7,7 @@
 	"code": "PW1512",
 	"name": "Cream Ash",
 	"series": "Premium Wood",
-	"desc": "This PW1512 finish presents a pale cream ash tone with a subtle, even figure and a light Scandinavian feel. It is designed to refresh doors, cabinetry, and furniture in airy, minimal interiors.",
+	"desc": "A pale cream ash tone with a subtle, even figure and a light Scandinavian feel. Designed to refresh doors, cabinetry, and furniture in airy, minimal interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1512",
 	"dark": false
 	},
@@ -15,7 +15,7 @@
 	"code": "PW1514",
 	"name": "Sand Oak",
 	"series": "Premium Wood",
-	"desc": "This PW1514 finish presents a light sandy oak tone with a fine cathedral figure. It is designed to complement doors, cabinet fronts, and furniture in relaxed natural interiors.",
+	"desc": "A light sandy oak tone with a fine cathedral figure. Designed to complement doors, cabinet fronts, and furniture in relaxed natural interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1514",
 	"dark": false
 	},
@@ -23,7 +23,7 @@
 	"code": "PW1516",
 	"name": "Honey Oak",
 	"series": "Premium Wood",
-	"desc": "This PW1516 finish presents a warm golden oak tone with an even, natural grain. It is designed to elevate doors, millwork, and furniture in warm residential spaces.",
+	"desc": "A warm golden oak tone with an even, natural grain. Designed to elevate doors, millwork, and furniture in warm residential spaces.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1516",
 	"dark": false
 	},
@@ -31,7 +31,7 @@
 	"code": "PW1518",
 	"name": "Golden Rift Oak",
 	"series": "Premium Wood",
-	"desc": "This PW1518 finish presents a medium golden oak tone with straight rift-sawn grain. It is designed to complement doors, cabinetry, wall panels, and office furniture.",
+	"desc": "A medium golden oak tone with straight rift-sawn grain. Designed to complement doors, cabinetry, wall panels, and office furniture.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1518",
 	"dark": false
 	},
@@ -39,7 +39,7 @@
 	"code": "PW1520",
 	"name": "Amber Oak",
 	"series": "Premium Wood",
-	"desc": "This PW1520 finish presents a warm amber oak tone with soft cathedral figure and natural tonal movement. It is designed to refresh doors, cabinet fronts, and millwork in traditional interiors.",
+	"desc": "A warm amber oak tone with soft cathedral figure and natural tonal movement. Designed to refresh doors, cabinet fronts, and millwork in traditional interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1520",
 	"dark": true
 	},
@@ -47,7 +47,7 @@
 	"code": "PW1522",
 	"name": "Rosewood Mahogany",
 	"series": "Premium Wood",
-	"desc": "This PW1522 finish presents a deep reddish mahogany tone with straight, elegant grain. It is designed to elevate executive furniture, doors, and panels in formal interiors.",
+	"desc": "A deep reddish mahogany tone with straight, elegant grain. Designed to elevate executive furniture, doors, and panels in formal interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1522",
 	"dark": true
 	},
@@ -55,7 +55,7 @@
 	"code": "RW1412",
 	"name": "Warm White Painted Wood",
 	"series": "Painted Wood",
-	"desc": "This RW1412 finish presents a warm white tone with visible brushstroke grain and a hand-painted character. It is designed to refresh cabinet fronts, wardrobes, doors, and trim in classic interiors.",
+	"desc": "A warm white tone with visible brushstroke grain and a hand-painted character. Designed to refresh cabinet fronts, wardrobes, doors, and trim in classic interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-painted-wood-lw1412",
 	"dark": false
 	},
@@ -63,7 +63,7 @@
 	"code": "RW1414",
 	"name": "Cream Painted Wood",
 	"series": "Painted Wood",
-	"desc": "This RW1414 finish presents a soft cream tone with subtle raised grain that reads as freshly lacquered joinery. It is designed to complement kitchens, wardrobes, and doors in warm traditional spaces.",
+	"desc": "A soft cream tone with subtle raised grain that reads as freshly lacquered joinery. Designed to complement kitchens, wardrobes, and doors in warm traditional spaces.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-painted-wood-lw1414",
 	"dark": false
 	},
@@ -71,7 +71,7 @@
 	"code": "RW1416",
 	"name": "Dove Grey Painted Wood",
 	"series": "Painted Wood",
-	"desc": "This RW1416 finish presents a calm dove grey tone with fine painted-timber texture. It is designed to refresh cabinet fronts, doors, and built-ins in contemporary interiors.",
+	"desc": "A calm dove grey tone with fine painted-timber texture. Designed to refresh cabinet fronts, doors, and built-ins in contemporary interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-painted-wood-lw1416",
 	"dark": false
 	},
@@ -79,7 +79,7 @@
 	"code": "RW1418",
 	"name": "Bright White Painted Wood",
 	"series": "Painted Wood",
-	"desc": "This RW1418 finish presents a bright white tone with dense, fine straight-grain texture. It is designed to elevate kitchens, cabinet fronts, and doors in crisp modern spaces.",
+	"desc": "A bright white tone with dense, fine straight-grain texture. Designed to elevate kitchens, cabinet fronts, and doors in crisp modern spaces.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-painted-wood-lw1418",
 	"dark": false
 	},
@@ -87,7 +87,7 @@
 	"code": "FP1840",
 	"name": "White Linen Weave",
 	"series": "Fabric",
-	"desc": "This FP1840 finish presents a crisp white tone with fine linen-weave texture at thread level. It is designed to soften wall panels, wardrobe fronts, and headboard surrounds.",
+	"desc": "A crisp white tone with fine linen-weave texture at thread level. Designed to soften wall panels, wardrobe fronts, and headboard surrounds.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-fabric-fp1840",
 	"dark": false
 	},
@@ -95,7 +95,7 @@
 	"code": "FP1842",
 	"name": "Grey Linen Weave",
 	"series": "Fabric",
-	"desc": "This FP1842 finish presents a mid-grey tone with linen-weave texture and natural vertical slub. It is designed to complement wall panels, wardrobe fronts, and hospitality interiors.",
+	"desc": "A mid-grey tone with linen-weave texture and natural vertical slub. Designed to complement wall panels, wardrobe fronts, and hospitality interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-fabric-fp1842",
 	"dark": true
 	},
@@ -103,7 +103,7 @@
 	"code": "MTS1308",
 	"name": "Slate Grey Soft Matte",
 	"series": "Soft Matte",
-	"desc": "This MTS1308 finish presents an even mid-grey tone with a velvety soft-touch surface that diffuses light. It is designed to bring a premium super-matte look to cabinet fronts, doors, and built-ins.",
+	"desc": "An even mid-grey tone with a velvety soft-touch surface that diffuses light. Designed to bring a premium super-matte look to cabinet fronts, doors, and built-ins.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-soft-matte-mts1308",
 	"dark": true
 	},
@@ -111,7 +111,7 @@
 	"code": "HG1630",
 	"name": "Pure White Gloss",
 	"series": "High Gloss Solid",
-	"desc": "This HG1630 finish presents a crisp pure white tone with a deep, reflective high-gloss finish. It is designed to elevate modern kitchens, wardrobe fronts, and feature panels.",
+	"desc": "A crisp pure white tone with a deep, reflective high-gloss finish. Designed to elevate modern kitchens, wardrobe fronts, and feature panels.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-high-gloss-solid-hg1630",
 	"dark": false
 	},
@@ -119,7 +119,7 @@
 	"code": "HG1632",
 	"name": "Ivory Gloss",
 	"series": "High Gloss Solid",
-	"desc": "This HG1632 finish presents a warm ivory tone with a deep, reflective high-gloss finish. It is designed to complement kitchens and wardrobes in warm contemporary interiors.",
+	"desc": "A warm ivory tone with a deep, reflective high-gloss finish. Designed to complement kitchens and wardrobes in warm contemporary interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-high-gloss-solid-hg1632",
 	"dark": false
 	},
@@ -127,7 +127,7 @@
 	"code": "HG1634",
 	"name": "Greige Gloss",
 	"series": "High Gloss Solid",
-	"desc": "This HG1634 finish presents a sophisticated greige tone with a deep, reflective high-gloss finish. It is designed to elevate feature panels, kitchens, and wardrobes in refined modern spaces.",
+	"desc": "A sophisticated greige tone with a deep, reflective high-gloss finish. Designed to elevate feature panels, kitchens, and wardrobes in refined modern spaces.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-high-gloss-solid-hg1634",
 	"dark": false
 	},
@@ -135,7 +135,7 @@
 	"code": "MT1701",
 	"name": "Pure White Matte",
 	"series": "Matte Solid",
-	"desc": "This MT1701 finish presents a bright pure white tone with a smooth, even matte surface. It is designed to refresh cabinets, doors, panels, and built-ins in clean modern spaces.",
+	"desc": "A bright pure white tone with a smooth, even matte surface. Designed to refresh cabinets, doors, panels, and built-ins in clean modern spaces.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-matte-solid-mt1701",
 	"dark": false
 	},
@@ -143,7 +143,7 @@
 	"code": "MT1703",
 	"name": "Soft White Matte",
 	"series": "Matte Solid",
-	"desc": "This MT1703 finish presents a softly warm white tone with a smooth, even matte surface. It is designed to complement cabinets, wardrobes, and doors in soft neutral interiors.",
+	"desc": "A softly warm white tone with a smooth, even matte surface. Designed to complement cabinets, wardrobes, and doors in soft neutral interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-matte-solid-mt1703",
 	"dark": false
 	},
@@ -151,7 +151,7 @@
 	"code": "MT1705",
 	"name": "Ivory Matte",
 	"series": "Matte Solid",
-	"desc": "This MT1705 finish presents a warm ivory tone with a smooth, even matte surface. It is designed to refresh cabinet fronts, doors, and built-ins in warm neutral interiors.",
+	"desc": "A warm ivory tone with a smooth, even matte surface. Designed to refresh cabinet fronts, doors, and built-ins in warm neutral interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-matte-solid-mt1705",
 	"dark": false
 	},
@@ -159,7 +159,7 @@
 	"code": "MT1707",
 	"name": "Pale Grey Matte",
 	"series": "Matte Solid",
-	"desc": "This MT1707 finish presents a pale grey tone with a finely textured matte surface. It is designed to complement cabinets, doors, and panels in contemporary interiors.",
+	"desc": "A pale grey tone with a finely textured matte surface. Designed to complement cabinets, doors, and panels in contemporary interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-matte-solid-mt1707",
 	"dark": false
 	},
@@ -167,7 +167,7 @@
 	"code": "MT1709",
 	"name": "Stone Grey Matte",
 	"series": "Matte Solid",
-	"desc": "This MT1709 finish presents a balanced stone grey tone with a finely textured matte surface. It is designed to elevate cabinet fronts, doors, and panels in modern grey palettes.",
+	"desc": "A balanced stone grey tone with a finely textured matte surface. Designed to elevate cabinet fronts, doors, and panels in modern grey palettes.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-matte-solid-mt1709",
 	"dark": true
 	},
@@ -175,7 +175,7 @@
 	"code": "MT1711",
 	"name": "Charcoal Matte",
 	"series": "Matte Solid",
-	"desc": "This MT1711 finish presents a deep charcoal tone with a finely textured matte surface. It is designed to anchor cabinets, doors, and feature panels in bold modern interiors.",
+	"desc": "A deep charcoal tone with a finely textured matte surface. Designed to anchor cabinets, doors, and feature panels in bold modern interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-matte-solid-mt1711",
 	"dark": true
 	},
@@ -183,7 +183,7 @@
 	"code": "ME1213",
 	"name": "Brushed Champagne Metal",
 	"series": "Metal",
-	"desc": "This ME1213 finish presents a warm champagne-silver tone with fine hairline brushing running the length of the film. It is designed to elevate doors, panels, appliance surrounds, and trim in modern interiors.",
+	"desc": "A warm champagne-silver tone with fine hairline brushing running the length of the film. Designed to elevate doors, panels, appliance surrounds, and trim in modern interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-metal-me1213",
 	"dark": false
 	},
@@ -191,7 +191,7 @@
 	"code": "ME1215",
 	"name": "Pearl Silver Metal",
 	"series": "Metal",
-	"desc": "This ME1215 finish presents a pearl-silver tone with a fine metallic stipple that catches light evenly. It is designed to complement doors, panels, and fixtures in contemporary commercial spaces.",
+	"desc": "A pearl-silver tone with a fine metallic stipple that catches light evenly. Designed to complement doors, panels, and fixtures in contemporary commercial spaces.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-metal-me1215",
 	"dark": false
 	},
@@ -199,7 +199,7 @@
 	"code": "ST1105",
 	"name": "Cream Onyx Marble",
 	"series": "Marble",
-	"desc": "This ST1105 finish presents a warm cream tone with soft, cloud-like onyx veining and the gentle shifts of honed stone. It is designed to complement feature walls, reception desks, and furniture in calm, warm interiors.",
+	"desc": "A warm cream tone with soft, cloud-like onyx veining and the gentle shifts of honed stone. Designed to complement feature walls, reception desks, and furniture in calm, warm interiors.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-marble-st1105",
 	"dark": false
 	},
@@ -207,7 +207,7 @@
 	"code": "ST1107",
 	"name": "Carrara White Marble",
 	"series": "Marble",
-	"desc": "This ST1107 finish presents a clean white tone with sparse, confident grey veining in the classic Carrara manner. It is designed to elevate feature walls, columns, and furniture in bright, classic spaces.",
+	"desc": "A clean white tone with sparse, confident grey veining in the classic Carrara manner. Designed to elevate feature walls, columns, and furniture in bright, classic spaces.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-marble-st1107",
 	"dark": false
 	},
@@ -215,7 +215,7 @@
 	"code": "ST1109",
 	"name": "Cloud White Marble",
 	"series": "Marble",
-	"desc": "This ST1109 finish presents a bright white tone with dense, feathered grey veining and a polished-marble depth. It is designed to bring a polished stone look to feature walls, vanity surrounds, and furniture.",
+	"desc": "A bright white tone with dense, feathered grey veining and a polished-marble depth. Designed to bring a polished stone look to feature walls, vanity surrounds, and furniture.",
 	"url": "https://surfacesupply.com/products/renuva-architectural-film-marble-st1109",
 	"dark": false
 	}
@@ -288,7 +288,7 @@
 		probe.src = full;
 		mImg.src = IMG_DIR + f.code + '.jpg'; /* instant low-res while xl loads */
 		mImg.alt = f.name + ' finish sample';
-		mSeries.textContent = f.series + ' Series';
+		mSeries.textContent = f.series;
 		mName.textContent = f.name;
 		mCode.textContent = f.code;
 		mDesc.textContent = f.desc;
