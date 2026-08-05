@@ -641,6 +641,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				background: var(--paper);
 				color: var(--ink);
 				margin-top: 25vh;
+				margin-bottom: 22vh;
 			}
 
 			.fin-stage {
@@ -649,6 +650,22 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				overflow: hidden;
 				background: var(--paper);
 			}
+			/* melt the card stack into the paper background so the section
+			   blends into the kitchen compare below instead of cutting off */
+			.fin-stage::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				height: 24vh;
+				background: linear-gradient(to bottom, rgba(245, 242, 236, 0), #F5F2EC 82%);
+				z-index: 2100;
+				pointer-events: none;
+				transition: opacity 0.4s ease;
+			}
+			.fin-stage.open::after,
+			.fin-stage.closing::after { opacity: 0; }
 
 			/* heading — anchored top-LEFT */
 			.fin-head {
@@ -667,20 +684,6 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				letter-spacing: 0.005em;
 				color: var(--taupe);
 				line-height: 1.05;
-			}
-			.fin-hint {
-				position: absolute;
-				bottom: 34px;
-				left: 50%;
-				transform: translateX(-50%);
-				font-size: 12px;
-				letter-spacing: 0.14em;
-				text-transform: uppercase;
-				color: #B3A795;
-				z-index: 3000;
-				pointer-events: none;
-				white-space: nowrap;
-				transition: opacity 0.4s ease;
 			}
 
 			/* opaque backdrop revealed when a finish is opened */
@@ -1033,7 +1036,6 @@ replace.</span></h1>
 				</div>
 				<div class="fin-backdrop" id="finBackdrop"></div>
 				<div class="fin-cards" id="finCards"></div>
-				<p class="fin-hint" id="finHint">Scroll sideways to explore · Click a finish</p>
 				<div class="fin-detail" id="finDetail"></div>
 				<button class="fin-close" id="finClose" aria-label="Close finish detail">×</button>
 			</div>

@@ -51,7 +51,6 @@
   const cardsEl = document.getElementById('finCards');
   const detail = document.getElementById('finDetail');
   const closeBtn = document.getElementById('finClose');
-  const hint = document.getElementById('finHint');
   const head = document.querySelector('.fin-head');
   const backdrop = document.getElementById('finBackdrop');
   if (!section || !stage) return;
@@ -187,7 +186,6 @@
     stage.classList.add('open');
     if (backdrop) { backdrop.style.opacity = '0.97'; backdrop.style.pointerEvents = 'auto'; }
     if (head) head.style.opacity = '0';
-    if (hint) hint.style.opacity = '0';
     cards.forEach(function (c, j) {
       if (j === i) {
         c.classList.add('focus');
@@ -215,7 +213,6 @@
     setTimeout(function () {
       cards[i].classList.remove('focus');
       stage.classList.remove('closing');
-      if (hint) hint.style.opacity = '';
     }, 760);
   }
 
