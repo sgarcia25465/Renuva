@@ -157,7 +157,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			.resurface {
 				min-height: 100vh;
 				display: grid;
-				grid-template-columns: minmax(260px, 340px) 1fr;
+				grid-template-columns: minmax(280px, 460px) 1fr;
 				gap: clamp(24px, 4vw, 64px);
 				align-items: center;
 				padding: clamp(48px, 8vh, 96px) clamp(24px, 5vw, 84px);
@@ -170,7 +170,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				min-width: 0;
 			}
 			.compare-stack {
-				width: min(100%, 680px);
+				width: min(100%, 840px);
 				aspect-ratio: 1024 / 683;
 				display: flex;
 				flex-direction: column;
@@ -249,16 +249,16 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			.cmp-tag.r { right: 12px; background: rgba(75,69,64,0.65); color: #fff; }
 
 			/* sleek typographic info block (no card) */
-			.info-block { align-self: center; max-width: 460px; }
+			.info-block { align-self: center; max-width: 480px; }
 			.info-title {
 				font-family: 'Cormorant', serif;
 				font-weight: 500;
 				color: var(--taupe);
-				font-size: clamp(46px, 4.6vw, 78px);
+				font-size: clamp(46px, 4.4vw, 70px);
 				line-height: 1.0;
 				letter-spacing: -0.01em;
 			}
-			.info-title .typer2 { position: relative; display: inline-block; white-space: pre-line; }
+			.info-title .typer2 { position: relative; display: inline-block; white-space: pre; }
 			.info-title .typer-ghost { visibility: hidden; }
 			.info-title .typer-live { position: absolute; inset: 0; }
 			.info-title .caret {
@@ -360,15 +360,26 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				transform: translate(calc(var(--dk) * -0.0625), -50%) rotate(var(--a)) translateX(var(--out, 0px));
 			}
 			.deck.settled .swatch {
-				transition: transform 0.38s cubic-bezier(0.22, 0.8, 0.2, 1), z-index 0s linear 0.38s;
+				transition: transform 0.28s cubic-bezier(0.22, 0.8, 0.2, 1), z-index 0s linear 0.28s;
 			}
 			.deck.settled .swatch:hover,
 			.deck.settled .swatch:focus-visible {
-				--out: calc(var(--dk) * 0.042);
+				--out: calc(var(--dk) * 0.026);
 				z-index: 60 !important;
-				transition: transform 0.38s cubic-bezier(0.22, 0.8, 0.2, 1), z-index 0s linear 0s;
+				transition: transform 0.28s cubic-bezier(0.22, 0.8, 0.2, 1), z-index 0s linear 0s;
 				box-shadow: 0 calc(var(--dk) * 0.016) calc(var(--dk) * 0.05) rgba(75, 69, 64, 0.32),
 					inset 0 0 0 1px rgba(75, 69, 64, 0.07);
+			}
+			/* while a swatch is slid out, keep owning the vacated area under the cursor
+			   so the neighbor underneath doesn't also pop (double-highlight flicker) */
+			.deck.settled .swatch:hover::after,
+			.deck.settled .swatch:focus-visible::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: calc(var(--dk) * -0.028);
+				width: calc(var(--dk) * 0.03);
 			}
 			.swatch:focus-visible { outline: 2px solid var(--taupe); outline-offset: 3px; }
 
@@ -641,22 +652,6 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				overflow: hidden;
 				background: var(--paper);
 			}
-			/* melt the card stack into the paper background so the section
-			   blends into the kitchen compare below instead of cutting off */
-			.fin-stage::after {
-				content: "";
-				position: absolute;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				height: 24vh;
-				background: linear-gradient(to bottom, rgba(245, 242, 236, 0), #F5F2EC 82%);
-				z-index: 2100;
-				pointer-events: none;
-				transition: opacity 0.4s ease;
-			}
-			.fin-stage.open::after,
-			.fin-stage.closing::after { opacity: 0; }
 
 			/* heading — anchored top-LEFT */
 			.fin-head {
