@@ -640,34 +640,36 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				.fandeck { min-height: 0; }
 				.deck { --dk: min(100vmin, 600px); }
 				.fdm { padding: 0; align-items: flex-end; }
+				.fin-br { display: inline; }
 				.fdm-card {
 					display: flex;
 					flex-direction: column;
 					width: 100%;
-					height: auto;
-					max-height: calc(100dvh - 12px);
+					height: calc(100dvh - 28px); /* sheet rises near the top — room to breathe */
+					max-height: none;
 					border-radius: 18px 18px 0 0;
 				}
 				.fdm-img {
 					flex: 0 0 auto;
 					min-height: 0;
-					height: clamp(160px, 32dvh, 300px);
+					height: clamp(170px, 34dvh, 320px);
 				}
 				.fdm-info {
 					flex: 1 1 auto;
+					min-height: 0;
 					justify-content: flex-start;
 					overflow-y: auto;
 					-webkit-overflow-scrolling: touch;
-					padding: 20px 22px calc(22px + env(safe-area-inset-bottom));
+					padding: 24px 24px calc(24px + env(safe-area-inset-bottom));
 				}
 				.fdm-meta { font-size: 10px; letter-spacing: 0.2em; gap: 10px; flex-wrap: wrap; }
-				.fdm-name { margin-top: 8px; font-size: clamp(28px, 7.5vw, 38px); }
-				.fdm-desc { margin-top: 12px; font-size: 14px; line-height: 1.55; max-width: none; }
-				.fdm-specs { margin-top: 16px; padding-top: 14px; flex-wrap: wrap; gap: 12px 24px; }
-				.fdm-specs > div { gap: 4px; }
+				.fdm-name { margin-top: 12px; font-size: clamp(30px, 8vw, 40px); }
+				.fdm-desc { margin-top: 14px; font-size: 14.5px; line-height: 1.6; max-width: none; }
+				.fdm-specs { margin-top: 20px; padding-top: 16px; flex-wrap: wrap; gap: 14px 28px; }
+				.fdm-specs > div { gap: 5px; }
 				.fdm-specs .fs-l { font-size: 9.5px; }
 				.fdm-specs .fs-v { font-size: 13px; }
-				.fdm-foot { margin-top: 18px; flex-wrap: wrap; gap: 12px; }
+				.fdm-foot { margin-top: auto; padding-top: 24px; flex-wrap: wrap; gap: 12px; }
 				.fdm-link { padding: 11px 16px; font-size: 12px; }
 				.fdm-prev, .fdm-next { width: 38px; height: 38px; font-size: 15px; }
 				.fdm-close { top: 10px; right: 10px; width: 38px; height: 38px; font-size: 16px; }
@@ -714,6 +716,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				color: var(--taupe);
 				line-height: 1.05;
 			}
+			.fin-br { display: none; } /* two-line heading on phones only */
 
 			/* opaque backdrop revealed when a finish is opened */
 			.fin-backdrop {
@@ -1062,7 +1065,7 @@ replace.</span></h1>
 		<section class="finishes" id="finishes">
 			<div class="fin-stage" id="finStage">
 				<div class="fin-head">
-					<p class="fin-eyebrow">The Finish Library</p>
+					<p class="fin-eyebrow">The Finish <br class="fin-br" /> Library</p>
 				</div>
 				<div class="fin-backdrop" id="finBackdrop"></div>
 				<div class="fin-cards" id="finCards"></div>

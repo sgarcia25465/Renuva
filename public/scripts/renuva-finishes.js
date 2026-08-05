@@ -144,13 +144,18 @@
 
   function setTransforms() {
     const W = window.innerWidth, H = window.innerHeight;
-    const stepX = W * 0.20, stepY = H * 0.145;
+    const mobile = W < 760;
+    /* phones: a touch more horizontal travel, a touch less vertical, and the
+       whole conveyor sits slightly lower so cards never reach the heading */
+    const stepX = W * (mobile ? 0.26 : 0.20);
+    const stepY = H * (mobile ? 0.125 : 0.145);
+    const cy = mobile ? H * 0.06 : 0;
     for (let i = 0; i < N; i++) {
       const s = wrapDelta(i);
       hov[i].v += (hov[i].t - hov[i].v) * 0.18;
       const h = open < 0 ? hov[i].v : 0;
       const x = s * stepX;
-      const y = -s * stepY;
+      const y = -s * stepY + cy;
       const z = 90 * h;
       const scale = 1 + 0.045 * h;
       cards[i].style.transform =
