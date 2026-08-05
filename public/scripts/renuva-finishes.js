@@ -187,9 +187,10 @@
   function frame(t) {
     if (open < 0) {
       const mobile = window.innerWidth < 760;
-      /* settle onto the nearest card once input goes quiet */
-      if (dragId === null && t - lastInput > (mobile ? 180 : 260)) {
-        target += (Math.round(target) - target) * (mobile ? 0.14 : 0.10);
+      /* desktop settles onto the nearest card once input goes quiet; phones
+         glide freely and come to rest wherever the momentum runs out */
+      if (!mobile && dragId === null && t - lastInput > 260) {
+        target += (Math.round(target) - target) * 0.10;
       }
       /* track the finger tightly while dragging; glide smoothly once released */
       const follow = dragId !== null ? 0.35 : (mobile ? 0.16 : 0.12);
