@@ -90,24 +90,32 @@
   }, { passive: false });
 
   /* touch drag: touch-action pan-y on .fin-cards keeps vertical swipes scrolling
-     the page. A direction lock keeps mostly-vertical swipes from jittering the
-     deck: the gesture must commit to horizontal before the carousel moves. */
+     the page. A direction lock decides the gesture's axis on the first few px of
+     travel — biased toward horizontal so diagonal swipes go to the deck — and
+     once committed we preventDefault native scrolling so the browser can never
+     steal the gesture mid-drag (the old "stuck" feel was pointercancel firing
+     when the page scroll took over). */
+  let swiped = false;
   stage.addEventListener('pointerdown', function (e) {
     if (e.pointerType !== 'touch' || open >= 0) return;
     dragId = e.pointerId;
     lastX = startX = e.clientX; startY = e.clientY;
-    dragAxis = null; vel = 0; lastT = e.timeStamp;
+    dragAxis = null; vel = 0; lastT = e.timeStamp; swiped = false;
+    /* catch the deck mid-glide: touching stops any momentum under the finger */
+    target = cur;
+    lastInput = performance.now();
   });
   stage.addEventListener('pointermove', function (e) {
     if (e.pointerId !== dragId) return;
     if (dragAxis === null) {
       const dx = Math.abs(e.clientX - startX), dy = Math.abs(e.clientY - startY);
-      if (dx < 7 && dy < 7) return;
-      dragAxis = dx > dy ? 'x' : 'y';
+      if (dx + dy < 4) return;
+      dragAxis = dx >= dy * 0.9 ? 'x' : 'y';
       if (dragAxis === 'x') { try { stage.setPointerCapture(dragId); } catch (_) {} }
       lastX = e.clientX;
     }
     if (dragAxis !== 'x') return;
+    if (Math.abs(e.clientX - startX) > 10) swiped = true;
     const per = window.innerWidth < 760 ? 150 : 220; /* px of finger travel per card */
     const d = (lastX - e.clientX) / per;
     target += d;
@@ -116,18 +124,27 @@
     lastX = e.clientX; lastT = e.timeStamp;
     lastInput = performance.now();
   });
+  /* once locked horizontal, keep the browser from starting a page scroll */
+  stage.addEventListener('touchmove', function (e) {
+    if (dragAxis === 'x') e.preventDefault();
+  }, { passive: false });
   ['pointerup', 'pointercancel'].forEach(function (t) {
     stage.addEventListener(t, function (e) {
       if (e.pointerId !== dragId) return;
       dragId = null;
-      if (t === 'pointerup' && dragAxis === 'x') {
-        /* small flick momentum, clamped so a hard flick moves a couple of cards */
+      if (dragAxis === 'x') {
+        /* flick momentum on release — and on cancel, so an interrupted gesture
+           glides out instead of dead-stopping */
         target += Math.max(-2.5, Math.min(2.5, vel * 0.22));
         lastInput = performance.now();
       }
       dragAxis = null;
     });
   });
+  /* a real swipe must not open the card under the released finger */
+  stage.addEventListener('click', function (e) {
+    if (swiped) { swiped = false; e.stopPropagation(); e.preventDefault(); }
+  }, true);
 
   /* nearest wrapped distance of card i from cur, in [-N/2, N/2] */
   function wrapDelta(i) {
@@ -169,11 +186,14 @@
 
   function frame(t) {
     if (open < 0) {
+      const mobile = window.innerWidth < 760;
       /* settle onto the nearest card once input goes quiet */
-      if (dragId === null && t - lastInput > 260) {
-        target += (Math.round(target) - target) * 0.10;
+      if (dragId === null && t - lastInput > (mobile ? 180 : 260)) {
+        target += (Math.round(target) - target) * (mobile ? 0.14 : 0.10);
       }
-      cur = reduced ? target : cur + (target - cur) * 0.12;
+      /* track the finger tightly while dragging; glide smoothly once released */
+      const follow = dragId !== null ? 0.35 : (mobile ? 0.16 : 0.12);
+      cur = reduced ? target : cur + (target - cur) * follow;
       if (Math.abs(target - cur) < 0.0005) cur = target;
       setTransforms();
     }
