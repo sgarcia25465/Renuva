@@ -56,9 +56,14 @@ window.RenuvaPhotoKitchen = (function () {
   }
 
   function create(canvas) {
-    canvas.width = W;
-    canvas.height = H;
+    // render at device-pixel resolution so the canvas stays sharp on retina displays
+    const S = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(W * S);
+    canvas.height = Math.round(H * S);
     const ctx = canvas.getContext('2d');
+    ctx.scale(S, S);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
 
     const n = PIECES.length;
     const L = Math.min(0.2, 2.2 / n);
