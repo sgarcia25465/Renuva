@@ -1,41 +1,42 @@
-/* RenuvaFinishes — coverflow-style 3D card gallery of 3M DI-NOC finishes.
-   Scroll spins a CONTINUOUS (wrapping) coverflow: one card centered, the rest
-   fanning to the LEFT and RIGHT across the full width. Click a card to flatten
-   it dead-center over an opaque backdrop, with a detail panel. */
+/* RenuvaFinishes — coverflow-style 3D card gallery of Renuva finishes.
+   Horizontal scroll (trackpad sideways / shift+wheel / touch drag) spins a
+   CONTINUOUS (wrapping) coverflow: one card centered, the rest fanning to the
+   LEFT and RIGHT. Vertical scroll passes through to the page. Click a card to
+   flatten it dead-center over an opaque backdrop, with a detail panel. */
 (function () {
-  const IMG_DIR = '/assets/finishes/';
+  const IMG_DIR = '/assets/finishes/renuva/';
 
   const FINISHES = [
-    { code: 'FW-1021', series: 'Fine Wood', img: '3M-DI-NOC-Fine-Wood-FW-1021.webp?v=1771263190',
-      desc: 'High-definition wood reproduction with refined, realistic grain detail.',
-      price: 'From $3.62 / sq ft', ship: 'Quick-Ship' },
-    { code: 'WG-943', series: 'Wood Grain', img: '3M-DI-NOC-Wood-WG-943.jpg?v=1780874816',
-      desc: 'Classic warm woodgrain — the workhorse series for cabinetry and millwork.',
-      price: 'From $3.05 / sq ft', ship: 'Quick-Ship' },
-    { code: 'ME-1435', series: 'Metallic Hairline', img: '3M-DI-NOC-Metal-ME-1435_e6b4cf10-ced8-420d-bf81-de022fdac5e9.jpg?v=1780874068',
-      desc: 'Brushed hairline metal with a directional sheen for doors and trim.',
-      price: 'From $3.78 / sq ft', ship: 'Quick-Ship' },
-    { code: 'PW-2314MT', series: 'Premium Wood Matte', img: '3M-DI-NOC-Premium-Wood-PW-2314MT.webp?v=1771263537',
-      desc: "3M's most realistic wood, in a fingerprint-resistant ultra-matte.",
-      price: 'From $5.34 / sq ft', ship: 'Quick-Ship' },
-    { code: 'FA-1526AR', series: 'Ceramic · Abrasion Resistant', img: '3M-DI-NOC-Abrasion-Resistant-FA-1526AR_669ed352-a8c0-49a8-990f-e609d6760395.jpg?v=1771976700',
-      desc: 'Terracotta ceramic look with a hardened wear layer for high-traffic surfaces.',
-      price: 'From $4.40 / sq ft', ship: '2–4 weeks' },
-    { code: 'WG-1142', series: 'Wood Grain', img: '3M-DI-NOC-Wood-WG-1142.jpg?v=1780874783',
-      desc: 'Mid-tone oak grain with a calm, even cathedral pattern.',
-      price: 'From $3.05 / sq ft', ship: 'Quick-Ship' },
-    { code: 'PS-3989MT', series: 'Solid Color Matte', img: '3M-DI-NOC-Solid-Color-PS-3989MT.webp?v=1771263582',
-      desc: 'A clean single color in ultra-low-gloss matte for seamless panels.',
-      price: 'From $3.57 / sq ft', ship: 'Quick-Ship' },
-    { code: 'WG-865', series: 'Wood Grain', img: '3M-DI-NOC-Wood-WG-865.jpg?v=1780874816',
-      desc: 'Deep walnut tone that reads rich and architectural at scale.',
-      price: 'From $3.05 / sq ft', ship: 'Quick-Ship' },
-    { code: 'WG-1704', series: 'Wood Grain', img: '3M-DI-NOC-Wood-WG-1704.jpg?v=1780874783',
-      desc: 'Pale Scandinavian grain that keeps small spaces bright.',
-      price: 'From $3.05 / sq ft', ship: 'Quick-Ship' },
-    { code: 'WG-1841', series: 'Wood Grain', img: '3M-DI-NOC-Wood-WG-1841.jpg?v=1780874783',
-      desc: 'Smoked ash grain with soft contrast for statement islands.',
-      price: 'From $3.05 / sq ft', ship: 'Quick-Ship' }
+    { code: 'PW1516', name: 'Honey Oak', series: 'Premium Wood',
+      desc: 'A warm golden oak tone with an even, natural grain. Designed to elevate doors, millwork, and furniture in warm residential spaces.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1516' },
+    { code: 'MT1711', name: 'Charcoal Matte', series: 'Matte Solid',
+      desc: 'A deep charcoal tone with a finely textured matte surface. Designed to anchor cabinets, doors, and feature panels in bold modern interiors.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-matte-solid-mt1711' },
+    { code: 'ST1107', name: 'Carrara White Marble', series: 'Marble',
+      desc: 'A clean white tone with sparse, confident grey veining in the classic Carrara manner. Designed to elevate feature walls, columns, and furniture in bright, classic spaces.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-marble-st1107' },
+    { code: 'PW1522', name: 'Rosewood Mahogany', series: 'Premium Wood',
+      desc: 'A deep reddish mahogany tone with straight, elegant grain. Designed to elevate executive furniture, doors, and panels in formal interiors.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1522' },
+    { code: 'HG1630', name: 'Pure White Gloss', series: 'High Gloss Solid',
+      desc: 'A crisp pure white tone with a deep, reflective high-gloss finish. Designed to elevate modern kitchens, wardrobe fronts, and feature panels.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-high-gloss-solid-hg1630' },
+    { code: 'ME1213', name: 'Brushed Champagne Metal', series: 'Metal',
+      desc: 'A warm champagne-silver tone with fine hairline brushing running the length of the film. Designed to elevate doors, panels, appliance surrounds, and trim in modern interiors.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-metal-me1213' },
+    { code: 'RW1418', name: 'Bright White Painted Wood', series: 'Painted Wood',
+      desc: 'A bright white tone with dense, fine straight-grain texture. Designed to elevate kitchens, cabinet fronts, and doors in crisp modern spaces.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-painted-wood-lw1418' },
+    { code: 'FP1842', name: 'Grey Linen Weave', series: 'Fabric',
+      desc: 'A mid-grey tone with linen-weave texture and natural vertical slub. Designed to complement wall panels, wardrobe fronts, and hospitality interiors.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-fabric-fp1842' },
+    { code: 'PW1512', name: 'Cream Ash', series: 'Premium Wood',
+      desc: 'A pale cream ash tone with a subtle, even figure and a light Scandinavian feel. Designed to refresh doors, cabinetry, and furniture in airy, minimal interiors.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1512' },
+    { code: 'MTS1308', name: 'Slate Grey Soft Matte', series: 'Soft Matte',
+      desc: 'An even mid-grey tone with a velvety soft-touch surface that diffuses light. Designed to bring a premium super-matte look to cabinet fronts, doors, and built-ins.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-soft-matte-mts1308' }
   ];
 
   const N = FINISHES.length;
@@ -51,14 +52,11 @@
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* scroll runway: longer section, ~60vh per card */
-  section.style.height = (100 + N * 60) + 'vh';
-
   /* build cards */
   const cards = FINISHES.map(function (f, i) {
     const el = document.createElement('div');
     el.className = 'fcard';
-    el.innerHTML = '<img src="' + IMG_DIR + f.code + '.jpg" alt="3M DI-NOC ' + f.code + '" draggable="false" />' +
+    el.innerHTML = '<img src="' + IMG_DIR + f.code + '.jpg" alt="Renuva ' + f.name + ' — ' + f.code + '" draggable="false" />' +
       '<span class="fcard-label">' + f.code + '</span>';
     el.addEventListener('click', function () { onCardClick(i); });
     el.addEventListener('mouseenter', function () { hov[i].t = 1; });
@@ -67,21 +65,40 @@
     return el;
   });
 
-  let cur = 0, target = 0, forced = null;
+  let cur = 0, target = 0;
   let open = -1;
+  let lastInput = -1e9, dragId = null, lastX = 0;
   window.__fin = {
-    force: function (v) { if (open >= 0) return; forced = v; cur = v; target = v; setTransforms(); },
+    force: function (v) { if (open >= 0) return; cur = v; target = v; setTransforms(); },
     openCard: function (i) { onCardClick(i); },
     close: function () { closeCard(); }
   };
 
   function clamp(v, a, b) { return v < a ? a : (v > b ? b : v); }
 
-  function scrollProgress() {
-    const r = section.getBoundingClientRect();
-    const total = section.offsetHeight - window.innerHeight;
-    return total > 0 ? clamp(-r.top / total, 0, 1) : 0;
-  }
+  /* ---- input: horizontal only; vertical scroll falls through to the page ---- */
+  stage.addEventListener('wheel', function (e) {
+    if (open >= 0) return;
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return; /* vertical → let the page scroll */
+    e.preventDefault();
+    target += e.deltaX / 300;
+    lastInput = performance.now();
+  }, { passive: false });
+
+  /* touch drag: touch-action pan-y on .fin-cards keeps vertical swipes scrolling the page */
+  stage.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'touch' || open >= 0) return;
+    dragId = e.pointerId; lastX = e.clientX;
+  });
+  stage.addEventListener('pointermove', function (e) {
+    if (e.pointerId !== dragId) return;
+    target += (lastX - e.clientX) / 220;
+    lastX = e.clientX;
+    lastInput = performance.now();
+  });
+  ['pointerup', 'pointercancel'].forEach(function (t) {
+    stage.addEventListener(t, function (e) { if (e.pointerId === dragId) dragId = null; });
+  });
 
   /* nearest wrapped distance of card i from cur, in [-N/2, N/2] */
   function wrapDelta(i) {
@@ -98,8 +115,6 @@
 
   function setTransforms() {
     const W = window.innerWidth, H = window.innerHeight;
-    const spreadX = Math.min(W * 0.46, 780);
-    const spreadY = Math.min(H * 0.30, 290);   // gentle diagonal, not steep
     for (let i = 0; i < N; i++) {
       const s = wrapDelta(i);
       const a = Math.abs(s);
@@ -107,10 +122,10 @@
       const h = open < 0 ? hov[i].v : 0;
       let x, y, z, o = 1;
       const f = Math.tanh(s * 0.34);
-      x = f * W * 0.74;
+      x = f * W * 0.60;
       const ch = cards[0].offsetHeight || 1;
       const riseCap = Math.max(H / 2 - ch / 2 - 28, 40);  // whole card stays inside the stage
-      y = -Math.sign(f) * Math.min(Math.abs(f) * H * 0.50, riseCap);
+      y = -Math.sign(f) * Math.min(Math.abs(f) * H * 0.40, riseCap);
       z = -s * 70;
       if (s >= 0) {
         if (a > 2.6) o = clamp((4.4 - a) / 1.8, 0, 1);    // blend far cards into the background
@@ -128,18 +143,15 @@
     }
   }
 
-  function frame() {
+  function frame(t) {
     if (open < 0) {
-      const p = scrollProgress();
-      target = forced !== null ? forced : p * (N - 1);
-      cur = reduced ? target : cur + (target - cur) * 0.09;
+      /* settle onto the nearest card once input goes quiet */
+      if (dragId === null && t - lastInput > 260) {
+        target += (Math.round(target) - target) * 0.10;
+      }
+      cur = reduced ? target : cur + (target - cur) * 0.12;
       if (Math.abs(target - cur) < 0.0005) cur = target;
       setTransforms();
-      /* fade the stack out over the last stretch so the section melts into the next */
-      const fade = clamp((0.965 - p) / 0.055, 0, 1);
-      cardsEl.style.opacity = fade.toFixed(3);
-      cardsEl.style.pointerEvents = fade < 0.15 ? 'none' : '';
-      if (hint) hint.style.opacity = fade.toFixed(3);
     }
     requestAnimationFrame(frame);
   }
@@ -162,16 +174,20 @@
     open = i;
     const f = FINISHES[i];
     detail.innerHTML =
-      '<p class="fd-series">3M DI-NOC · ' + f.series + '</p>' +
-      '<h3>' + f.code + '</h3>' +
+      '<p class="fd-series">Renuva™ · ' + f.series + '</p>' +
+      '<h3>' + f.name + '</h3>' +
       '<p class="fd-desc">' + f.desc + '</p>' +
       '<dl class="fd-specs">' +
-      '<div><dt>Roll width</dt><dd>48 in</dd></div>' +
-      '<div><dt>Adhesive</dt><dd>3M™ Comply™, air-release</dd></div>' +
-      '<div><dt>Rated</dt><dd>12-yr interior vertical</dd></div>' +
-      '<div><dt>Availability</dt><dd>' + f.ship + '</dd></div>' +
-      '<div><dt>Price</dt><dd>' + f.price + '</dd></div>' +
-      '</dl>';
+      '<div><dt>Code</dt><dd>' + f.code + '</dd></div>' +
+      '<div><dt>Series</dt><dd>' + f.series + '</dd></div>' +
+      '</dl>' +
+      '<a class="fd-link" href="' + f.url + '" target="_blank" rel="noopener">View at Surface Supply</a>';
+    /* swap the focused card to the high-res sample once it loads */
+    const img = cards[i].querySelector('img');
+    const xl = IMG_DIR + f.code + '-xl.jpg';
+    const probe = new Image();
+    probe.onload = function () { if (open === i) img.src = xl; };
+    probe.src = xl;
     stage.classList.add('open');
     if (backdrop) { backdrop.style.opacity = '0.97'; backdrop.style.pointerEvents = 'auto'; }
     if (head) head.style.opacity = '0';
