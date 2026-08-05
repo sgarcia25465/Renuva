@@ -435,10 +435,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				transform: translate(calc(var(--dk) * -0.055), calc(var(--dk) * -0.076));
 				z-index: 40;
 				border-radius: calc(var(--dk) * 0.016);
-				background:
-					repeating-linear-gradient(45deg, rgba(190, 176, 152, 0.055) 0 3px, transparent 3px 9px),
-					repeating-linear-gradient(-45deg, rgba(190, 176, 152, 0.055) 0 3px, transparent 3px 9px),
-					linear-gradient(160deg, #F7F3E9, #EFE9DB);
+				background: linear-gradient(160deg, #F7F3E9, #EFE9DB);
 				box-shadow: 0 calc(var(--dk) * 0.014) calc(var(--dk) * 0.045) rgba(75, 69, 64, 0.30),
 					inset 0 0 0 1px rgba(75, 69, 64, 0.08);
 				display: flex;
@@ -446,6 +443,15 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				align-items: center;
 				justify-content: center;
 				pointer-events: none;
+			}
+			.deck-cover::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				z-index: -1;
+				border-radius: inherit;
+				background: url('/assets/images/pattern-design.png') 0 0 / calc(var(--dk) * 0.55) auto repeat;
+				opacity: 0.10;
 			}
 			.dc-logo {
 				font-family: 'Italiana', serif;
@@ -637,6 +643,8 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			}
 
 			@media (max-width: 760px) {
+				.eyebrow { font-size: 10px; letter-spacing: 0.22em; }
+				.cta-btn { margin-top: 20px; font-size: 9px; letter-spacing: 0.12em; padding: 7px 13px; border-radius: 5px; }
 				.fandeck { min-height: 0; }
 				.deck { --dk: min(100vmin, 600px); }
 				.fdm { padding: 0; align-items: flex-end; }
