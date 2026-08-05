@@ -337,11 +337,11 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				color: var(--taupe);
 			}
 			.deck {
-				--dk: min(104vmin, 92vw, 1180px);
+				--dk: min(114vmin, 98vw, 1300px);
 				position: relative;
 				width: var(--dk);
 				height: var(--dk);
-				margin-top: clamp(4px, 1.2vh, 16px);
+				margin-top: calc(clamp(4px, 1.2vh, 16px) - var(--dk) * 0.015);
 			}
 
 			/* one physical swatch strip */
@@ -349,16 +349,16 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				position: absolute;
 				left: 50%;
 				top: 50%;
-				width: calc(var(--dk) * 0.46);
-				height: calc(var(--dk) * 0.115);
+				width: calc(var(--dk) * 0.47);
+				height: calc(var(--dk) * 0.125);
 				border: 0;
 				padding: 0;
 				border-radius: calc(var(--dk) * 0.013);
 				background-size: cover;
 				background-position: center;
 				cursor: pointer;
-				transform-origin: calc(var(--dk) * 0.0575) 50%;
-				transform: translate(calc(var(--dk) * -0.0575), -50%) rotate(0deg);
+				transform-origin: calc(var(--dk) * 0.0625) 50%;
+				transform: translate(calc(var(--dk) * -0.0625), -50%) rotate(0deg);
 				transition: transform 1.15s cubic-bezier(0.22, 0.8, 0.2, 1);
 				transition-delay: var(--d);
 				box-shadow: 0 calc(var(--dk) * 0.008) calc(var(--dk) * 0.03) rgba(75, 69, 64, 0.22),
@@ -366,11 +366,19 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				-webkit-tap-highlight-color: transparent;
 			}
 			.deck.open .swatch {
-				transform: translate(calc(var(--dk) * -0.0575), -50%) rotate(var(--a)) translateX(var(--out, 0px));
+				transform: translate(calc(var(--dk) * -0.0625), -50%) rotate(var(--a)) translateX(var(--out, 0px));
 			}
-			.deck.settled .swatch { transition-delay: 0s; transition-duration: 0.38s; }
+			.deck.settled .swatch {
+				transition: transform 0.38s cubic-bezier(0.22, 0.8, 0.2, 1), z-index 0s linear 0.38s;
+			}
 			.deck.settled .swatch:hover,
-			.deck.settled .swatch:focus-visible { --out: calc(var(--dk) * 0.024); }
+			.deck.settled .swatch:focus-visible {
+				--out: calc(var(--dk) * 0.075);
+				z-index: 60 !important;
+				transition: transform 0.38s cubic-bezier(0.22, 0.8, 0.2, 1), z-index 0s linear 0s;
+				box-shadow: 0 calc(var(--dk) * 0.016) calc(var(--dk) * 0.05) rgba(75, 69, 64, 0.32),
+					inset 0 0 0 1px rgba(75, 69, 64, 0.07);
+			}
 			.swatch:focus-visible { outline: 2px solid var(--taupe); outline-offset: 3px; }
 
 			.sw-label {
@@ -528,15 +536,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				text-transform: uppercase;
 			}
 			.fdm-series { color: #A2937F; }
-			.fdm-meta::before {
-				content: "";
-				order: 1;
-				width: 26px;
-				height: 1px;
-				background: rgba(75, 69, 64, 0.28);
-				align-self: center;
-			}
-			.fdm-code { order: 2; color: #756E64; }
+			.fdm-code { color: #756E64; }
 			.fdm-name {
 				margin-top: 16px;
 				font-family: 'Cormorant', serif;
@@ -621,7 +621,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 
 			@media (max-width: 760px) {
 				.fandeck { min-height: 0; }
-				.deck { --dk: min(96vmin, 560px); }
+				.deck { --dk: min(100vmin, 600px); }
 				.fdm { padding: 10px; align-items: flex-end; }
 				.fdm-card {
 					grid-template-columns: 1fr;
@@ -661,7 +661,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				transition: opacity 0.35s ease;
 			}
 			.fin-eyebrow {
-				font-size: clamp(28px, 3vw, 46px);
+				font-size: clamp(34px, 3.6vw, 54px);
 				font-family: 'Cormorant', serif;
 				font-weight: 500;
 				letter-spacing: 0.005em;

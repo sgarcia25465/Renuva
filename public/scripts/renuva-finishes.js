@@ -6,38 +6,44 @@
 (function () {
   const IMG_DIR = '/assets/finishes/renuva/';
 
+  /* ordered as a tonal cycle — whites → creams → warm woods → darks → greys →
+     back to white — so neighbouring cards always sit next to a kindred colour */
   const FINISHES = [
-    { code: 'PW1516', name: 'Honey Oak', series: 'Premium Wood',
-      desc: 'A warm golden oak tone with an even, natural grain. Designed to elevate doors, millwork, and furniture in warm residential spaces.',
-      url: 'https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1516' },
-    { code: 'MT1711', name: 'Charcoal Matte', series: 'Matte Solid',
-      desc: 'A deep charcoal tone with a finely textured matte surface. Designed to anchor cabinets, doors, and feature panels in bold modern interiors.',
-      url: 'https://surfacesupply.com/products/renuva-architectural-film-matte-solid-mt1711' },
-    { code: 'ST1107', name: 'Carrara White Marble', series: 'Marble',
-      desc: 'A clean white tone with sparse, confident grey veining in the classic Carrara manner. Designed to elevate feature walls, columns, and furniture in bright, classic spaces.',
-      url: 'https://surfacesupply.com/products/renuva-architectural-film-marble-st1107' },
-    { code: 'PW1522', name: 'Rosewood Mahogany', series: 'Premium Wood',
-      desc: 'A deep reddish mahogany tone with straight, elegant grain. Designed to elevate executive furniture, doors, and panels in formal interiors.',
-      url: 'https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1522' },
     { code: 'HG1630', name: 'Pure White Gloss', series: 'High Gloss Solid',
       desc: 'A crisp pure white tone with a deep, reflective high-gloss finish. Designed to elevate modern kitchens, wardrobe fronts, and feature panels.',
       url: 'https://surfacesupply.com/products/renuva-architectural-film-high-gloss-solid-hg1630' },
-    { code: 'ME1213', name: 'Brushed Champagne Metal', series: 'Metal',
-      desc: 'A warm champagne-silver tone with fine hairline brushing running the length of the film. Designed to elevate doors, panels, appliance surrounds, and trim in modern interiors.',
-      url: 'https://surfacesupply.com/products/renuva-architectural-film-metal-me1213' },
     { code: 'RW1418', name: 'Bright White Painted Wood', series: 'Painted Wood',
       desc: 'A bright white tone with dense, fine straight-grain texture. Designed to elevate kitchens, cabinet fronts, and doors in crisp modern spaces.',
       url: 'https://surfacesupply.com/products/renuva-architectural-film-painted-wood-lw1418' },
-    { code: 'FP1842', name: 'Grey Linen Weave', series: 'Fabric',
-      desc: 'A mid-grey tone with linen-weave texture and natural vertical slub. Designed to complement wall panels, wardrobe fronts, and hospitality interiors.',
-      url: 'https://surfacesupply.com/products/renuva-architectural-film-fabric-fp1842' },
+    { code: 'ST1107', name: 'Carrara White Marble', series: 'Marble',
+      desc: 'A clean white tone with sparse, confident grey veining in the classic Carrara manner. Designed to elevate feature walls, columns, and furniture in bright, classic spaces.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-marble-st1107' },
     { code: 'PW1512', name: 'Cream Ash', series: 'Premium Wood',
       desc: 'A pale cream ash tone with a subtle, even figure and a light Scandinavian feel. Designed to refresh doors, cabinetry, and furniture in airy, minimal interiors.',
       url: 'https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1512' },
+    { code: 'ME1213', name: 'Brushed Champagne Metal', series: 'Metal',
+      desc: 'A warm champagne-silver tone with fine hairline brushing running the length of the film. Designed to elevate doors, panels, appliance surrounds, and trim in modern interiors.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-metal-me1213' },
+    { code: 'PW1516', name: 'Honey Oak', series: 'Premium Wood',
+      desc: 'A warm golden oak tone with an even, natural grain. Designed to elevate doors, millwork, and furniture in warm residential spaces.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1516' },
+    { code: 'PW1522', name: 'Rosewood Mahogany', series: 'Premium Wood',
+      desc: 'A deep reddish mahogany tone with straight, elegant grain. Designed to elevate executive furniture, doors, and panels in formal interiors.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-premium-wood-pw1522' },
+    { code: 'MT1711', name: 'Charcoal Matte', series: 'Matte Solid',
+      desc: 'A deep charcoal tone with a finely textured matte surface. Designed to anchor cabinets, doors, and feature panels in bold modern interiors.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-matte-solid-mt1711' },
     { code: 'MTS1308', name: 'Slate Grey Soft Matte', series: 'Soft Matte',
       desc: 'An even mid-grey tone with a velvety soft-touch surface that diffuses light. Designed to bring a premium super-matte look to cabinet fronts, doors, and built-ins.',
-      url: 'https://surfacesupply.com/products/renuva-architectural-film-soft-matte-mts1308' }
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-soft-matte-mts1308' },
+    { code: 'FP1842', name: 'Grey Linen Weave', series: 'Fabric',
+      desc: 'A mid-grey tone with linen-weave texture and natural vertical slub. Designed to complement wall panels, wardrobe fronts, and hospitality interiors.',
+      url: 'https://surfacesupply.com/products/renuva-architectural-film-fabric-fp1842' }
   ];
+
+  /* open on the warm woods: Honey Oak centered, Champagne/Cream Ash to one
+     side, Rosewood to the other */
+  const HOME = 5;
 
   const N = FINISHES.length;
   const section = document.getElementById('finishes');
@@ -56,7 +62,7 @@
   const cards = FINISHES.map(function (f, i) {
     const el = document.createElement('div');
     el.className = 'fcard';
-    el.innerHTML = '<img src="' + IMG_DIR + f.code + '.jpg" alt="Renuva ' + f.name + ' — ' + f.code + '" draggable="false" />' +
+    el.innerHTML = '<img src="' + IMG_DIR + f.code + '-xl.jpg" alt="Renuva ' + f.name + ' — ' + f.code + '" draggable="false" />' +
       '<span class="fcard-label">' + f.code + '</span>';
     el.addEventListener('click', function () { onCardClick(i); });
     el.addEventListener('mouseenter', function () { hov[i].t = 1; });
@@ -65,7 +71,7 @@
     return el;
   });
 
-  let cur = 0, target = 0;
+  let cur = HOME, target = HOME;
   let open = -1;
   let lastInput = -1e9, dragId = null, lastX = 0;
   window.__fin = {
@@ -126,19 +132,15 @@
       const ch = cards[0].offsetHeight || 1;
       const riseCap = Math.max(H / 2 - ch / 2 - 28, 40);  // whole card stays inside the stage
       y = -Math.sign(f) * Math.min(Math.abs(f) * H * 0.40, riseCap);
-      z = -s * 70;
-      if (s >= 0) {
-        if (a > 2.6) o = clamp((4.4 - a) / 1.8, 0, 1);    // blend far cards into the background
-      } else {
-        o = clamp(1 - (a - 0.7) / 1.5, 0, 1);
-      }
+      z = -a * 70;                                        // both sides recede equally behind the center card
+      if (a > 2.6) o = clamp((4.4 - a) / 1.8, 0, 1);      // blend far cards into the background
       z += 90 * h;
       const scale = 1 + 0.045 * h;
       cards[i].style.transform =
         'translate(-50%, -50%) translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,' + z.toFixed(1) + 'px)' +
         ' rotateY(-30deg) rotateX(7deg) rotateZ(-4.5deg) scale(' + scale.toFixed(3) + ')';
       cards[i].style.opacity = o.toFixed(3);
-      cards[i].style.zIndex = String(2000 - Math.round(s * 30));
+      cards[i].style.zIndex = String(2000 - Math.round(a * 30));
       cards[i].style.visibility = o <= 0.002 ? 'hidden' : 'visible';
     }
   }
@@ -182,12 +184,6 @@
       '<div><dt>Series</dt><dd>' + f.series + '</dd></div>' +
       '</dl>' +
       '<a class="fd-link" href="' + f.url + '" target="_blank" rel="noopener">View at Surface Supply</a>';
-    /* swap the focused card to the high-res sample once it loads */
-    const img = cards[i].querySelector('img');
-    const xl = IMG_DIR + f.code + '-xl.jpg';
-    const probe = new Image();
-    probe.onload = function () { if (open === i) img.src = xl; };
-    probe.src = xl;
     stage.classList.add('open');
     if (backdrop) { backdrop.style.opacity = '0.97'; backdrop.style.pointerEvents = 'auto'; }
     if (head) head.style.opacity = '0';
