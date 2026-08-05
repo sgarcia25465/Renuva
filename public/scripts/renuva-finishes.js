@@ -79,8 +79,6 @@
     close: function () { closeCard(); }
   };
 
-  function clamp(v, a, b) { return v < a ? a : (v > b ? b : v); }
-
   /* ---- input: horizontal only; vertical scroll falls through to the page ---- */
   stage.addEventListener('wheel', function (e) {
     if (open >= 0) return;
@@ -113,34 +111,28 @@
     return s;
   }
 
-  /* diagonal stack (unveil-style, gentle slope): the active card sits center,
-     upcoming cards climb away up-right along a diagonal, passed cards slide
-     down-left toward the viewer and fade. Wrapping keeps both sides populated. */
+  /* uniform diagonal conveyor: every card takes the same-sized step up-right /
+     down-left from the center, at full size and full color the whole way —
+     cards simply travel off the screen corners. Wrapping keeps both sides fed. */
   const hov = FINISHES.map(function () { return { v: 0, t: 0 }; });
 
   function setTransforms() {
     const W = window.innerWidth, H = window.innerHeight;
+    const stepX = W * 0.20, stepY = H * 0.145;
     for (let i = 0; i < N; i++) {
       const s = wrapDelta(i);
-      const a = Math.abs(s);
       hov[i].v += (hov[i].t - hov[i].v) * 0.18;
       const h = open < 0 ? hov[i].v : 0;
-      let x, y, z, o = 1;
-      const f = Math.tanh(s * 0.34);
-      x = f * W * 0.60;
-      const ch = cards[0].offsetHeight || 1;
-      const riseCap = Math.max(H / 2 - ch / 2 - 28, 40);  // whole card stays inside the stage
-      y = -Math.sign(f) * Math.min(Math.abs(f) * H * 0.40, riseCap);
-      z = -a * 70;                                        // both sides recede equally behind the center card
-      if (a > 2.6) o = clamp((4.4 - a) / 1.8, 0, 1);      // blend far cards into the background
-      z += 90 * h;
+      const x = s * stepX;
+      const y = -s * stepY;
+      const z = 90 * h;
       const scale = 1 + 0.045 * h;
       cards[i].style.transform =
         'translate(-50%, -50%) translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,' + z.toFixed(1) + 'px)' +
         ' rotateY(-30deg) rotateX(7deg) rotateZ(-4.5deg) scale(' + scale.toFixed(3) + ')';
-      cards[i].style.opacity = o.toFixed(3);
-      cards[i].style.zIndex = String(2000 - Math.round(a * 30));
-      cards[i].style.visibility = o <= 0.002 ? 'hidden' : 'visible';
+      cards[i].style.opacity = '';
+      cards[i].style.zIndex = String(2000 - Math.round(Math.abs(s) * 30));
+      cards[i].style.visibility = 'visible';
     }
   }
 
