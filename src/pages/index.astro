@@ -317,6 +317,326 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				.reveal-up, .cat-line { transition: none; opacity: 1; transform: none; }
 			}
 
+			/* ============ SECTION: SWATCH BOOK FAN DECK ============ */
+			.fandeck {
+				min-height: 100vh;
+				background: var(--paper);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding: clamp(56px, 9vh, 110px) 16px clamp(40px, 6vh, 80px);
+				overflow: hidden;
+			}
+			.fd-head { text-align: center; }
+			.fd-title {
+				font-family: 'Cormorant', serif;
+				font-weight: 500;
+				font-size: clamp(34px, 3.6vw, 54px);
+				line-height: 1.05;
+				color: var(--taupe);
+			}
+			.fd-sub {
+				margin-top: 12px;
+				font-size: 13px;
+				font-weight: 500;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				color: #A2937F;
+			}
+
+			.deck {
+				--dk: min(88vmin, 900px);
+				position: relative;
+				width: var(--dk);
+				height: var(--dk);
+				margin-top: clamp(8px, 2vh, 24px);
+			}
+
+			/* one physical swatch strip */
+			.swatch {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: calc(var(--dk) * 0.46);
+				height: calc(var(--dk) * 0.115);
+				border: 0;
+				padding: 0;
+				border-radius: calc(var(--dk) * 0.013);
+				background-size: cover;
+				background-position: center;
+				cursor: pointer;
+				transform-origin: calc(var(--dk) * 0.0575) 50%;
+				transform: translate(calc(var(--dk) * -0.0575), -50%) rotate(0deg);
+				transition: transform 1.15s cubic-bezier(0.22, 0.8, 0.2, 1);
+				transition-delay: var(--d);
+				box-shadow: 0 calc(var(--dk) * 0.008) calc(var(--dk) * 0.03) rgba(75, 69, 64, 0.22),
+					inset 0 0 0 1px rgba(75, 69, 64, 0.07);
+				-webkit-tap-highlight-color: transparent;
+			}
+			.deck.open .swatch {
+				transform: translate(calc(var(--dk) * -0.0575), -50%) rotate(var(--a)) translateX(var(--out, 0px));
+			}
+			.deck.settled .swatch { transition-delay: 0s; transition-duration: 0.38s; }
+			.deck.settled .swatch:hover,
+			.deck.settled .swatch:focus-visible { --out: calc(var(--dk) * 0.024); }
+			.swatch:focus-visible { outline: 2px solid var(--taupe); outline-offset: 3px; }
+
+			.sw-label {
+				position: absolute;
+				top: 50%;
+				right: calc(var(--dk) * 0.022);
+				transform: translateY(-50%);
+				text-align: right;
+				color: #55504A;
+				pointer-events: none;
+			}
+			.swatch.is-dark .sw-label { color: rgba(255, 255, 255, 0.93); }
+			.sw-code {
+				display: block;
+				font-size: calc(var(--dk) * 0.0155);
+				font-weight: 600;
+				letter-spacing: 0.09em;
+				padding-bottom: calc(var(--dk) * 0.003);
+				border-bottom: 1px solid currentColor;
+			}
+			.sw-brand {
+				display: block;
+				margin-top: calc(var(--dk) * 0.0035);
+				font-size: calc(var(--dk) * 0.0095);
+				font-weight: 600;
+				letter-spacing: 0.28em;
+				opacity: 0.85;
+			}
+
+			/* cover card — clean digital rebuild of the deck cover */
+			.deck-cover {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: calc(var(--dk) * 0.52);
+				height: calc(var(--dk) * 0.27);
+				transform: translate(calc(var(--dk) * -0.055), calc(var(--dk) * -0.076));
+				z-index: 40;
+				border-radius: calc(var(--dk) * 0.016);
+				background:
+					repeating-linear-gradient(45deg, rgba(190, 176, 152, 0.055) 0 3px, transparent 3px 9px),
+					repeating-linear-gradient(-45deg, rgba(190, 176, 152, 0.055) 0 3px, transparent 3px 9px),
+					linear-gradient(160deg, #F7F3E9, #EFE9DB);
+				box-shadow: 0 calc(var(--dk) * 0.014) calc(var(--dk) * 0.045) rgba(75, 69, 64, 0.30),
+					inset 0 0 0 1px rgba(75, 69, 64, 0.08);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				pointer-events: none;
+			}
+			.dc-logo {
+				font-family: 'Italiana', serif;
+				font-size: calc(var(--dk) * 0.052);
+				letter-spacing: 0.22em;
+				text-indent: 0.22em;
+				line-height: 1;
+				background: linear-gradient(100deg, #A98B54 8%, #D9C08D 38%, #C0A263 60%, #E4CF9E 82%, #A98B54 100%);
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+			}
+			.dc-tag {
+				margin-top: calc(var(--dk) * 0.010);
+				font-size: calc(var(--dk) * 0.0125);
+				letter-spacing: 0.34em;
+				text-indent: 0.34em;
+				color: #B49A6C;
+			}
+			.dc-foot {
+				position: absolute;
+				bottom: calc(var(--dk) * 0.020);
+				left: 0; right: 0;
+				text-align: center;
+				font-size: calc(var(--dk) * 0.0115);
+				letter-spacing: 0.22em;
+				text-indent: 0.22em;
+				color: #9A8F7E;
+			}
+			.dc-snap {
+				position: absolute;
+				left: calc(var(--dk) * 0.055);
+				top: calc(var(--dk) * 0.076);
+				width: calc(var(--dk) * 0.034);
+				height: calc(var(--dk) * 0.034);
+				transform: translate(-50%, -50%);
+				border-radius: 50%;
+				background: radial-gradient(circle at 34% 30%, #FBFBF9, #C9C6C0 45%, #8F8B84 78%, #6E6A64);
+				box-shadow: 0 1px 4px rgba(75, 69, 64, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+			}
+
+			/* ---- full view modal ---- */
+			.fdm[hidden] { display: none; }
+			.fdm {
+				position: fixed;
+				inset: 0;
+				z-index: 6000;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: clamp(12px, 3vw, 40px);
+				opacity: 0;
+				transition: opacity 0.3s ease;
+			}
+			.fdm.on { opacity: 1; }
+			.fdm-back {
+				position: absolute;
+				inset: 0;
+				background: rgba(62, 56, 51, 0.52);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+			}
+			.fdm-card {
+				position: relative;
+				display: grid;
+				grid-template-columns: minmax(0, 1.06fr) minmax(0, 1fr);
+				width: min(1060px, 96vw);
+				max-height: 88vh;
+				background: var(--card);
+				border-radius: 20px;
+				overflow: hidden;
+				box-shadow: 0 40px 120px rgba(30, 26, 22, 0.45);
+				transform: translateY(14px) scale(0.97);
+				transition: transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1);
+			}
+			.fdm.on .fdm-card { transform: none; }
+			.fdm-img {
+				position: relative;
+				min-height: 100%;
+				background: #E8E2D8;
+			}
+			.fdm-img img {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+			.fdm-info {
+				padding: clamp(26px, 3.4vw, 46px);
+				display: flex;
+				flex-direction: column;
+				min-height: 0;
+				overflow-y: auto;
+			}
+			.fdm-series {
+				font-size: 12px;
+				font-weight: 700;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				color: #A2937F;
+			}
+			.fdm-name {
+				margin-top: 10px;
+				font-family: 'Cormorant', serif;
+				font-weight: 500;
+				font-size: clamp(32px, 3.4vw, 50px);
+				line-height: 1.03;
+				color: var(--taupe);
+			}
+			.fdm-code {
+				margin-top: 10px;
+				align-self: flex-start;
+				font-size: 12px;
+				font-weight: 700;
+				letter-spacing: 0.14em;
+				color: #756E64;
+				background: #EFEAE0;
+				padding: 6px 12px;
+				border-radius: 6px;
+			}
+			.fdm-desc {
+				margin-top: 18px;
+				font-size: 15px;
+				line-height: 1.65;
+				color: var(--muted);
+				text-wrap: pretty;
+			}
+			.fdm-specs {
+				margin-top: 22px;
+				border-top: 1px solid rgba(75, 69, 64, 0.14);
+			}
+			.fdm-specs > div {
+				display: flex;
+				justify-content: space-between;
+				gap: 18px;
+				padding: 10px 0;
+				border-bottom: 1px solid rgba(75, 69, 64, 0.14);
+				font-size: 14px;
+			}
+			.fdm-specs dt { color: #998F82; }
+			.fdm-specs dd { font-weight: 600; color: var(--ink); }
+			.fdm-foot {
+				margin-top: auto;
+				padding-top: 26px;
+				display: flex;
+				align-items: center;
+				gap: 14px;
+			}
+			.fdm-link {
+				font-size: 13px;
+				font-weight: 700;
+				letter-spacing: 0.1em;
+				color: #fff;
+				background: var(--taupe);
+				text-decoration: none;
+				padding: 13px 22px;
+				border-radius: 8px;
+				transition: background 0.2s ease;
+				white-space: nowrap;
+			}
+			.fdm-link:hover { background: var(--taupe-deep); }
+			.fdm-nav {
+				margin-left: auto;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+			.fdm-count { font-size: 12px; letter-spacing: 0.1em; color: #998F82; }
+			.fdm-prev, .fdm-next, .fdm-close {
+				width: 42px;
+				height: 42px;
+				border-radius: 50%;
+				border: 1px solid rgba(75, 69, 64, 0.22);
+				background: rgba(253, 252, 250, 0.92);
+				color: #5E574E;
+				font-size: 17px;
+				line-height: 1;
+				cursor: pointer;
+				transition: background 0.2s ease;
+			}
+			.fdm-prev:hover, .fdm-next:hover, .fdm-close:hover { background: #fff; }
+			.fdm-close {
+				position: absolute;
+				top: 14px;
+				right: 14px;
+				z-index: 2;
+				box-shadow: 0 4px 14px rgba(30, 26, 22, 0.18);
+			}
+
+			@media (max-width: 760px) {
+				.fandeck { min-height: 0; }
+				.deck { --dk: min(96vmin, 560px); }
+				.fdm { padding: 10px; align-items: flex-end; }
+				.fdm-card {
+					grid-template-columns: 1fr;
+					max-height: 92vh;
+					width: 100%;
+				}
+				.fdm-img { aspect-ratio: 16 / 10; min-height: 0; }
+				.fdm-foot { flex-wrap: wrap; }
+			}
+			@media (prefers-reduced-motion: reduce) {
+				.swatch, .fdm, .fdm-card { transition: none; }
+			}
+
 			/* ============ SECTION: FINISH LIBRARY — diagonal card stack (light) ============ */
 			.finishes {
 				position: relative;
@@ -650,7 +970,8 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			<div class="hero-grid" style="font-weight: 500">
 				<div class="hero-copy">
 					<p class="eyebrow">Premium Architectural Vinyl</p>
-					<h1 aria-label="Renew. Don't replace."><span class="typer" id="heroTyper" aria-hidden="true">Renew. Don't replace.</span></h1>
+					<h1 aria-label="Renew. Don't replace."><span class="typer" id="heroTyper" aria-hidden="true">Renew. Don't
+replace.</span></h1>
 					<a class="cta-btn" href="/distributor">DISTRIBUTOR INFO</a>
 				</div>
 
@@ -659,6 +980,50 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				</div>
 			</div>
 		</header>
+
+		<!-- ============ SECTION: SWATCH BOOK FAN DECK ============ -->
+		<section class="fandeck" id="fandeck" aria-label="Renuva swatch book — all 27 finishes">
+			<div class="fd-head">
+				<h2 class="fd-title">The Swatch Book</h2>
+				<p class="fd-sub">All 27 finishes &middot; Click any swatch for full view</p>
+			</div>
+			<div class="deck" id="deckFan" role="list">
+				<div class="deck-cover" aria-hidden="true">
+					<span class="dc-logo">RENUVA</span>
+					<span class="dc-tag">A SMARTER WAY TO RENEW</span>
+					<span class="dc-foot">ARCHITECTURAL FILM</span>
+					<span class="dc-snap"></span>
+				</div>
+			</div>
+		</section>
+
+		<!-- swatch full-view modal -->
+		<div class="fdm" id="fdModal" role="dialog" aria-modal="true" aria-label="Finish detail" hidden>
+			<div class="fdm-back"></div>
+			<div class="fdm-card">
+				<div class="fdm-img"><img src="" alt="" /></div>
+				<div class="fdm-info">
+					<p class="fdm-series"></p>
+					<h3 class="fdm-name"></h3>
+					<p class="fdm-code"></p>
+					<p class="fdm-desc"></p>
+					<dl class="fdm-specs">
+						<div><dt>Width</dt><dd>48 in (122 cm)</dd></div>
+						<div><dt>Backing</dt><dd>Water-based adhesive</dd></div>
+						<div><dt>Availability</dt><dd>Stocked in the US &middot; Ships 1&ndash;3 days</dd></div>
+					</dl>
+					<div class="fdm-foot">
+						<a class="fdm-link" href="" target="_blank" rel="noopener">VIEW ON SURFACESUPPLY</a>
+						<div class="fdm-nav">
+							<span class="fdm-count"></span>
+							<button class="fdm-prev" type="button" aria-label="Previous finish">&#8249;</button>
+							<button class="fdm-next" type="button" aria-label="Next finish">&#8250;</button>
+						</div>
+					</div>
+				</div>
+				<button class="fdm-close" type="button" aria-label="Close full view">&times;</button>
+			</div>
+		</div>
 
 		<!-- ============ SECTION: FINISH LIBRARY ============ -->
 		<section class="finishes" id="finishes">
@@ -778,6 +1143,7 @@ Every Surface</span><span class="typer-live"><span class="typed"></span><span cl
 			})();
 		</script>
 
+		<script is:inline src="/scripts/renuva-fandeck.js"></script>
 		<script is:inline src="/scripts/renuva-photo-kitchen.js"></script>
 		<script is:inline src="/scripts/renuva-finishes.js"></script>
 		<script is:inline>
