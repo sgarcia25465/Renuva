@@ -73,6 +73,7 @@
   let cur = HOME, target = HOME;
   let open = -1;
   let lastInput = -1e9, dragId = null, lastX = 0;
+  let startX = 0, startY = 0, dragAxis = null, vel = 0, lastT = 0;
   window.__fin = {
     force: function (v) { if (open >= 0) return; cur = v; target = v; setTransforms(); },
     openCard: function (i) { onCardClick(i); },
@@ -88,19 +89,44 @@
     lastInput = performance.now();
   }, { passive: false });
 
-  /* touch drag: touch-action pan-y on .fin-cards keeps vertical swipes scrolling the page */
+  /* touch drag: touch-action pan-y on .fin-cards keeps vertical swipes scrolling
+     the page. A direction lock keeps mostly-vertical swipes from jittering the
+     deck: the gesture must commit to horizontal before the carousel moves. */
   stage.addEventListener('pointerdown', function (e) {
     if (e.pointerType !== 'touch' || open >= 0) return;
-    dragId = e.pointerId; lastX = e.clientX;
+    dragId = e.pointerId;
+    lastX = startX = e.clientX; startY = e.clientY;
+    dragAxis = null; vel = 0; lastT = e.timeStamp;
   });
   stage.addEventListener('pointermove', function (e) {
     if (e.pointerId !== dragId) return;
-    target += (lastX - e.clientX) / 220;
-    lastX = e.clientX;
+    if (dragAxis === null) {
+      const dx = Math.abs(e.clientX - startX), dy = Math.abs(e.clientY - startY);
+      if (dx < 7 && dy < 7) return;
+      dragAxis = dx > dy ? 'x' : 'y';
+      if (dragAxis === 'x') { try { stage.setPointerCapture(dragId); } catch (_) {} }
+      lastX = e.clientX;
+    }
+    if (dragAxis !== 'x') return;
+    const per = window.innerWidth < 760 ? 150 : 220; /* px of finger travel per card */
+    const d = (lastX - e.clientX) / per;
+    target += d;
+    const dt = Math.max(e.timeStamp - lastT, 1);
+    vel = vel * 0.75 + (d / dt) * 1000 * 0.25; /* cards per second, smoothed */
+    lastX = e.clientX; lastT = e.timeStamp;
     lastInput = performance.now();
   });
   ['pointerup', 'pointercancel'].forEach(function (t) {
-    stage.addEventListener(t, function (e) { if (e.pointerId === dragId) dragId = null; });
+    stage.addEventListener(t, function (e) {
+      if (e.pointerId !== dragId) return;
+      dragId = null;
+      if (t === 'pointerup' && dragAxis === 'x') {
+        /* small flick momentum, clamped so a hard flick moves a couple of cards */
+        target += Math.max(-2.5, Math.min(2.5, vel * 0.22));
+        lastInput = performance.now();
+      }
+      dragAxis = null;
+    });
   });
 
   /* nearest wrapped distance of card i from cur, in [-N/2, N/2] */

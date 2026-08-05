@@ -1,0 +1,407 @@
+---
+import { Image } from 'astro:assets';
+import renuvamain from '../assets/images/RENUVAMAIN.png';
+import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.png';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="/newfavicon.png?v=3" />
+		<link rel="shortcut icon" href="/newfavicon.png?v=3" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<title>Finishes - Renuva</title>
+		<style is:global>
+			:root {
+				--paper: #F5F2EC;
+				--taupe: #8C7766;
+				--taupe-deep: #7A6657;
+				--ink: #4B4540;
+				--muted: #756E64;
+				--card: #FDFCFA;
+			}
+			* { margin: 0; padding: 0; box-sizing: border-box; }
+			html, body { overflow-x: clip; }
+			body {
+				background: var(--paper);
+				font-family: 'Hanken Grotesk', sans-serif;
+				color: var(--ink);
+			}
+
+			/* ============ NAV (matches home) ============ */
+			.nav {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 36px clamp(24px, 5vw, 80px);
+			}
+			.logo { display: block; }
+			.logo img { height: 48px; width: auto; display: block; }
+			.nav-right { display: flex; align-items: center; gap: 40px; }
+			.nav-links { display: flex; gap: 40px; }
+			.nav-links a {
+				font-family: 'Instrument Serif', serif;
+				font-size: 21px;
+				color: #5E574E;
+				text-decoration: none;
+			}
+			.nav-links a:hover { color: var(--taupe); }
+			.nav-links a.active { color: var(--taupe); }
+			.contact-btn {
+				font-size: 15px;
+				font-weight: 600;
+				color: #fff;
+				background: var(--taupe);
+				text-decoration: none;
+				padding: 14px 28px;
+				border-radius: 8px;
+				transition: background 0.2s ease;
+			}
+			.contact-btn:hover { background: var(--taupe-deep); }
+
+			/* ============ HEAD ============ */
+			.fg-head {
+				padding: clamp(16px, 4vh, 44px) clamp(24px, 5vw, 84px) 0;
+			}
+			.fg-title {
+				font-family: 'Cormorant', serif;
+				font-weight: 500;
+				font-size: clamp(46px, 4.4vw, 70px);
+				letter-spacing: 0.005em;
+				line-height: 1.05;
+				color: var(--taupe);
+			}
+			.fg-sub {
+				margin-top: 12px;
+				font-size: 15px;
+				line-height: 1.6;
+				color: var(--muted);
+				max-width: 62ch;
+			}
+
+			/* ============ GRID — rows of 4 ============ */
+			.fg-grid {
+				display: grid;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				gap: clamp(14px, 1.8vw, 26px);
+				padding: clamp(28px, 4vh, 48px) clamp(24px, 5vw, 84px) clamp(70px, 10vh, 120px);
+			}
+			.fg-tile {
+				position: relative;
+				aspect-ratio: 4 / 5;
+				border: 0;
+				border-radius: 7px;
+				overflow: hidden;
+				background: #E8E2D8;
+				cursor: pointer;
+				box-shadow: 0 14px 36px rgba(75, 69, 64, 0.16);
+				transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease;
+				padding: 0;
+			}
+			.fg-tile:hover {
+				transform: translateY(-5px) scale(1.015);
+				box-shadow: 0 24px 54px rgba(75, 69, 64, 0.24);
+			}
+			.fg-tile img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				-webkit-user-drag: none;
+				user-select: none;
+			}
+			/* subtle code, bottom-right */
+			.fg-code {
+				position: absolute;
+				right: 12px;
+				bottom: 10px;
+				font-family: 'Hanken Grotesk', sans-serif;
+				font-size: 10px;
+				font-weight: 600;
+				letter-spacing: 0.16em;
+				color: rgba(75, 69, 64, 0.62);
+				text-shadow: 0 1px 4px rgba(253, 252, 250, 0.55);
+				pointer-events: none;
+			}
+			.fg-tile.is-dark .fg-code {
+				color: rgba(253, 252, 250, 0.72);
+				text-shadow: 0 1px 4px rgba(30, 26, 22, 0.45);
+			}
+			.fg-tile.is-origin { visibility: hidden; }
+
+			/* ============ FOCUS OVERLAY — same UI as the Finish Library ============ */
+			.fg-backdrop {
+				position: fixed;
+				inset: 0;
+				background: #EFEAE1;
+				opacity: 0;
+				pointer-events: none;
+				transition: opacity 0.5s ease;
+				z-index: 1500;
+			}
+			body.fg-open .fg-backdrop { opacity: 0.97; pointer-events: auto; }
+
+			.fg-focus {
+				position: fixed;
+				visibility: hidden;
+				border-radius: 7px;
+				overflow: hidden;
+				background: #E8E2D8;
+				cursor: pointer;
+				box-shadow: 0 50px 130px rgba(75, 69, 64, 0.42);
+				transition: transform 0.8s cubic-bezier(0.22, 0.8, 0.2, 1);
+				will-change: transform;
+				z-index: 2600;
+			}
+			.fg-focus img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				-webkit-user-drag: none;
+				user-select: none;
+			}
+
+			/* detail panel — copied from the home-page Finish Library */
+			.fin-detail {
+				position: fixed;
+				top: 50%;
+				right: clamp(28px, 7vw, 130px);
+				width: min(34vw, 400px);
+				transform: translateY(-46%);
+				opacity: 0;
+				pointer-events: none;
+				transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+				z-index: 2700;
+			}
+			body.fg-open .fin-detail {
+				opacity: 1;
+				transform: translateY(-50%);
+				transition-delay: 0.35s;
+				pointer-events: auto;
+			}
+			.fin-detail .fd-series {
+				font-size: 12px;
+				font-weight: 700;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				color: #A2937F;
+			}
+			.fin-detail h3 {
+				margin-top: 10px;
+				font-family: 'Cormorant', serif;
+				font-weight: 500;
+				font-size: clamp(40px, 3.6vw, 58px);
+				line-height: 1.02;
+				color: var(--taupe);
+			}
+			.fin-detail .fd-desc {
+				margin-top: 16px;
+				font-size: 15px;
+				line-height: 1.6;
+				color: var(--muted);
+				text-wrap: pretty;
+			}
+			.fin-detail .fd-specs {
+				margin-top: 24px;
+				border-top: 1px solid rgba(75, 69, 64, 0.16);
+			}
+			.fin-detail .fd-specs > div {
+				display: flex;
+				justify-content: space-between;
+				gap: 18px;
+				padding: 11px 0;
+				border-bottom: 1px solid rgba(75, 69, 64, 0.16);
+				font-size: 14px;
+			}
+			.fin-detail .fd-specs dt { color: #998F82; }
+			.fin-detail .fd-specs dd { font-weight: 600; color: var(--ink); text-align: right; white-space: nowrap; }
+			.fin-detail .fd-link {
+				display: inline-block;
+				margin-top: 24px;
+				font-size: 12px;
+				font-weight: 600;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				color: var(--ink);
+				text-decoration: none;
+				border-bottom: 1px solid currentColor;
+				padding-bottom: 3px;
+			}
+			.fin-detail .fd-link:hover { color: var(--taupe); }
+
+			.fin-close {
+				position: fixed;
+				top: 32px;
+				right: 36px;
+				width: 46px;
+				height: 46px;
+				border-radius: 50%;
+				border: 1px solid rgba(75, 69, 64, 0.22);
+				background: rgba(253, 252, 250, 0.9);
+				color: #5E574E;
+				font-size: 20px;
+				line-height: 1;
+				cursor: pointer;
+				opacity: 0;
+				pointer-events: none;
+				transition: opacity 0.3s ease, background 0.3s ease;
+				z-index: 3000;
+			}
+			body.fg-open .fin-close { opacity: 1; pointer-events: auto; }
+			.fin-close:hover { background: #fff; }
+
+			/* ============ FOOTER (matches home) ============ */
+			footer {
+				background: #3E3833;
+				color: #fff;
+				padding: 3rem 2rem 2rem;
+				position: relative;
+				overflow: hidden;
+			}
+			footer::before {
+				content: "";
+				position: absolute;
+				top: -120px;
+				right: -120px;
+				width: 280px;
+				height: 280px;
+				background: radial-gradient(circle, rgba(215, 193, 184, 0.16), transparent 70%);
+				pointer-events: none;
+			}
+			.footer-shell {
+				max-width: 1100px;
+				margin: 0 auto;
+				position: relative;
+				z-index: 1;
+			}
+			.footer-top {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				gap: 0.8rem;
+				padding-bottom: 1.2rem;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+			}
+			.footer-brand {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 1rem;
+				flex-wrap: wrap;
+			}
+			.footer-logo { height: 44px; width: auto; display: block; }
+			footer .footer-tagline {
+				font-size: 0.9rem;
+				font-weight: 400;
+				color: rgba(255, 255, 255, 0.78);
+			}
+			.footer-bottom {
+				margin-top: 1rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 0.9rem;
+				text-align: center;
+			}
+			.footer-nav { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+			.footer-nav a {
+				color: rgba(255, 255, 255, 0.75);
+				text-decoration: none;
+				font-size: 0.84rem;
+				font-weight: 400;
+				transition: color 0.3s;
+			}
+			.footer-nav a:hover { color: #fff; }
+			footer .footer-copy {
+				font-size: 0.78rem;
+				color: rgba(255, 255, 255, 0.45);
+			}
+
+			@media (max-width: 1100px) {
+				.nav-links { display: none; }
+				.fg-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+				.fin-detail {
+					right: 50%;
+					transform: translate(50%, 0);
+					top: auto;
+					bottom: 22px;
+					width: min(88vw, 420px);
+					background: rgba(253, 252, 250, 0.95);
+					border: 1px solid rgba(75, 69, 64, 0.1);
+					border-radius: 14px;
+					padding: 18px 22px 20px;
+				}
+				body.fg-open .fin-detail { transform: translate(50%, 0); }
+				.fin-detail h3 { font-size: 32px; }
+				.fin-detail .fd-desc { display: none; }
+			}
+			@media (max-width: 640px) {
+				.fg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+			}
+			@media (prefers-reduced-motion: reduce) {
+				.fg-tile, .fg-focus, .fg-backdrop, .fin-detail { transition: none; }
+			}
+		</style>
+	</head>
+	<body>
+
+		<nav class="nav">
+			<a class="logo" href="/" aria-label="Renuva">
+				<Image src={renuvamain} alt="Renuva" width={550} loading="eager" />
+			</a>
+			<div class="nav-right">
+				<div class="nav-links">
+					<a href="/about">About Us</a>
+					<a href="/distributor">Distributor</a>
+					<a href="/finishes" class="active">Finishes</a>
+					<a href="/gallery">Gallery</a>
+				</div>
+				<a class="contact-btn" href="/contact">Contact Us</a>
+			</div>
+		</nav>
+
+		<header class="fg-head">
+			<h1 class="fg-title">The Finishes</h1>
+			<p class="fg-sub">Every Renuva™ architectural film, side by side. Click any finish to see it up close.</p>
+		</header>
+
+		<section class="fg-grid" id="fgGrid" aria-label="All Renuva finishes"></section>
+
+		<!-- focus overlay — same UI as the home-page Finish Library -->
+		<div class="fg-backdrop" id="fgBackdrop"></div>
+		<div class="fg-focus" id="fgFocus" aria-hidden="true"><img src="" alt="" /></div>
+		<div class="fin-detail" id="fgDetail"></div>
+		<button class="fin-close" id="fgClose" aria-label="Close finish detail">×</button>
+
+		<footer>
+			<div class="footer-shell">
+				<div class="footer-top">
+					<div class="footer-brand">
+						<Image class="footer-logo" src={footerLogo} alt="Renuva logo" width={200} />
+						<p class="footer-tagline">Transform existing surfaces. Renew beautifully.</p>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<nav class="footer-nav">
+						<a href="/">Home</a>
+						<a href="/about">About Us</a>
+						<a href="/distributor">Distributor</a>
+						<a href="/finishes">Finishes</a>
+						<a href="/gallery">Gallery</a>
+						<a href="/contact">Contact</a>
+					</nav>
+					<p class="footer-copy">&copy; 2026 Renuva Architectural Surfaces. All rights reserved.</p>
+				</div>
+			</div>
+		</footer>
+
+		<script is:inline src="/scripts/renuva-finishes-grid.js"></script>
+	</body>
+</html>
