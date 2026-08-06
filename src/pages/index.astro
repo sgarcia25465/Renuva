@@ -190,7 +190,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			}
 			.compare-stack {
 				width: min(100%, 980px);
-				aspect-ratio: 1024 / 683;
+				aspect-ratio: 1080 / 720;
 				display: flex;
 				flex-direction: column;
 				border-radius: 14px;
@@ -747,6 +747,22 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				line-height: 1.05;
 			}
 			.fin-br { display: none; } /* two-line heading on phones only */
+			.fin-browse {
+				display: inline-block;
+				margin-top: 10px;
+				font-size: 12px;
+				font-weight: 600;
+				letter-spacing: 0.16em;
+				text-transform: uppercase;
+				color: var(--taupe);
+				text-decoration: none;
+				border-bottom: 1px solid rgba(140, 119, 102, 0.45);
+				padding-bottom: 2px;
+				pointer-events: auto;
+				transition: color 0.2s ease, border-color 0.2s ease;
+			}
+			.fin-browse::after { content: ' →'; }
+			.fin-browse:hover { color: var(--taupe-deep); border-color: var(--taupe-deep); }
 
 			/* opaque backdrop revealed when a finish is opened */
 			.fin-backdrop {
@@ -1100,6 +1116,7 @@ replace.</span></h1>
 			<div class="fin-stage" id="finStage">
 				<div class="fin-head">
 					<p class="fin-eyebrow">The Finish <br class="fin-br" /> Library</p>
+					<a class="fin-browse" href="/finishes">Browse all finishes</a>
 				</div>
 				<div class="fin-backdrop" id="finBackdrop"></div>
 				<div class="fin-cards" id="finCards"></div>
@@ -1123,16 +1140,16 @@ Every Surface</span><span class="typer-live"><span class="typed"></span><span cl
 
 				<div class="compare-col">
 					<div class="compare-stack">
-						<div class="cmp top" aria-label="Drag to compare drawing and finished kitchen — upper half">
-							<img src="/assets/landing/kitchen2-lines.png" alt="" draggable="false" />
-							<div class="cmp-photo"><img src="/assets/landing/kitchen2-photo.png" alt="" draggable="false" /></div>
-							<span class="cmp-tag l">Drawing</span>
+						<div class="cmp top" aria-label="Drag to compare the old kitchen and the renewed kitchen — upper half">
+							<img src="/assets/landing/kitchen-before.jpg" alt="" draggable="false" />
+							<div class="cmp-photo"><img src="/assets/landing/kitchen-after.jpg" alt="" draggable="false" /></div>
+							<span class="cmp-tag l">Before</span>
 							<span class="cmp-tag r">Renuva</span>
 							<div class="cmp-handle"><span class="cmp-grip">‹ ›</span></div>
 						</div>
-						<div class="cmp bot" aria-label="Drag to compare drawing and finished kitchen — lower half">
-							<img src="/assets/landing/kitchen2-lines.png" alt="" draggable="false" />
-							<div class="cmp-photo"><img src="/assets/landing/kitchen2-photo.png" alt="" draggable="false" /></div>
+						<div class="cmp bot" aria-label="Drag to compare the old kitchen and the renewed kitchen — lower half">
+							<img src="/assets/landing/kitchen-before.jpg" alt="" draggable="false" />
+							<div class="cmp-photo"><img src="/assets/landing/kitchen-after.jpg" alt="" draggable="false" /></div>
 							<div class="cmp-handle"><span class="cmp-grip">‹ ›</span></div>
 						</div>
 					</div>
