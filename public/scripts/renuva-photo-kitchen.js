@@ -17,8 +17,9 @@ window.RenuvaPhotoKitchen = (function () {
 
   // reveal pieces in source-image coordinates [x0, y0, x1, y1]; wrap order = array order
   const PIECES = [
-    [64, 58, 192, 672],      // tall pantry, left door (stops at island's left edge)
-    [192, 58, 362, 504],     // tall pantry, right door (stops above island slab)
+    [64, 58, 190, 672],      // tall pantry, left door (stops at island's left edge)
+    // tall pantry, right door — bottom follows the island slab's slanted top edge
+    [190, 58, 362, 530, [[190, 527], [235, 522], [255, 517], [275, 512], [295, 507], [310, 503], [362, 503]]],
     [350, 66, 498, 318],     // upper door 1
     [498, 66, 638, 318],     // upper door 2
     [638, 66, 778, 318],     // upper door 3
@@ -100,7 +101,18 @@ window.RenuvaPhotoKitchen = (function () {
         const r = PIECES[i];
         const w = (r[2] - r[0]) * e;
         if (w < 1) continue;
+        const clip = r[4];
+        if (clip) {
+          ctx.save();
+          ctx.beginPath();
+          ctx.moveTo(r[0] - CROP_X, r[1]);
+          ctx.lineTo(r[2] - CROP_X, r[1]);
+          for (let k = clip.length - 1; k >= 0; k--) ctx.lineTo(clip[k][0] - CROP_X, clip[k][1]);
+          ctx.closePath();
+          ctx.clip();
+        }
         ctx.drawImage(photo, r[0], r[1], w, r[3] - r[1], r[0] - CROP_X, r[1], w, r[3] - r[1]);
+        if (clip) ctx.restore();
         if (local < 0.999) edges.push([r[0] + w - CROP_X, r[1], r[3] - r[1], e]);
       }
       if (finish !== 'none') ctx.filter = 'none';
