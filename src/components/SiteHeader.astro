@@ -28,7 +28,8 @@ const links = [
 
 <style>
 	/* Thin bar fixed to the top of every page. A same-height spacer keeps the
-	   page flow intact (sticky wouldn't survive the landing hero's nesting). */
+	   page flow intact (sticky wouldn't survive the landing hero's nesting).
+	   Transparent at the top of the page; the bar look fades in on scroll. */
 	.nav {
 		--nav-taupe: #8c7766;
 		--nav-taupe-deep: #7a6657;
@@ -43,10 +44,15 @@ const links = [
 		align-items: center;
 		justify-content: space-between;
 		padding: 0 clamp(24px, 5vw, 80px);
+		background: transparent;
+		border-bottom: 1px solid transparent;
+		transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+	}
+	.nav.scrolled {
 		background: rgba(250, 249, 246, 0.94);
 		backdrop-filter: blur(10px);
 		-webkit-backdrop-filter: blur(10px);
-		border-bottom: 1px solid rgba(141, 124, 110, 0.14);
+		border-bottom-color: rgba(141, 124, 110, 0.14);
 	}
 	.nav-spacer { height: 58px; }
 	.logo { display: block; }
@@ -100,3 +106,15 @@ const links = [
 		.nav-links { display: none; }
 	}
 </style>
+
+<script is:inline>
+	(function () {
+		var nav = document.querySelector('.nav');
+		if (!nav) return;
+		function onScroll() {
+			nav.classList.toggle('scrolled', window.scrollY > 8);
+		}
+		window.addEventListener('scroll', onScroll, { passive: true });
+		onScroll();
+	})();
+</script>
