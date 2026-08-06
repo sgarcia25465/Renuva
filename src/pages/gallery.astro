@@ -134,11 +134,10 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 			}
 
 			.visualizer-intro {
-				margin-bottom: 2.4rem;
+				margin-top: 2.6rem;
 			}
 
-			.visualizer-intro h2,
-			.grid-title {
+			.visualizer-intro h2 {
 				font-family: "Playfair Display", Georgia, serif;
 				font-size: clamp(1.4rem, 2.6vw, 1.9rem);
 				color: var(--very-dark-brown);
@@ -150,10 +149,6 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 				color: var(--dark-brown);
 				line-height: 1.7;
 				margin-bottom: 1.1rem;
-			}
-
-			.grid-title {
-				margin-bottom: 1rem;
 			}
 
 			/* Mosaic: shapes are chosen per photo — wide slots for the frontal
@@ -502,6 +497,14 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 				<h1>Gallery</h1>
 			</section>
 
+			<section class="gallery-grid" aria-label="Project gallery">
+				{images.map((src, i) => (
+					<a class="gallery-item" href={src} aria-label={`View project photo ${i + 1}`}>
+						<img src={src} alt={`Renuva project ${i + 1}`} loading={i < 6 ? 'eager' : 'lazy'} />
+					</a>
+				))}
+			</section>
+
 			<section class="visualizer-intro" aria-label="Kitchen visualizer">
 				<h2>Start your own gallery</h2>
 				<p>
@@ -509,16 +512,6 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 					See your own project here before it happens.
 				</p>
 				<div id="visualizer"></div>
-			</section>
-
-			<h2 class="grid-title">Recent projects</h2>
-
-			<section class="gallery-grid" aria-label="Project gallery">
-				{images.map((src, i) => (
-					<a class="gallery-item" href={src} aria-label={`View project photo ${i + 1}`}>
-						<img src={src} alt={`Renuva project ${i + 1}`} loading={i < 6 ? 'eager' : 'lazy'} />
-					</a>
-				))}
 			</section>
 		</main>
 
