@@ -138,7 +138,8 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			.resurface {
 				min-height: 100vh;
 				display: grid;
-				grid-template-columns: minmax(280px, 460px) 1fr;
+				/* slider column hugs the photo; the copy centers in all space left of it */
+				grid-template-columns: 1fr auto;
 				gap: clamp(24px, 4vw, 64px);
 				align-items: center;
 				padding: clamp(48px, 8vh, 96px) clamp(24px, 5vw, 84px);
@@ -151,7 +152,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				min-width: 0;
 			}
 			.compare-stack {
-				width: min(100%, 62vh, 640px); /* portrait photos — cap by height so the stack fits the viewport */
+				width: min(68vh, 700px); /* portrait photos — cap by height so the stack fits the viewport */
 				aspect-ratio: 1080 / 1350;
 				display: flex;
 				flex-direction: column;
@@ -975,6 +976,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				}
 				.hero-art canvas { max-height: 44vh; margin: 0 auto; }
 				.resurface { grid-template-columns: 1fr; padding: 48px clamp(16px, 5vw, 32px); }
+				.compare-stack { width: 100%; }
 				.fcard { width: min(56vw, 360px); }
 				.fin-head { max-width: 80vw; }
 				.fin-detail {
@@ -1090,14 +1092,14 @@ Every Surface</span><span class="typer-live"><span class="typed"></span><span cl
 				<div class="compare-col">
 					<div class="compare-stack">
 						<div class="cmp top" aria-label="Drag to compare the old kitchen and the renewed kitchen — upper half">
-							<img src="/assets/landing/compare-before.jpg" alt="" draggable="false" />
+							<img src="/assets/landing/compare-before.jpg?v=2" alt="" draggable="false" />
 							<div class="cmp-photo"><img src="/assets/landing/compare-after.jpg" alt="" draggable="false" /></div>
 							<span class="cmp-tag l">Before</span>
 							<span class="cmp-tag r">Renuva</span>
 							<div class="cmp-handle"><span class="cmp-grip">‹ ›</span></div>
 						</div>
 						<div class="cmp bot" aria-label="Drag to compare the old kitchen and the renewed kitchen — lower half">
-							<img src="/assets/landing/compare-before.jpg" alt="" draggable="false" />
+							<img src="/assets/landing/compare-before.jpg?v=2" alt="" draggable="false" />
 							<div class="cmp-photo"><img src="/assets/landing/compare-after.jpg" alt="" draggable="false" /></div>
 							<div class="cmp-handle"><span class="cmp-grip">‹ ›</span></div>
 						</div>
