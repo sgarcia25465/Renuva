@@ -1,7 +1,9 @@
 ---
 /* Hand-shuffled so similar shots (oak / beige / charcoal kitchens) never sit
-   next to each other. Position in this list = grid-area g1..g13 in the CSS. */
-const order = [3, 13, 2, 9, 4, 12, 7, 1, 6, 5, 8, 11, 10];
+   next to each other; 20 & 21 are a before/after of the same kitchen and are
+   deliberately placed side by side. Position = grid-area g1..g21 in the CSS. */
+import SiteHeader from '../components/SiteHeader.astro';
+const order = [3, 13, 9, 6, 16, 14, 18, 20, 21, 10, 7, 11, 19, 12, 5, 17, 1, 8, 4, 15, 2];
 const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 ---
 
@@ -15,9 +17,10 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
+		<link rel="stylesheet" href="/styles/renuva-visualizer.css" />
 		<title>Gallery - Renuva</title>
 		<style>
 			:root {
@@ -45,44 +48,6 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 				overflow-x: hidden;
 				-webkit-font-smoothing: antialiased;
 				-moz-osx-font-smoothing: grayscale;
-			}
-
-			header {
-				position: sticky;
-				top: 0;
-				left: 0;
-				width: 100%;
-				z-index: 1000;
-				background: rgba(250, 249, 246, 0.96);
-				backdrop-filter: blur(10px);
-				-webkit-backdrop-filter: blur(10px);
-				padding: 1.05rem 0;
-				border-bottom: 1px solid rgba(141, 124, 110, 0.14);
-				box-shadow: none;
-			}
-
-			.header-content {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				padding: 0 2rem 0 clamp(2.2rem, 8vw, 8rem);
-			}
-
-			.logo {
-				height: 60px;
-				width: 200px;
-				overflow: visible;
-				display: flex;
-				align-items: center;
-				justify-content: flex-start;
-			}
-
-			.logo img {
-				height: 100%;
-				width: auto;
-				display: block;
-				transform: scale(0.70);
-				transform-origin: left center;
 			}
 
 			nav {
@@ -152,16 +117,6 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 				margin-bottom: 1.8rem;
 			}
 
-			.kicker {
-				display: inline-block;
-				font-size: 0.76rem;
-				font-weight: 600;
-				letter-spacing: 0.22em;
-				text-transform: uppercase;
-				color: var(--brown);
-				margin-bottom: 0.7rem;
-			}
-
 			h1 {
 				font-family: "Playfair Display", Georgia, serif;
 				font-size: clamp(2.1rem, 5vw, 3.6rem);
@@ -177,19 +132,45 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 				line-height: 1.7;
 			}
 
+			.visualizer-intro {
+				margin-bottom: 2.4rem;
+			}
+
+			.visualizer-intro h2,
+			.grid-title {
+				font-family: "Playfair Display", Georgia, serif;
+				font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+				color: var(--very-dark-brown);
+				margin-bottom: 0.4rem;
+			}
+
+			.visualizer-intro > p {
+				max-width: 62ch;
+				color: var(--dark-brown);
+				line-height: 1.7;
+				margin-bottom: 1.1rem;
+			}
+
+			.grid-title {
+				margin-bottom: 1rem;
+			}
+
 			/* Mosaic: shapes are chosen per photo — wide slots for the frontal
 			   cabinet runs, tall slots for vertical compositions, one 2×2 for
-			   the bright oak kitchen — mapped to DOM order via g1..g13. */
+			   the bright oak kitchen — mapped to DOM order via g1..g21. */
 			.gallery-grid {
 				display: grid;
 				grid-template-columns: repeat(4, minmax(0, 1fr));
-				grid-template-rows: repeat(5, clamp(180px, 19vw, 240px));
+				grid-template-rows: repeat(8, clamp(180px, 19vw, 240px));
 				grid-template-areas:
 					"g1  g1  g2  g3"
 					"g1  g1  g2  g4"
 					"g5  g5  g6  g7"
-					"g8  g9  g6  g10"
-					"g11 g12 g12 g13";
+					"g8  g9  g10 g11"
+					"g8  g9  g12 g12"
+					"g13 g13 g14 g15"
+					"g16 g17 g14 g18"
+					"g19 g19 g20 g21";
 				gap: 14px;
 			}
 
@@ -206,6 +187,14 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 			.gallery-item:nth-child(11) { grid-area: g11; }
 			.gallery-item:nth-child(12) { grid-area: g12; }
 			.gallery-item:nth-child(13) { grid-area: g13; }
+			.gallery-item:nth-child(14) { grid-area: g14; }
+			.gallery-item:nth-child(15) { grid-area: g15; }
+			.gallery-item:nth-child(16) { grid-area: g16; }
+			.gallery-item:nth-child(17) { grid-area: g17; }
+			.gallery-item:nth-child(18) { grid-area: g18; }
+			.gallery-item:nth-child(19) { grid-area: g19; }
+			.gallery-item:nth-child(20) { grid-area: g20; }
+			.gallery-item:nth-child(21) { grid-area: g21; }
 
 			.gallery-item {
 				display: block;
@@ -245,7 +234,7 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 			}
 
 			footer {
-				background: linear-gradient(rgba(38, 45, 38, 0.94), rgba(38, 45, 38, 0.94));
+				background: #3E3833;
 				color: var(--white);
 				padding: 3rem 2rem 2rem;
 				position: relative;
@@ -337,43 +326,28 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 			@media (max-width: 900px) {
 				.gallery-grid {
 					grid-template-columns: repeat(2, minmax(0, 1fr));
-					grid-template-rows: repeat(10, clamp(170px, 27vw, 250px));
+					grid-template-rows: repeat(16, clamp(170px, 27vw, 250px));
 					grid-template-areas:
 						"g1  g1"
 						"g1  g1"
-						"g3  g2"
-						"g4  g2"
+						"g2  g3"
+						"g2  g4"
 						"g5  g5"
-						"g6  g10"
 						"g6  g7"
-						"g8  g13"
+						"g8  g9"
+						"g8  g9"
+						"g10 g11"
 						"g12 g12"
-						"g11 g9";
+						"g14 g17"
+						"g14 g15"
+						"g13 g13"
+						"g16 g18"
+						"g19 g19"
+						"g20 g21";
 				}
 			}
 
 			@media (max-width: 768px) {
-				header { padding: 0.65rem 0; }
-				.header-content {
-					flex-direction: row;
-					gap: 0.55rem;
-					align-items: center;
-					padding: 0 1rem;
-				}
-				.logo {
-					height: 48px;
-					width: 165px;
-					overflow: visible;
-					display: flex;
-					align-items: center;
-					justify-content: flex-start;
-					margin: 0;
-					flex: 0 0 auto;
-				}
-				.logo img {
-					transform-origin: left center;
-					transform: scale(0.70);
-				}
 				nav {
 					width: auto;
 					justify-content: flex-start;
@@ -431,7 +405,7 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 				}
 			}
 		footer {
-			background: linear-gradient(rgba(38, 45, 38, 0.94), rgba(38, 45, 38, 0.94));
+			background: #3E3833;
 			color: var(--white);
 			padding: 3rem 2rem 2rem;
 			position: relative;
@@ -524,28 +498,23 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 		</style>
 	</head>
 	<body>
-		<header>
-			<div class="header-content">
-				<a href="/" style="text-decoration: none;">
-					<div class="logo">
-						<img src="/assets/images/RENUVAMAIN.png" alt="Renuva" />
-					</div>
-				</a>
-				<nav>
-					<a href="/about">About Us</a>
-					<a href="/distributor">Distributor</a>
-					<a href="/finishes">Finishes</a>
-					<a href="/gallery">Gallery</a>
-					<a href="/contact" class="nav-cta">Contact Us</a>
-				</nav>
-			</div>
-		</header>
+		<SiteHeader active="/gallery" />
 
 		<main>
 			<section class="hero">
-				<span class="kicker">Renuva</span>
 				<h1>Gallery</h1>
 			</section>
+
+			<section class="visualizer-intro" aria-label="Kitchen visualizer">
+				<h2>Start your own gallery</h2>
+				<p>
+					Upload a photo of your kitchen and preview it in any Renuva finish —
+					see your own project here before it happens.
+				</p>
+				<div id="visualizer"></div>
+			</section>
+
+			<h2 class="grid-title">Recent projects</h2>
 
 			<section class="gallery-grid" aria-label="Project gallery">
 				{images.map((src, i) => (
@@ -560,6 +529,10 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 			<img id="lightboxImg" src="" alt="" />
 		</div>
 
+		<script is:inline src="/scripts/renuva-visualizer.js"></script>
+		<script is:inline>
+			RenuvaVisualizer.mount(document.getElementById('visualizer'));
+		</script>
 		<script>
 			const items = Array.from(document.querySelectorAll('.gallery-item'));
 			const box = document.getElementById('lightbox');
@@ -599,6 +572,7 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 						<a href="/about">About Us</a>
 						<a href="/distributor">Distributor</a>
 						<a href="/finishes">Finishes</a>
+						<a href="/visualizer">Visualizer</a>
 						<a href="/gallery">Gallery</a>
 						<a href="/contact">Contact</a>
 					</nav>

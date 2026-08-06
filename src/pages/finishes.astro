@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import renuvamain from '../assets/images/RENUVAMAIN.png';
+import SiteHeader from '../components/SiteHeader.astro';
 import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.png';
 ---
 
@@ -30,46 +30,6 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				background: var(--paper);
 				font-family: 'Hanken Grotesk', sans-serif;
 				color: var(--ink);
-			}
-
-			/* ============ NAV (matches home) ============ */
-			.nav {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				padding: 36px clamp(24px, 5vw, 80px);
-			}
-			.logo { display: block; }
-			.logo img { height: 48px; width: auto; display: block; }
-			.nav-right { display: flex; align-items: center; gap: 40px; }
-			.nav-links { display: flex; gap: 40px; }
-			.nav-links a {
-				font-family: 'Instrument Serif', serif;
-				font-size: 21px;
-				color: #5E574E;
-				text-decoration: none;
-			}
-			.nav-links a:hover { color: var(--taupe); }
-			.nav-links a.active { color: var(--taupe); }
-			.contact-btn {
-				font-size: 15px;
-				font-weight: 600;
-				color: #fff;
-				background: linear-gradient(to bottom, #99836F, var(--taupe));
-				text-decoration: none;
-				padding: 14px 28px;
-				border-radius: 8px;
-				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 2px 0 #66554A, 0 5px 12px rgba(140, 119, 102, 0.3);
-				transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
-			}
-			.contact-btn:hover {
-				background: linear-gradient(to bottom, #8C7766, var(--taupe-deep));
-				transform: translateY(-1px);
-				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 3px 0 #66554A, 0 7px 16px rgba(140, 119, 102, 0.35);
-			}
-			.contact-btn:active {
-				transform: translateY(1px);
-				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 0 #66554A, 0 3px 8px rgba(140, 119, 102, 0.25);
 			}
 
 			/* ============ GRID — rows of 4 ============ */
@@ -314,7 +274,6 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			}
 
 			@media (max-width: 1100px) {
-				.nav-links { display: none; }
 				.fg-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 				.fin-detail {
 					right: 50%;
@@ -341,20 +300,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 	</head>
 	<body>
 
-		<nav class="nav">
-			<a class="logo" href="/" aria-label="Renuva">
-				<Image src={renuvamain} alt="Renuva" width={550} loading="eager" />
-			</a>
-			<div class="nav-right">
-				<div class="nav-links">
-					<a href="/about">About Us</a>
-					<a href="/distributor">Distributor</a>
-					<a href="/finishes" class="active">Finishes</a>
-					<a href="/gallery">Gallery</a>
-				</div>
-				<a class="contact-btn" href="/contact">Contact Us</a>
-			</div>
-		</nav>
+		<SiteHeader active="/finishes" />
 
 		<section class="fg-grid" id="fgGrid" aria-label="All Renuva finishes"></section>
 
@@ -378,6 +324,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 						<a href="/about">About Us</a>
 						<a href="/distributor">Distributor</a>
 						<a href="/finishes">Finishes</a>
+						<a href="/visualizer">Visualizer</a>
 						<a href="/gallery">Gallery</a>
 						<a href="/contact">Contact</a>
 					</nav>

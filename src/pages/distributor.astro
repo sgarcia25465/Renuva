@@ -1,5 +1,5 @@
 ---
-
+import SiteHeader from '../components/SiteHeader.astro';
 ---
 
 <html lang="en">
@@ -12,7 +12,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
 		<title>Distributor - Renuva</title>
@@ -63,44 +63,6 @@
 				background: url("/assets/images/pattern-design.png") center/560px repeat;
 				opacity: 0.08;
 				pointer-events: none;
-			}
-
-			header {
-				position: sticky;
-				top: 0;
-				left: 0;
-				width: 100%;
-				z-index: 1000;
-				background: rgba(253, 250, 245, 0.9);
-				backdrop-filter: blur(12px);
-				-webkit-backdrop-filter: blur(12px);
-				padding: 1.1rem 0;
-				border-bottom: 1px solid rgba(99, 114, 97, 0.12);
-			}
-
-			.header-content {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				padding: 0 2rem 0 clamp(2.2rem, 8vw, 8rem);
-				gap: 1rem;
-			}
-
-			.logo {
-				height: 68px;
-				width: 230px;
-				overflow: visible;
-				display: flex;
-				align-items: center;
-				justify-content: flex-start;
-			}
-
-			.logo img {
-				height: 100%;
-				width: auto;
-				display: block;
-				transform: scale(0.70);
-				transform-origin: left center;
 			}
 
 			nav {
@@ -489,7 +451,7 @@
 			}
 
 			footer {
-				background: linear-gradient(rgba(38, 45, 38, 0.94), rgba(38, 45, 38, 0.94));
+				background: #3E3833;
 				color: var(--white);
 				padding: 3rem 2rem 2rem;
 				position: relative;
@@ -649,32 +611,6 @@
 			}
 
 			@media (max-width: 768px) {
-				header {
-					padding: 0.75rem 0;
-				}
-
-				.header-content {
-					flex-direction: column;
-					gap: 0.7rem;
-					align-items: center;
-					padding: 0 1.2rem;
-				}
-
-				.logo {
-					height: 68px;
-					width: 230px;
-					overflow: visible;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					margin: 0 auto;
-				}
-
-				.logo img {
-					transform-origin: center center;
-					transform: scale(0.70);
-				}
-
 				nav {
 					width: 100%;
 					justify-content: center;
@@ -720,22 +656,7 @@
 		</style>
 	</head>
 	<body>
-		<header>
-			<div class="header-content">
-				<a href="/" style="text-decoration: none;">
-					<div class="logo">
-						<img src="/assets/images/RENUVAMAIN.png" alt="Renuva" />
-					</div>
-				</a>
-				<nav>
-					<a href="/about">About Us</a>
-					<a href="/distributor">Distributor</a>
-					<a href="/finishes">Finishes</a>
-					<a href="/gallery">Gallery</a>
-					<a href="/contact">Contact Us</a>
-				</nav>
-			</div>
-		</header>
+		<SiteHeader active="/distributor" />
 
 		<main>
 			<div class="page-shell">
@@ -827,6 +748,7 @@
 						<a href="/about">About Us</a>
 						<a href="/distributor">Distributor</a>
 						<a href="/finishes">Finishes</a>
+						<a href="/visualizer">Visualizer</a>
 						<a href="/gallery">Gallery</a>
 						<a href="/contact">Contact</a>
 					</nav>
