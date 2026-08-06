@@ -1,4 +1,8 @@
 ---
+/* Hand-shuffled so similar shots (oak / beige / charcoal kitchens) never sit
+   next to each other. Position in this list = grid-area g1..g13 in the CSS. */
+const order = [3, 13, 2, 9, 4, 12, 7, 1, 6, 5, 8, 11, 10];
+const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 ---
 
 <html lang="en">
@@ -173,42 +177,71 @@
 				line-height: 1.7;
 			}
 
+			/* Mosaic: shapes are chosen per photo — wide slots for the frontal
+			   cabinet runs, tall slots for vertical compositions, one 2×2 for
+			   the bright oak kitchen — mapped to DOM order via g1..g13. */
 			.gallery-grid {
 				display: grid;
-				grid-template-columns: repeat(3, minmax(0, 1fr));
-				gap: 1rem;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				grid-template-rows: repeat(5, clamp(180px, 19vw, 240px));
+				grid-template-areas:
+					"g1  g1  g2  g3"
+					"g1  g1  g2  g4"
+					"g5  g5  g6  g7"
+					"g8  g9  g6  g10"
+					"g11 g12 g12 g13";
+				gap: 14px;
 			}
 
-			.gallery-slot {
-				background: var(--white);
-				border: 1px solid rgba(173, 182, 159, 0.45);
-				border-radius: 16px;
+			.gallery-item:nth-child(1) { grid-area: g1; }
+			.gallery-item:nth-child(2) { grid-area: g2; }
+			.gallery-item:nth-child(3) { grid-area: g3; }
+			.gallery-item:nth-child(4) { grid-area: g4; }
+			.gallery-item:nth-child(5) { grid-area: g5; }
+			.gallery-item:nth-child(6) { grid-area: g6; }
+			.gallery-item:nth-child(7) { grid-area: g7; }
+			.gallery-item:nth-child(8) { grid-area: g8; }
+			.gallery-item:nth-child(9) { grid-area: g9; }
+			.gallery-item:nth-child(10) { grid-area: g10; }
+			.gallery-item:nth-child(11) { grid-area: g11; }
+			.gallery-item:nth-child(12) { grid-area: g12; }
+			.gallery-item:nth-child(13) { grid-area: g13; }
+
+			.gallery-item {
+				display: block;
+				border-radius: 10px;
 				overflow: hidden;
-				box-shadow: 0 10px 22px rgba(38, 45, 38, 0.07);
+				cursor: zoom-in;
 			}
 
-			.slot-preview {
-				aspect-ratio: 4 / 3;
-				background:
-					linear-gradient(135deg, rgba(215, 193, 184, 0.45), rgba(173, 182, 159, 0.35)),
-					repeating-linear-gradient(
-						-45deg,
-						rgba(255, 255, 255, 0.35) 0 14px,
-						rgba(255, 255, 255, 0.1) 14px 28px
-					);
-				display: grid;
-				place-items: center;
-				color: rgba(38, 45, 38, 0.55);
-				font-size: 0.9rem;
-				font-weight: 600;
-				letter-spacing: 0.06em;
-				text-transform: uppercase;
+			.gallery-item img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+				transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
 			}
 
-			.slot-caption {
-				padding: 0.8rem 0.9rem 1rem;
-				font-size: 0.92rem;
-				color: var(--dark-brown);
+			.gallery-item:hover img { transform: scale(1.03); }
+
+			.lightbox {
+				position: fixed;
+				inset: 0;
+				background: rgba(24, 22, 20, 0.93);
+				display: none;
+				align-items: center;
+				justify-content: center;
+				z-index: 2000;
+				cursor: zoom-out;
+			}
+
+			.lightbox.open { display: flex; }
+
+			.lightbox img {
+				max-width: 92vw;
+				max-height: 90vh;
+				border-radius: 6px;
+				box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
 			}
 
 			footer {
@@ -304,6 +337,18 @@
 			@media (max-width: 900px) {
 				.gallery-grid {
 					grid-template-columns: repeat(2, minmax(0, 1fr));
+					grid-template-rows: repeat(10, clamp(170px, 27vw, 250px));
+					grid-template-areas:
+						"g1  g1"
+						"g1  g1"
+						"g3  g2"
+						"g4  g2"
+						"g5  g5"
+						"g6  g10"
+						"g6  g7"
+						"g8  g13"
+						"g12 g12"
+						"g11 g9";
 				}
 			}
 
@@ -372,6 +417,17 @@
 
 				.gallery-grid {
 					grid-template-columns: 1fr;
+					grid-template-rows: none;
+					grid-template-areas: none;
+				}
+
+				.gallery-grid .gallery-item {
+					grid-area: auto;
+				}
+
+				.gallery-grid .gallery-item img {
+					height: auto;
+					aspect-ratio: 4 / 5;
 				}
 			}
 		footer {
@@ -491,33 +547,44 @@
 				<h1>Gallery</h1>
 			</section>
 
-			<section class="gallery-grid" aria-label="Gallery placeholders">
-				<article class="gallery-slot">
-					<div class="slot-preview">Coming Soon</div>
-					<p class="slot-caption">Featured Project Slot</p>
-				</article>
-				<article class="gallery-slot">
-					<div class="slot-preview">Coming Soon</div>
-					<p class="slot-caption">Kitchen Renewal Slot</p>
-				</article>
-				<article class="gallery-slot">
-					<div class="slot-preview">Coming Soon</div>
-					<p class="slot-caption">Commercial Space Slot</p>
-				</article>
-				<article class="gallery-slot">
-					<div class="slot-preview">Coming Soon</div>
-					<p class="slot-caption">Hospitality Project Slot</p>
-				</article>
-				<article class="gallery-slot">
-					<div class="slot-preview">Coming Soon</div>
-					<p class="slot-caption">Custom Wrap Detail Slot</p>
-				</article>
-				<article class="gallery-slot">
-					<div class="slot-preview">Coming Soon</div>
-					<p class="slot-caption">Before / After Slot</p>
-				</article>
+			<section class="gallery-grid" aria-label="Project gallery">
+				{images.map((src, i) => (
+					<a class="gallery-item" href={src} aria-label={`View project photo ${i + 1}`}>
+						<img src={src} alt={`Renuva project ${i + 1}`} loading={i < 6 ? 'eager' : 'lazy'} />
+					</a>
+				))}
 			</section>
 		</main>
+
+		<div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged photo">
+			<img id="lightboxImg" src="" alt="" />
+		</div>
+
+		<script>
+			const items = Array.from(document.querySelectorAll('.gallery-item'));
+			const box = document.getElementById('lightbox');
+			const boxImg = document.getElementById('lightboxImg');
+			let current = -1;
+
+			function show(i) {
+				current = (i + items.length) % items.length;
+				boxImg.src = items[current].getAttribute('href');
+				box.classList.add('open');
+			}
+			function hide() {
+				box.classList.remove('open');
+				current = -1;
+			}
+
+			items.forEach((el, i) => el.addEventListener('click', (e) => { e.preventDefault(); show(i); }));
+			box.addEventListener('click', hide);
+			window.addEventListener('keydown', (e) => {
+				if (current < 0) return;
+				if (e.key === 'Escape') hide();
+				else if (e.key === 'ArrowRight') show(current + 1);
+				else if (e.key === 'ArrowLeft') show(current - 1);
+			});
+		</script>
 		<footer>
 			<div class="footer-shell">
 				<div class="footer-top">
