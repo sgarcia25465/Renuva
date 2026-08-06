@@ -55,13 +55,22 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				font-size: 15px;
 				font-weight: 600;
 				color: #fff;
-				background: var(--taupe);
+				background: linear-gradient(to bottom, #99836F, var(--taupe));
 				text-decoration: none;
 				padding: 14px 28px;
 				border-radius: 8px;
-				transition: background 0.2s ease;
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 2px 0 #66554A, 0 5px 12px rgba(140, 119, 102, 0.3);
+				transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
 			}
-			.contact-btn:hover { background: var(--taupe-deep); }
+			.contact-btn:hover {
+				background: linear-gradient(to bottom, #8C7766, var(--taupe-deep));
+				transform: translateY(-1px);
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 3px 0 #66554A, 0 7px 16px rgba(140, 119, 102, 0.35);
+			}
+			.contact-btn:active {
+				transform: translateY(1px);
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 0 #66554A, 0 3px 8px rgba(140, 119, 102, 0.25);
+			}
 
 			/* ============ GRID — rows of 4 ============ */
 			.fg-grid {

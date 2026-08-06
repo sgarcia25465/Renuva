@@ -30,8 +30,8 @@ window.RenuvaPhotoKitchen = (function () {
     [1200, 52, 1378, 300],   // right tall, top door
     [1200, 300, 1378, 512],  // oven stack
     [348, 466, 1400, 556],   // countertop run
-    [192, 492, 1402, 558],   // island slab
-    [192, 556, 432, 830],    // island front L
+    [190, 492, 1402, 558],   // island slab
+    [190, 556, 432, 830],    // island front L
     [432, 556, 650, 830],    // island front M
     [650, 556, 764, 830],    // island front R
     [764, 556, 1248, 830],   // island back panel
