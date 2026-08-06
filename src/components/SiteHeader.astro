@@ -24,23 +24,38 @@ const links = [
 		<a class="contact-btn" href="/contact">Contact Us</a>
 	</div>
 </nav>
+<div class="nav-spacer"></div>
 
 <style>
+	/* Thin bar fixed to the top of every page. A same-height spacer keeps the
+	   page flow intact (sticky wouldn't survive the landing hero's nesting). */
 	.nav {
 		--nav-taupe: #8c7766;
 		--nav-taupe-deep: #7a6657;
+		--nav-h: 58px;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000;
+		height: var(--nav-h);
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 36px clamp(24px, 5vw, 80px);
+		padding: 0 clamp(24px, 5vw, 80px);
+		background: rgba(250, 249, 246, 0.94);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(141, 124, 110, 0.14);
 	}
+	.nav-spacer { height: 58px; }
 	.logo { display: block; }
-	.logo img { height: 48px; width: auto; display: block; }
-	.nav-right { display: flex; align-items: center; gap: 40px; }
-	.nav-links { display: flex; gap: 40px; }
+	.logo img { height: 36px; width: auto; display: block; }
+	.nav-right { display: flex; align-items: center; gap: 32px; }
+	.nav-links { display: flex; gap: 32px; }
 	.nav-links a {
 		font-family: 'Instrument Serif', serif;
-		font-size: 21px;
+		font-size: 19px;
 		font-weight: 400;
 		letter-spacing: normal;
 		text-transform: none;
@@ -58,14 +73,14 @@ const links = [
 	.nav-links a.active { color: var(--nav-taupe); }
 	.contact-btn {
 		font-family: 'Hanken Grotesk', sans-serif;
-		font-size: 15px;
+		font-size: 14px;
 		font-weight: 600;
 		letter-spacing: normal;
 		text-transform: none;
 		color: #fff;
 		background: linear-gradient(to bottom, #99836f, var(--nav-taupe));
 		text-decoration: none;
-		padding: 14px 28px;
+		padding: 9px 20px;
 		border-radius: 8px;
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 2px 0 #66554a, 0 5px 12px rgba(140, 119, 102, 0.3);
 		transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
