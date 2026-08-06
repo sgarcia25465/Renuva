@@ -280,12 +280,28 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				text-transform: uppercase;
 				color: var(--ink);
 			}
+			.cat-viewall {
+				display: inline-block;
+				margin-top: 28px;
+				font-size: 12px;
+				font-weight: 600;
+				letter-spacing: 0.16em;
+				text-transform: uppercase;
+				color: var(--taupe);
+				text-decoration: none;
+				border-bottom: 1px solid rgba(140, 119, 102, 0.45);
+				padding-bottom: 2px;
+				transition: color 0.2s ease, border-color 0.2s ease;
+			}
+			.cat-viewall::after { content: ' →'; }
+			.cat-viewall:hover { color: var(--taupe-deep); border-color: var(--taupe-deep); }
 			/* staggered reveal */
 			.reveal-up { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(0.2,0.7,0.2,1), transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
 			.info-block.reveal .reveal-up { opacity: 1; transform: none; }
 			.info-block.reveal .cat-list li:nth-child(1) .cat-line { transition-delay: 0.18s; }
 			.info-block.reveal .cat-list li:nth-child(2) .cat-line { transition-delay: 0.30s; }
 			.info-block.reveal .cat-list li:nth-child(3) .cat-line { transition-delay: 0.42s; }
+			.info-block.reveal .cat-viewall { transition-delay: 0.54s; }
 			.cat-line { display: flex; align-items: baseline; justify-content: center; gap: 18px; width: 100%; transform: translateY(110%); transition: transform 0.7s cubic-bezier(0.2,0.8,0.2,1); }
 			.info-block.reveal .cat-line { transform: none; }
 			@media (prefers-reduced-motion: reduce) {
@@ -686,11 +702,15 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			   edges and off the screen corners — the sections above and below sit
 			   on a higher layer with opaque paper backgrounds, so nothing ever
 			   gets sliced or veiled inside the stage */
+			/* Clip at the page level, not per-section: queued finish cards may float
+			   across section boundaries (no hard cut) but must never extend the
+			   scrollable page below the footer. */
+			.page-clip { overflow: clip; }
+
 			.fin-stage {
 				position: relative;
 				height: 100vh;
 				background: var(--paper);
-				overflow: clip; /* off-screen queued cards must not extend the page below the footer */
 			}
 
 			/* heading — anchored top-LEFT */
@@ -1002,6 +1022,7 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 		</style>
 	</head>
 	<body>
+		<div class="page-clip">
 
 		<!-- ============ HERO ============ -->
 		<header class="hero">
@@ -1088,6 +1109,7 @@ Every Surface</span><span class="typer-live"><span class="typed"></span><span cl
 						<li><span class="cat-line"><span class="cat-idx">02</span><span class="cat-name">Stone &amp; Marble</span></span></li>
 						<li><span class="cat-line"><span class="cat-idx">03</span><span class="cat-name">Metal &amp; Texture</span></span></li>
 					</ul>
+					<a class="cat-viewall reveal-up" href="/finishes">View all</a>
 				</aside>
 
 				<div class="compare-col">
@@ -1131,6 +1153,7 @@ Every Surface</span><span class="typer-live"><span class="typed"></span><span cl
 				</div>
 			</div>
 		</footer>
+		</div>
 
 		<script is:inline>
 			/* Hero typewriter — each character is revealed in its final position so the
