@@ -1,9 +1,10 @@
 ---
 /* Hand-shuffled so similar shots (oak / beige / charcoal kitchens) never sit
-   next to each other; 20 & 21 are a before/after of the same kitchen and are
-   deliberately placed side by side. Position = grid-area g1..g21 in the CSS. */
+   next to each other. 20.jpg is the "before" of 21.jpg and is intentionally
+   excluded: the gallery shows finished kitchens only.
+   Position in this list = grid-area g1..g20 in the CSS. */
 import SiteHeader from '../components/SiteHeader.astro';
-const order = [3, 13, 9, 6, 16, 14, 18, 20, 21, 10, 7, 11, 19, 12, 5, 17, 1, 8, 4, 15, 2];
+const order = [3, 13, 9, 6, 4, 14, 18, 21, 15, 12, 7, 19, 5, 17, 10, 2, 8, 11, 16, 1];
 const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 ---
 
@@ -157,20 +158,19 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 
 			/* Mosaic: shapes are chosen per photo — wide slots for the frontal
 			   cabinet runs, tall slots for vertical compositions, one 2×2 for
-			   the bright oak kitchen — mapped to DOM order via g1..g21. */
+			   the bright oak kitchen — mapped to DOM order via g1..g20. */
 			.gallery-grid {
 				display: grid;
 				grid-template-columns: repeat(4, minmax(0, 1fr));
-				grid-template-rows: repeat(8, clamp(180px, 19vw, 240px));
+				grid-template-rows: repeat(7, clamp(180px, 19vw, 240px));
 				grid-template-areas:
 					"g1  g1  g2  g3"
 					"g1  g1  g2  g4"
 					"g5  g5  g6  g7"
 					"g8  g9  g10 g11"
-					"g8  g9  g12 g12"
-					"g13 g13 g14 g15"
-					"g16 g17 g14 g18"
-					"g19 g19 g20 g21";
+					"g12 g12 g10 g13"
+					"g14 g15 g16 g17"
+					"g18 g18 g19 g20";
 				gap: 14px;
 			}
 
@@ -194,7 +194,6 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 			.gallery-item:nth-child(18) { grid-area: g18; }
 			.gallery-item:nth-child(19) { grid-area: g19; }
 			.gallery-item:nth-child(20) { grid-area: g20; }
-			.gallery-item:nth-child(21) { grid-area: g21; }
 
 			.gallery-item {
 				display: block;
@@ -326,7 +325,7 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 			@media (max-width: 900px) {
 				.gallery-grid {
 					grid-template-columns: repeat(2, minmax(0, 1fr));
-					grid-template-rows: repeat(16, clamp(170px, 27vw, 250px));
+					grid-template-rows: repeat(14, clamp(170px, 27vw, 250px));
 					grid-template-areas:
 						"g1  g1"
 						"g1  g1"
@@ -335,15 +334,13 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 						"g5  g5"
 						"g6  g7"
 						"g8  g9"
-						"g8  g9"
 						"g10 g11"
+						"g10 g13"
 						"g12 g12"
-						"g14 g17"
 						"g14 g15"
-						"g13 g13"
-						"g16 g18"
-						"g19 g19"
-						"g20 g21";
+						"g16 g19"
+						"g18 g18"
+						"g17 g20";
 				}
 			}
 
