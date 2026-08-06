@@ -63,7 +63,7 @@ window.RenuvaVisualizer = (function () {
 	];
 
 	var FACTS = [
-		'Renuva installs over your existing cabinets — no demolition, no dust.',
+		'Renuva installs over your existing cabinets. No demolition, no dust.',
 		'Most kitchens are completed in 1–3 days.',
 		'Save 80%+ compared to a traditional remodel.',
 		'Renuva architectural film is rated to last 10+ years.',
