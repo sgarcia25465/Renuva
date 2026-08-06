@@ -17,8 +17,8 @@ window.RenuvaPhotoKitchen = (function () {
 
   // reveal pieces in source-image coordinates [x0, y0, x1, y1]; wrap order = array order
   const PIECES = [
-    [64, 58, 214, 672],      // tall pantry, left door
-    [214, 58, 362, 672],     // tall pantry, right door
+    [64, 58, 192, 672],      // tall pantry, left door (stops at island's left edge)
+    [192, 58, 362, 504],     // tall pantry, right door (stops above island slab)
     [350, 66, 498, 318],     // upper door 1
     [498, 66, 638, 318],     // upper door 2
     [638, 66, 778, 318],     // upper door 3
