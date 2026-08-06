@@ -18,10 +18,9 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant:wght@500;600&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
-		<link rel="stylesheet" href="/styles/renuva-visualizer.css" />
 		<title>Gallery - Renuva</title>
 		<style>
 			:root {
@@ -111,53 +110,51 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 			main {
 				max-width: 1120px;
 				margin: 0 auto;
-				padding: 3.5rem 1.5rem 4.5rem; /* extra room between the visualizer and the footer */
+				padding: 3.5rem 1.5rem 4.5rem;
 			}
 
 			.hero {
 				margin-bottom: 1.8rem;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 1rem;
+				flex-wrap: wrap;
 			}
 
 			h1 {
-				font-family: "Playfair Display", Georgia, serif;
-				font-size: clamp(1.6rem, 3.75vw, 2.7rem);
-				line-height: 1.08;
-				letter-spacing: -0.01em;
+				font-family: "Cormorant", Georgia, serif;
+				font-weight: 500;
+				font-size: clamp(1.9rem, 4.2vw, 3.1rem);
+				line-height: 1.02;
+				letter-spacing: 0.005em;
+				color: #8C7766; /* landing hero taupe */
+			}
+
+			.own-gallery-link {
+				font-size: 0.92rem;
+				font-weight: 600;
+				color: var(--brown);
+				text-decoration: none;
+			}
+
+			.own-gallery-link:hover {
 				color: var(--very-dark-brown);
-				margin-bottom: 0.7rem;
-			}
-
-			.hero p {
-				max-width: 62ch;
-				color: var(--dark-brown);
-				line-height: 1.7;
-			}
-
-			.visualizer-intro {
-				margin-top: 2.6rem;
-			}
-
-			.visualizer-intro h2 {
-				font-family: "Playfair Display", Georgia, serif;
-				font-size: clamp(1.4rem, 2.6vw, 1.9rem);
-				color: var(--very-dark-brown);
-				margin-bottom: 0.4rem;
-			}
-
-			.visualizer-intro > p {
-				max-width: 62ch;
-				color: var(--dark-brown);
-				line-height: 1.7;
-				margin-bottom: 1.1rem;
+				text-decoration: underline;
+				text-underline-offset: 3px;
 			}
 
 			/* Mosaic: shapes are chosen per photo — wide slots for the frontal
 			   cabinet runs, tall slots for vertical compositions, one 2×2 for
 			   the bright oak kitchen — mapped to DOM order via g1..g20. */
 			.gallery-grid {
+				/* breakout: wider than the page column so the mosaic fills more of the viewport */
+				width: min(1360px, calc(100vw - 3rem));
+				margin-left: 50%;
+				transform: translateX(-50%);
 				display: grid;
 				grid-template-columns: repeat(4, minmax(0, 1fr));
-				grid-template-rows: repeat(7, clamp(180px, 19vw, 240px));
+				grid-template-rows: repeat(7, clamp(210px, 23vw, 300px));
 				grid-template-areas:
 					"g1  g1  g2  g3"
 					"g1  g1  g2  g4"
@@ -166,7 +163,7 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 					"g12 g12 g10 g13"
 					"g14 g15 g16 g17"
 					"g18 g18 g19 g20";
-				gap: 14px;
+				gap: 7px;
 			}
 
 			.gallery-item:nth-child(1) { grid-area: g1; }
@@ -320,7 +317,7 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 			@media (max-width: 900px) {
 				.gallery-grid {
 					grid-template-columns: repeat(2, minmax(0, 1fr));
-					grid-template-rows: repeat(14, clamp(170px, 27vw, 250px));
+					grid-template-rows: repeat(14, clamp(190px, 30vw, 280px));
 					grid-template-areas:
 						"g1  g1"
 						"g1  g1"
@@ -495,6 +492,7 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 		<main>
 			<section class="hero">
 				<h1>Gallery</h1>
+				<a class="own-gallery-link" href="/visualizer">See your own gallery &#8599;</a>
 			</section>
 
 			<section class="gallery-grid" aria-label="Project gallery">
@@ -504,25 +502,12 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 					</a>
 				))}
 			</section>
-
-			<section class="visualizer-intro" aria-label="Kitchen visualizer">
-				<h2>Start your own gallery</h2>
-				<p>
-					Upload a photo of your kitchen and preview it in any Renuva finish.
-					See your own project here before it happens.
-				</p>
-				<div id="visualizer"></div>
-			</section>
 		</main>
 
 		<div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged photo">
 			<img id="lightboxImg" src="" alt="" />
 		</div>
 
-		<script is:inline src="/scripts/renuva-visualizer.js"></script>
-		<script is:inline>
-			RenuvaVisualizer.mount(document.getElementById('visualizer'));
-		</script>
 		<script>
 			const items = Array.from(document.querySelectorAll('.gallery-item'));
 			const box = document.getElementById('lightbox');
@@ -560,7 +545,7 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 					<nav class="footer-nav">
 						<a href="/">Home</a>
 						<a href="/about">About Us</a>
-						<a href="/distributor">Distributor</a>
+						<a href="/distributor">Distributors</a>
 						<a href="/finishes">Finishes</a>
 						<a href="/visualizer">Visualizer</a>
 						<a href="/gallery">Gallery</a>

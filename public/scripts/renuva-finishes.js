@@ -270,7 +270,7 @@
     open = i;
     const f = FINISHES[i];
     detail.innerHTML =
-      '<p class="fd-series">Renuva™ · ' + f.series + '</p>' +
+      '<p class="fd-series">Renuva™ ' + f.series + '</p>' +
       '<h3>' + f.name + '</h3>' +
       '<p class="fd-desc">' + f.desc + '</p>' +
       '<dl class="fd-specs">' +

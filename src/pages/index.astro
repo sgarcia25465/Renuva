@@ -138,23 +138,24 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			.resurface {
 				min-height: 100vh;
 				display: grid;
-				/* equal halves: copy centers in the left one, slider centers in the right one */
-				grid-template-columns: 1fr 1fr;
-				gap: clamp(24px, 4vw, 64px);
+				/* left column slightly narrower so the slider sits nearer the
+				   middle of the screen; copy still centers in its half */
+				grid-template-columns: 0.88fr 1.12fr;
+				gap: clamp(16px, 2.5vw, 40px);
 				align-items: center;
 				padding: clamp(48px, 8vh, 96px) clamp(24px, 5vw, 84px);
 			}
 			.compare-col {
 				display: flex;
 				flex-direction: column;
-				align-items: center;
+				align-items: flex-start; /* hug the page center rather than the right edge */
 				gap: 22px;
 				min-width: 0;
 			}
 			.compare-stack {
-				width: min(68vh, 700px); /* portrait photos — cap by height so the stack fits the viewport */
+				width: min(78vh, 700px); /* square photo — cap by height so it fits the viewport */
 				max-width: 100%;
-				aspect-ratio: 1080 / 1350;
+				aspect-ratio: 1 / 1;
 				display: flex;
 				flex-direction: column;
 				border-radius: 14px;
@@ -164,25 +165,24 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			.cmp {
 				position: relative;
 				width: 100%;
-				height: 50%;
+				height: 100%;
 				overflow: hidden;
 				touch-action: none;
 				cursor: ew-resize;
 				background: var(--paper);
 				user-select: none;
 			}
-			.cmp + .cmp { border-top: 1px solid rgba(75,69,64,0.18); }
 			.cmp img {
 				position: absolute;
+				top: 0;
 				left: 0;
 				width: 100%;
-				height: auto;
+				height: 100%;
+				object-fit: cover;
 				display: block;
 				pointer-events: none;
 				-webkit-user-drag: none;
 			}
-			.cmp.top img { top: 0; }
-			.cmp.bot img { top: -100%; }
 			.cmp-photo { position: absolute; inset: 0; }
 			.cmp-handle {
 				position: absolute;
@@ -576,22 +576,6 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				color: var(--muted);
 				text-wrap: pretty;
 			}
-			.fdm-specs {
-				margin-top: clamp(22px, 3.5vh, 36px);
-				padding-top: 22px;
-				border-top: 1px solid rgba(75, 69, 64, 0.13);
-				display: flex;
-				gap: clamp(24px, 3vw, 44px);
-			}
-			.fdm-specs > div { display: flex; flex-direction: column; gap: 7px; }
-			.fdm-specs .fs-l {
-				font-size: 10.5px;
-				font-weight: 600;
-				letter-spacing: 0.18em;
-				text-transform: uppercase;
-				color: #A99E8D;
-			}
-			.fdm-specs .fs-v { font-size: 14.5px; font-weight: 550; color: var(--ink); }
 			.fdm-foot {
 				margin-top: clamp(28px, 5vh, 46px);
 				padding-top: 0;
@@ -604,14 +588,23 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				font-weight: 700;
 				letter-spacing: 0.1em;
 				color: #fff;
-				background: var(--taupe);
+				background: linear-gradient(to bottom, #99836F, var(--taupe));
 				text-decoration: none;
 				padding: 13px 22px;
 				border-radius: 8px;
-				transition: background 0.2s ease;
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 2px 0 #66554A, 0 5px 12px rgba(140, 119, 102, 0.3);
+				transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
 				white-space: nowrap;
 			}
-			.fdm-link:hover { background: var(--taupe-deep); }
+			.fdm-link:hover {
+				background: linear-gradient(to bottom, var(--taupe), var(--taupe-deep));
+				transform: translateY(-1px);
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 3px 0 #66554A, 0 7px 16px rgba(140, 119, 102, 0.35);
+			}
+			.fdm-link:active {
+				transform: translateY(1px);
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 0 #66554A, 0 3px 8px rgba(140, 119, 102, 0.25);
+			}
 			.fdm-nav {
 				margin-left: auto;
 				display: flex;
@@ -675,10 +668,6 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				.fdm-meta { font-size: 10px; letter-spacing: 0.2em; gap: 10px; flex-wrap: wrap; }
 				.fdm-name { margin-top: 12px; font-size: clamp(30px, 8vw, 40px); }
 				.fdm-desc { margin-top: 14px; font-size: 14.5px; line-height: 1.6; max-width: none; }
-				.fdm-specs { margin-top: 20px; padding-top: 16px; flex-wrap: wrap; gap: 14px 28px; }
-				.fdm-specs > div { gap: 5px; }
-				.fdm-specs .fs-l { font-size: 9.5px; }
-				.fdm-specs .fs-v { font-size: 13px; }
 				.fdm-foot { margin-top: auto; padding-top: 24px; flex-wrap: wrap; gap: 12px; }
 				.fdm-link { padding: 11px 16px; font-size: 12px; }
 				.fdm-prev, .fdm-next { width: 38px; height: 38px; font-size: 15px; }
@@ -805,7 +794,12 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				border-radius: 6px;
 				pointer-events: none;
 				white-space: nowrap;
+				transition: opacity 0.3s ease;
 			}
+
+			/* the focused card is scaled up, which would stretch (and blur) the
+			   little code tag — the detail panel shows the code anyway */
+			.fcard.focus .fcard-label { opacity: 0; }
 
 			/* open / focus states */
 			.fin-stage.open .fcard,
@@ -870,15 +864,26 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				display: inline-block;
 				margin-top: 24px;
 				font-size: 12px;
-				font-weight: 600;
+				font-weight: 700;
 				letter-spacing: 0.14em;
 				text-transform: uppercase;
-				color: var(--ink);
+				color: #fff;
+				background: linear-gradient(to bottom, #99836F, var(--taupe));
 				text-decoration: none;
-				border-bottom: 1px solid currentColor;
-				padding-bottom: 3px;
+				padding: 12px 20px;
+				border-radius: 8px;
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 2px 0 #66554A, 0 5px 12px rgba(140, 119, 102, 0.3);
+				transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
 			}
-			.fin-detail .fd-link:hover { color: var(--taupe); }
+			.fin-detail .fd-link:hover {
+				background: linear-gradient(to bottom, var(--taupe), var(--taupe-deep));
+				transform: translateY(-1px);
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 3px 0 #66554A, 0 7px 16px rgba(140, 119, 102, 0.35);
+			}
+			.fin-detail .fd-link:active {
+				transform: translateY(1px);
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 0 #66554A, 0 3px 8px rgba(140, 119, 102, 0.25);
+			}
 
 			/* close button */
 			.fin-close {
@@ -1066,11 +1071,6 @@ replace.</span></h1>
 					<p class="fdm-meta"><span class="fdm-series"></span><span class="fdm-code"></span></p>
 					<h3 class="fdm-name"></h3>
 					<p class="fdm-desc"></p>
-					<div class="fdm-specs">
-						<div><span class="fs-l">Width</span><span class="fs-v">48 in / 122 cm</span></div>
-						<div><span class="fs-l">Backing</span><span class="fs-v">Water-based adhesive</span></div>
-						<div><span class="fs-l">Shipping</span><span class="fs-v">US stock &middot; 1&ndash;3 days</span></div>
-					</div>
 					<div class="fdm-foot">
 						<a class="fdm-link" href="" target="_blank" rel="noopener">VIEW ON SURFACESUPPLY</a>
 						<div class="fdm-nav">
@@ -1100,7 +1100,7 @@ replace.</span></h1>
 
 		<!-- ============ SECTION: BEAUTY AT EVERY SURFACE ============ -->
 		<main class="panel">
-			<section class="resurface">
+			<section class="resurface" id="compare">
 				<aside class="info-block" id="infoBlock">
 					<h2 class="info-title"><span class="typer2"><span class="typer-ghost" aria-hidden="true">Beauty at
 Every Surface</span><span class="typer-live"><span class="typed"></span><span class="caret" aria-hidden="true"></span></span></span></h2>
@@ -1114,16 +1114,11 @@ Every Surface</span><span class="typer-live"><span class="typed"></span><span cl
 
 				<div class="compare-col">
 					<div class="compare-stack">
-						<div class="cmp top" aria-label="Drag to compare the old kitchen and the renewed kitchen — upper half">
-							<img src="/assets/landing/compare-before.jpg?v=2" alt="" draggable="false" />
-							<div class="cmp-photo"><img src="/assets/landing/compare-after.jpg" alt="" draggable="false" /></div>
+						<div class="cmp" aria-label="Drag to compare the old kitchen and the renewed kitchen">
+							<img src="/assets/landing/compare-before.jpg?v=4" alt="" draggable="false" />
+							<div class="cmp-photo"><img src="/assets/landing/compare-after.jpg?v=4" alt="" draggable="false" /></div>
 							<span class="cmp-tag l">Before</span>
 							<span class="cmp-tag r">Renuva</span>
-							<div class="cmp-handle"><span class="cmp-grip">‹ ›</span></div>
-						</div>
-						<div class="cmp bot" aria-label="Drag to compare the old kitchen and the renewed kitchen — lower half">
-							<img src="/assets/landing/compare-before.jpg?v=2" alt="" draggable="false" />
-							<div class="cmp-photo"><img src="/assets/landing/compare-after.jpg" alt="" draggable="false" /></div>
 							<div class="cmp-handle"><span class="cmp-grip">‹ ›</span></div>
 						</div>
 					</div>
@@ -1143,7 +1138,7 @@ Every Surface</span><span class="typer-live"><span class="typed"></span><span cl
 					<nav class="footer-nav">
 						<a href="/">Home</a>
 						<a href="/about">About Us</a>
-						<a href="/distributor">Distributor</a>
+						<a href="/distributor">Distributors</a>
 						<a href="/finishes">Finishes</a>
 						<a href="/visualizer">Visualizer</a>
 						<a href="/gallery">Gallery</a>
@@ -1229,7 +1224,7 @@ Every Surface</span><span class="typer-live"><span class="typed"></span><span cl
 				}
 				requestAnimationFrame(frame);
 
-				/* ---- section: dual before/after sliders (top + bottom halves) ---- */
+				/* ---- section: before/after slider ---- */
 				document.querySelectorAll('.cmp').forEach(function (el) {
 					const photo = el.querySelector('.cmp-photo');
 					const handle = el.querySelector('.cmp-handle');

@@ -1,13 +1,14 @@
 ---
 import SiteHeader from '../components/SiteHeader.astro';
 
-const distributors = [
+const regions = [
 	{
-		name: 'SurfaceSupply',
-		region: 'Official distributor · United States',
-		url: 'https://surfacesupply.com',
-		display: 'surfacesupply.com',
+		name: 'United States',
+		distributors: [
+			{ name: 'SurfaceSupply', url: 'https://surfacesupply.com', display: 'surfacesupply.com' },
+		],
 	},
+	{ name: 'Europe & Asia', distributors: [] },
 ];
 ---
 
@@ -21,10 +22,10 @@ const distributors = [
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant:wght@500;600&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
-		<title>Distributor - Renuva</title>
+		<title>Distributors - Renuva</title>
 		<style>
 			:root {
 				--very-dark-brown: #262D26;
@@ -45,16 +46,25 @@ const distributors = [
 				font-family: "Inter", "Segoe UI", sans-serif;
 				background: linear-gradient(180deg, #ffffff, var(--cream));
 				color: var(--very-dark-brown);
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
 			}
 
+			/* Renuva brand pattern, whisper-light, sides only: masked away from
+			   the center so the content column stays clean */
 			body::before {
 				content: "";
 				position: fixed;
 				inset: 0;
 				z-index: -1;
 				background: url("/assets/images/pattern-design.png") center/560px repeat;
-				opacity: 0.03;
+				opacity: 0.09;
 				pointer-events: none;
+				/* clear zone anchored to the 860px content column (plus breathing
+				   room) so the pattern never runs under the text or hairlines */
+				-webkit-mask-image: linear-gradient(to right, black 0%, black 7%, transparent calc(50% - 500px), transparent calc(50% + 500px), black 93%, black 100%);
+				mask-image: linear-gradient(to right, black 0%, black 7%, transparent calc(50% - 500px), transparent calc(50% + 500px), black 93%, black 100%);
 			}
 
 			html, body {
@@ -64,21 +74,29 @@ const distributors = [
 			}
 
 			main {
+				width: 100%;
 				max-width: 860px;
 				margin: 0 auto;
 				padding: 3.5rem 1.5rem 4.5rem;
+				flex: 1;
 			}
 
 			.hero {
 				margin-bottom: 2.2rem;
+				text-align: center;
+			}
+
+			.hero p {
+				margin: 0 auto;
 			}
 
 			h1 {
-				font-family: "Playfair Display", Georgia, serif;
-				font-size: clamp(1.6rem, 3.75vw, 2.7rem);
-				line-height: 1.08;
-				letter-spacing: -0.01em;
-				color: var(--very-dark-brown);
+				font-family: "Cormorant", Georgia, serif;
+				font-weight: 500;
+				font-size: clamp(1.9rem, 4.2vw, 3.1rem);
+				line-height: 1.02;
+				letter-spacing: 0.005em;
+				color: #8C7766; /* landing hero taupe */
 				margin-bottom: 0.7rem;
 			}
 
@@ -88,11 +106,24 @@ const distributors = [
 				line-height: 1.7;
 			}
 
-			/* ── distributor list ── */
-			.dist-list {
-				display: grid;
-				gap: 14px;
-				margin-bottom: 3.2rem;
+			/* ── distributors by region ── */
+			.region-block {
+				padding: 1.6rem 0;
+				border-top: 1px solid rgba(141, 124, 110, 0.2);
+			}
+
+			.region-block:last-of-type {
+				border-bottom: 1px solid rgba(141, 124, 110, 0.2);
+				margin-bottom: 3rem;
+			}
+
+			.region-name {
+				font-size: 0.78rem;
+				font-weight: 600;
+				letter-spacing: 0.18em;
+				text-transform: uppercase;
+				color: #8C7766;
+				margin-bottom: 0.7rem;
 			}
 
 			.dist-row {
@@ -101,22 +132,33 @@ const distributors = [
 				justify-content: space-between;
 				gap: 1rem;
 				flex-wrap: wrap;
-				background: var(--white);
-				border: 1px solid rgba(141, 124, 110, 0.22);
-				border-radius: 16px;
-				padding: 1.3rem 1.5rem;
 			}
 
-			.dist-row h2 {
-				font-family: "Playfair Display", Georgia, serif;
-				font-size: 1.35rem;
+			.dist-logo {
+				height: clamp(34px, 4.5vw, 48px);
+				width: auto;
+				display: block;
+				/* the logo file has a white background; multiply melts it into the page */
+				mix-blend-mode: multiply;
+			}
+
+			.dist-link {
+				font-size: 0.92rem;
+				font-weight: 600;
+				color: var(--brown);
+				text-decoration: none;
+			}
+
+			.dist-link:hover {
 				color: var(--very-dark-brown);
-				margin-bottom: 0.15rem;
+				text-decoration: underline;
+				text-underline-offset: 3px;
 			}
 
-			.dist-row .region {
-				font-size: 0.86rem;
+			.coming-soon {
 				color: var(--dark-brown);
+				font-size: 0.95rem;
+				line-height: 1.6;
 			}
 
 			/* ── 3D buttons (matches the landing) ── */
@@ -148,24 +190,23 @@ const distributors = [
 
 			/* ── become a distributor ── */
 			.become {
-				background: var(--white);
-				border: 1px solid rgba(141, 124, 110, 0.22);
-				border-radius: 16px;
-				padding: 1.6rem 1.5rem;
+				text-align: center;
 			}
 
 			.become h2 {
-				font-family: "Playfair Display", Georgia, serif;
-				font-size: clamp(1.3rem, 2.4vw, 1.7rem);
-				color: var(--very-dark-brown);
+				font-family: "Cormorant", Georgia, serif;
+				font-weight: 600;
+				font-size: clamp(1.5rem, 2.7vw, 1.9rem);
+				color: #8C7766;
 				margin-bottom: 0.35rem;
 			}
 
 			.become > p {
 				color: var(--dark-brown);
+				font-size: 0.88rem;
 				line-height: 1.7;
 				max-width: 56ch;
-				margin-bottom: 1.1rem;
+				margin: 0 auto 1.1rem;
 			}
 
 			.become-form {
@@ -173,6 +214,7 @@ const distributors = [
 				margin-top: 1.4rem;
 				padding-top: 1.4rem;
 				border-top: 1px solid rgba(141, 124, 110, 0.18);
+				text-align: left; /* the intro is centered; keep form fields readable */
 			}
 
 			.become-form.open { display: block; }
@@ -212,12 +254,6 @@ const distributors = [
 			.field textarea:focus {
 				border-color: var(--brown);
 				box-shadow: 0 0 0 3px rgba(141, 124, 110, 0.14);
-			}
-
-			.form-note {
-				font-size: 0.78rem;
-				color: var(--dark-brown);
-				margin-top: 0.7rem;
 			}
 
 			.form-msg {
@@ -346,23 +382,29 @@ const distributors = [
 
 		<main>
 			<section class="hero">
-				<h1>Distributor</h1>
+				<h1>Distributors</h1>
 				<p>Renuva architectural film is available through our authorized distributors.</p>
 			</section>
 
-			<section class="dist-list" aria-label="Authorized distributors">
-				{distributors.map((d) => (
-					<div class="dist-row">
-						<div>
-							<h2>{d.name}</h2>
-							<p class="region">{d.region}</p>
-						</div>
-						<a class="btn-3d" href={d.url} target="_blank" rel="noopener">Visit {d.display} &#8599;</a>
+			<section aria-label="Authorized distributors">
+				{regions.map((r) => (
+					<div class="region-block">
+						<p class="region-name">{r.name}</p>
+						{r.distributors.length > 0 ? (
+							r.distributors.map((d) => (
+								<div class="dist-row">
+									<img class="dist-logo" src="/assets/images/surfacesupply-logo.png" alt={d.name} loading="lazy" />
+									<a class="dist-link" href={d.url} target="_blank" rel="noopener">{d.display} &#8599;</a>
+								</div>
+							))
+						) : (
+							<p class="coming-soon">Coming soon.</p>
+						)}
 					</div>
 				))}
 			</section>
 
-			<section class="become" aria-label="Become a distributor">
+			<section class="become" id="become" aria-label="Become a distributor">
 				<h2>Become a distributor today</h2>
 				<p>Interested in carrying Renuva in your region? Tell us a little about your business and we'll be in touch.</p>
 				<button type="button" class="btn-3d" id="becomeToggle">Become a Distributor</button>
@@ -400,7 +442,6 @@ const distributors = [
 						</div>
 					</div>
 					<button type="submit" class="btn-3d">Send</button>
-					<p class="form-note">Your inquiry goes to contact@renuva.com.</p>
 					<p class="form-msg" id="becomeMsg"></p>
 				</form>
 			</section>
@@ -418,7 +459,7 @@ const distributors = [
 					<nav class="footer-nav">
 						<a href="/">Home</a>
 						<a href="/about">About Us</a>
-						<a href="/distributor">Distributor</a>
+						<a href="/distributor">Distributors</a>
 						<a href="/finishes">Finishes</a>
 						<a href="/visualizer">Visualizer</a>
 						<a href="/gallery">Gallery</a>

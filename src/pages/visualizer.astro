@@ -12,7 +12,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant:wght@500;600&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="/styles/renuva-visualizer.css" />
@@ -117,11 +117,12 @@ import SiteHeader from '../components/SiteHeader.astro';
 			}
 
 			h1 {
-				font-family: "Playfair Display", Georgia, serif;
-				font-size: clamp(1.6rem, 3.75vw, 2.7rem);
-				line-height: 1.08;
-				letter-spacing: -0.01em;
-				color: var(--very-dark-brown);
+				font-family: "Cormorant", Georgia, serif;
+				font-weight: 500;
+				font-size: clamp(1.9rem, 4.2vw, 3.1rem);
+				line-height: 1.02;
+				letter-spacing: 0.005em;
+				color: #8C7766; /* landing hero taupe */
 				margin-bottom: 0.7rem;
 			}
 
@@ -302,9 +303,9 @@ import SiteHeader from '../components/SiteHeader.astro';
 			<section class="hero">
 				<h1>Visualizer</h1>
 				<p>
-					See your own kitchen renewed before any work begins. Upload a photo,
-					choose any of our finishes, and we'll render your cabinets wrapped
-					in it. Photorealistic, in about a minute.
+					See your kitchen renewed before any work begins. Upload a photo,
+					pick a finish, and we'll render your cabinets wrapped in it.
+					Photorealistic, in about a minute.
 				</p>
 			</section>
 
@@ -333,7 +334,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 					<nav class="footer-nav">
 						<a href="/">Home</a>
 						<a href="/about">About Us</a>
-						<a href="/distributor">Distributor</a>
+						<a href="/distributor">Distributors</a>
 						<a href="/finishes">Finishes</a>
 						<a href="/visualizer">Visualizer</a>
 						<a href="/gallery">Gallery</a>
