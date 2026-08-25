@@ -219,10 +219,46 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 
 			.lightbox img {
 				max-width: 92vw;
-				max-height: 90vh;
+				max-height: 84vh;
 				border-radius: 6px;
 				box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
 			}
+
+			/* finish credit under the enlarged photo */
+			.lb-credit {
+				position: absolute;
+				left: 50%;
+				bottom: clamp(18px, 4vh, 40px);
+				transform: translateX(-50%);
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				padding: 10px 18px;
+				border-radius: 999px;
+				background: rgba(253, 252, 250, 0.1);
+				border: 1px solid rgba(255, 255, 255, 0.18);
+				backdrop-filter: blur(6px);
+				cursor: default;
+			}
+			.lb-credit[hidden] { display: none; }
+			.lb-credit-label {
+				font-size: 10px;
+				font-weight: 700;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				color: rgba(255, 255, 255, 0.55);
+			}
+			.lb-credit-link {
+				font-size: 14px;
+				font-weight: 500;
+				color: #fff;
+				text-decoration: none;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+				padding-bottom: 1px;
+				cursor: pointer;
+				transition: border-color 0.2s ease;
+			}
+			.lb-credit-link:hover { border-color: #fff; }
 
 			footer {
 				background: #554B43;
@@ -506,17 +542,38 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 
 		<div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged photo">
 			<img id="lightboxImg" src="" alt="" />
+			<div class="lb-credit" id="lbCredit" hidden>
+				<span class="lb-credit-label">Finish</span>
+				<a class="lb-credit-link" id="lbCreditLink" href=""></a>
+			</div>
 		</div>
 
+		<script is:inline src="/scripts/renuva-finish-media.js"></script>
 		<script>
 			const items = Array.from(document.querySelectorAll('.gallery-item'));
 			const box = document.getElementById('lightbox');
 			const boxImg = document.getElementById('lightboxImg');
 			let current = -1;
 
+			const credit = document.getElementById('lbCredit');
+			const creditLink = document.getElementById('lbCreditLink');
+
 			function show(i) {
 				current = (i + items.length) % items.length;
-				boxImg.src = items[current].getAttribute('href');
+				const src = items[current].getAttribute('href');
+				boxImg.src = src;
+
+				/* credit the finish this kitchen was wrapped in, and let people
+				   jump straight to it */
+				const file = src.split('/').pop();
+				const code = window.renuvaPhotoFinish ? window.renuvaPhotoFinish(file) : null;
+				if (code) {
+					creditLink.textContent = window.renuvaFinishName(code) + ' · ' + code;
+					creditLink.href = '/finishes#' + code;
+					credit.hidden = false;
+				} else {
+					credit.hidden = true;
+				}
 				box.classList.add('open');
 			}
 			function hide() {
@@ -525,7 +582,7 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 			}
 
 			items.forEach((el, i) => el.addEventListener('click', (e) => { e.preventDefault(); show(i); }));
-			box.addEventListener('click', hide);
+			box.addEventListener('click', (e) => { if (e.target !== creditLink) hide(); });
 			window.addEventListener('keydown', (e) => {
 				if (current < 0) return;
 				if (e.key === 'Escape') hide();

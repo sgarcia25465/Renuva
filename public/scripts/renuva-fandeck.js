@@ -284,7 +284,13 @@
 		mImg.classList.remove('ready');
 		var full = IMG_DIR + f.code + '-xl.jpg';
 		var probe = new Image();
-		probe.onload = function () { mImg.src = full; mImg.classList.add('ready'); };
+		probe.onload = function () {
+			/* don't stomp an applied shot the viewer picked while this loaded */
+			if (current === i % N && mImg.src.indexOf('/assets/finishes/') > -1) {
+				mImg.src = full;
+			}
+			mImg.classList.add('ready');
+		};
 		probe.src = full;
 		mImg.src = IMG_DIR + f.code + '.jpg'; /* instant low-res while xl loads */
 		mImg.alt = f.name + ' finish sample';
@@ -294,6 +300,16 @@
 		mDesc.textContent = f.desc;
 		mLink.href = f.url;
 		mCount.textContent = (current + 1) + ' / ' + N;
+
+		var shotsHost = modal.querySelector('.fdm-shots');
+		if (shotsHost && window.renuvaShotStripHTML) {
+			shotsHost.innerHTML = window.renuvaShotStripHTML(f.code);
+			window.renuvaWireShotStrip(shotsHost, function (src) {
+				mImg.src = src;
+				mImg.classList.add('ready');
+			});
+		}
+
 		preload(current + 1); preload(current - 1);
 	}
 

@@ -277,7 +277,15 @@
       '<div><dt>Code</dt><dd>' + f.code + '</dd></div>' +
       '<div><dt>Series</dt><dd>' + f.series + '</dd></div>' +
       '</dl>' +
+      (window.renuvaShotStripHTML ? window.renuvaShotStripHTML(f.code) : '') +
       '<a class="fd-link" href="' + f.url + '" target="_blank" rel="noopener">View at Surface Supply</a>';
+
+    if (window.renuvaWireShotStrip) {
+      const cardImg = cards[i].querySelector('img');
+      window.renuvaWireShotStrip(detail, function (src) {
+        if (open === i && cardImg) cardImg.src = src;
+      });
+    }
     stage.classList.add('open');
     if (backdrop) { backdrop.style.opacity = '0.97'; backdrop.style.pointerEvents = 'auto'; }
     if (head) head.style.opacity = '0';
@@ -299,6 +307,9 @@
     if (open < 0) return;
     const i = open;
     open = -1;
+    /* put the swatch back on the card in case an applied shot was showing */
+    const cardImg = cards[i].querySelector('img');
+    if (cardImg) cardImg.src = IMG_DIR + FINISHES[i].code + '-xl.jpg';
     stage.classList.remove('open');
     stage.classList.add('closing');
     if (backdrop) { backdrop.style.opacity = '0'; backdrop.style.pointerEvents = 'none'; }

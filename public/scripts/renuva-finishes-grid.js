@@ -285,13 +285,23 @@
 			'<div><dt>Code</dt><dd>' + f.code + '</dd></div>' +
 			'<div><dt>Series</dt><dd>' + f.series + '</dd></div>' +
 			'</dl>' +
+			(window.renuvaShotStripHTML ? window.renuvaShotStripHTML(f.code) : '') +
 			'<a class="fd-link" href="' + f.url + '" target="_blank" rel="noopener">View at Surface Supply</a>';
+
+		if (window.renuvaWireShotStrip) {
+			window.renuvaWireShotStrip(detail, function (src) {
+				if (open === i) focusImg.src = src;
+			});
+		}
 
 		/* instant low-res, swap to xl when it arrives */
 		focusImg.src = IMG_DIR + f.code + '.jpg';
 		focusImg.alt = 'Renuva ' + f.name + ' — ' + f.code;
 		var probe = new Image();
-		probe.onload = function () { if (open === i) focusImg.src = probe.src; };
+		probe.onload = function () {
+			/* only upgrade if the swatch is still the shown image */
+			if (open === i && focusImg.src.indexOf('/assets/finishes/') > -1) focusImg.src = probe.src;
+		};
 		probe.src = IMG_DIR + f.code + '-xl.jpg';
 
 		/* FLIP: park the card at its final rect, start it transformed down onto
@@ -347,6 +357,24 @@
 	closeBtn.addEventListener('click', closeFinish);
 	backdrop.addEventListener('click', closeFinish);
 	focusCard.addEventListener('click', closeFinish);
+	detail.addEventListener('click', function (e) { e.stopPropagation(); });
 	document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeFinish(); });
 	window.addEventListener('resize', function () { if (open >= 0) placeFocus(); });
+
+	/* Deep link: /finishes#PW1518 opens that finish (used by the gallery's
+	   "view this finish" link). */
+	function openFromHash() {
+		var code = (location.hash || '').replace('#', '').toUpperCase();
+		if (!code) return;
+		for (var i = 0; i < FINISHES.length; i++) {
+			if (FINISHES[i].code === code) {
+				if (open >= 0) closeFinish();
+				tiles[i].scrollIntoView({ block: 'center' });
+				setTimeout(function () { openFinish(i); }, reduced ? 0 : 220);
+				return;
+			}
+		}
+	}
+	openFromHash();
+	window.addEventListener('hashchange', openFromHash);
 })();
