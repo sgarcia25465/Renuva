@@ -62,6 +62,16 @@ window.RenuvaVisualizer = (function () {
 		{ key: 'fabric', label: 'Fabric', match: function (f) { return f.series === 'Fabric'; } }
 	];
 
+	/* The kitchen is a set of surfaces. `cabinets` is the whole-kitchen default;
+	   two-tone swaps it for upper + lower, and countertops / island are opt-in. */
+	var SLOTS = {
+		cabinets: { label: 'All cabinets', hint: 'Uppers, lowers and the island', short: 'Cabinets' },
+		upper: { label: 'Upper cabinets', hint: 'Above the countertop', short: 'Top' },
+		lower: { label: 'Lower cabinets', hint: 'Below the countertop', short: 'Bottom' },
+		island: { label: 'Island', hint: 'The island base only', short: 'Island' },
+		countertop: { label: 'Countertops', hint: 'Slabs and edges', short: 'Counter' }
+	};
+
 	var FACTS = [
 		'Renuva installs over your existing cabinets. No demolition, no dust.',
 		'Most kitchens are completed in 1–3 days.',
@@ -139,11 +149,27 @@ window.RenuvaVisualizer = (function () {
 		var state = {
 			uploaded: '',       /* original photo (data URL) */
 			current: '',        /* what the preview shows */
-			finish: FINISHES[2], /* Honey Oak — a crowd-pleaser default */
+			/* slot key -> finish object. Honey Oak is the crowd-pleaser default. */
+			finishes: { cabinets: FINISHES[2] },
+			twoTone: false,
+			withCountertop: false,
+			withIsland: false,
+			active: 'cabinets',
 			type: 'all',
 			generating: false,
 			saved: loadSaved()
 		};
+
+		function slotKeys() {
+			var keys = state.twoTone ? ['upper', 'lower'] : ['cabinets'];
+			if (state.withIsland) keys.push('island');
+			if (state.withCountertop) keys.push('countertop');
+			return keys;
+		}
+
+		function missingSlots() {
+			return slotKeys().filter(function (k) { return !state.finishes[k]; });
+		}
 
 		root.innerHTML =
 			'<div class="rv-main">' +
@@ -174,11 +200,22 @@ window.RenuvaVisualizer = (function () {
 			'  </div>' +
 			'  <div class="rv-right">' +
 			'    <h3>Choose a Renuva finish</h3>' +
-			'    <p class="rv-sub">Pick a finish, then generate a preview of your own cabinets wearing it.</p>' +
+			'    <p class="rv-sub">One finish everywhere, or a different one per surface.</p>' +
+			'    <div class="rv-surfaces">' +
+			'      <div class="rv-modes" role="group" aria-label="Cabinet finish layout">' +
+			'        <button type="button" class="rv-mode active" data-mode="single">All cabinets</button>' +
+			'        <button type="button" class="rv-mode" data-mode="twotone">Two-tone</button>' +
+			'      </div>' +
+			'      <div class="rv-adds">' +
+			'        <button type="button" class="rv-add" data-add="countertop"><span aria-hidden="true">+</span> Countertops</button>' +
+			'        <button type="button" class="rv-add" data-add="island"><span aria-hidden="true">+</span> Island</button>' +
+			'      </div>' +
+			'      <div class="rv-slots"></div>' +
+			'    </div>' +
+			'    <div class="rv-picking" hidden></div>' +
 			'    <div class="rv-types"></div>' +
 			'    <div class="rv-swatches" role="listbox" aria-label="Renuva finishes"></div>' +
 			'    <button type="button" class="rv-generate">Generate my preview</button>' +
-			'    <div class="rv-selected">Selected: <strong></strong></div>' +
 			'    <div class="rv-error" hidden></div>' +
 			'    <a class="rv-buy" target="_blank" rel="noopener">View this finish at Surface Supply &#8599;</a>' +
 			'  </div>' +
@@ -199,7 +236,10 @@ window.RenuvaVisualizer = (function () {
 		var typesEl = root.querySelector('.rv-types');
 		var swatchesEl = root.querySelector('.rv-swatches');
 		var generateBtn = root.querySelector('.rv-generate');
-		var selectedEl = root.querySelector('.rv-selected strong');
+		var slotsEl = root.querySelector('.rv-slots');
+		var pickingEl = root.querySelector('.rv-picking');
+		var modeEls = root.querySelectorAll('.rv-mode');
+		var addEls = root.querySelectorAll('.rv-add');
 		var errorEl = root.querySelector('.rv-error');
 		var buyLink = root.querySelector('.rv-buy');
 		var historyEl = root.querySelector('.rv-history');
@@ -229,29 +269,129 @@ window.RenuvaVisualizer = (function () {
 			});
 		}
 
-		function renderSelected() {
-			selectedEl.textContent = state.finish.code + ' · ' + state.finish.name;
-			buyLink.href = productUrl(state.finish);
+		function renderSlots() {
+			var keys = slotKeys();
+			if (keys.indexOf(state.active) === -1) state.active = keys[0];
+
+			slotsEl.innerHTML = '';
+			keys.forEach(function (key) {
+				var meta = SLOTS[key];
+				var f = state.finishes[key];
+				var optional = key === 'countertop' || key === 'island';
+
+				var row = el('div', 'rv-slot' + (state.active === key ? ' active' : '') + (f ? '' : ' empty'));
+				var main = el('button', 'rv-slot-main');
+				main.type = 'button';
+				main.innerHTML =
+					'<span class="rv-slot-swatch"' +
+					(f ? ' style="background-image:url(\'' + IMG_DIR + f.code + '.jpg\')"' : '') +
+					'></span>' +
+					'<span class="rv-slot-text">' +
+					'<span class="rv-slot-label">' + meta.label + '</span>' +
+					'<span class="rv-slot-finish">' +
+					(f ? f.code + ' · ' + f.name : 'Pick a finish · ' + meta.hint) +
+					'</span></span>';
+				main.addEventListener('click', function () { state.active = key; renderSlots(); renderSwatches(); });
+				row.appendChild(main);
+
+				if (optional) {
+					var rm = el('button', 'rv-slot-remove', '&times;');
+					rm.type = 'button';
+					rm.setAttribute('aria-label', 'Remove ' + meta.label);
+					rm.addEventListener('click', function (e) { e.stopPropagation(); toggleAdd(key); });
+					row.appendChild(rm);
+				}
+				slotsEl.appendChild(row);
+			});
+
+			pickingEl.hidden = keys.length < 2;
+			if (keys.length >= 2) {
+				pickingEl.innerHTML = 'Choosing the finish for <strong>' + SLOTS[state.active].label + '</strong>';
+			}
+
+			var active = state.finishes[state.active];
+			buyLink.hidden = !active;
+			if (active) buyLink.href = productUrl(active);
+
+			var missing = missingSlots();
+			generateBtn.disabled = state.generating || missing.length > 0;
+			if (!state.generating) {
+				generateBtn.textContent = missing.length
+					? 'Pick a finish for ' + SLOTS[missing[0]].label.toLowerCase()
+					: (keys.length > 1 ? 'Generate my preview · ' + keys.length + ' finishes' : 'Generate my preview');
+			}
+		}
+
+		/* Countertops and the island start EMPTY on purpose: inheriting the
+		   cabinet finish would render a "two-tone" preview identical to the
+		   single-finish one. */
+		function toggleAdd(key) {
+			var on;
+			if (key === 'countertop') { state.withCountertop = !state.withCountertop; on = state.withCountertop; }
+			else { state.withIsland = !state.withIsland; on = state.withIsland; }
+
+			Array.prototype.forEach.call(addEls, function (b) {
+				var k = b.getAttribute('data-add');
+				var isOn = k === 'countertop' ? state.withCountertop : state.withIsland;
+				b.classList.toggle('on', isOn);
+				b.querySelector('span').textContent = isOn ? '\u2713' : '+';
+			});
+
+			if (on) {
+				state.active = key;
+				/* Countertops are nearly always a stone look — put marble in view. */
+				if (key === 'countertop' && !state.finishes.countertop) state.type = 'marble';
+			}
+			renderTypes();
+			renderSlots();
+			renderSwatches();
+		}
+
+		function setTwoTone(next) {
+			if (next === state.twoTone) return;
+			if (next) {
+				/* Splitting: both halves start on the finish the whole kitchen
+				   already had, so nothing changes until the bottom is swapped. */
+				var base = state.finishes.cabinets || state.finishes.upper || state.finishes.lower;
+				if (!state.finishes.upper) state.finishes.upper = base;
+				if (!state.finishes.lower) state.finishes.lower = base;
+				state.active = 'lower';
+			} else {
+				state.finishes.cabinets = state.finishes.upper || state.finishes.cabinets || state.finishes.lower;
+				state.active = 'cabinets';
+			}
+			state.twoTone = next;
+			Array.prototype.forEach.call(modeEls, function (b) {
+				b.classList.toggle('active', (b.getAttribute('data-mode') === 'twotone') === next);
+			});
+			renderSlots();
+			renderSwatches();
 		}
 
 		function renderSwatches() {
 			var type = TYPES.filter(function (t) { return t.key === state.type; })[0] || TYPES[0];
 			var list = FINISHES.filter(type.match);
-			if (list.indexOf(state.finish) === -1 && list.length) { state.finish = list[0]; }
+			/* A slot keeps its finish across filter changes — switching to Marble
+			   to dress the countertops must not wipe the cabinets. */
+			var chosen = state.finishes[state.active];
 			swatchesEl.innerHTML = '';
 			list.forEach(function (f) {
-				var b = el('button', 'rv-swatch' + (state.finish === f ? ' active' : ''));
+				var isActive = chosen === f;
+				var b = el('button', 'rv-swatch' + (isActive ? ' active' : ''));
 				b.type = 'button';
 				b.setAttribute('role', 'option');
-				b.setAttribute('aria-selected', state.finish === f ? 'true' : 'false');
+				b.setAttribute('aria-selected', isActive ? 'true' : 'false');
 				b.innerHTML =
 					'<span class="rv-swatch-img" style="background-image:url(\'' + IMG_DIR + f.code + '.jpg\')"></span>' +
 					'<span class="rv-swatch-code">' + f.code + '</span>' +
 					'<span class="rv-swatch-name">' + f.name + '</span>';
-				b.addEventListener('click', function () { state.finish = f; renderSwatches(); });
+				b.addEventListener('click', function () {
+					state.finishes[state.active] = f;
+					renderSlots();
+					renderSwatches();
+				});
 				swatchesEl.appendChild(b);
 			});
-			renderSelected();
 		}
 
 		function renderHistory() {
@@ -305,7 +445,8 @@ window.RenuvaVisualizer = (function () {
 			state.generating = on;
 			loading.hidden = !on;
 			generateBtn.disabled = on;
-			generateBtn.textContent = on ? 'Generating preview…' : 'Generate my preview';
+			if (on) generateBtn.textContent = 'Generating preview…';
+			else renderSlots();
 			if (on) {
 				loadingBlur.style.backgroundImage = state.current ? 'url("' + state.current + '")' : 'none';
 				var i = 0;
@@ -317,20 +458,41 @@ window.RenuvaVisualizer = (function () {
 			}
 		}
 
+		function finishName(f) {
+			return f.name + ' (Renuva\u2122 ' + f.series + ' ' + f.code + ')';
+		}
+
 		function generate() {
 			if (state.generating) return;
 			if (!state.uploaded) { showError('Upload a photo of your kitchen first.'); return; }
+			var missing = missingSlots();
+			if (missing.length) {
+				showError('Pick a finish for ' + SLOTS[missing[0]].label.toLowerCase() + '.');
+				return;
+			}
 			showError('');
 			setGenerating(true);
-			var f = state.finish;
-			swatchToDataUrl(f.code).then(function (swatch) {
+
+			var keys = slotKeys();
+			var chosen = keys.map(function (k) { return { key: k, finish: state.finishes[k] }; });
+
+			/* Each surface carries its own swatch so the model has a colour
+			   reference per slot, not one shared across all of them. */
+			Promise.all(chosen.map(function (c) { return swatchToDataUrl(c.finish.code); })).then(function (swatches) {
+				var surfaces = chosen.map(function (c, i) {
+					var entry = { surface: c.key, finish: finishName(c.finish) };
+					if (swatches[i]) entry.swatch = swatches[i];
+					return entry;
+				});
 				return fetch(ENDPOINT, {
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({
 						image: state.uploaded,
-						finish: f.name + ' (Renuva™ ' + f.series + ' ' + f.code + ')',
-						swatch: swatch
+						/* `finish` stays for the single-finish case and as the
+						   fallback for any deploy still on the old function. */
+						finish: finishName(chosen[0].finish),
+						surfaces: surfaces
 					})
 				});
 			}).then(function (res) {
@@ -338,8 +500,12 @@ window.RenuvaVisualizer = (function () {
 					if (!res.ok || !data || !data.success || !data.image) {
 						throw new Error((data && data.message) || 'Generation failed. Please try again.');
 					}
+					/* One finish reads as itself; a mix is labelled per surface. */
+					var label = chosen.length === 1
+						? chosen[0].finish.code + ' \u00b7 ' + chosen[0].finish.name
+						: chosen.map(function (c) { return SLOTS[c.key].short + ' ' + c.finish.code; }).join(' \u00b7 ');
 					state.current = data.image;
-					addSaved(f.code + ' · ' + f.name, data.image);
+					addSaved(label, data.image);
 					renderPreview();
 				});
 			}).catch(function (err) {
@@ -375,7 +541,15 @@ window.RenuvaVisualizer = (function () {
 		fileInput.addEventListener('change', function () { handleFile(fileInput.files && fileInput.files[0]); });
 		generateBtn.addEventListener('click', generate);
 
+		Array.prototype.forEach.call(modeEls, function (b) {
+			b.addEventListener('click', function () { setTwoTone(b.getAttribute('data-mode') === 'twotone'); });
+		});
+		Array.prototype.forEach.call(addEls, function (b) {
+			b.addEventListener('click', function () { toggleAdd(b.getAttribute('data-add')); });
+		});
+
 		renderTypes();
+		renderSlots();
 		renderSwatches();
 		renderHistory();
 		renderPreview();
