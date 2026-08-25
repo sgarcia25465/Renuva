@@ -1,45 +1,16 @@
-/* Renuva finish media — one source of truth for the imagery behind a finish:
-   real project photos from the gallery, plus a rendered room scene for the
-   finishes we have not photographed in the field yet.
+/* Renuva finish media — the imagery behind a finish.
+
+   Every finish has a kitchen preview: one of our project kitchens re-rendered
+   with that exact finish on the cabinets, generated from the finish's own
+   corrected swatch. So the photo a customer sees under a finish is always
+   that finish, never a lookalike.
 
    Consumed by the finishes page, the home-page finish library, the swatch book
-   and the gallery lightbox, so a finish shows the same photos everywhere.
-   Project photos always come first; the rendered scene is the fallback. */
+   and the gallery, so a finish looks the same everywhere. */
 (function () {
 	'use strict';
 
-	var GALLERY = '/assets/gallery/';
-	var SCENES = '/assets/applied/';
-
-	/* Finish -> gallery photos of real installs, best shot first. */
-	var PROJECTS = {
-		PW1512: ['18.jpg', '17.jpg'],
-		PW1514: ['14.jpg', '7.jpg'],
-		PW1516: ['11.jpg', '19.jpg', '6.jpg'],
-		PW1518: ['2.jpg', '1.jpg', '3.jpg'],
-		PW1520: ['4.jpg', '16.jpg', '5.jpg', '13.jpg'],
-		RW1416: ['15.jpg'],
-		MT1701: ['8.jpg', '10.jpg'],
-		MT1707: ['21.jpg'],
-		MT1711: ['9.jpg', '10.jpg', '8.jpg'],
-		MTS1308: ['12.jpg'],
-		ST1109: ['12.jpg']
-	};
-
-	/* Gallery photo -> the finish it leads with. A kitchen can carry two
-	   finishes (dark bases under white uppers); this names the one the photo is
-	   really about, so the gallery credits a single finish per photo. */
-	var PHOTO_FINISH = {
-		'1.jpg': 'PW1518', '2.jpg': 'PW1518', '3.jpg': 'PW1518',
-		'4.jpg': 'PW1520', '5.jpg': 'PW1520', '13.jpg': 'PW1520', '16.jpg': 'PW1520',
-		'6.jpg': 'PW1516', '11.jpg': 'PW1516', '19.jpg': 'PW1516',
-		'7.jpg': 'PW1514', '14.jpg': 'PW1514',
-		'17.jpg': 'PW1512', '18.jpg': 'PW1512',
-		'8.jpg': 'MT1711', '9.jpg': 'MT1711', '10.jpg': 'MT1711',
-		'12.jpg': 'MTS1308',
-		'15.jpg': 'RW1416',
-		'21.jpg': 'MT1707'
-	};
+	var APPLIED = '/assets/applied/';
 
 	var NAMES = {
 		PW1512: 'Cream Ash', PW1514: 'Sand Oak', PW1516: 'Honey Oak',
@@ -56,27 +27,17 @@
 		ST1109: 'Cloud White Marble'
 	};
 
-	/* Shots for a finish: real installs first, rendered scene last. Never empty. */
-	window.renuvaFinishShots = function (code) {
-		var shots = (PROJECTS[code] || []).map(function (file) {
-			return { src: GALLERY + file, real: true, caption: 'Real install' };
-		});
-		shots.push({ src: SCENES + code + '.jpg', real: false, caption: 'Rendered example' });
-		return shots;
-	};
-
-	/* Which finish a gallery photo leads with (or null). */
-	window.renuvaPhotoFinish = function (file) {
-		return PHOTO_FINISH[file] || null;
-	};
-
 	window.renuvaFinishName = function (code) {
 		return NAMES[code] || code;
 	};
 
+	window.renuvaFinishShots = function (code) {
+		return [{ src: APPLIED + code + '.jpg', caption: 'On kitchen cabinets' }];
+	};
+
 	/* ---------- shared "see it applied" strip ----------
 	   The swatch stays the hero: the strip sits under the finish copy, opens
-	   with the swatch selected, and swapping to a photo swaps the big image in
+	   with the swatch selected, and picking the kitchen swaps the big image in
 	   place. Injects its own styles once so every host looks the same. */
 
 	var STYLE_ID = 'rv-shots-style';
@@ -103,22 +64,20 @@
 		document.head.appendChild(el);
 	}
 
-	/* HTML for the strip. swatchThumb/swatchFull are the finish's own images. */
 	window.renuvaShotStripHTML = function (code) {
 		ensureStyles();
 		var shots = window.renuvaFinishShots(code);
-		var real = shots.filter(function (s) { return s.real; }).length;
 		var swatchThumb = '/assets/finishes/renuva/' + code + '.jpg';
 		var swatchFull = '/assets/finishes/renuva/' + code + '-xl.jpg';
 		var html = '<div class="rv-shots" data-shots="' + code + '">' +
-			'<p class="rv-shots-label">' + (real ? 'See it applied' : 'See it in a space') + '</p>' +
+			'<p class="rv-shots-label">See it applied</p>' +
 			'<div class="rv-shots-row">' +
 			'<button type="button" class="rv-shot is-active" data-full="' + swatchFull +
 			'" data-caption="Finish swatch" aria-label="Finish swatch">' +
 			'<img src="' + swatchThumb + '" alt="" loading="lazy" /></button>';
-		shots.forEach(function (s, i) {
+		shots.forEach(function (s) {
 			html += '<button type="button" class="rv-shot" data-full="' + s.src +
-				'" data-caption="' + s.caption + '" aria-label="' + s.caption + ' ' + (i + 1) + '">' +
+				'" data-caption="' + s.caption + '" aria-label="' + s.caption + '">' +
 				'<img src="' + s.src + '" alt="" loading="lazy" /></button>';
 		});
 		html += '</div><p class="rv-shot-caption">Finish swatch</p></div>';

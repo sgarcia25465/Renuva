@@ -1,11 +1,32 @@
 ---
-/* Hand-shuffled so similar shots (oak / beige / charcoal kitchens) never sit
-   next to each other. 20.jpg is the "before" of 21.jpg and is intentionally
-   excluded: the gallery shows finished kitchens only.
+/* Each tile is one of our project kitchens shown in a specific Renuva finish,
+   rendered from that finish's own swatch — so what you see is the finish it
+   says it is. Hand-shuffled so two tiles from the same kitchen, or two similar
+   tones, never sit next to each other.
    Position in this list = grid-area g1..g20 in the CSS. */
 import SiteHeader from '../components/SiteHeader.astro';
-const order = [3, 13, 9, 6, 4, 14, 18, 21, 15, 12, 7, 19, 5, 17, 10, 2, 8, 11, 16, 1];
-const images = order.map((n) => `/assets/gallery/${n}.jpg`);
+const NAMES = {
+	PW1512: 'Cream Ash', PW1514: 'Sand Oak', PW1516: 'Honey Oak',
+	PW1518: 'Golden Rift Oak', PW1520: 'Amber Oak', PW1522: 'Rosewood Mahogany',
+	RW1414: 'Cream Painted Wood', RW1416: 'Dove Grey Painted Wood',
+	RW1418: 'Bright White Painted Wood',
+	FP1840: 'White Linen Weave', FP1842: 'Grey Linen Weave',
+	MTS1308: 'Slate Grey Soft Matte', HG1630: 'Pure White Gloss', HG1634: 'Greige Gloss',
+	MT1701: 'Pure White Matte', MT1707: 'Pale Grey Matte', MT1709: 'Stone Grey Matte',
+	MT1711: 'Charcoal Matte', ME1215: 'Pearl Silver Metal',
+	ST1105: 'Cream Onyx Marble', ST1107: 'Carrara White Marble', ST1109: 'Cloud White Marble'
+};
+const order = [
+	'PW1518', 'MT1711', 'ST1107', 'RW1416', 'PW1520',
+	'HG1630', 'FP1842', 'PW1514', 'ST1105', 'MT1707',
+	'ME1215', 'PW1522', 'RW1414', 'MT1709', 'PW1516',
+	'FP1840', 'HG1634', 'MT1701', 'MTS1308', 'ST1109'
+];
+const tiles = order.map((code) => ({
+	code,
+	name: NAMES[code],
+	src: `/assets/showcase/${code}.jpg`
+}));
 ---
 
 <html lang="en">
@@ -222,6 +243,34 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 				max-height: 84vh;
 				border-radius: 6px;
 				box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+			}
+
+			/* finish name on each tile, revealed on hover */
+			.gallery-item { position: relative; }
+			.gi-tag {
+				position: absolute;
+				left: 12px;
+				bottom: 12px;
+				padding: 6px 11px;
+				border-radius: 999px;
+				background: rgba(24, 22, 20, 0.55);
+				backdrop-filter: blur(4px);
+				color: #fff;
+				font-size: 12px;
+				font-weight: 500;
+				letter-spacing: 0.01em;
+				opacity: 0;
+				transform: translateY(4px);
+				transition: opacity 0.25s ease, transform 0.25s ease;
+				pointer-events: none;
+			}
+			.gallery-item:hover .gi-tag,
+			.gallery-item:focus-visible .gi-tag { opacity: 1; transform: translateY(0); }
+			@media (hover: none) {
+				.gi-tag { opacity: 1; transform: none; }
+			}
+			@media (prefers-reduced-motion: reduce) {
+				.gi-tag { transition: none; }
 			}
 
 			/* finish credit under the enlarged photo */
@@ -531,10 +580,21 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 				<a class="own-gallery-link" href="/visualizer">See your own gallery &#8599;</a>
 			</section>
 
-			<section class="gallery-grid" aria-label="Project gallery">
-				{images.map((src, i) => (
-					<a class="gallery-item" href={src} aria-label={`View project photo ${i + 1}`}>
-						<img src={src} alt={`Renuva project ${i + 1}`} loading={i < 6 ? 'eager' : 'lazy'} />
+			<section class="gallery-grid" aria-label="Kitchens by finish">
+				{tiles.map((t, i) => (
+					<a
+						class="gallery-item"
+						href={t.src}
+						data-code={t.code}
+						data-name={t.name}
+						aria-label={`View a kitchen in ${t.name} — ${t.code}`}
+					>
+						<img
+							src={t.src}
+							alt={`Kitchen cabinets in Renuva ${t.name} (${t.code})`}
+							loading={i < 6 ? 'eager' : 'lazy'}
+						/>
+						<span class="gi-tag">{t.name}</span>
 					</a>
 				))}
 			</section>
@@ -563,12 +623,12 @@ const images = order.map((n) => `/assets/gallery/${n}.jpg`);
 				const src = items[current].getAttribute('href');
 				boxImg.src = src;
 
-				/* credit the finish this kitchen was wrapped in, and let people
-				   jump straight to it */
-				const file = src.split('/').pop();
-				const code = window.renuvaPhotoFinish ? window.renuvaPhotoFinish(file) : null;
+				/* credit the finish this kitchen is wearing, and let people jump
+				   straight to it */
+				const code = items[current].getAttribute('data-code');
+				const name = items[current].getAttribute('data-name');
 				if (code) {
-					creditLink.textContent = window.renuvaFinishName(code) + ' · ' + code;
+					creditLink.textContent = name + ' · ' + code;
 					creditLink.href = '/finishes#' + code;
 					credit.hidden = false;
 				} else {
