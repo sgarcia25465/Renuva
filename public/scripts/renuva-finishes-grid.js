@@ -61,7 +61,7 @@
 	"name": "Warm White Painted Wood",
 	"series": "Painted Wood",
 	"desc": "A warm white tone with visible brushstroke grain and a hand-painted character. Designed to refresh cabinet fronts, wardrobes, doors, and trim in classic interiors.",
-	"url": "https://surfacesupply.com/products/renuva-architectural-film-painted-wood-lw1412",
+	"url": "https://surfacesupply.com/products/renuva-architectural-film-painted-wood-rw1412",
 	"dark": false
 	},
 	{
@@ -69,7 +69,7 @@
 	"name": "Cream Painted Wood",
 	"series": "Painted Wood",
 	"desc": "A soft cream tone with subtle raised grain that reads as freshly lacquered joinery. Designed to complement kitchens, wardrobes, and doors in warm traditional spaces.",
-	"url": "https://surfacesupply.com/products/renuva-architectural-film-painted-wood-lw1414",
+	"url": "https://surfacesupply.com/products/renuva-architectural-film-painted-wood-rw1414",
 	"dark": false
 	},
 	{
@@ -77,7 +77,7 @@
 	"name": "Dove Grey Painted Wood",
 	"series": "Painted Wood",
 	"desc": "A calm dove grey tone with fine painted-timber texture. Designed to refresh cabinet fronts, doors, and built-ins in contemporary interiors.",
-	"url": "https://surfacesupply.com/products/renuva-architectural-film-painted-wood-lw1416",
+	"url": "https://surfacesupply.com/products/renuva-architectural-film-painted-wood-rw1416",
 	"dark": false
 	},
 	{
@@ -85,7 +85,7 @@
 	"name": "Bright White Painted Wood",
 	"series": "Painted Wood",
 	"desc": "A bright white tone with dense, fine straight-grain texture. Designed to elevate kitchens, cabinet fronts, and doors in crisp modern spaces.",
-	"url": "https://surfacesupply.com/products/renuva-architectural-film-painted-wood-lw1418",
+	"url": "https://surfacesupply.com/products/renuva-architectural-film-painted-wood-rw1418",
 	"dark": false
 	},
 	{
