@@ -12,6 +12,62 @@
 
 const DEFAULT_MODEL = 'gemini-2.5-flash-image';
 
+/* The model returns a 1:1 square unless told otherwise, which crops or
+   recomposes any landscape/portrait kitchen photo. Ask for the supported
+   ratio closest to the upload so the render lines up with the original. */
+const ASPECT_RATIOS = ['1:1', '2:3', '3:2', '3:4', '4:3', '4:5', '5:4', '9:16', '16:9', '21:9'];
+
+function nearestAspectRatio(width, height) {
+  if (!width || !height) return null;
+  const r = width / height;
+  let best = null;
+  let bestDiff = Infinity;
+  for (const a of ASPECT_RATIOS) {
+    const [aw, ah] = a.split(':').map(Number);
+    const diff = Math.abs(Math.log(r / (aw / ah)));
+    if (diff < bestDiff) {
+      bestDiff = diff;
+      best = a;
+    }
+  }
+  return best;
+}
+
+// Just enough header parsing for the three formats the uploader accepts.
+// Returns null rather than guessing; a null simply skips the aspect hint.
+function imageDimensions(buf) {
+  // PNG: IHDR width/height right after the 16-byte preamble.
+  if (buf.length > 24 && buf[0] === 0x89 && buf[1] === 0x50 && buf[2] === 0x4e && buf[3] === 0x47) {
+    return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+  }
+  // JPEG: walk the segments to the first SOFn frame header.
+  if (buf.length > 4 && buf[0] === 0xff && buf[1] === 0xd8) {
+    let i = 2;
+    while (i + 9 < buf.length) {
+      if (buf[i] !== 0xff) { i += 1; continue; }
+      const marker = buf[i + 1];
+      if (marker === 0xff) { i += 1; continue; }
+      if (marker >= 0xc0 && marker <= 0xcf && marker !== 0xc4 && marker !== 0xc8 && marker !== 0xcc) {
+        return { height: buf.readUInt16BE(i + 5), width: buf.readUInt16BE(i + 7) };
+      }
+      if (i + 4 > buf.length) return null;
+      i += 2 + buf.readUInt16BE(i + 2);
+    }
+    return null;
+  }
+  // WebP: RIFF container, dimensions depend on the chunk flavour.
+  if (buf.length > 30 && buf.toString('ascii', 0, 4) === 'RIFF' && buf.toString('ascii', 8, 12) === 'WEBP') {
+    const fmt = buf.toString('ascii', 12, 16);
+    if (fmt === 'VP8X') return { width: 1 + buf.readUIntLE(24, 3), height: 1 + buf.readUIntLE(27, 3) };
+    if (fmt === 'VP8 ') return { width: buf.readUInt16LE(26) & 0x3fff, height: buf.readUInt16LE(28) & 0x3fff };
+    if (fmt === 'VP8L') {
+      const bits = buf.readUInt32LE(21);
+      return { width: (bits & 0x3fff) + 1, height: ((bits >> 14) & 0x3fff) + 1 };
+    }
+  }
+  return null;
+}
+
 // Broad first, then top-to-bottom. Also the allowlist.
 const SURFACE_ORDER = ['cabinets', 'upper', 'lower', 'island', 'countertop'];
 
@@ -248,12 +304,23 @@ export default async (req, context) => {
   const model = process.env.VISUALIZER_GEMINI_MODEL || DEFAULT_MODEL;
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
+  let dims = null;
+  try {
+    dims = imageDimensions(Buffer.from(photo.data, 'base64'));
+  } catch {
+    dims = null;
+  }
+  const aspectRatio = dims && nearestAspectRatio(dims.width, dims.height);
+
+  const request = { contents: [{ parts }] };
+  if (aspectRatio) request.generationConfig = { imageConfig: { aspectRatio } };
+
   let res;
   try {
     res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ contents: [{ parts }] }),
+      body: JSON.stringify(request),
     });
   } catch {
     return json(503, { success: false, message: 'Could not reach the image service. Please try again.' });
