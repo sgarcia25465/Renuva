@@ -79,9 +79,14 @@ const SURFACE_LABEL = {
   countertop: 'COUNTERTOPS',
 };
 
+/* "Re-render the cabinet doors" alone lets the model anchor on whatever
+   already looks like a cabinet finish: in two-tone kitchens it would wrap the
+   wood lowers and leave flat white uppers untouched, reading them as wall.
+   So the prompt spells out every cabinet part AND says colour doesn't matter. */
 const DEFAULT_PROMPT =
   'You are a professional kitchen cabinet refinishing visualizer. The first image is a real photo of a kitchen. ' +
-  'Re-render ONLY the cabinet doors, drawer fronts and cabinet panels so they look professionally wrapped in a "{finish}" finish. ' +
+  'Re-render EVERY piece of cabinetry in the photo so it looks professionally wrapped in a "{finish}" finish: all cabinet doors, drawer fronts, false fronts and exposed cabinet side or end panels — the wall-mounted upper cabinets, the base cabinets below the countertop, tall pantry and oven columns, and the island base if one is visible. ' +
+  'Cabinets count no matter what colour or material they are today: white, painted, glossy, wood-grain and laminate cabinets ALL change to the new finish. Flat white upper cabinet doors are cabinets, not wall — wrap them too. No cabinet may keep its original colour; every cabinet surface ends up in the same new finish. ' +
   'Keep everything else in the photo exactly the same — countertops, walls, backsplash, floor, appliances, hardware, windows, lighting, layout, perspective and shadows must remain unchanged. ' +
   'The result must be photorealistic, as if the cabinets were professionally wrapped in vinyl film. Return only the edited image.';
 
@@ -92,13 +97,13 @@ function surfaceDefinition(surface, islandIsSeparate) {
   switch (surface) {
     case 'cabinets':
       return (
-        'Every cabinet door, drawer front, false front and exposed cabinet side or end panel in the photo, both the wall-mounted cabinets above the countertop and the base cabinets below it' +
+        'Every cabinet door, drawer front, false front and exposed cabinet side or end panel in the photo, both the wall-mounted cabinets above the countertop and the base cabinets below it, regardless of their current colour or material — white and painted cabinets change too, they are cabinets, not wall' +
         (islandIsSeparate
           ? ', but NOT the island base, which is listed separately below.'
           : ', including the island base if one is visible.')
       );
     case 'upper':
-      return 'Only the wall-mounted cabinets above the countertop: their doors, drawer fronts, exposed side panels and the frames around any glass-front doors. Nothing below the countertop changes to this finish.';
+      return 'Only the wall-mounted cabinets above the countertop: their doors, drawer fronts, exposed side panels and the frames around any glass-front doors, even if they are currently white or painted — flat white upper doors are cabinets, not wall. Nothing below the countertop changes to this finish.';
     case 'lower':
       return (
         'Only the cabinets below the countertop: their doors, drawer fronts, false fronts, toe kicks and exposed end panels' +
