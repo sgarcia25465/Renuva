@@ -10,7 +10,10 @@
    Requires the GEMINI_API_KEY environment variable (set in the Netlify UI).
    Optional: VISUALIZER_GEMINI_MODEL, VISUALIZER_PROMPT ({finish} placeholder). */
 
-const DEFAULT_MODEL = 'gemini-2.5-flash-image';
+/* 2.5-flash-image kept refusing to rewrap white/painted uppers in two-tone
+   kitchens no matter how the prompt spelled it out; 3.1 follows the same
+   prompt faithfully (verified side by side on the gallery photos). */
+const DEFAULT_MODEL = 'gemini-3.1-flash-image-preview';
 
 /* The model returns a 1:1 square unless told otherwise, which crops or
    recomposes any landscape/portrait kitchen photo. Ask for the supported
