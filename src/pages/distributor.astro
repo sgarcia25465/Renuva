@@ -105,6 +105,15 @@ const regions = [
 				color: var(--dark-brown);
 				line-height: 1.7;
 			}
+			.hero .hero-note {
+				margin-top: 0.8rem;
+				font-size: 0.95rem;
+			}
+			.hero .hero-note a {
+				color: inherit;
+				text-decoration: underline;
+				text-underline-offset: 3px;
+			}
 
 			/* ── distributors by region ── */
 			.region-block {
@@ -367,6 +376,22 @@ const regions = [
 				font-size: 0.78rem;
 				color: rgba(255, 255, 255, 0.48);
 			}
+			.footer-family {
+				margin-top: 0.9rem;
+				display: flex;
+				justify-content: center;
+				flex-wrap: wrap;
+				gap: 0.4rem 1rem;
+				text-align: center;
+			}
+			.footer-family a {
+				color: rgba(255, 255, 255, 0.5);
+				text-decoration: none;
+				font-size: 0.76rem;
+				font-weight: 400;
+				transition: color 0.3s;
+			}
+			.footer-family a:hover { color: #fff; }
 
 			@media (max-width: 768px) {
 				main { padding: 2.4rem 1rem 3.5rem; }
@@ -384,6 +409,7 @@ const regions = [
 			<section class="hero">
 				<h1>Distributors</h1>
 				<p>Renuva architectural film is available through our authorized distributors.</p>
+				<p class="hero-note">Already carrying Renuva? Find <a href="https://surfacesupply.com/pages/renuva-resources" title="Renuva resources on Surface Supply" target="_blank" rel="noopener">installation guides, FAQ and samples</a> in the Renuva resources on Surface Supply.</p>
 			</section>
 
 			<section aria-label="Authorized distributors">
@@ -467,6 +493,14 @@ const regions = [
 					</nav>
 					<p class="footer-copy">&copy; 2026 Renuva Architectural Surfaces. All rights reserved.</p>
 				</div>
+				<nav class="footer-family" aria-label="Renuva family of brands">
+					<a href="https://surfacesupply.com/collections/renuva-architectural-film" title="Shop Renuva architectural film at Surface Supply, the US distributor" target="_blank" rel="noopener">Buy Renuva in the US</a>
+					<a href="https://surfacesupply.com" title="Surface Supply, architectural film distributor" target="_blank" rel="noopener">Surface Supply</a>
+					<a href="https://bodaqfilms.com" title="Bodaq Films interior architectural film" target="_blank" rel="noopener">Bodaq Films</a>
+					<a href="https://wrapally.com" title="WrapAlly, software for wrap and film installers" target="_blank" rel="noopener">WrapAlly</a>
+					<a href="https://kitchenwrapdirect.com" title="Kitchen Wrap Direct, kitchen cabinet wrapping" target="_blank" rel="noopener">Kitchen Wrap Direct</a>
+					<a href="https://wrapblueprint.com" title="WrapBlueprint, training for wrap installers" target="_blank" rel="noopener">WrapBlueprint</a>
+				</nav>
 			</div>
 		</footer>
 

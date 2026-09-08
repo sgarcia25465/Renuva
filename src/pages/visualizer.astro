@@ -251,6 +251,22 @@ import SiteHeader from '../components/SiteHeader.astro';
 				font-size: 0.78rem;
 				color: rgba(255, 255, 255, 0.45);
 			}
+			.footer-family {
+				margin-top: 0.9rem;
+				display: flex;
+				justify-content: center;
+				flex-wrap: wrap;
+				gap: 0.4rem 1rem;
+				text-align: center;
+			}
+			.footer-family a {
+				color: rgba(255, 255, 255, 0.5);
+				text-decoration: none;
+				font-size: 0.76rem;
+				font-weight: 400;
+				transition: color 0.3s;
+			}
+			.footer-family a:hover { color: #fff; }
 
 			@media (max-width: 768px) {
 				nav {
@@ -342,6 +358,14 @@ import SiteHeader from '../components/SiteHeader.astro';
 					</nav>
 					<p class="footer-copy">&copy; 2026 Renuva Architectural Surfaces. All rights reserved.</p>
 				</div>
+				<nav class="footer-family" aria-label="Renuva family of brands">
+					<a href="https://surfacesupply.com/collections/renuva-architectural-film" title="Shop Renuva architectural film at Surface Supply, the US distributor" target="_blank" rel="noopener">Buy Renuva in the US</a>
+					<a href="https://surfacesupply.com" title="Surface Supply, architectural film distributor" target="_blank" rel="noopener">Surface Supply</a>
+					<a href="https://bodaqfilms.com" title="Bodaq Films interior architectural film" target="_blank" rel="noopener">Bodaq Films</a>
+					<a href="https://wrapally.com" title="WrapAlly, software for wrap and film installers" target="_blank" rel="noopener">WrapAlly</a>
+					<a href="https://kitchenwrapdirect.com" title="Kitchen Wrap Direct, kitchen cabinet wrapping" target="_blank" rel="noopener">Kitchen Wrap Direct</a>
+					<a href="https://wrapblueprint.com" title="WrapBlueprint, training for wrap installers" target="_blank" rel="noopener">WrapBlueprint</a>
+				</nav>
 			</div>
 		</footer>
 	</body>
