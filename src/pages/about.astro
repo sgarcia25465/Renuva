@@ -1,5 +1,6 @@
 ---
 import SiteHeader from '../components/SiteHeader.astro';
+import SiteSchema from '../components/SiteSchema.astro';
 ---
 
 <html lang="en">
@@ -16,6 +17,11 @@ import SiteHeader from '../components/SiteHeader.astro';
 			rel="stylesheet"
 		/>
 		<title>About Us - Renuva</title>
+		<meta
+			name="description"
+			content="Renuva is a premium architectural film brand. Our self-adhesive films apply directly over existing cabinetry, doors and furniture — renewal without demolition or replacement."
+		/>
+		<SiteSchema />
 		<style>
 			:root {
 				--very-dark-brown: #262D26;

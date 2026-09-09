@@ -1,0 +1,32 @@
+---
+// Sitewide structured data: the Renuva brand, and Surface Supply as the
+// organization publishing the site. Rendered in the <head> of every page.
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Organization',
+			'@id': 'https://surfacesupply.com/#organization',
+			name: 'Surface Supply LLC',
+			url: 'https://surfacesupply.com',
+		},
+		{
+			'@type': 'Brand',
+			'@id': 'https://renuvafilms.com/#brand',
+			name: 'Renuva',
+			url: 'https://renuvafilms.com',
+			slogan: "Renew. Don't replace.",
+		},
+		{
+			'@type': 'WebSite',
+			'@id': 'https://renuvafilms.com/#website',
+			name: 'Renuva',
+			url: 'https://renuvafilms.com',
+			publisher: { '@id': 'https://surfacesupply.com/#organization' },
+			about: { '@id': 'https://renuvafilms.com/#brand' },
+		},
+	],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />

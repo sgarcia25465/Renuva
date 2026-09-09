@@ -1,7 +1,63 @@
 ---
 import { Image } from 'astro:assets';
 import SiteHeader from '../components/SiteHeader.astro';
+import SiteSchema from '../components/SiteSchema.astro';
 import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.png';
+
+const shopUrl = 'https://surfacesupply.com/collections/renuva-architectural-film';
+
+// The eight Renuva series, described from the finishes in each one (see
+// public/scripts/renuva-finishes.js — the same data that fills the grid).
+const series = [
+	{
+		name: 'Premium Wood',
+		code: 'PW Series',
+		count: 'Six finishes',
+		body: 'The PW series is the natural wood range, from a pale cream ash with a subtle even figure to a deep reddish mahogany with straight, elegant grain. In between sit sandy, honey and amber oaks with fine cathedral figure, and a medium golden oak with straight rift-sawn grain. Designed for doors, cabinetry, millwork and furniture.',
+	},
+	{
+		name: 'Painted Wood',
+		code: 'RW Series',
+		count: 'Four finishes',
+		body: 'The RW series reads as painted timber rather than bare wood. Warm white carries visible brushstroke grain and a hand-painted character, cream has a subtle raised grain that reads as freshly lacquered joinery, and dove grey and bright white bring fine painted-timber and dense straight-grain texture. Designed for kitchens, cabinet fronts, wardrobes, doors and trim.',
+	},
+	{
+		name: 'Marble',
+		code: 'ST Series',
+		count: 'Three finishes',
+		body: 'The ST series brings stone to flat surfaces. Cream Onyx has soft, cloud-like veining and the gentle shifts of honed stone; Carrara White carries sparse, confident grey veining in the classic manner; Cloud White is denser and feathered, with polished-marble depth. Designed for feature walls, columns, reception desks, vanity surrounds and furniture.',
+	},
+	{
+		name: 'Metal',
+		code: 'ME Series',
+		count: 'Two finishes',
+		body: 'The ME series covers metallics. Brushed Champagne is a warm champagne-silver with fine hairline brushing running the length of the film, and Pearl Silver has a fine metallic stipple that catches light evenly. Designed for doors, panels, appliance surrounds, trim and fixtures in modern and commercial interiors.',
+	},
+	{
+		name: 'Matte Solid',
+		code: 'MT Series',
+		count: 'Six finishes',
+		body: 'The MT series is the plain-colour range, each with a smooth, finely textured matte surface. The tones run from pure white and soft white through ivory, pale grey and stone grey to a deep charcoal. Designed to refresh cabinets, doors, panels and built-ins in clean modern and neutral interiors.',
+	},
+	{
+		name: 'High Gloss Solid',
+		code: 'HG Series',
+		count: 'Three finishes',
+		body: 'The HG series pairs solid colour with a deep, reflective high-gloss finish: a crisp pure white, a warm ivory and a sophisticated greige. Designed to elevate modern kitchens, wardrobe fronts and feature panels.',
+	},
+	{
+		name: 'Soft Matte',
+		code: 'MTS Series',
+		count: 'One finish',
+		body: 'The MTS series is the super-matte end of the range. Slate Grey Soft Matte is an even mid-grey with a velvety soft-touch surface that diffuses light. Designed to bring a premium super-matte look to cabinet fronts, doors and built-ins.',
+	},
+	{
+		name: 'Fabric',
+		code: 'FP Series',
+		count: 'Two finishes',
+		body: 'The FP series carries woven texture at thread level. White Linen Weave is a crisp white with fine linen-weave texture, and Grey Linen Weave is a mid-grey with a natural vertical slub. Designed to soften wall panels, wardrobe fronts, headboard surrounds and hospitality interiors.',
+	},
+];
 ---
 
 <html lang="en">
@@ -15,6 +71,11 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 		<title>Finishes - Renuva</title>
+		<meta
+			name="description"
+			content="All 27 Renuva architectural film finishes across eight series — Premium Wood, Painted Wood, Marble, Metal, Matte Solid, High Gloss, Soft Matte and Fabric."
+		/>
+		<SiteSchema />
 		<style is:global>
 			:root {
 				--paper: #F5F2EC;
@@ -30,6 +91,86 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				background: var(--paper);
 				font-family: 'Hanken Grotesk', sans-serif;
 				color: var(--ink);
+			}
+
+			/* ============ PAGE COPY ============ */
+			.fx-intro {
+				padding: clamp(26px, 5vh, 52px) clamp(24px, 5vw, 84px) 0;
+				text-align: center;
+			}
+			.fx-intro h1 {
+				font-family: 'Cormorant', serif;
+				font-weight: 500;
+				font-size: clamp(38px, 4.4vw, 64px);
+				line-height: 1.02;
+				letter-spacing: 0.005em;
+				color: var(--taupe);
+			}
+			.fx-intro p {
+				margin: 14px auto 0;
+				max-width: 68ch;
+				font-size: 16px;
+				line-height: 1.75;
+				color: var(--muted);
+				text-wrap: pretty;
+			}
+			.fx-series { padding: 0 clamp(24px, 5vw, 84px); }
+			.fx-series-grid {
+				max-width: 1040px;
+				margin: 0 auto;
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: clamp(20px, 2.6vw, 38px);
+			}
+			.fx-block {
+				border-top: 1px solid rgba(75, 69, 64, 0.16);
+				padding-top: 16px;
+			}
+			.fx-block h2 {
+				font-family: 'Cormorant', serif;
+				font-weight: 500;
+				font-size: clamp(26px, 2.4vw, 34px);
+				line-height: 1.1;
+				color: var(--taupe);
+			}
+			.fx-code {
+				display: block;
+				margin-top: 5px;
+				font-size: 11px;
+				font-weight: 700;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				color: #A2937F;
+			}
+			.fx-block p {
+				margin-top: 11px;
+				font-size: 15px;
+				line-height: 1.7;
+				color: var(--muted);
+				text-wrap: pretty;
+			}
+			.fx-buy {
+				padding: clamp(30px, 5vh, 56px) clamp(24px, 5vw, 84px) clamp(56px, 8vh, 92px);
+				text-align: center;
+			}
+			.fx-buy h2 {
+				font-family: 'Cormorant', serif;
+				font-weight: 500;
+				font-size: clamp(30px, 3vw, 44px);
+				line-height: 1.05;
+				color: var(--taupe);
+			}
+			.fx-buy p {
+				margin: 12px auto 0;
+				max-width: 58ch;
+				font-size: 16px;
+				line-height: 1.7;
+				color: var(--muted);
+			}
+			.fx-buy a {
+				color: var(--taupe-deep);
+				text-decoration: underline;
+				text-underline-offset: 3px;
 			}
 
 			/* ============ GRID — rows of 4 ============ */
@@ -317,6 +458,9 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 				.fin-detail h3 { font-size: 32px; }
 				.fin-detail .fd-desc { display: none; }
 			}
+			@media (max-width: 760px) {
+				.fx-series-grid { grid-template-columns: 1fr; }
+			}
 			@media (max-width: 640px) {
 				.fg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 			}
@@ -329,7 +473,37 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 
 		<SiteHeader active="/finishes" />
 
+		<section class="fx-intro">
+			<h1>Renuva Finishes</h1>
+			<p>
+				Renuva is a premium architectural film: 27 self-adhesive interior finishes that
+				apply directly over existing cabinetry, doors, furniture, built-ins and wall
+				panels, with no demolition, replacement or repainting. The range spans eight
+				series — premium wood, painted wood, marble, metal, matte solid, high gloss,
+				soft matte and fabric — and every finish carries a durable wear layer with
+				scratch resistance and stain protection. Select any finish below to see it
+				applied and read its detail.
+			</p>
+		</section>
+
 		<section class="fg-grid" id="fgGrid" aria-label="All Renuva finishes"></section>
+
+		<section class="fx-series" aria-label="Renuva finish series">
+			<div class="fx-series-grid">
+				{series.map((s) => (
+					<div class="fx-block">
+						<h2>{s.name}</h2>
+						<span class="fx-code">{s.code} &middot; {s.count}</span>
+						<p>{s.body}</p>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<section class="fx-buy" aria-labelledby="fx-buy-heading">
+			<h2 id="fx-buy-heading">Where to buy</h2>
+			<p>Renuva&trade; is stocked and sold in the US by <a href={shopUrl} target="_blank" rel="noopener">Surface Supply</a>.</p>
+		</section>
 
 		<!-- focus overlay — same UI as the home-page Finish Library -->
 		<div class="fg-backdrop" id="fgBackdrop"></div>

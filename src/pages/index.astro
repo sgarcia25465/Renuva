@@ -1,7 +1,47 @@
 ---
 import { Image } from 'astro:assets';
 import SiteHeader from '../components/SiteHeader.astro';
+import SiteSchema from '../components/SiteSchema.astro';
 import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.png';
+
+const shopUrl = 'https://surfacesupply.com/collections/renuva-architectural-film';
+
+// One source for the FAQ: the visible copy and the FAQPage schema below are
+// both rendered from this list, so they can never drift apart.
+const faqs = [
+	{
+		q: 'What is Renuva?',
+		a: 'Renuva is a premium architectural film — a self-adhesive interior finish that applies directly over existing cabinetry, doors, furniture, built-ins and wall panels. It renews a surface without demolition, replacement or repainting, and comes in 27 finishes across eight series.',
+	},
+	{
+		q: 'What kind of adhesive does Renuva use?',
+		a: 'Renuva is self-adhesive: the adhesive is already on the back of the film. It applies dry with a squeegee onto flat and gently contoured interior surfaces, and the substrate needs to be clean, degreased, dry, sound and non-porous or sealed.',
+	},
+	{
+		q: 'Is Renuva for interior use?',
+		a: 'Yes. Renuva is an interior architectural film, made for furniture, doors, cabinetry, built-ins and walls. Every finish has a durable wear layer with scratch resistance and stain protection, and wipes clean with a damp cloth.',
+	},
+	{
+		q: 'Where can I buy Renuva?',
+		a: 'Renuva™ is stocked and sold in the US by Surface Supply. All finishes are stocked in the US and ship in 1–3 days.',
+		html: `Renuva™ is stocked and sold in the US by <a href="${shopUrl}" target="_blank" rel="noopener">Surface Supply</a>. All finishes are stocked in the US and ship in 1–3 days.`,
+	},
+	{
+		q: 'Can I order samples?',
+		a: 'Yes. Renuva finishes are available as samples, half rolls and full rolls, and the swatch book puts all 27 finishes in one fan-style deck. Samples are ordered from Surface Supply.',
+		html: `Yes. Renuva finishes are available as samples, half rolls and full rolls, and the swatch book puts all 27 finishes in one fan-style deck. Samples are ordered from <a href="${shopUrl}" target="_blank" rel="noopener">Surface Supply</a>.`,
+	},
+];
+
+const faqSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
 ---
 
 <html lang="en">
@@ -15,6 +55,12 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Marcellus&family=Italiana&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 		<title>Renuva — Renew. Don't replace.</title>
+		<meta
+			name="description"
+			content="Renuva is a premium architectural film: 27 self-adhesive interior finishes — wood, marble, metal, matte, gloss and fabric — applied over existing cabinets, doors and walls."
+		/>
+		<SiteSchema />
+		<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
 		<style is:global>
 			:root {
 				--paper: #F5F2EC;
@@ -907,6 +953,46 @@ import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.p
 			.fin-stage.open .fin-close { opacity: 1; pointer-events: auto; }
 			.fin-close:hover { background: #fff; }
 
+			/* ============ WHERE TO BUY + FAQ ============ */
+			.buy, .faq {
+				background: var(--paper);
+				text-align: center;
+				padding: 0 clamp(24px, 5vw, 84px);
+			}
+			.buy { padding-top: clamp(40px, 7vh, 76px); }
+			.faq { padding-bottom: clamp(56px, 9vh, 104px); padding-top: clamp(34px, 5vh, 56px); }
+			.buy h2, .faq h2 {
+				font-family: var(--headline-font);
+				font-weight: var(--headline-weight);
+				letter-spacing: var(--headline-tracking);
+				font-size: clamp(32px, 3.2vw, 48px);
+				line-height: 1.05;
+				color: var(--taupe);
+			}
+			.buy p {
+				margin: 14px auto 0;
+				max-width: 58ch;
+				font-size: 16px;
+				line-height: 1.7;
+				color: var(--muted);
+			}
+			.buy a, .faq a {
+				color: var(--taupe-deep);
+				text-decoration: underline;
+				text-underline-offset: 3px;
+			}
+			.faq-list { max-width: 760px; margin: clamp(20px, 3vh, 32px) auto 0; text-align: left; }
+			.faq-item { padding: 18px 2px; border-top: 1px solid rgba(75, 69, 64, 0.16); }
+			.faq-item:last-child { border-bottom: 1px solid rgba(75, 69, 64, 0.16); }
+			.faq-item h3 { font-size: 16px; font-weight: 600; color: var(--ink); }
+			.faq-item p {
+				margin-top: 8px;
+				font-size: 15px;
+				line-height: 1.7;
+				color: var(--muted);
+				text-wrap: pretty;
+			}
+
 			/* ============ FOOTER ============ */
 			footer {
 				background: #554B43;
@@ -1139,6 +1225,25 @@ Every Surface</span><span class="typer-live"><span class="typed"></span><span cl
 							<div class="cmp-handle"><span class="cmp-grip">‹ ›</span></div>
 						</div>
 					</div>
+				</div>
+			</section>
+
+			<section class="buy" aria-labelledby="buy-heading">
+				<h2 id="buy-heading">Where to buy</h2>
+				<p>
+					Renuva&trade; is stocked and sold in the US by <a href={shopUrl} target="_blank" rel="noopener">Surface Supply</a>.
+				</p>
+			</section>
+
+			<section class="faq" aria-labelledby="faq-heading">
+				<h2 id="faq-heading">Frequently asked questions</h2>
+				<div class="faq-list">
+					{faqs.map((f) => (
+						<div class="faq-item">
+							<h3>{f.q}</h3>
+							<p set:html={f.html ?? f.a} />
+						</div>
+					))}
 				</div>
 			</section>
 		</main>

@@ -5,6 +5,7 @@
    tones, never sit next to each other.
    Position in this list = grid-area g1..g20 in the CSS. */
 import SiteHeader from '../components/SiteHeader.astro';
+import SiteSchema from '../components/SiteSchema.astro';
 const NAMES = {
 	PW1512: 'Cream Ash', PW1514: 'Sand Oak', PW1516: 'Honey Oak',
 	PW1518: 'Golden Rift Oak', PW1520: 'Amber Oak', PW1522: 'Rosewood Mahogany',
@@ -43,6 +44,11 @@ const tiles = order.map((code) => ({
 			rel="stylesheet"
 		/>
 		<title>Gallery - Renuva</title>
+		<meta
+			name="description"
+			content="Kitchens renewed with Renuva architectural film — cabinets wrapped in premium wood, painted wood, marble, metal, matte and high gloss finishes."
+		/>
+		<SiteSchema />
 		<style>
 			:root {
 				--very-dark-brown: #262D26;

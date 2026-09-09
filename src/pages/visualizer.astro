@@ -1,5 +1,6 @@
 ---
 import SiteHeader from '../components/SiteHeader.astro';
+import SiteSchema from '../components/SiteSchema.astro';
 ---
 
 <html lang="en">
@@ -17,6 +18,11 @@ import SiteHeader from '../components/SiteHeader.astro';
 		/>
 		<link rel="stylesheet" href="/styles/renuva-visualizer.css" />
 		<title>Visualizer - Renuva</title>
+		<meta
+			name="description"
+			content="See your kitchen renewed before any work begins. Upload a photo, pick a Renuva finish, and get a photorealistic preview of your cabinets wrapped in it."
+		/>
+		<SiteSchema />
 		<style>
 			:root {
 				--very-dark-brown: #262D26;
