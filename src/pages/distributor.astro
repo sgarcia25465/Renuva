@@ -1,6 +1,6 @@
 ---
 import SiteHeader from '../components/SiteHeader.astro';
-import SiteSchema from '../components/SiteSchema.astro';
+import Seo from '../components/Seo.astro';
 
 const regions = [
 	{
@@ -26,12 +26,10 @@ const regions = [
 			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant:wght@500;600&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
-		<title>Distributors - Renuva</title>
-		<meta
-			name="description"
-			content="Where to buy Renuva architectural film. Renuva is stocked and sold in the US by Surface Supply, with installation guides, FAQ and samples in the Renuva resources."
+		<Seo
+			title="Distributors - Renuva"
+			description="Where to buy Renuva architectural film. Renuva is stocked and sold in the US by Surface Supply, with installation guides, FAQ and samples in the Renuva resources."
 		/>
-		<SiteSchema />
 		<style>
 			:root {
 				--very-dark-brown: #262D26;
@@ -409,7 +407,7 @@ const regions = [
 		</style>
 	</head>
 	<body>
-		<SiteHeader active="/distributor" />
+		<SiteHeader active="/distributor/" />
 
 		<main>
 			<section class="hero">
@@ -490,22 +488,18 @@ const regions = [
 				<div class="footer-bottom">
 					<nav class="footer-nav">
 						<a href="/">Home</a>
-						<a href="/about">About Us</a>
-						<a href="/distributor">Distributors</a>
-						<a href="/finishes">Finishes</a>
-						<a href="/visualizer">Visualizer</a>
-						<a href="/gallery">Gallery</a>
-						<a href="/contact">Contact</a>
+						<a href="/about/">About Us</a>
+						<a href="/distributor/">Distributors</a>
+						<a href="/finishes/">Finishes</a>
+						<a href="/visualizer/">Visualizer</a>
+						<a href="/gallery/">Gallery</a>
+						<a href="/contact/">Contact</a>
 					</nav>
 					<p class="footer-copy">&copy; 2026 Renuva Architectural Surfaces. All rights reserved.</p>
 				</div>
-				<nav class="footer-family" aria-label="Renuva family of brands">
+				<nav class="footer-family" aria-label="Where to buy Renuva">
 					<a href="https://surfacesupply.com/collections/renuva-architectural-film" title="Shop Renuva architectural film at Surface Supply, the US distributor" target="_blank" rel="noopener">Buy Renuva in the US</a>
 					<a href="https://surfacesupply.com" title="Surface Supply, architectural film distributor" target="_blank" rel="noopener">Surface Supply</a>
-					<a href="https://bodaqfilms.com" title="Bodaq Films interior architectural film" target="_blank" rel="noopener">Bodaq Films</a>
-					<a href="https://wrapally.com" title="WrapAlly, software for wrap and film installers" target="_blank" rel="noopener">WrapAlly</a>
-					<a href="https://kitchenwrapdirect.com" title="Kitchen Wrap Direct, kitchen cabinet wrapping" target="_blank" rel="noopener">Kitchen Wrap Direct</a>
-					<a href="https://wrapblueprint.com" title="WrapBlueprint, training for wrap installers" target="_blank" rel="noopener">WrapBlueprint</a>
 				</nav>
 			</div>
 		</footer>

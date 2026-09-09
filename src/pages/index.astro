@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import SiteHeader from '../components/SiteHeader.astro';
-import SiteSchema from '../components/SiteSchema.astro';
+import Seo from '../components/Seo.astro';
 import footerLogo from '../assets/images/LOGO_Colorful_Colorful_Colorful_White.png';
 
 const shopUrl = 'https://surfacesupply.com/collections/renuva-architectural-film';
@@ -54,12 +54,10 @@ const faqSchema = {
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Marcellus&family=Italiana&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-		<title>Renuva — Renew. Don't replace.</title>
-		<meta
-			name="description"
-			content="Renuva is a premium architectural film: 27 self-adhesive interior finishes — wood, marble, metal, matte, gloss and fabric — applied over existing cabinets, doors and walls."
+		<Seo
+			title="Renuva — Renew. Don't replace."
+			description="Renuva is a premium architectural film: 27 self-adhesive interior finishes — wood, marble, metal, matte, gloss and fabric — applied over existing cabinets, doors and walls."
 		/>
-		<SiteSchema />
 		<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
 		<style is:global>
 			:root {
@@ -1140,7 +1138,7 @@ const faqSchema = {
 					<p class="eyebrow">Premium Architectural Vinyl</p>
 					<h1 aria-label="Renew. Don't replace."><span class="typer" id="heroTyper" aria-hidden="true">Renew. Don't
 replace.</span></h1>
-					<a class="cta-btn" href="/distributor">DISTRIBUTOR INFO</a>
+					<a class="cta-btn" href="/distributor/">DISTRIBUTOR INFO</a>
 				</div>
 
 				<div class="hero-art" aria-hidden="true">
@@ -1192,7 +1190,7 @@ replace.</span></h1>
 			<div class="fin-stage" id="finStage">
 				<div class="fin-head">
 					<p class="fin-eyebrow">The Finish <br class="fin-br" /> Library</p>
-					<a class="fin-browse" href="/finishes">Browse all finishes</a>
+					<a class="fin-browse" href="/finishes/">Browse all finishes</a>
 				</div>
 				<div class="fin-backdrop" id="finBackdrop"></div>
 				<div class="fin-cards" id="finCards"></div>
@@ -1212,7 +1210,7 @@ Every Surface</span><span class="typer-live"><span class="typed"></span><span cl
 						<li><span class="cat-line"><span class="cat-idx">02</span><span class="cat-name">Stone &amp; Marble</span></span></li>
 						<li><span class="cat-line"><span class="cat-idx">03</span><span class="cat-name">Metal &amp; Texture</span></span></li>
 					</ul>
-					<a class="cat-viewall reveal-up" href="/finishes">View all</a>
+					<a class="cat-viewall reveal-up" href="/finishes/">View all</a>
 				</aside>
 
 				<div class="compare-col">
@@ -1259,22 +1257,18 @@ Every Surface</span><span class="typer-live"><span class="typed"></span><span cl
 				<div class="footer-bottom">
 					<nav class="footer-nav">
 						<a href="/">Home</a>
-						<a href="/about">About Us</a>
-						<a href="/distributor">Distributors</a>
-						<a href="/finishes">Finishes</a>
-						<a href="/visualizer">Visualizer</a>
-						<a href="/gallery">Gallery</a>
-						<a href="/contact">Contact</a>
+						<a href="/about/">About Us</a>
+						<a href="/distributor/">Distributors</a>
+						<a href="/finishes/">Finishes</a>
+						<a href="/visualizer/">Visualizer</a>
+						<a href="/gallery/">Gallery</a>
+						<a href="/contact/">Contact</a>
 					</nav>
 					<p class="footer-copy">&copy; 2026 Renuva Architectural Surfaces. All rights reserved.</p>
 				</div>
-				<nav class="footer-family" aria-label="Renuva family of brands">
+				<nav class="footer-family" aria-label="Where to buy Renuva">
 					<a href="https://surfacesupply.com/collections/renuva-architectural-film" title="Shop Renuva architectural film at Surface Supply, the US distributor" target="_blank" rel="noopener">Buy Renuva in the US</a>
 					<a href="https://surfacesupply.com" title="Surface Supply, architectural film distributor" target="_blank" rel="noopener">Surface Supply</a>
-					<a href="https://bodaqfilms.com" title="Bodaq Films interior architectural film" target="_blank" rel="noopener">Bodaq Films</a>
-					<a href="https://wrapally.com" title="WrapAlly, software for wrap and film installers" target="_blank" rel="noopener">WrapAlly</a>
-					<a href="https://kitchenwrapdirect.com" title="Kitchen Wrap Direct, kitchen cabinet wrapping" target="_blank" rel="noopener">Kitchen Wrap Direct</a>
-					<a href="https://wrapblueprint.com" title="WrapBlueprint, training for wrap installers" target="_blank" rel="noopener">WrapBlueprint</a>
 				</nav>
 			</div>
 		</footer>

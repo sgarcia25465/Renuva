@@ -1,0 +1,66 @@
+---
+// Everything a page tells search engines and link previews, in one place: the
+// title and description, the canonical URL, Open Graph / Twitter cards, and the
+// sitewide graph naming Surface Supply as publisher and Renuva as the brand.
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+
+// The host serves /finishes/ and redirects /finishes, so the canonical is the
+// trailing-slash form.
+const path = Astro.url.pathname.replace(/\/+$/, '');
+const canonical = new URL(path ? `${path}/` : '/', Astro.site).href;
+const ogImage = new URL('/assets/og/renuva-og.jpg', Astro.site).href;
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Organization',
+			'@id': 'https://surfacesupply.com/#organization',
+			name: 'Surface Supply LLC',
+			url: 'https://surfacesupply.com',
+		},
+		{
+			'@type': 'Brand',
+			'@id': 'https://renuvafilms.com/#brand',
+			name: 'Renuva',
+			url: 'https://renuvafilms.com',
+			slogan: "Renew. Don't replace.",
+		},
+		{
+			'@type': 'WebSite',
+			'@id': 'https://renuvafilms.com/#website',
+			name: 'Renuva',
+			url: 'https://renuvafilms.com',
+			publisher: { '@id': 'https://surfacesupply.com/#organization' },
+			about: { '@id': 'https://renuvafilms.com/#brand' },
+		},
+	],
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Renuva" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="A kitchen renewed with Renuva architectural film" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />

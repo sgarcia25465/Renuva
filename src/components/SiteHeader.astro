@@ -3,11 +3,11 @@ import { Image } from 'astro:assets';
 import renuvamain from '../assets/images/RENUVAMAIN.png';
 const { active = '' } = Astro.props;
 const links = [
-	{ href: '/finishes', label: 'Finishes' },
-	{ href: '/gallery', label: 'Gallery' },
-	{ href: '/visualizer', label: 'Visualizer' },
-	{ href: '/about', label: 'About Us' },
-	{ href: '/distributor', label: 'Distributors' },
+	{ href: '/finishes/', label: 'Finishes' },
+	{ href: '/gallery/', label: 'Gallery' },
+	{ href: '/visualizer/', label: 'Visualizer' },
+	{ href: '/about/', label: 'About Us' },
+	{ href: '/distributor/', label: 'Distributors' },
 ];
 ---
 
@@ -21,7 +21,7 @@ const links = [
 				<a href={l.href} class={l.href === active ? 'active' : undefined}>{l.label}</a>
 			))}
 		</div>
-		<a class="contact-btn" href="/contact">Contact Us</a>
+		<a class="contact-btn" href="/contact/">Contact Us</a>
 	</div>
 </nav>
 <div class="nav-spacer"></div>

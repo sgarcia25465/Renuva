@@ -1,6 +1,6 @@
 ---
 import SiteHeader from '../components/SiteHeader.astro';
-import SiteSchema from '../components/SiteSchema.astro';
+import Seo from '../components/Seo.astro';
 ---
 
 <html lang="en">
@@ -16,12 +16,10 @@ import SiteSchema from '../components/SiteSchema.astro';
 			href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
-		<title>About Us - Renuva</title>
-		<meta
-			name="description"
-			content="Renuva is a premium architectural film brand. Our self-adhesive films apply directly over existing cabinetry, doors and furniture — renewal without demolition or replacement."
+		<Seo
+			title="About Us - Renuva"
+			description="Renuva is a premium architectural film brand. Our self-adhesive films apply directly over existing cabinetry, doors and furniture — renewal without demolition or replacement."
 		/>
-		<SiteSchema />
 		<style>
 			:root {
 				--very-dark-brown: #262D26;
@@ -326,7 +324,7 @@ import SiteSchema from '../components/SiteSchema.astro';
 		</style>
 	</head>
 	<body>
-		<SiteHeader active="/about" />
+		<SiteHeader active="/about/" />
 
 		<main>
 			<section class="hero">
@@ -384,7 +382,7 @@ import SiteSchema from '../components/SiteSchema.astro';
 
 			<section class="cta">
 				<p>Have a project in mind, or want to learn more about Renuva?</p>
-				<a href="/contact" class="btn-3d">Get In Touch</a>
+				<a href="/contact/" class="btn-3d">Get In Touch</a>
 			</section>
 		</main>
 
@@ -399,22 +397,18 @@ import SiteSchema from '../components/SiteSchema.astro';
 				<div class="footer-bottom">
 					<nav class="footer-nav">
 						<a href="/">Home</a>
-						<a href="/about">About Us</a>
-						<a href="/distributor">Distributors</a>
-						<a href="/finishes">Finishes</a>
-						<a href="/visualizer">Visualizer</a>
-						<a href="/gallery">Gallery</a>
-						<a href="/contact">Contact</a>
+						<a href="/about/">About Us</a>
+						<a href="/distributor/">Distributors</a>
+						<a href="/finishes/">Finishes</a>
+						<a href="/visualizer/">Visualizer</a>
+						<a href="/gallery/">Gallery</a>
+						<a href="/contact/">Contact</a>
 					</nav>
 					<p class="footer-copy">&copy; 2026 Renuva Architectural Surfaces. All rights reserved.</p>
 				</div>
-				<nav class="footer-family" aria-label="Renuva family of brands">
+				<nav class="footer-family" aria-label="Where to buy Renuva">
 					<a href="https://surfacesupply.com/collections/renuva-architectural-film" title="Shop Renuva architectural film at Surface Supply, the US distributor" target="_blank" rel="noopener">Buy Renuva in the US</a>
 					<a href="https://surfacesupply.com" title="Surface Supply, architectural film distributor" target="_blank" rel="noopener">Surface Supply</a>
-					<a href="https://bodaqfilms.com" title="Bodaq Films interior architectural film" target="_blank" rel="noopener">Bodaq Films</a>
-					<a href="https://wrapally.com" title="WrapAlly, software for wrap and film installers" target="_blank" rel="noopener">WrapAlly</a>
-					<a href="https://kitchenwrapdirect.com" title="Kitchen Wrap Direct, kitchen cabinet wrapping" target="_blank" rel="noopener">Kitchen Wrap Direct</a>
-					<a href="https://wrapblueprint.com" title="WrapBlueprint, training for wrap installers" target="_blank" rel="noopener">WrapBlueprint</a>
 				</nav>
 			</div>
 		</footer>

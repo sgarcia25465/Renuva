@@ -5,7 +5,7 @@
    tones, never sit next to each other.
    Position in this list = grid-area g1..g20 in the CSS. */
 import SiteHeader from '../components/SiteHeader.astro';
-import SiteSchema from '../components/SiteSchema.astro';
+import Seo from '../components/Seo.astro';
 const NAMES = {
 	PW1512: 'Cream Ash', PW1514: 'Sand Oak', PW1516: 'Honey Oak',
 	PW1518: 'Golden Rift Oak', PW1520: 'Amber Oak', PW1522: 'Rosewood Mahogany',
@@ -43,12 +43,10 @@ const tiles = order.map((code) => ({
 			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant:wght@500;600&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
-		<title>Gallery - Renuva</title>
-		<meta
-			name="description"
-			content="Kitchens renewed with Renuva architectural film — cabinets wrapped in premium wood, painted wood, marble, metal, matte and high gloss finishes."
+		<Seo
+			title="Gallery - Renuva"
+			description="Kitchens renewed with Renuva architectural film — cabinets wrapped in premium wood, painted wood, marble, metal, matte and high gloss finishes."
 		/>
-		<SiteSchema />
 		<style>
 			:root {
 				--very-dark-brown: #262D26;
@@ -594,12 +592,12 @@ const tiles = order.map((code) => ({
 		</style>
 	</head>
 	<body>
-		<SiteHeader active="/gallery" />
+		<SiteHeader active="/gallery/" />
 
 		<main>
 			<section class="hero">
 				<h1>Gallery</h1>
-				<a class="own-gallery-link" href="/visualizer">See your own gallery &#8599;</a>
+				<a class="own-gallery-link" href="/visualizer/">See your own gallery &#8599;</a>
 			</section>
 
 			<section class="gallery-grid" aria-label="Kitchens by finish">
@@ -683,22 +681,18 @@ const tiles = order.map((code) => ({
 				<div class="footer-bottom">
 					<nav class="footer-nav">
 						<a href="/">Home</a>
-						<a href="/about">About Us</a>
-						<a href="/distributor">Distributors</a>
-						<a href="/finishes">Finishes</a>
-						<a href="/visualizer">Visualizer</a>
-						<a href="/gallery">Gallery</a>
-						<a href="/contact">Contact</a>
+						<a href="/about/">About Us</a>
+						<a href="/distributor/">Distributors</a>
+						<a href="/finishes/">Finishes</a>
+						<a href="/visualizer/">Visualizer</a>
+						<a href="/gallery/">Gallery</a>
+						<a href="/contact/">Contact</a>
 					</nav>
 					<p class="footer-copy">&copy; 2026 Renuva Architectural Surfaces. All rights reserved.</p>
 				</div>
-				<nav class="footer-family" aria-label="Renuva family of brands">
+				<nav class="footer-family" aria-label="Where to buy Renuva">
 					<a href="https://surfacesupply.com/collections/renuva-architectural-film" title="Shop Renuva architectural film at Surface Supply, the US distributor" target="_blank" rel="noopener">Buy Renuva in the US</a>
 					<a href="https://surfacesupply.com" title="Surface Supply, architectural film distributor" target="_blank" rel="noopener">Surface Supply</a>
-					<a href="https://bodaqfilms.com" title="Bodaq Films interior architectural film" target="_blank" rel="noopener">Bodaq Films</a>
-					<a href="https://wrapally.com" title="WrapAlly, software for wrap and film installers" target="_blank" rel="noopener">WrapAlly</a>
-					<a href="https://kitchenwrapdirect.com" title="Kitchen Wrap Direct, kitchen cabinet wrapping" target="_blank" rel="noopener">Kitchen Wrap Direct</a>
-					<a href="https://wrapblueprint.com" title="WrapBlueprint, training for wrap installers" target="_blank" rel="noopener">WrapBlueprint</a>
 				</nav>
 			</div>
 		</footer>
