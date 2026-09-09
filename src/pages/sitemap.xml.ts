@@ -4,7 +4,9 @@ import type { APIRoute } from 'astro';
 // without anyone remembering to edit the sitemap.
 const routes = Object.keys(import.meta.glob('./**/*.astro'))
 	.map((file) => file.replace(/^\.\//, '').replace(/\.astro$/, ''))
-	.map((name) => (name === 'index' ? '' : name))
+	// Trailing slash: the host redirects /finishes to /finishes/, so the
+	// sitemap lists the URL that answers 200 rather than the one that hops.
+	.map((name) => (name === 'index' ? '' : `${name}/`))
 	.sort();
 
 export const GET: APIRoute = ({ site }) => {
