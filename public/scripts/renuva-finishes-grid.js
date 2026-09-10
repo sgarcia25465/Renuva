@@ -251,6 +251,16 @@
 	});
 
 	var open = -1;
+	var closeTimer = 0;
+
+	/* Every tile except the one being focused must be visible. A tile is
+	   hidden (is-origin) only while its card is lifted; opening a new finish
+	   mid-close used to leave the previous tile hidden until a refresh. */
+	function showAllTilesExcept(keep) {
+		for (var t = 0; t < tiles.length; t++) {
+			if (t !== keep) tiles[t].classList.remove('is-origin');
+		}
+	}
 
 	/* focused-card target rect — same placement math as the home-page Finish
 	   Library: enlarged and nudged left on desktop, centered-high on mobile */
@@ -276,6 +286,8 @@
 		if (open >= 0) return;
 		open = i;
 		var f = FINISHES[i];
+		if (closeTimer) { clearTimeout(closeTimer); closeTimer = 0; }
+		showAllTilesExcept(i);
 
 		detail.innerHTML =
 			'<p class="fd-series">Renuva™ ' + f.series + '</p>' +
@@ -346,11 +358,14 @@
 			return;
 		}
 		focusCard.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(' + sx + ',' + sy + ')';
-		setTimeout(function () {
+		if (closeTimer) clearTimeout(closeTimer);
+		closeTimer = setTimeout(function () {
+			closeTimer = 0;
+			/* the tile always comes back, even if another finish opened meanwhile */
+			if (open !== i) tiles[i].classList.remove('is-origin');
 			if (open >= 0) return;
 			focusCard.style.visibility = '';
 			focusCard.style.transform = 'none';
-			tiles[i].classList.remove('is-origin');
 		}, 780);
 	}
 
