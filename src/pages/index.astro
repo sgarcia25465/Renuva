@@ -23,7 +23,7 @@ const faqs = [
 	},
 	{
 		q: 'Is Renuva fire rated?',
-		a: 'Yes. Renuva is tested to ASTM E84, the standard surface-burning test for interior finishes in the US, by an ISO/IEC 17025:2017 accredited laboratory, and is classified Class A with a flame spread index of 25 and a smoke developed index of 15. ASTM E84 rates surface-burning characteristics only; it does not make a material noncombustible.',
+		a: 'Yes. Renuva is tested to ASTM E84, the standard surface-burning test for interior finishes in the US, by an ISO/IEC 17025:2017 accredited laboratory, and is classified Class A with a flame spread index of 25 and a smoke developed index of 15. The High Gloss Solid series (HG) is rated Class B. ASTM E84 rates surface-burning characteristics only; it does not make a material noncombustible.',
 	},
 	{
 		q: 'Where can I buy Renuva?',
@@ -60,7 +60,7 @@ const faqSchema = {
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Marcellus&family=Italiana&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 		<Seo
 			title="Renuva — Renew. Don't replace."
-			description="Renuva is a premium architectural film: 27 self-adhesive interior finishes — wood, marble, metal, matte, gloss and fabric — applied over existing cabinets, doors and walls. Fire rated ASTM E84 Class A."
+			description="Renuva is a premium architectural film: 27 self-adhesive interior finishes — wood, marble, metal, matte, gloss and fabric — applied over existing cabinets, doors and walls. ASTM E84 fire rated."
 		/>
 		<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
 		<style is:global>
@@ -624,6 +624,20 @@ const faqSchema = {
 				color: var(--muted);
 				text-wrap: pretty;
 			}
+			.fdm-spec {
+				margin-top: 18px;
+				display: inline-flex;
+				align-items: baseline;
+				gap: 12px;
+				padding-top: 12px;
+				border-top: 1px solid rgba(140, 119, 102, 0.22);
+				font-size: 11.5px;
+				font-weight: 600;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+			}
+			.fdm-spec-k { color: #A2937F; }
+			.fdm-spec-v { color: var(--ink); }
 			.fdm-foot {
 				margin-top: clamp(28px, 5vh, 46px);
 				padding-top: 0;
@@ -716,6 +730,7 @@ const faqSchema = {
 				.fdm-meta { font-size: 10px; letter-spacing: 0.2em; gap: 10px; flex-wrap: wrap; }
 				.fdm-name { margin-top: 12px; font-size: clamp(30px, 8vw, 40px); }
 				.fdm-desc { margin-top: 14px; font-size: 14.5px; line-height: 1.6; max-width: none; }
+				.fdm-spec { margin-top: 12px; font-size: 10px; letter-spacing: 0.16em; gap: 10px; }
 				.fdm-foot { margin-top: auto; padding-top: 24px; flex-wrap: wrap; gap: 12px; }
 				.fdm-link { padding: 11px 16px; font-size: 12px; }
 				.fdm-prev, .fdm-next { width: 38px; height: 38px; font-size: 15px; }
@@ -1175,6 +1190,7 @@ replace.</span></h1>
 					<p class="fdm-meta"><span class="fdm-series"></span><span class="fdm-code"></span></p>
 					<h3 class="fdm-name"></h3>
 					<p class="fdm-desc"></p>
+					<p class="fdm-spec"><span class="fdm-spec-k">Fire rating</span><span class="fdm-spec-v"></span></p>
 					<div class="fdm-shots"></div>
 					<div class="fdm-foot">
 						<a class="fdm-link" href="" target="_blank" rel="noopener">VIEW ON SURFACESUPPLY</a>

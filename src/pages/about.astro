@@ -18,7 +18,7 @@ import Seo from '../components/Seo.astro';
 		/>
 		<Seo
 			title="About Us - Renuva"
-			description="Renuva is a premium architectural film brand. Our self-adhesive films apply directly over existing cabinetry, doors and furniture — renewal without demolition or replacement."
+			description="Renuva is a premium architectural film brand: 27 self-adhesive interior finishes that apply over existing cabinetry, doors and furniture. Renewal without demolition or replacement, stocked in the US by Surface Supply."
 		/>
 		<style>
 			:root {
@@ -103,7 +103,7 @@ import Seo from '../components/Seo.astro';
 				width: 100%;
 				aspect-ratio: 16 / 9;
 				object-fit: cover;
-				object-position: 50% 62%; /* keep the sink centered in the crop */
+				object-position: 50% 55%;
 				border-radius: 14px;
 				display: block;
 				margin-bottom: 2.6rem;
@@ -112,7 +112,7 @@ import Seo from '../components/Seo.astro';
 			.about-photo-lower {
 				margin-top: 2.6rem;
 				margin-bottom: 0;
-				object-position: 50% 48%; /* this photo's sink sits higher, keep it centered */
+				object-position: 50% 50%;
 			}
 
 			/* ── flat sections with hairlines ── */
@@ -144,6 +144,149 @@ import Seo from '../components/Seo.astro';
 				color: var(--dark-brown);
 				line-height: 1.8;
 				max-width: 68ch;
+			}
+
+			/* ── facts ── */
+			.facts {
+				list-style: none;
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 1px;
+				background: rgba(141, 124, 110, 0.2);
+				border: 1px solid rgba(141, 124, 110, 0.2);
+				border-radius: 14px;
+				overflow: hidden;
+				margin: 0 0 2.6rem;
+			}
+			.facts li {
+				background: #fff;
+				padding: 1.3rem 1rem 1.2rem;
+				text-align: center;
+			}
+			.facts b {
+				display: block;
+				font-family: "Cormorant", Georgia, serif;
+				font-weight: 500;
+				font-size: 2rem;
+				line-height: 1;
+				color: #8C7766;
+			}
+			.facts span {
+				display: block;
+				margin-top: 0.45rem;
+				font-size: 0.72rem;
+				font-weight: 600;
+				letter-spacing: 0.16em;
+				text-transform: uppercase;
+				color: var(--brown);
+			}
+
+			/* ── photo strip ── */
+			.strip {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 12px;
+				margin: 2.6rem 0;
+			}
+			.strip figure { margin: 0; }
+			.strip img {
+				width: 100%;
+				aspect-ratio: 4 / 5;
+				object-fit: cover;
+				border-radius: 12px;
+				display: block;
+			}
+			.strip figcaption {
+				margin-top: 0.55rem;
+				font-size: 0.74rem;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: var(--brown);
+				text-align: center;
+			}
+
+			/* ── values ── */
+			.values {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 2rem 2.2rem;
+				padding: 2.2rem 0;
+				border-top: 1px solid rgba(141, 124, 110, 0.2);
+			}
+			.values h2 {
+				font-family: "Cormorant", Georgia, serif;
+				font-weight: 500;
+				font-size: 1.5rem;
+				line-height: 1.1;
+				color: #8C7766;
+				margin-bottom: 0.55rem;
+			}
+			.values p {
+				color: var(--dark-brown);
+				line-height: 1.75;
+				font-size: 0.95rem;
+			}
+
+			/* ── fire rating ── */
+			.safety {
+				display: grid;
+				grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+				gap: 2.2rem;
+				align-items: center;
+				padding: 2.2rem 0;
+				border-top: 1px solid rgba(141, 124, 110, 0.2);
+				border-bottom: 1px solid rgba(141, 124, 110, 0.2);
+			}
+			.safety-copy .block-label { margin-bottom: 0.6rem; }
+			.safety-copy h2 {
+				font-family: "Cormorant", Georgia, serif;
+				font-weight: 500;
+				font-size: clamp(1.5rem, 3vw, 2rem);
+				line-height: 1.1;
+				color: var(--very-dark-brown);
+				margin-bottom: 0.7rem;
+			}
+			.safety-copy p {
+				color: var(--dark-brown);
+				line-height: 1.75;
+				font-size: 0.95rem;
+			}
+			.safety-copy a {
+				color: #7A6657;
+				text-decoration: underline;
+				text-underline-offset: 3px;
+			}
+			.safety-card {
+				background: #fff;
+				border: 1px solid rgba(141, 124, 110, 0.2);
+				border-radius: 14px;
+				padding: 1.4rem 1.5rem;
+			}
+			.safety-card dl {
+				display: grid;
+				grid-template-columns: 1fr auto;
+				gap: 0.55rem 1rem;
+				margin: 0;
+			}
+			.safety-card dt {
+				font-size: 0.78rem;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				color: var(--brown);
+			}
+			.safety-card dd {
+				margin: 0;
+				font-weight: 600;
+				text-align: right;
+				color: var(--very-dark-brown);
+				font-size: 0.92rem;
+			}
+			.safety-card dd.big {
+				font-family: "Cormorant", Georgia, serif;
+				font-weight: 500;
+				font-size: 1.5rem;
+				line-height: 1;
+				color: #8C7766;
 			}
 
 			/* ── quote ── */
@@ -318,6 +461,14 @@ import Seo from '../components/Seo.astro';
 			@media (max-width: 768px) {
 				main { padding: 2.4rem 1rem 3.5rem; }
 				.about-photo { aspect-ratio: 16 / 10; }
+				.facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+				.facts li:last-child { grid-column: span 2; }
+				.facts b { font-size: 1.55rem; }
+				.facts span { font-size: 0.64rem; letter-spacing: 0.12em; }
+				.strip { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+				.strip figcaption { font-size: 0.62rem; }
+				.values { grid-template-columns: 1fr; gap: 1.4rem; }
+				.safety { grid-template-columns: 1fr; gap: 1.4rem; }
 				.footer-brand { justify-content: center; }
 				.footer-bottom { justify-content: center; text-align: center; }
 			}
@@ -331,25 +482,69 @@ import Seo from '../components/Seo.astro';
 				<h1>About Renuva</h1>
 				<p>
 					Renuva was created with the belief that renewal should feel effortless,
-					thoughtful, and beautifully refined.
+					thoughtful, and beautifully refined. A premium architectural film, edited
+					down to the finishes that make a space feel new.
 				</p>
 			</section>
 
 			<img
 				class="about-photo"
-				src="/assets/gallery/13.jpg"
-				alt="Kitchen renewed with Renuva architectural film"
+				src="/assets/gallery/12.jpg"
+				alt="Charcoal cabinetry and marble-look surfaces renewed with Renuva architectural film"
 			/>
 
 			<section class="block" aria-label="Our story">
 				<p class="block-label">Our Story</p>
 				<p>
-					Renuva is a premium architectural film brand dedicated to transforming
-					spaces through intelligent renewal. Our films apply directly over
-					existing surfaces, offering a refined alternative to traditional
-					renovation that reduces downtime and delivers beautiful results.
+					Renuva is a premium architectural film brand from Renuva Architectural
+					Surfaces, dedicated to transforming spaces through intelligent renewal.
+					Our self-adhesive films apply directly over existing cabinetry, doors,
+					furniture, built-ins and wall panels, a refined alternative to replacement
+					that reduces downtime and delivers beautiful results. The range is a
+					curated 27 finishes across eight series, from natural woods and painted
+					timber to marble, metal, matte, gloss and fabric, stocked in the United
+					States and shipped by Surface Supply.
 				</p>
 			</section>
+
+			<ul class="facts" aria-label="Renuva at a glance">
+				<li><b>27</b><span>finishes</span></li>
+				<li><b>8</b><span>series</span></li>
+				<li><b>48 in</b><span>roll width</span></li>
+				<li><b>5 yr</b><span>interior warranty</span></li>
+				<li><b>Water-based</b><span>adhesive</span></li>
+				<li><b>US stock</b><span>ships in 1 to 3 days</span></li>
+			</ul>
+
+			<section class="values" aria-label="What we stand for">
+				<div>
+					<h2>Edited, not endless</h2>
+					<p>Twenty-seven finishes chosen to work together, so every combination in the swatch book belongs in the same room.</p>
+				</div>
+				<div>
+					<h2>Built for daily life</h2>
+					<p>A scratch- and abrasion-resistant wear layer that resists household stains and wipes clean with a damp cloth.</p>
+				</div>
+				<div>
+					<h2>Renew, don't replace</h2>
+					<p>Dry application with a squeegee over the surfaces you already have. Less waste, less noise, and a kitchen back in use the same week.</p>
+				</div>
+			</section>
+
+			<div class="strip">
+				<figure>
+					<img src="/assets/gallery/11.jpg" alt="Pale oak fronts and a white counter renewed with Renuva" loading="lazy" />
+					<figcaption>Premium Wood</figcaption>
+				</figure>
+				<figure>
+					<img src="/assets/gallery/9.jpg" alt="Charcoal matte drawer fronts renewed with Renuva" loading="lazy" />
+					<figcaption>Matte Solid</figcaption>
+				</figure>
+				<figure>
+					<img src="/assets/gallery/3.jpg" alt="Oak kitchen with island renewed with Renuva" loading="lazy" />
+					<figcaption>Renewed in place</figcaption>
+				</figure>
+			</div>
 
 			<section class="block" aria-label="Our mission">
 				<p class="block-label">Our Mission</p>
@@ -369,9 +564,33 @@ import Seo from '../components/Seo.astro';
 				</p>
 			</section>
 
+			<section class="safety" aria-label="Fire rating">
+				<div class="safety-copy">
+					<p class="block-label">Tested for safety</p>
+					<h2>Fire rated to ASTM E84</h2>
+					<p>
+						Renuva is tested to ASTM E84, the surface-burning test used to accept
+						interior finishes in the United States, by an ISO/IEC 17025:2017
+						accredited laboratory. The result is Class A across the range; the
+						High Gloss Solid series is Class B. ASTM E84 rates surface-burning
+						characteristics only and does not make a material noncombustible.
+						Each finish shows its rating in the <a href="/finishes/">finish library</a>.
+					</p>
+				</div>
+				<div class="safety-card">
+					<dl>
+						<dt>Standard</dt><dd>ASTM E84</dd>
+						<dt>Classification</dt><dd class="big">Class A</dd>
+						<dt>Flame spread index</dt><dd>25</dd>
+						<dt>Smoke developed index</dt><dd>15</dd>
+						<dt>High Gloss Solid series</dt><dd>Class B</dd>
+					</dl>
+				</div>
+			</section>
+
 			<img
 				class="about-photo about-photo-lower"
-				src="/assets/gallery/19.jpg"
+				src="/assets/gallery/14.jpg"
 				alt="Light oak kitchen renewed with Renuva architectural film"
 			/>
 

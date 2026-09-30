@@ -268,6 +268,7 @@
 	var mName = modal.querySelector('.fdm-name');
 	var mCode = modal.querySelector('.fdm-code');
 	var mDesc = modal.querySelector('.fdm-desc');
+	var mSpec = modal.querySelector('.fdm-spec-v');
 	var mLink = modal.querySelector('.fdm-link');
 	var mCount = modal.querySelector('.fdm-count');
 	var current = -1;
@@ -298,6 +299,7 @@
 		mName.textContent = f.name;
 		mCode.textContent = f.code;
 		mDesc.textContent = f.desc;
+		if (mSpec) mSpec.textContent = (/^HG/.test(f.code) ? 'ASTM E84 Class B' : 'ASTM E84 Class A');
 		mLink.href = f.url;
 		mCount.textContent = (current + 1) + ' / ' + N;
 

@@ -112,6 +112,44 @@ const series = [
 				color: var(--muted);
 				text-wrap: pretty;
 			}
+			.fx-intro p { max-width: 56ch; }
+			.fx-facts {
+				list-style: none;
+				margin: 22px auto 0;
+				padding: 0;
+				display: flex;
+				justify-content: center;
+				flex-wrap: wrap;
+				gap: 8px 0;
+			}
+			.fx-facts li {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 4px 26px;
+				border-left: 1px solid rgba(75, 69, 64, 0.16);
+			}
+			.fx-facts li:first-child { border-left: 0; }
+			.fx-facts b {
+				font-family: 'Cormorant', serif;
+				font-weight: 500;
+				font-size: 28px;
+				line-height: 1;
+				color: var(--taupe);
+			}
+			.fx-facts span {
+				margin-top: 6px;
+				font-size: 11px;
+				font-weight: 600;
+				letter-spacing: 0.18em;
+				text-transform: uppercase;
+				color: #A2937F;
+			}
+			@media (max-width: 640px) {
+				.fx-facts li { padding: 4px 14px; }
+				.fx-facts b { font-size: 22px; }
+				.fx-facts span { font-size: 9.5px; letter-spacing: 0.12em; }
+			}
 			.fx-series { padding: 0 clamp(24px, 5vw, 84px); }
 			.fx-series-grid {
 				max-width: 1040px;
@@ -474,14 +512,17 @@ const series = [
 		<section class="fx-intro">
 			<h1>Renuva Finishes</h1>
 			<p>
-				Renuva is a premium architectural film: 27 self-adhesive interior finishes that
-				apply directly over existing cabinetry, doors, furniture, built-ins and wall
-				panels, with no demolition, replacement or repainting. The range spans eight
-				series — premium wood, painted wood, marble, metal, matte solid, high gloss,
-				soft matte and fabric — and every finish carries a durable wear layer with
-				scratch resistance and stain protection and is fire rated to ASTM E84 Class A.
-				Select any finish below to see it applied and read its detail.
+				Twenty-seven self-adhesive interior finishes across eight series, made to apply
+				directly over existing cabinetry, doors, furniture and wall panels. No demolition,
+				no repainting. Select any finish to see it applied.
 			</p>
+			<ul class="fx-facts" aria-label="Renuva at a glance">
+				<li><b>27</b><span>finishes</span></li>
+				<li><b>8</b><span>series</span></li>
+				<li><b>48 in</b><span>roll width</span></li>
+				<li><b>ASTM E84</b><span>fire rated</span></li>
+				<li><b>5 yr</b><span>warranty</span></li>
+			</ul>
 		</section>
 
 		<section class="fg-grid" id="fgGrid" aria-label="All Renuva finishes"></section>
