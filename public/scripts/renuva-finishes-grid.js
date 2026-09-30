@@ -296,6 +296,7 @@
 			'<dl class="fd-specs">' +
 			'<div><dt>Code</dt><dd>' + f.code + '</dd></div>' +
 			'<div><dt>Series</dt><dd>' + f.series + '</dd></div>' +
+			'<div><dt>Fire rating</dt><dd>ASTM E84 Class A</dd></div>' +
 			'</dl>' +
 			(window.renuvaShotStripHTML ? window.renuvaShotStripHTML(f.code) : '') +
 			'<a class="fd-link" href="' + f.url + '" target="_blank" rel="noopener">View at Surface Supply</a>';
